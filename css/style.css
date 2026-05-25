@@ -374,13 +374,15 @@ img {
 }
 
 @media (max-width: 768px) {
+  .hero-content {
+    transform: translate(4%, -10%); /* Visually center the entire block on mobile */
+  }
   .h1-mega .ed-svg-draw {
     width: 90vw;
-    transform: translateX(4%);
   }
   .date-svg {
-    transform: scale(1.8);
-    margin-top: -4rem;
+    transform: scale(2);
+    margin-top: -3rem; /* Tweak the spacing between the two on mobile */
   }
 }
 
