@@ -1,0 +1,444 @@
+/* =========================================
+   Global Variables & Base Setup
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+:root {
+  --color-bg: #FAF9F6; /* Off-white/cream */
+  --color-text: #2c2c2c; /* Charcoal */
+  --color-accent: #B89972; /* Warm gold/beige */
+  --color-white: #ffffff;
+  
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+  
+  --spacing-sm: 1rem;
+  --spacing-md: 2.5rem;
+  --spacing-lg: 5rem;
+  --spacing-xl: 10rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================================
+   Typography
+   ========================================= */
+.h1-mega {
+  font-size: clamp(3rem, 8vw, 7rem);
+  letter-spacing: -0.02em;
+}
+
+.h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: var(--spacing-sm);
+}
+
+.subtitle {
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* =========================================
+   Navigation
+   ========================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: background-color 0.4s ease, padding 0.4s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgba(250, 249, 246, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 5%;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+
+.nav-cta {
+  border: 1px solid var(--color-text);
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+}
+
+.nav-cta:hover {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* =========================================
+   Layout & Utility Classes
+   ========================================= */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-padding {
+  padding: var(--spacing-xl) 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* =========================================
+   Hero Section
+   ========================================= */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  /* Exactly match the 320x440 picture frames */
+  -webkit-clip-path: inset(calc(50% - 220px) calc(50% - 160px) round 4px);
+  clip-path: inset(calc(50% - 220px) calc(50% - 160px) round 4px);
+  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), -webkit-clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.hero.expanded {
+  -webkit-clip-path: inset(calc(0%) calc(0%) round 0px);
+  clip-path: inset(calc(0%) calc(0%) round 0px);
+}
+
+.hero-bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 44, 44, 0.3); /* Dark overlay to make text readable */
+  z-index: -1;
+}
+
+.hero-content {
+  color: var(--color-white);
+  padding: 0 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-date {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  display: block;
+}
+
+/* =========================================
+   Animations
+   ========================================= */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none; /* In a real app, implement a hamburger menu */
+  }
+  
+  .section-padding {
+    padding: var(--spacing-lg) 0;
+  }
+}
+
+/* =========================================
+   Preloader
+   ========================================= */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* transition removed */
+}
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-video-logo {
+  width: 97.5%; /* 50% larger than 65% */
+  max-width: 780px; /* 50% larger than 520px */
+  height: auto;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .preloader-video-logo {
+    transform: scale(1.27); /* Adjusted down so mobile stays exactly the same size despite the larger base width */
+  }
+}
+
+.preloader-images {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}
+
+.preload-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Start scaled down. GPU accelerated! */
+  transform: translate(-50%, -50%) scale(0.47);
+  width: 320px;
+  height: 440px;
+  object-fit: cover;
+  opacity: 0;
+  border-radius: 4px;
+}
+
+
+
+.preload-img.active {
+  opacity: 1;
+}
+
+.preloader-counter {
+  position: relative;
+  z-index: 10;
+  font-family: var(--font-body);
+  font-size: 5rem;
+  font-weight: 300;
+  color: #fff;
+  mix-blend-mode: difference;
+  letter-spacing: -0.02em;
+}
+
+.preloader-counter .percent {
+  font-size: 2.5rem;
+  margin-left: 0.2rem;
+  opacity: 0.8;
+}
+
+/* =========================================
+   SVG Written Effect
+   ========================================= */
+.ed-svg-draw {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.ed-svg-draw path {
+  fill: transparent;
+  stroke: #ffffff;
+  stroke-width: 0.3;
+  stroke-dasharray: 4000;
+  stroke-dashoffset: 4000;
+}
+
+/* Main Hero Animation */
+.hero.expanded .h1-mega .ed-svg-draw path {
+  animation: drawSvg 6s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards, fillSvgWhite 1.5s ease 6.5s forwards;
+}
+
+/* Preloader Animation (Dark Line drawing) */
+.preloader .ed-svg-draw path {
+  stroke: #2c2c2c;
+  animation: drawSvg 2s cubic-bezier(0.4, 0, 0.2, 1) forwards, fillSvgDark 1s ease 1.8s forwards;
+}
+
+@keyframes drawSvg {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fillSvgWhite {
+  to { fill: #ffffff; }
+}
+
+@keyframes fillSvgDark {
+  to { fill: #2c2c2c; }
+}
+
+.h1-mega .ed-svg-draw {
+  max-width: 80vw;
+  width: 800px;
+}
+
+.date-svg {
+  width: 100%;
+  max-width: 400px;
+  transform: scale(3);
+  transform-origin: top center;
+  margin-top: -8rem; /* Tucked extremely close right underneath Elia & Daniel */
+  margin-bottom: 0; /* Removing the bottom margin allows the main text to perfectly center vertically on the screen */
+}
+
+@media (max-width: 768px) {
+  .h1-mega .ed-svg-draw {
+    width: 90vw;
+    transform: translateX(4%);
+  }
+  .date-svg {
+    transform: scale(1.8);
+    margin-top: -4rem;
+  }
+}
+
+.hero.expanded .hero-date .ed-svg-draw path {
+  animation: drawSvg 2.5s cubic-bezier(0.4, 0, 0.2, 1) 5.0s forwards, fillSvgWhite 1.5s ease 7.0s forwards;
+}
+
+/* =========================================
+   Preloader Enhancements
+   ========================================= */
+.preloader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5vw;
+}
+
+.preloader-flower-left,
+.preloader-flower-right {
+  height: 50vh;
+  width: auto;
+  align-self: flex-end;
+  display: flex;
+  align-items: flex-end;
+  opacity: 0.8;
+}
+
+.flower-svg {
+  height: 100%;
+  width: auto;
+}
+
+/* Ensure flowers don't fill with black */
+.preloader .flower-svg path {
+  fill: transparent !important;
+  stroke: #2c2c2c;
+  stroke-width: 0.8;
+  animation: drawSvg 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.preloader-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.preloader-counter {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 2rem;
+  color: #2c2c2c;
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
