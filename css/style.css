@@ -209,6 +209,16 @@ img {
   display: block;
 }
 
+.location-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 300;
+  margin-top: 10rem;
+}
+
 /* =========================================
    Animations
    ========================================= */
@@ -382,6 +392,9 @@ img {
   .date-svg {
     transform: scale(2);
     margin-top: -3rem; /* Tweak the spacing between the two on mobile */
+  }
+  .location-text {
+    margin-top: 6rem;
   }
 }
 
