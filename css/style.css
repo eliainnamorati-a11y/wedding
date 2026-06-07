@@ -285,8 +285,7 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  /* Start scaled down. GPU accelerated! */
-  transform: translate(-50%, -50%) scale(0.47);
+  transform: translate(-50%, -50%);
   width: 320px;
   height: 440px;
   object-fit: cover;
