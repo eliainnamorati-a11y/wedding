@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
               img.classList.add('active');
               
               currentIndex++;
-              // Flashes each image for 150ms like a rapid strobe
-              setTimeout(showNextImage, 150); 
+              // Flashes each image for 500ms like a rapid strobe
+              setTimeout(showNextImage, 500); 
             } else {
               // Immediately reveal the hero video and start expansion
               const heroVideo = document.querySelector('.hero-bg-video');
