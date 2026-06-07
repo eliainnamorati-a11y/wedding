@@ -389,18 +389,22 @@ img {
 
 @media (max-width: 768px) {
   .hero-content {
-    transform: translate(4%, -10%); /* Visually center the entire block on mobile */
+    transform: translateX(4%); /* Visually center the script font horizontally, remove the -10% vertical shift */
   }
   .h1-mega .ed-svg-draw {
     width: 90vw;
   }
   .date-svg {
     transform: scale(2);
-    margin-top: -3rem; /* Tweak the spacing between the two on mobile */
+    margin-top: -5rem; /* Tuck closer under Elia & Daniel on mobile */
   }
   .location-text {
-    top: calc(50% + 9rem);
+    top: auto;
+    bottom: 3rem;
     margin-top: 0;
+  }
+  .coordinates-bar {
+    display: none; /* Hide coordinates on mobile */
   }
 }
 
