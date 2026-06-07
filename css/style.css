@@ -386,7 +386,7 @@ img {
 }
 
 .hero.expanded .hero-date .ed-svg-draw path {
-  animation: drawSvg 2.5s cubic-bezier(0.4, 0, 0.2, 1) 5.0s forwards, fillSvgWhite 1.5s ease 7.0s forwards;
+  animation: drawSvg 2.5s cubic-bezier(0.4, 0, 0.2, 1) 8.0s forwards, fillSvgWhite 1.5s ease 9.5s forwards;
 }
 
 /* =========================================
