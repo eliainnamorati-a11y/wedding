@@ -210,13 +210,18 @@ img {
 }
 
 .location-text {
+  position: absolute;
+  top: calc(50% + 14rem);
+  left: 0;
+  width: 100%;
+  text-align: center;
   font-family: var(--font-body);
   font-size: 0.9rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #ffffff;
   font-weight: 300;
-  margin-top: 10rem;
+  margin-top: 0;
 }
 
 /* =========================================
@@ -394,7 +399,8 @@ img {
     margin-top: -3rem; /* Tweak the spacing between the two on mobile */
   }
   .location-text {
-    margin-top: 6rem;
+    top: calc(50% + 9rem);
+    margin-top: 0;
   }
 }
 
