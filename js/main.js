@@ -41,12 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
       if (imagesContainer) {
         imagesContainer.style.display = 'block';
         const images = imagesContainer.querySelectorAll('.preload-img');
+        
+        // Preload images to ensure they are ready before the sequence starts
+        images.forEach(img => {
+          const preloaderImg = new Image();
+          preloaderImg.src = img.src;
+        });
+
         let currentIndex = 0;
         
         if (images.length > 0) {
           const showNextImage = () => {
-            // Hide all images first to prevent stacking
-            images.forEach(img => img.classList.remove('active'));
+            // We intentionally don't remove 'active' from previous images so the next image fades in smoothly on top, avoiding background flashes.
 
             if (currentIndex < images.length) {
               const img = images[currentIndex];
