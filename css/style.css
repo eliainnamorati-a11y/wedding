@@ -218,7 +218,7 @@ img {
 
 .mozart-title {
   font-family: 'Mozart Script Thin', cursive;
-  font-size: clamp(2.5rem, 7.5vw, 5rem);
+  font-size: clamp(2.75rem, 8.25vw, 5.5rem);
   text-transform: none;
   letter-spacing: normal;
   color: #fff;
