@@ -82,7 +82,7 @@
     .cursive-write {
       display: inline-block;
       white-space: nowrap;
-      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      clip-path: polygon(0 -50%, 0 -50%, 0 150%, 0 150%);
       padding: 0.2em;
       margin: -0.2em;
     }
@@ -96,7 +96,7 @@
     }
     @keyframes writingAnim {
       to {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 -50%, 150% -50%, 150% 150%, 0 150%);
       }
     }
     .load-up {
@@ -128,7 +128,10 @@
     <div class="hero-overlay"></div>
     
     <div class="top-bar load-up" style="animation-delay: 0.8s; font-family: var(--font-body); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.9rem;">
-      ROME, ITALY
+      <span class="stamp-container" style="cursor: pointer;">
+        ROME, ITALY
+        <img src="assets/images/vatican_stamp.png" class="hover-stamp stamp-center" alt="Vatican Stamp">
+      </span>
     </div>    <div class="hero-content load-up" style="animation-delay: 0.2s;">
       <h1 class="h1-mega load-up" style="animation-delay: 0.5s; margin-bottom: 0;">
         <span class="mozart-title cursive-write">Elia & Daniel</span>
@@ -143,10 +146,16 @@
 
     <div class="coordinates-bar load-up" style="animation-delay: 0.8s;">
       <div class="coords">
-        41°54′14″N 12°27′8″E
+        <span class="stamp-container" style="cursor: pointer;">
+          41°54′14″N 12°27′8″E
+          <img src="assets/images/vatican_stamp.png" class="hover-stamp stamp-left" alt="Vatican Stamp">
+        </span>
       </div>
       <div class="coords">
-        41°53′20″N 12°27′44″E
+        <span class="stamp-container" style="cursor: pointer;">
+          41°53′20″N 12°27′44″E
+          <img src="assets/images/villa_stamp.png" class="hover-stamp stamp-right" alt="Villa Stamp">
+        </span>
       </div>
     </div>
     

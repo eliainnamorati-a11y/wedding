@@ -248,6 +248,61 @@ img {
 }
 
 /* =========================================
+   Stamp Hover Effects
+   ========================================= */
+.stamp-container {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-stamp {
+  position: absolute;
+  width: 140px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 50;
+  border: 4px solid #fff; /* Vintage stamp white border look */
+  background-color: #fff;
+}
+
+/* Center stamp (Rome) drops down from the text */
+.stamp-center {
+  top: 150%;
+  left: 50%;
+  transform: translateX(-50%) translateY(15px) rotate(-3deg);
+}
+.stamp-container:hover .stamp-center {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) rotate(2deg);
+}
+
+/* Left stamp (Vatican coordinates) drops down */
+.stamp-left {
+  top: 150%;
+  left: 0;
+  transform: translateY(15px) rotate(-5deg);
+}
+.stamp-container:hover .stamp-left {
+  opacity: 1;
+  transform: translateY(0) rotate(-2deg);
+}
+
+/* Right stamp (Villa coordinates) drops down and aligns right */
+.stamp-right {
+  top: 150%;
+  right: 0;
+  transform: translateY(15px) rotate(5deg);
+}
+.stamp-container:hover .stamp-right {
+  opacity: 1;
+  transform: translateY(0) rotate(2deg);
+}
+
+/* =========================================
    Animations
    ========================================= */
 .reveal-up {
