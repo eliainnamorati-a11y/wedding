@@ -216,14 +216,24 @@ img {
   display: block;
 }
 
-.mozart-date {
+.mozart-title {
   font-family: 'Mozart Script Thin', cursive;
-  font-size: clamp(4rem, 12vw, 8rem);
+  font-size: clamp(5rem, 15vw, 10rem);
   text-transform: none;
   letter-spacing: normal;
   color: #fff;
   display: block;
-  margin-top: -2rem;
+  line-height: 1;
+}
+
+.mozart-date {
+  font-family: 'Mozart Script Thin', cursive;
+  font-size: clamp(3rem, 8vw, 5rem);
+  text-transform: none;
+  letter-spacing: normal;
+  color: #fff;
+  display: block;
+  margin-top: 0.5rem;
 }
 
 .location-text {
