@@ -82,9 +82,17 @@
     .cursive-write {
       display: inline-block;
       white-space: nowrap;
-      overflow: hidden;
       clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      padding: 0.2em;
+      margin: -0.2em;
+    }
+    .hero.expanded .mozart-title.cursive-write {
+      animation: writingAnim 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation-delay: 0.5s;
+    }
+    .hero.expanded .mozart-date.cursive-write {
       animation: writingAnim 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation-delay: 2.0s;
     }
     @keyframes writingAnim {
       to {
@@ -123,13 +131,13 @@
       ROME, ITALY
     </div>    <div class="hero-content load-up" style="animation-delay: 0.2s;">
       <h1 class="h1-mega load-up" style="animation-delay: 0.5s; margin-bottom: 0;">
-        <span class="mozart-title">Elia & Daniel</span>
+        <span class="mozart-title cursive-write">Elia & Daniel</span>
       </h1>
       <div class="location-text load-up" style="opacity: 0; animation: loadUpAnim 1s ease forwards; animation-delay: 1.0s;">
         SAVE THE DATE
       </div>
       <div class="hero-date load-up" style="opacity: 0; animation: loadUpAnim 1.5s ease forwards; animation-delay: 1.5s;">
-        <span class="mozart-date">April 17, 2027</span>
+        <span class="mozart-date cursive-write">April 17, 2027</span>
       </div>
     </div>
 
