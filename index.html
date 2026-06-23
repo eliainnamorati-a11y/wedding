@@ -79,11 +79,11 @@
       margin: 1rem 0;
       color: #fff;
     }
-    /* Handwriting effect using clip-path */
+    /* Handwriting effect using slanted clip-path for natural italic reveal */
     .cursive-write {
       display: inline-block;
       white-space: nowrap;
-      clip-path: polygon(0 -50%, 0 -50%, 0 150%, 0 150%);
+      clip-path: polygon(-30% -50%, -30% -50%, -60% 150%, -60% 150%);
       padding: 0.2em;
       margin: -0.2em;
     }
@@ -97,7 +97,7 @@
     }
     @keyframes writingAnim {
       to {
-        clip-path: polygon(0 -50%, 150% -50%, 150% 150%, 0 150%);
+        clip-path: polygon(-30% -50%, 150% -50%, 120% 150%, -60% 150%);
       }
     }
     .load-up {
