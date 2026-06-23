@@ -224,11 +224,6 @@ img {
   color: #fff;
   display: block;
   line-height: 1;
-  transition: color 0.3s ease;
-}
-
-.mozart-title:hover {
-  color: var(--color-accent);
 }
 
 .mozart-date {
