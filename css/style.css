@@ -351,8 +351,8 @@ img {
 }
 
 .preloader-video-logo {
-  width: 97.5%; /* 50% larger than 65% */
-  max-width: 780px; /* 50% larger than 520px */
+  width: 58.5%; /* 40% smaller than 97.5% */
+  max-width: 468px; /* 40% smaller than 780px */
   height: auto;
   border-radius: 8px;
 }
