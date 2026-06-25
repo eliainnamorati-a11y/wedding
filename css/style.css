@@ -592,13 +592,27 @@ img {
 }
 @media (max-width: 768px) {
   .preloader-photos {
-    flex-direction: column !important;
-    gap: 1rem !important;
+    display: block !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 10 !important;
   }
   .preloader-img {
-    width: 80%;
-    max-height: 25vh;
-    aspect-ratio: auto;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-height: none !important;
+    max-width: none !important;
+    object-fit: cover !important;
+    opacity: 0;
   }
   
   .preloader-photos.active-zoom {
@@ -625,8 +639,8 @@ img {
 }
 
 @keyframes fadeInPhoto {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Cinematic Photo Zoom */
