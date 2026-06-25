@@ -489,7 +489,7 @@ img {
 
 @media (max-width: 768px) {
   .hero-content {
-    transform: translateX(4%); /* Visually center the script font horizontally, remove the -10% vertical shift */
+    /* Removed translateX(4%) to keep perfectly centered */
   }
   .h1-mega .ed-svg-draw {
     width: 90vw;
@@ -588,6 +588,33 @@ img {
     max-height: 25vh;
     aspect-ratio: auto;
   }
+  
+  .preloader-photos.active-zoom {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  
+  .preloader-photos.active-zoom .preloader-img {
+    opacity: 0;
+    animation: fadeInPhoto 0.8s ease forwards;
+  }
+  
+  .preloader-photos.active-zoom .preloader-img:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .preloader-photos.active-zoom .preloader-img:nth-child(2) {
+    animation-delay: 0.8s;
+  }
+  
+  .preloader-photos.active-zoom .preloader-img:nth-child(3) {
+    animation-delay: 1.6s;
+  }
+}
+
+@keyframes fadeInPhoto {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Cinematic Photo Zoom */
