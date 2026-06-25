@@ -35,9 +35,22 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Ensure the hero video plays when preloader hides
         const heroVideo = document.querySelector('.hero-bg-video');
-        if (heroVideo) heroVideo.play();
+        if (heroVideo) {
+          heroVideo.currentTime = 0; // Restart so it perfectly syncs with the reveal
+          const playPromise = heroVideo.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(error => console.log("Autoplay prevented:", error));
+          }
+        }
       }
     };
+
+    // iOS Autoplay Hack: Force play on first touch if blocked by browser policies
+    document.addEventListener('touchstart', () => {
+      if (videoElement && videoElement.paused) videoElement.play();
+      const heroVideo = document.querySelector('.hero-bg-video');
+      if (heroVideo && heroVideo.paused) heroVideo.play();
+    }, { once: true });
 
     const runPhotoSequence = () => {
       // 1. Fade out the video
