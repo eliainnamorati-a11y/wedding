@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================= */
   const preloader = document.getElementById('preloader');
   const videoElement = document.getElementById('preloader-video');
-  const maskHole = document.getElementById('video-mask-hole');
+  const photoShowcase = document.getElementById('preloader-photos');
   
   if (preloader) {
     const hidePreloader = () => {
@@ -39,14 +39,37 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
+    const runPhotoSequence = () => {
+      // 1. Fade out the video
+      if (videoElement) {
+        videoElement.style.opacity = '0';
+      }
+      // 2. Trigger the cinematic zoom on the photos
+      if (photoShowcase) {
+        photoShowcase.classList.add('active-zoom');
+      }
+      
+      // 3. Wait 2.5 seconds, then transition to homepage
+      setTimeout(hidePreloader, 2500);
+    };
+
     if (videoElement) {
       videoElement.playbackRate = 2.0; // Play twice as fast
+      
+      let sequenceStarted = false;
       videoElement.addEventListener('ended', () => {
-        setTimeout(hidePreloader, 1000);
+        if (!sequenceStarted) {
+          sequenceStarted = true;
+          runPhotoSequence();
+        }
       });
+      
       // Fallback timeout in case the video fails to load or play
       setTimeout(() => {
-        hidePreloader();
+        if (!sequenceStarted) {
+          sequenceStarted = true;
+          runPhotoSequence();
+        }
       }, 5000);
     } else {
       setTimeout(hidePreloader, 2000);

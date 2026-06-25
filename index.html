@@ -115,10 +115,14 @@
 </head>
 <body>
 
-  <div id="preloader" class="preloader" style="justify-content: center; flex-direction: column; gap: 20px; background-color: #ffffff;">
-    <video id="preloader-video" class="preloader-video-logo" src="Animate_this_dont_add_glitter_202605251133.mp4" autoplay muted playsinline></video>
+  <div id="preloader" class="preloader" style="justify-content: center; align-items: center; background-color: #ffffff;">
+    <video id="preloader-video" class="preloader-video-logo" src="new%20video.mp4" autoplay muted playsinline style="position: absolute; z-index: 2;"></video>
     
-
+    <div id="preloader-photos" class="preloader-photos" style="position: absolute; z-index: 1; display: flex; gap: 2rem; justify-content: center; align-items: center; width: 90%; max-width: 1200px; opacity: 0;">
+      <img src="JPGS/03.jpg" alt="Elia and Daniel 1" class="preloader-img">
+      <img src="JPGS/05.jpg" alt="Elia and Daniel 2" class="preloader-img">
+      <img src="JPGS/06 (1).jpg" alt="Elia and Daniel 3" class="preloader-img">
+    </div>
   </div>
 
   <header class="hero">
@@ -128,35 +132,26 @@
     </video>
     <div class="hero-overlay"></div>
     
-    <div class="top-bar load-up" style="animation-delay: 0.8s; font-family: var(--font-body); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.9rem;">
-      <span class="stamp-container" style="cursor: pointer;">
-        ROME, ITALY
-        <img src="assets/images/vatican_stamp.png" class="hover-stamp stamp-center" alt="Vatican Stamp">
-      </span>
-    </div>    <div class="hero-content load-up" style="animation-delay: 0.2s;">
-      <h1 class="h1-mega load-up" style="animation-delay: 0.5s; margin-bottom: 0;">
-        <span class="mozart-title cursive-write">Elia & Daniel</span>
+    <div class="top-bar" style="font-family: var(--font-body); letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.9rem;">
+      <span>ROME, ITALY</span>
+    </div>    <div class="hero-content">
+      <h1 class="h1-mega" style="margin-bottom: 0;">
+        <span class="mozart-title">Elia & Daniel</span>
       </h1>
-      <div class="location-text load-up" style="opacity: 0; animation: loadUpAnim 1s ease forwards; animation-delay: 3.0s;">
+      <div class="location-text">
         SAVE THE DATE
       </div>
-      <div class="hero-date load-up" style="opacity: 0; animation: loadUpAnim 1.5s ease forwards; animation-delay: 4.0s;">
-        <span class="mozart-date cursive-write">April 17, 2027</span>
+      <div class="hero-date">
+        <span class="mozart-date">April 17, 2027</span>
       </div>
     </div>
 
-    <div class="coordinates-bar load-up" style="animation-delay: 0.8s;">
+    <div class="coordinates-bar">
       <div class="coords">
-        <span class="stamp-container" style="cursor: pointer;">
-          41°54′14″N 12°27′8″E
-          <img src="assets/images/vatican_stamp.png" class="hover-stamp stamp-left" alt="Vatican Stamp">
-        </span>
+        <span>41°54′14″N 12°27′8″E</span>
       </div>
       <div class="coords">
-        <span class="stamp-container" style="cursor: pointer;">
-          41°53′20″N 12°27′44″E
-          <img src="assets/images/villa_stamp.png" class="hover-stamp stamp-right" alt="Villa Stamp">
-        </span>
+        <span>41°53′20″N 12°27′44″E</span>
       </div>
     </div>
     

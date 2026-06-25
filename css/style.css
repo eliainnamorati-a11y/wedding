@@ -158,6 +158,31 @@ img {
 /* =========================================
    Hero Section
    ========================================= */
+.top-bar {
+  position: absolute;
+  top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.coordinates-bar {
+  position: absolute;
+  bottom: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 10;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
 .hero {
   position: relative;
   height: 100vh;
@@ -166,15 +191,6 @@ img {
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  /* Exactly match the 320x440 picture frames */
-  -webkit-clip-path: inset(calc(50% - 220px) calc(50% - 160px) round 4px);
-  clip-path: inset(calc(50% - 220px) calc(50% - 160px) round 4px);
-  transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), -webkit-clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.hero.expanded {
-  -webkit-clip-path: inset(calc(0%) calc(0%) round 0px);
-  clip-path: inset(calc(0%) calc(0%) round 0px);
 }
 
 .hero-bg-video {
@@ -205,15 +221,18 @@ img {
   align-items: center;
   justify-content: center;
   width: 100%;
+  position: relative;
 }
 
 .hero-date {
   font-family: var(--font-body);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
   font-size: 1rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  margin-top: 1rem;
-  display: block;
+  margin-top: 0.5rem;
 }
 
 .mozart-title {
@@ -234,17 +253,22 @@ img {
   color: #fff;
   display: block;
   margin-top: 0.5rem;
+  font-variant-ligatures: none;
+  font-feature-settings: "liga" 0, "calt" 0;
 }
 
 .location-text {
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
   font-family: var(--font-body);
-  font-size: 0.9rem;
   letter-spacing: 0.2em;
+  font-size: 0.9rem;
+  margin-top: 3rem;
   text-transform: uppercase;
   color: #ffffff;
   font-weight: 300;
-  margin-top: 1.5rem;
 }
 
 /* =========================================
@@ -351,15 +375,15 @@ img {
 }
 
 .preloader-video-logo {
-  width: 58.5%; /* 40% smaller than 97.5% */
-  max-width: 468px; /* 40% smaller than 780px */
+  width: 70%; /* Increased by 20% */
+  max-width: 560px; /* Increased by 20% */
   height: auto;
   border-radius: 8px;
 }
 
 @media (max-width: 768px) {
   .preloader-video-logo {
-    transform: scale(1.27); /* Adjusted down so mobile stays exactly the same size despite the larger base width */
+    transform: scale(1.5); /* Increased mobile scale */
   }
 }
 
@@ -539,4 +563,63 @@ img {
 
 @keyframes fadeIn {
   to { opacity: 1; }
+}
+
+/* Two-Stage Preloader Photos */
+.preloader-img {
+  width: 30%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 0; /* Sharp edges */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  object-fit: contain; /* Ensure no cropping */
+  transition: transform 1s ease;
+}
+.preloader-img:hover {
+  transform: scale(1.05);
+}
+@media (max-width: 768px) {
+  .preloader-photos {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+  .preloader-img {
+    width: 80%;
+    max-height: 25vh;
+    aspect-ratio: auto;
+  }
+}
+
+/* Cinematic Photo Zoom */
+@keyframes cinematicZoom {
+  0% { transform: scale(0.85); opacity: 0; filter: blur(4px); }
+  15% { opacity: 1; filter: blur(0px); }
+  100% { transform: scale(1.4); opacity: 1; filter: blur(0px); }
+}
+
+.preloader-photos.active-zoom {
+  animation: cinematicZoom 2.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+  z-index: 3 !important;
+}
+
+/* Homepage Sequence Transitions */
+.hero.expanded .location-text,
+.hero.expanded .hero-date,
+.hero.expanded .top-bar,
+.hero.expanded .coordinates-bar {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero.expanded .location-text {
+  transition-delay: 1s;
+}
+
+.hero.expanded .hero-date {
+  transition-delay: 2s;
+}
+
+.hero.expanded .top-bar,
+.hero.expanded .coordinates-bar {
+  transition-delay: 3s;
 }
