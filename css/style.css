@@ -511,7 +511,10 @@ img {
     font-size: 0.7rem;
     letter-spacing: 0.1em;
   }
-  .mozart-title,
+  .mozart-title {
+    white-space: nowrap;
+    font-size: 2.25rem;
+  }
   .mozart-date,
   .location-text {
     white-space: nowrap;
