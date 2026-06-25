@@ -625,7 +625,7 @@ img {
   
   .preloader-photos.active-zoom .preloader-img {
     opacity: 0;
-    animation: fadeInPhoto 0.6s ease forwards;
+    animation: fadeInPhoto 0.8s ease forwards;
   }
   
   .preloader-photos.active-zoom .preloader-img:nth-child(1) {
@@ -633,11 +633,11 @@ img {
   }
   
   .preloader-photos.active-zoom .preloader-img:nth-child(2) {
-    animation-delay: 0.5s;
+    animation-delay: 0.8s;
   }
   
   .preloader-photos.active-zoom .preloader-img:nth-child(3) {
-    animation-delay: 1.0s;
+    animation-delay: 1.6s;
   }
 }
 
