@@ -49,8 +49,42 @@ document.addEventListener('DOMContentLoaded', () => {
         photoShowcase.classList.add('active-zoom');
       }
       
-      // 3. Wait 2.5 seconds, then transition to homepage
-      setTimeout(hidePreloader, 2500);
+      const heroVideo = document.querySelector('.hero-bg-video');
+      let minTimeElapsed = false;
+      let videoReady = false;
+      
+      // 3. Minimum time the photos must be on screen (2.0s to allow sequence to finish)
+      setTimeout(() => {
+        minTimeElapsed = true;
+        checkAndHide();
+      }, 2000);
+      
+      // 4. Check if the homepage video is loaded
+      if (heroVideo) {
+        if (heroVideo.readyState >= 3) {
+          videoReady = true;
+        } else {
+          heroVideo.addEventListener('canplay', () => {
+            videoReady = true;
+            checkAndHide();
+          });
+          // Fallback if video takes way too long or fails to load
+          setTimeout(() => {
+            videoReady = true;
+            checkAndHide();
+          }, 6000);
+        }
+      } else {
+        videoReady = true;
+      }
+      
+      const checkAndHide = () => {
+        if (minTimeElapsed && videoReady) {
+          hidePreloader();
+        }
+      };
+      
+      checkAndHide();
     };
 
     if (videoElement) {
