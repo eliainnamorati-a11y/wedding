@@ -502,7 +502,19 @@ img {
     margin-top: 1rem;
   }
   .coordinates-bar {
-    display: none; /* Hide coordinates on mobile */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+  .coords {
+    white-space: nowrap;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+  .mozart-title,
+  .mozart-date,
+  .location-text {
+    white-space: nowrap;
   }
 }
 
