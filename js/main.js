@@ -53,11 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
       let minTimeElapsed = false;
       let videoReady = false;
       
-      // 3. Minimum time the photos must be on screen (2.5s to allow sequence to finish)
+      // 3. Minimum time the photos must be on screen (3.2s to allow sequence to finish)
       setTimeout(() => {
         minTimeElapsed = true;
         checkAndHide();
-      }, 2500);
+      }, 3200);
       
       // 4. Check if the homepage video is loaded
       if (heroVideo) {
