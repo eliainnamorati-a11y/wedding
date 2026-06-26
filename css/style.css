@@ -186,6 +186,7 @@ img {
 .hero {
   position: relative;
   height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -393,6 +394,7 @@ img {
   left: 0;
   width: 100vw;
   height: 100vh;
+  height: 100dvh;
   z-index: 10;
 }
 
@@ -598,6 +600,7 @@ img {
     display: block !important;
     width: 100vw !important;
     height: 100vh !important;
+    height: 100dvh !important;
     max-width: none !important;
     position: fixed !important;
     top: 0 !important;
@@ -612,6 +615,7 @@ img {
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
+    height: 100dvh !important;
     max-height: none !important;
     max-width: none !important;
     object-fit: cover !important;
