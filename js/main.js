@@ -45,12 +45,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    // iOS Autoplay Hack: Force play on first touch if blocked by browser policies
-    document.addEventListener('touchstart', () => {
-      if (videoElement && videoElement.paused) videoElement.play();
+    // Mobile Autoplay Hack: Force play on first interaction if blocked by browser policies
+    const forcePlay = () => {
+      if (videoElement && videoElement.paused) {
+        const p = videoElement.play();
+        if (p !== undefined) p.catch(e => console.log("Interaction play prevented:", e));
+      }
       const heroVideo = document.querySelector('.hero-bg-video');
-      if (heroVideo && heroVideo.paused) heroVideo.play();
-    }, { once: true });
+      if (heroVideo && heroVideo.paused) {
+        const p = heroVideo.play();
+        if (p !== undefined) p.catch(e => console.log("Interaction play prevented:", e));
+      }
+    };
+    document.addEventListener('touchstart', forcePlay, { once: true });
+    document.addEventListener('click', forcePlay, { once: true });
 
     const runPhotoSequence = () => {
       // 1. Fade out the video
@@ -102,6 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (videoElement) {
       videoElement.playbackRate = 2.0; // Play twice as fast
+      
+      // Force play programmatically on load
+      const playPromise = videoElement.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => console.log("Autoplay prevented on load:", error));
+      }
       
       let sequenceStarted = false;
       videoElement.addEventListener('ended', () => {
