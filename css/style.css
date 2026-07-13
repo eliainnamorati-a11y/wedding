@@ -383,6 +383,14 @@ img {
   clip-path: inset(1px); /* Hide black lines from video encoder */
 }
 
+/* Force hide Safari play button overlay on blocked autoplay */
+.preloader-video-logo::-webkit-media-controls,
+.preloader-video-logo::-webkit-media-controls-start-playback-button,
+.preloader-video-logo::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+  -webkit-appearance: none;
+}
+
 @media (max-width: 768px) {
   .preloader-video-logo {
     transform: scale(1.5); /* Increased mobile scale */
