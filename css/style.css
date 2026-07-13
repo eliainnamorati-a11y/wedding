@@ -381,6 +381,7 @@ img {
   height: auto;
   border-radius: 8px;
   clip-path: inset(1px); /* Hide black lines from video encoder */
+  pointer-events: none; /* Crucial for iOS: prevents the native play button from capturing taps */
 }
 
 /* Force hide Safari play button overlay on blocked autoplay */
