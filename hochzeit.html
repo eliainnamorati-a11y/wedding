@@ -3,24 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elia & Daniel | Zivile Trauung · Villa Honegg</title>
+  <title>Elia & Daniel | Zivile Trauung</title>
   
   <!-- Link Preview Meta Tags -->
-  <meta property="og:title" content="Elia & Daniel | Zivile Trauung · Villa Honegg">
+  <meta property="og:title" content="Elia & Daniel | Zivile Trauung">
   <meta property="og:description" content="Einladung zur zivilen Hochzeit von Elia & Daniel am Donnerstag, 18. Februar um 12:30 Uhr in der Villa Honegg, Ennetbürgen.">
-  <meta property="og:image" content="https://innamorati-meister.com/assets/images/villa_honegg_winter.jpg">
   <meta property="og:url" content="https://innamorati-meister.com/hochzeit">
   <meta property="og:type" content="website">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Elia & Daniel | Zivile Trauung · Villa Honegg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Elia & Daniel | Zivile Trauung">
   <meta name="twitter:description" content="Einladung zur zivilen Hochzeit von Elia & Daniel am Donnerstag, 18. Februar um 12:30 Uhr in der Villa Honegg, Ennetbürgen.">
-  <meta name="twitter:image" content="https://innamorati-meister.com/assets/images/villa_honegg_winter.jpg">
 
   <link rel="icon" type="image/svg+xml" href="/logo.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -28,24 +26,20 @@
       --font-script: 'Great Vibes', cursive;
       --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
       
-      --color-cream: #FAF8F5;
-      --color-cream-card: #FFFFFF;
-      --color-sand: #F3EFEA;
-      --color-dark: #1F1E1D;
-      --color-charcoal: #3D3B39;
-      --color-muted: #7A7672;
-      --color-gold: #C5A880;
-      --color-gold-hover: #A6875E;
-      --color-gold-light: #F4ECE1;
-      --color-border: #E8E2D9;
+      --color-white: #FFFFFF;
+      --color-cream: #FCFAF8;
+      --color-surface: #FFFFFF;
+      --color-dark: #1A1918;
+      --color-charcoal: #383634;
+      --color-muted: #827E7A;
+      --color-gold: #BFA175;
+      --color-gold-hover: #9E825A;
+      --color-gold-soft: #F5EFEB;
+      --color-border: #ECE6DE;
+      --color-border-light: #F4EFEA;
       
-      --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 10px 40px rgba(31, 30, 29, 0.07);
-      --shadow-lg: 0 20px 60px rgba(31, 30, 29, 0.12);
-      
-      --radius-sm: 4px;
-      --radius-md: 12px;
-      --radius-lg: 24px;
+      --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.03);
+      --shadow-card: 0 15px 50px rgba(0, 0, 0, 0.04);
     }
 
     * {
@@ -62,281 +56,253 @@
       font-family: var(--font-sans);
       background-color: var(--color-cream);
       color: var(--color-charcoal);
-      line-height: 1.7;
+      line-height: 1.8;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    /* Top Navigation Bar */
-    .header-nav {
-      position: fixed;
-      top: 0;
-      left: 0;
+    /* Top Bar */
+    .top-nav {
       width: 100%;
-      z-index: 1000;
+      padding: 2.5rem 3rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.5rem 3rem;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      background: transparent;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    .header-nav.scrolled {
-      background: rgba(250, 248, 245, 0.92);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      padding: 1rem 3rem;
-      border-bottom: 1px solid rgba(197, 168, 128, 0.2);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+    .nav-monogram {
+      width: 38px;
+      height: 38px;
+      opacity: 0.85;
+      transition: opacity 0.3s;
     }
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: #fff;
-      transition: color 0.3s;
-    }
-
-    .header-nav.scrolled .nav-logo {
-      color: var(--color-dark);
-    }
-
-    .nav-logo img {
-      width: 32px;
-      height: 32px;
-      filter: brightness(0) invert(1);
-      transition: filter 0.3s;
-    }
-
-    .header-nav.scrolled .nav-logo img {
-      filter: brightness(0);
-    }
-
-    .nav-logo-text {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      letter-spacing: 0.1em;
-      font-weight: 500;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-    }
-
-    .nav-links a {
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 400;
-      transition: color 0.3s;
-      position: relative;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0%;
-      height: 1px;
-      background-color: var(--color-gold);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover::after {
+    .nav-monogram img {
       width: 100%;
+      height: 100%;
     }
 
-    .header-nav.scrolled .nav-links a {
-      color: var(--color-charcoal);
-    }
-
-    .header-nav.scrolled .nav-links a:hover {
-      color: var(--color-gold);
-    }
-
-    /* Language Switcher */
-    .lang-switch {
-      display: flex;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 30px;
-      padding: 3px;
-      backdrop-filter: blur(10px);
-    }
-
-    .header-nav.scrolled .lang-switch {
-      background: rgba(0, 0, 0, 0.04);
-      border-color: var(--color-border);
+    .lang-toggle {
+      display: inline-flex;
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      padding: 2px;
+      background: #fff;
     }
 
     .lang-btn {
-      background: none;
+      background: transparent;
       border: none;
-      color: #fff;
       font-family: var(--font-sans);
       font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      padding: 4px 12px;
-      border-radius: 20px;
+      letter-spacing: 0.12em;
+      padding: 5px 12px;
+      border-radius: 16px;
       cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .header-nav.scrolled .lang-btn {
       color: var(--color-muted);
+      transition: all 0.3s ease;
+      font-weight: 500;
     }
 
     .lang-btn.active {
-      background: #fff;
-      color: var(--color-dark);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-
-    .header-nav.scrolled .lang-btn.active {
       background: var(--color-dark);
       color: #fff;
     }
 
-    /* Hero Section */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      padding: 6rem 2rem 4rem;
-      background: url('/assets/images/villa_honegg_winter.jpg') center center / cover no-repeat;
-      overflow: hidden;
+    /* Main Container / Wedding Invitation Card Style */
+    .page-wrapper {
+      max-width: 820px;
+      margin: 1rem auto 5rem;
+      padding: 0 1.5rem;
     }
 
-    .hero::before {
+    .invitation-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+      padding: 5.5rem 4.5rem;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      text-align: center;
+    }
+
+    /* Subtle Inner Double Border for luxury paper feel */
+    .invitation-card::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(
-        180deg,
-        rgba(15, 14, 13, 0.55) 0%,
-        rgba(15, 14, 13, 0.35) 40%,
-        rgba(15, 14, 13, 0.65) 85%,
-        rgba(250, 248, 245, 1) 100%
-      );
-      z-index: 1;
+      top: 14px;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      border: 1px solid rgba(191, 161, 117, 0.22);
+      pointer-events: none;
     }
 
-    .hero-container {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      margin: auto;
-      animation: fadeInHero 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    /* Monogram */
+    .brand-monogram {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 2rem;
     }
 
-    .hero-monogram {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 1.5rem;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
-    }
-
-    .hero-monogram img {
+    .brand-monogram img {
       width: 100%;
       height: 100%;
-      filter: brightness(0) invert(1);
     }
 
-    .hero-eyebrow {
-      font-size: 0.85rem;
+    .eyebrow {
+      font-size: 0.78rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--color-gold-light);
-      margin-bottom: 0.8rem;
-      font-weight: 400;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      color: var(--color-gold);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
     }
 
-    .hero-title {
+    .names-heading {
       font-family: var(--font-script);
-      font-size: clamp(4.2rem, 11vw, 8.5rem);
+      font-size: clamp(4.5rem, 11vw, 7rem);
       font-weight: 400;
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
-      color: #FFFFFF;
-      text-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+      line-height: 1.1;
+      color: var(--color-dark);
+      margin-bottom: 2rem;
     }
 
-    .hero-subtitle {
-      font-family: var(--font-serif);
-      font-size: clamp(1.4rem, 3.2vw, 2.3rem);
-      font-style: italic;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      margin-bottom: 2.2rem;
-      color: #FAF8F5;
-      text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
-    }
-
-    .hero-details-card {
-      display: inline-flex;
-      align-items: center;
-      gap: 2rem;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      padding: 1.2rem 2.8rem;
-      border-radius: 60px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-      margin-bottom: 3rem;
-    }
-
-    .hero-detail-item {
+    .divider-gold {
       display: flex;
-      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem auto;
+      max-width: 280px;
+    }
+
+    .divider-gold::before,
+    .divider-gold::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-border);
+    }
+
+    .divider-gold span {
+      color: var(--color-gold);
+      font-size: 0.9rem;
+    }
+
+    /* Date & Location Highlight */
+    .event-meta {
+      margin: 2.2rem 0;
+    }
+
+    .event-date {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+
+    .event-time {
+      font-size: 0.9rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+
+    .event-venue {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--color-charcoal);
+    }
+
+    .event-address {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      letter-spacing: 0.05em;
+      margin-top: 0.2rem;
+    }
+
+    /* Welcome Letter */
+    .letter-body {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      line-height: 1.9;
+      color: var(--color-charcoal);
+      font-weight: 300;
+      max-width: 620px;
+      margin: 3rem auto 2.5rem;
+    }
+
+    /* Schedule */
+    .schedule-block {
+      margin: 4rem 0 3rem;
       text-align: center;
     }
 
-    .hero-detail-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.25em;
+    .section-subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      opacity: 0.85;
-      margin-bottom: 0.2rem;
-      color: var(--color-gold-light);
+      color: var(--color-gold);
+      font-weight: 500;
+      margin-bottom: 2rem;
     }
 
-    .hero-detail-val {
+    .schedule-list {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .schedule-row {
+      display: flex;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--color-border-light);
+      align-items: baseline;
+      gap: 2rem;
+    }
+
+    .schedule-row:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-time {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--color-gold);
+      width: 75px;
+      flex-shrink: 0;
+    }
+
+    .schedule-info h4 {
       font-family: var(--font-serif);
       font-size: 1.25rem;
-      letter-spacing: 0.05em;
+      color: var(--color-dark);
       font-weight: 500;
+      margin-bottom: 0.2rem;
     }
 
-    .hero-detail-divider {
-      width: 1px;
-      height: 35px;
-      background: rgba(255, 255, 255, 0.3);
+    .schedule-info p {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      line-height: 1.5;
     }
 
-    .hero-cta-group {
+    /* Actions / Buttons */
+    .actions-group {
       display: flex;
       justify-content: center;
-      gap: 1.2rem;
+      gap: 1rem;
+      margin: 2.5rem 0 4rem;
       flex-wrap: wrap;
     }
 
@@ -344,1001 +310,339 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
+      padding: 0.9rem 2.2rem;
       font-family: var(--font-sans);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
+      border-radius: 30px;
       text-decoration: none;
-      padding: 1rem 2.4rem;
-      border-radius: 40px;
-      font-weight: 500;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
-      border: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      border: 1px solid transparent;
     }
 
     .btn-gold {
       background: var(--color-gold);
       color: #fff;
-      box-shadow: 0 8px 25px rgba(197, 168, 128, 0.4);
     }
 
     .btn-gold:hover {
       background: var(--color-gold-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(197, 168, 128, 0.55);
       color: #fff;
+      transform: translateY(-1px);
     }
 
-    .btn-outline-white {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      color: #fff;
-      backdrop-filter: blur(8px);
-    }
-
-    .btn-outline-white:hover {
-      background: #fff;
+    .btn-outline {
+      background: transparent;
+      border-color: var(--color-border);
       color: var(--color-dark);
-      border-color: #fff;
-      transform: translateY(-2px);
     }
 
-    .btn-dark {
+    .btn-outline:hover {
+      border-color: var(--color-dark);
       background: var(--color-dark);
       color: #fff;
+      transform: translateY(-1px);
     }
 
-    .btn-dark:hover {
-      background: #000;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-      color: #fff;
+    /* RSVP Form */
+    .rsvp-container {
+      margin-top: 3.5rem;
+      padding-top: 3.5rem;
+      border-top: 1px solid var(--color-border-light);
+      text-align: left;
     }
 
-    /* Floating Countdown Bar */
-    .countdown-section {
-      position: relative;
-      z-index: 10;
-      margin-top: -3.5rem;
-      padding: 0 2rem;
-      max-width: 850px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .countdown-card {
-      background: var(--color-cream-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 2rem 2.5rem;
-      box-shadow: var(--shadow-lg);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+    .rsvp-header {
       text-align: center;
-    }
-
-    .countdown-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .countdown-number {
-      font-family: var(--font-serif);
-      font-size: 2.8rem;
-      font-weight: 500;
-      color: var(--color-dark);
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-
-    .countdown-unit {
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--color-muted);
-      font-weight: 500;
-    }
-
-    .countdown-divider {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      color: var(--color-gold);
-      opacity: 0.6;
-    }
-
-    /* Content Sections */
-    .section {
-      padding: 7rem 2rem;
-      position: relative;
-    }
-
-    .section-sm {
-      padding: 4.5rem 2rem;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .section-header {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 4rem;
-    }
-
-    .section-eyebrow {
-      font-size: 0.78rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.3rem, 5vw, 3.6rem);
-      font-weight: 400;
-      color: var(--color-dark);
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-    }
-
-    .section-divider {
-      width: 50px;
-      height: 1px;
-      background: var(--color-gold);
-      margin: 0 auto;
-    }
-
-    /* Welcome / Invitation Letter */
-    .letter-card {
-      background: var(--color-cream-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 4.5rem 4rem;
-      box-shadow: var(--shadow-md);
-      position: relative;
-      text-align: center;
-    }
-
-    .letter-card::before {
-      content: '';
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      right: 15px;
-      bottom: 15px;
-      border: 1px solid rgba(197, 168, 128, 0.25);
-      border-radius: calc(var(--radius-md) - 6px);
-      pointer-events: none;
-    }
-
-    .letter-text {
-      font-family: var(--font-serif);
-      font-size: 1.45rem;
-      line-height: 1.85;
-      color: var(--color-charcoal);
-      font-weight: 300;
-      max-width: 760px;
-      margin: 0 auto 2.5rem;
-    }
-
-    .letter-signature {
-      font-family: var(--font-script);
-      font-size: 3.5rem;
-      color: var(--color-gold);
-      margin-top: 1.5rem;
-    }
-
-    /* Schedule / Timeline */
-    .timeline {
-      position: relative;
-      max-width: 780px;
-      margin: 0 auto;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 20px;
-      bottom: 20px;
-      left: 100px;
-      width: 1px;
-      background: var(--color-border);
-    }
-
-    .timeline-item {
-      display: flex;
-      gap: 3.5rem;
-      position: relative;
-      margin-bottom: 3.2rem;
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline-time {
-      width: 100px;
-      text-align: right;
-      font-family: var(--font-serif);
-      font-size: 1.6rem;
-      font-weight: 500;
-      color: var(--color-gold);
-      line-height: 1.2;
-      flex-shrink: 0;
-      position: relative;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: 100px;
-      top: 8px;
-      transform: translateX(-50%);
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--color-cream);
-      border: 2px solid var(--color-gold);
-      z-index: 2;
-    }
-
-    .timeline-content {
-      background: var(--color-cream-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 1.8rem 2.2rem;
-      box-shadow: var(--shadow-sm);
-      flex: 1;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .timeline-content:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--color-gold);
-    }
-
-    .timeline-title {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: var(--color-dark);
-      margin-bottom: 0.4rem;
-    }
-
-    .timeline-desc {
-      font-size: 0.9rem;
-      color: var(--color-muted);
-      line-height: 1.6;
-    }
-
-    /* Location & Venue */
-    .venue-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3.5rem;
-      align-items: center;
-    }
-
-    .venue-image-wrap {
-      position: relative;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .venue-image-wrap img {
-      width: 100%;
-      height: 480px;
-      object-fit: cover;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .venue-image-wrap:hover img {
-      transform: scale(1.03);
-    }
-
-    .venue-badge {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      padding: 0.8rem 1.6rem;
-      border-radius: 30px;
-      font-family: var(--font-serif);
-      font-size: 1.05rem;
-      color: var(--color-dark);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-
-    .venue-info h3 {
-      font-family: var(--font-serif);
-      font-size: 2.3rem;
-      color: var(--color-dark);
-      margin-bottom: 0.8rem;
-    }
-
-    .venue-address {
-      font-size: 0.95rem;
-      color: var(--color-muted);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .venue-text {
-      font-size: 0.95rem;
-      color: var(--color-charcoal);
-      line-height: 1.75;
-      margin-bottom: 2rem;
-    }
-
-    .venue-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* Information Cards (Dresscode, Parking, etc.) */
-    .info-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .info-card {
-      background: var(--color-cream-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 2.5rem 2rem;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s ease;
-    }
-
-    .info-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--color-gold);
-    }
-
-    .info-icon {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 1.2rem;
-      color: var(--color-gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-    }
-
-    .info-card-title {
-      font-family: var(--font-serif);
-      font-size: 1.45rem;
-      color: var(--color-dark);
-      margin-bottom: 0.8rem;
-    }
-
-    .info-card-text {
-      font-size: 0.88rem;
-      color: var(--color-muted);
-      line-height: 1.65;
-    }
-
-    /* RSVP Section */
-    .rsvp-section {
-      background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-sand) 100%);
-    }
-
-    .rsvp-card {
-      background: var(--color-cream-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-lg);
-      padding: 4rem;
-      box-shadow: var(--shadow-lg);
-      max-width: 720px;
-      margin: 0 auto;
-      position: relative;
+      margin-bottom: 2.5rem;
     }
 
     .form-group {
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.6rem;
     }
 
     .form-label {
       display: block;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       font-weight: 500;
       color: var(--color-dark);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
-    .form-control {
+    .form-input {
       width: 100%;
-      padding: 1rem 1.2rem;
+      padding: 0.95rem 1.1rem;
       font-family: var(--font-sans);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--color-dark);
       background: var(--color-cream);
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
+      border-radius: 2px;
       transition: all 0.3s;
     }
 
-    .form-control:focus {
+    .form-input:focus {
       outline: none;
       border-color: var(--color-gold);
       background: #fff;
-      box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.18);
     }
 
-    .radio-group {
+    .attendance-options {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1rem;
     }
 
-    .radio-card {
-      position: relative;
+    .attendance-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      padding: 1.1rem 1.4rem;
-      background: var(--color-cream);
+      padding: 1rem;
       border: 1px solid var(--color-border);
-      border-radius: var(--radius-sm);
+      border-radius: 2px;
+      background: var(--color-cream);
       cursor: pointer;
-      font-size: 0.88rem;
-      font-weight: 500;
+      font-size: 0.85rem;
       color: var(--color-charcoal);
-      transition: all 0.3s;
+      transition: all 0.25s ease;
+      text-align: center;
     }
 
-    .radio-card input {
+    .attendance-btn input {
       position: absolute;
       opacity: 0;
     }
 
-    .radio-card.selected {
-      background: var(--color-gold-light);
+    .attendance-btn.selected {
       border-color: var(--color-gold);
+      background: var(--color-gold-soft);
       color: var(--color-dark);
-      box-shadow: 0 4px 15px rgba(197, 168, 128, 0.2);
-    }
-
-    /* Calendar & Rome Notice */
-    .calendar-card {
-      background: var(--color-cream-card);
-      border: 1px solid var(--color-border);
-      border-radius: var(--radius-md);
-      padding: 3rem;
-      text-align: center;
-      box-shadow: var(--shadow-sm);
-      margin-top: 4rem;
-    }
-
-    .calendar-title {
-      font-family: var(--font-serif);
-      font-size: 1.7rem;
-      color: var(--color-dark);
-      margin-bottom: 0.8rem;
-    }
-
-    .calendar-desc {
-      font-size: 0.9rem;
-      color: var(--color-muted);
-      margin-bottom: 2rem;
-      max-width: 550px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .calendar-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    /* Footer */
-    .footer {
-      background: var(--color-dark);
-      color: #fff;
-      padding: 5rem 2rem 3rem;
-      text-align: center;
-    }
-
-    .footer-monogram {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 1.5rem;
-    }
-
-    .footer-monogram img {
-      width: 100%;
-      height: 100%;
-      filter: brightness(0) invert(1);
-      opacity: 0.8;
-    }
-
-    .footer-names {
-      font-family: var(--font-script);
-      font-size: 3rem;
-      color: var(--color-gold);
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-date {
-      font-size: 0.85rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.7);
-      margin-bottom: 2.5rem;
-    }
-
-    .footer-links {
-      flex-wrap: wrap;
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      margin-bottom: 3rem;
-    }
-
-    .footer-links a {
-      font-size: 0.78rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
-      transition: color 0.3s;
-    }
-
-    .footer-links a:hover {
-      color: var(--color-gold);
-    }
-
-    .footer-copy {
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.35);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 2rem;
-      max-width: 600px;
-      margin: 0 auto;
+      font-weight: 500;
     }
 
     /* Modal */
-    .modal-overlay {
+    .modal-backdrop {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(31, 30, 29, 0.7);
-      backdrop-filter: blur(8px);
+      background: rgba(26, 25, 24, 0.6);
+      backdrop-filter: blur(5px);
       z-index: 2000;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 1.5rem;
       opacity: 0;
       visibility: hidden;
-      transition: all 0.35s ease;
-      padding: 1.5rem;
+      transition: all 0.3s ease;
     }
 
-    .modal-overlay.active {
+    .modal-backdrop.open {
       opacity: 1;
       visibility: visible;
     }
 
-    .modal-content {
+    .modal-box {
       background: #fff;
-      border-radius: var(--radius-lg);
-      padding: 3.5rem 3rem;
-      text-align: center;
-      max-width: 500px;
+      padding: 3.5rem 2.5rem;
+      max-width: 460px;
       width: 100%;
-      box-shadow: 0 25px 70px rgba(0,0,0,0.25);
-      transform: scale(0.9);
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      border-radius: 2px;
     }
 
-    .modal-overlay.active .modal-content {
-      transform: scale(1);
-    }
-
-    .modal-icon {
-      font-size: 3rem;
-      color: var(--color-gold);
-      margin-bottom: 1.2rem;
-    }
-
-    .modal-title {
+    .modal-box h3 {
       font-family: var(--font-serif);
-      font-size: 2.2rem;
+      font-size: 2rem;
       color: var(--color-dark);
       margin-bottom: 0.8rem;
     }
 
-    .modal-text {
-      font-size: 0.95rem;
+    .modal-box p {
+      font-size: 0.92rem;
       color: var(--color-muted);
       margin-bottom: 2rem;
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
-    /* Responsive */
+    /* Footer */
+    .simple-footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
     @media (max-width: 768px) {
-      .header-nav {
-        padding: 1.2rem 1.5rem;
-      }
-      .nav-links {
-        display: none;
-      }
-      .hero {
-        padding: 6rem 1.5rem 3rem;
-      }
-      .hero-details-card {
-        flex-direction: column;
-        gap: 1rem;
+      .top-nav {
         padding: 1.5rem;
-        border-radius: var(--radius-md);
-        width: 100%;
       }
-      .hero-detail-divider {
-        width: 60px;
-        height: 1px;
+      .invitation-card {
+        padding: 3.5rem 1.8rem;
       }
-      .countdown-card {
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        padding: 1.5rem 1rem;
+      .invitation-card::after {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
       }
-      .countdown-divider {
-        display: none;
+      .names-heading {
+        font-size: 4rem;
       }
-      .letter-card {
-        padding: 3rem 1.5rem;
-      }
-      .timeline::before {
-        left: 20px;
-      }
-      .timeline-item {
-        flex-direction: column;
-        gap: 0.8rem;
-        padding-left: 45px;
-      }
-      .timeline-time {
-        text-align: left;
-        width: auto;
-      }
-      .timeline-dot {
-        left: 20px;
-        top: 6px;
-      }
-      .venue-grid {
+      .attendance-options {
         grid-template-columns: 1fr;
       }
-      .venue-image-wrap img {
-        height: 320px;
-      }
-      .rsvp-card {
-        padding: 2.5rem 1.5rem;
-      }
-      .radio-group {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @keyframes fadeInHero {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .schedule-row {
+        gap: 1.2rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
-  <nav class="header-nav" id="mainNav">
-    <a href="/" class="nav-logo">
-      <img src="/logo.svg" alt="Monogram E & D">
-      <span class="nav-logo-text">Elia & Daniel</span>
-    </a>
+  <!-- Top Bar -->
+  <header class="top-nav">
+    <div class="nav-monogram">
+      <img src="/logo.svg" alt="E&D">
+    </div>
     
-    <div class="nav-links">
-      <a href="#einladung" data-i18n="nav_invitation">Einladung</a>
-      <a href="#ablauf" data-i18n="nav_schedule">Tagesablauf</a>
-      <a href="#ort" data-i18n="nav_venue">Location</a>
-      <a href="#details" data-i18n="nav_details">Details</a>
-      <a href="#rsvp" data-i18n="nav_rsvp">Rückmeldung</a>
-    </div>
-
-    <div class="lang-switch">
-      <button class="lang-btn active" id="btnDE" onclick="setLanguage('de')">DE</button>
-      <button class="lang-btn" id="btnEN" onclick="setLanguage('en')">EN</button>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-container">
-      <div class="hero-monogram">
-        <img src="/logo.svg" alt="E&D Monogram">
-      </div>
-      <p class="hero-eyebrow" data-i18n="hero_eyebrow">Zivile Trauung & Feier</p>
-      <h1 class="hero-title">Elia & Daniel</h1>
-      <p class="hero-subtitle" data-i18n="hero_subtitle">Einladung zu unserem besonderen Moment in den Schweizer Bergen</p>
-      
-      <div class="hero-details-card">
-        <div class="hero-detail-item">
-          <span class="hero-detail-label" data-i18n="card_date_label">Datum</span>
-          <span class="hero-detail-val" data-i18n="card_date_val">Donnerstag, 18. Feb</span>
-        </div>
-        <div class="hero-detail-divider"></div>
-        <div class="hero-detail-item">
-          <span class="hero-detail-label" data-i18n="card_time_label">Uhrzeit</span>
-          <span class="hero-detail-val" data-i18n="card_time_val">12:30 Uhr</span>
-        </div>
-        <div class="hero-detail-divider"></div>
-        <div class="hero-detail-item">
-          <span class="hero-detail-label" data-i18n="card_venue_label">Ort</span>
-          <span class="hero-detail-val" data-i18n="card_venue_val">Villa Honegg · Ennetbürgen</span>
-        </div>
-      </div>
-
-      <div class="hero-cta-group">
-        <a href="#rsvp" class="btn btn-gold" data-i18n="btn_rsvp">Jetzt zusagen</a>
-        <a href="#ablauf" class="btn btn-outline-white" data-i18n="btn_details">Tagesablauf ansehen</a>
-      </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="btnDE" onclick="switchLang('de')">DE</button>
+      <button class="lang-btn" id="btnEN" onclick="switchLang('en')">EN</button>
     </div>
   </header>
 
-  <!-- Countdown -->
-  <section class="countdown-section">
-    <div class="countdown-card">
-      <div class="countdown-item">
-        <span class="countdown-number" id="countDays">00</span>
-        <span class="countdown-unit" data-i18n="unit_days">Tage</span>
-      </div>
-      <span class="countdown-divider">·</span>
-      <div class="countdown-item">
-        <span class="countdown-number" id="countHours">00</span>
-        <span class="countdown-unit" data-i18n="unit_hours">Stunden</span>
-      </div>
-      <span class="countdown-divider">·</span>
-      <div class="countdown-item">
-        <span class="countdown-number" id="countMinutes">00</span>
-        <span class="countdown-unit" data-i18n="unit_minutes">Minuten</span>
-      </div>
-      <span class="countdown-divider">·</span>
-      <div class="countdown-item">
-        <span class="countdown-number" id="countSeconds">00</span>
-        <span class="countdown-unit" data-i18n="unit_seconds">Sekunden</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Welcome / Invitation Section -->
-  <section class="section" id="einladung">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow" data-i18n="welcome_eyebrow">Herzliche Einladung</p>
-        <h2 class="section-title" data-i18n="welcome_title">Wir sagen Ja</h2>
-        <div class="section-divider"></div>
+  <!-- Main Invitation Card -->
+  <main class="page-wrapper">
+    <article class="invitation-card">
+      
+      <div class="brand-monogram">
+        <img src="/logo.svg" alt="Monogram E & D">
       </div>
 
-      <div class="letter-card">
-        <p class="letter-text" data-i18n="letter_paragraph_1">
-          Liebe Familie, liebe Freunde,<br><br>
-          Bevor wir unser grosses Fest in Rom feiern, möchten wir im engsten Kreis den Bund fürs Leben schliessen. Wir laden euch von ganzem Herzen ein, unsere zivile Trauung und diesen unvergesslichen Meilenstein mit uns in der Villa Honegg hoch über dem Vierwaldstättersee zu feiern.
-        </p>
-        <p class="letter-text" style="font-size: 1.25rem;" data-i18n="letter_paragraph_2">
-          Wir freuen uns auf ein festliches Beisammensein, ein exquisites Hochzeitsessen und wunderschöne gemeinsame Momente mit Blick auf die verschneite Alpenkulisse.
-        </p>
-        <div class="letter-signature">Elia & Daniel</div>
-      </div>
-    </div>
-  </section>
+      <p class="eyebrow" data-i18n="eyebrow">Zivile Trauung</p>
+      
+      <h1 class="names-heading">Elia & Daniel</h1>
 
-  <!-- Schedule / Tagesablauf -->
-  <section class="section" id="ablauf" style="background-color: var(--color-sand);">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow" data-i18n="schedule_eyebrow">Programm</p>
-        <h2 class="section-title" data-i18n="schedule_title">Tagesablauf</h2>
-        <div class="section-divider"></div>
+      <div class="divider-gold">
+        <span>✦</span>
       </div>
 
-      <div class="timeline">
+      <div class="event-meta">
+        <div class="event-date" data-i18n="event_date">Donnerstag, 18. Februar</div>
+        <div class="event-time" data-i18n="event_time">12:30 Uhr</div>
+        <div class="event-venue">Villa Honegg</div>
+        <div class="event-address">Honegg · 6373 Ennetbürgen</div>
+      </div>
+
+      <div class="divider-gold">
+        <span>✦</span>
+      </div>
+
+      <p class="letter-body" data-i18n="letter_text">
+        Liebe Familie, liebe Freunde,<br><br>
+        Wir freuen uns von ganzem Herzen, unsere zivile Trauung im engsten Kreis mit euch zu feiern. Wir laden euch ein, diesen besonderen Tag gemeinsam mit uns in der Villa Honegg zu verbringen.
+      </p>
+
+      <!-- Quick Action Buttons -->
+      <div class="actions-group">
+        <a href="#rsvp" class="btn btn-gold" data-i18n="btn_rsvp_jump">Rückmeldung</a>
+        <button onclick="downloadICS()" class="btn btn-outline" data-i18n="btn_calendar">Kalendereintrag (.ics)</button>
+        <a href="https://maps.google.com/?q=Hotel+Villa+Honegg+Ennetbuergen" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="btn_maps">Anfahrt / Karte</a>
+      </div>
+
+      <!-- Schedule -->
+      <section class="schedule-block">
+        <p class="section-subtitle" data-i18n="sched_heading">Tagesablauf</p>
         
-        <!-- Item 1 -->
-        <div class="timeline-item">
-          <div class="timeline-time">12:30</div>
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h4 class="timeline-title" data-i18n="sched_1_title">Ankunft & Willkommens-Apéro</h4>
-            <p class="timeline-desc" data-i18n="sched_1_desc">Herzlicher Empfang in den eleganten Räumlichkeiten der Villa Honegg mit Erfrischungen und Blick auf das winterliche Bergpanorama.</p>
+        <div class="schedule-list">
+          <div class="schedule-row">
+            <span class="schedule-time">12:30</span>
+            <div class="schedule-info">
+              <h4 data-i18n="s1_title">Empfang & Apéro</h4>
+              <p data-i18n="s1_desc">Ankunft der Gäste in der Villa Honegg</p>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <span class="schedule-time">13:00</span>
+            <div class="schedule-info">
+              <h4 data-i18n="s2_title">Zivile Zeremonie</h4>
+              <p data-i18n="s2_desc">Standesamtliche Trauung</p>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <span class="schedule-time">13:45</span>
+            <div class="schedule-info">
+              <h4 data-i18n="s3_title">Champagner-Toast</h4>
+              <p data-i18n="s3_desc">Gratulationen & gemeinsame Fotos</p>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <span class="schedule-time">14:30</span>
+            <div class="schedule-info">
+              <h4 data-i18n="s4_title">Hochzeitsessen</h4>
+              <p data-i18n="s4_desc">Festliches Mehrgang-Menü</p>
+            </div>
+          </div>
+
+          <div class="schedule-row">
+            <span class="schedule-time">17:00</span>
+            <div class="schedule-info">
+              <h4 data-i18n="s5_title">Ausklang</h4>
+              <p data-i18n="s5_desc">Gemütlicher Abschluss der Feier</p>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- Item 2 -->
-        <div class="timeline-item">
-          <div class="timeline-time">13:00</div>
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h4 class="timeline-title" data-i18n="sched_2_title">Zivile Trauungszeremonie</h4>
-            <p class="timeline-desc" data-i18n="sched_2_desc">Feierliche standesamtliche Zeremonie und unser offizielles Ja-Wort im engsten Kreis.</p>
-          </div>
-        </div>
-
-        <!-- Item 3 -->
-        <div class="timeline-item">
-          <div class="timeline-time">13:45</div>
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h4 class="timeline-title" data-i18n="sched_3_title">Champagner-Toast & Gratulationen</h4>
-            <p class="timeline-desc" data-i18n="sched_3_desc">Festliches Anstossen mit Champagner, feinen Canapés und gemeinsamen Erinnerungsfotos.</p>
-          </div>
-        </div>
-
-        <!-- Item 4 -->
-        <div class="timeline-item">
-          <div class="timeline-time">14:30</div>
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h4 class="timeline-title" data-i18n="sched_4_title">Festliches Hochzeitsessen</h4>
-            <p class="timeline-desc" data-i18n="sched_4_desc">Exquisites Mehrgang-Menü des Küchenchefs der Villa Honegg, begleitet von erlesenen Weinen in privatem Ambiente.</p>
-          </div>
-        </div>
-
-        <!-- Item 5 -->
-        <div class="timeline-item">
-          <div class="timeline-time">17:00</div>
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h4 class="timeline-title" data-i18n="sched_5_title">Ausklang & Feier</h4>
-            <p class="timeline-desc" data-i18n="sched_5_desc">Kaffee, Digestif und gemütlicher Ausklang des festlichen Nachmittags im warmen Schein der alpinen Abenddämmerung.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Location & Venue -->
-  <section class="section" id="ort">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow" data-i18n="venue_eyebrow">Der Veranstaltungsort</p>
-        <h2 class="section-title">Hotel Villa Honegg</h2>
-        <div class="section-divider"></div>
-      </div>
-
-      <div class="venue-grid">
-        <div class="venue-image-wrap">
-          <img src="/assets/images/villa_honegg_winter.jpg" alt="Villa Honegg Ennetbürgen im Winter">
-          <div class="venue-badge">Bürgenstock · 914 m ü. M.</div>
-        </div>
-        
-        <div class="venue-info">
-          <h3 data-i18n="venue_card_title">Ein Schweizer Juwel</h3>
-          <p class="venue-address">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            Honegg, 6373 Ennetbürgen, Nidwalden
+      <!-- RSVP Form -->
+      <section class="rsvp-container" id="rsvp">
+        <div class="rsvp-header">
+          <p class="section-subtitle" data-i18n="rsvp_label">Rückmeldung</p>
+          <p style="font-size: 0.9rem; color: var(--color-muted); margin-top: 0.4rem;" data-i18n="rsvp_deadline">
+            Bitte gebt uns bis zum <strong>15. Januar</strong> Bescheid.
           </p>
-          <p class="venue-text" data-i18n="venue_desc_text">
-            Hoch über dem Vierwaldstättersee thront das geschichtsträchtige 5-Sterne-Boutique-Hotel Villa Honegg. Eingebettet in die spektakuläre Bergwelt des Bürgenstocks bietet dieser magische Ort die perfekte Kulisse für unsere standesamtliche Hochzeit.
-          </p>
-          
-          <div class="venue-actions">
-            <a href="https://maps.google.com/?q=Hotel+Villa+Honegg+Ennetbuergen" target="_blank" rel="noopener" class="btn btn-dark">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-              Google Maps
-            </a>
-            <a href="https://maps.apple.com/?q=Hotel+Villa+Honegg+Ennetbuergen" target="_blank" rel="noopener" class="btn btn-outline-white" style="color: var(--color-dark); border-color: var(--color-border); background: #fff;">
-              Apple Maps
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Detail Info Cards -->
-      <div class="info-cards-grid" id="details">
-        
-        <div class="info-card">
-          <div class="info-icon">👔</div>
-          <h4 class="info-card-title" data-i18n="info_dress_title">Dresscode</h4>
-          <p class="info-card-text" data-i18n="info_dress_desc"><strong>Alpine Elegance / Elegant Chic</strong><br>Festliche Kleidung. Ein warmer Mantel oder Schal wird für den Außenempfang und Fotos auf der Panoramaterrasse empfohlen.</p>
         </div>
 
-        <div class="info-card">
-          <div class="info-icon">🚗</div>
-          <h4 class="info-card-title" data-i18n="info_travel_title">Anreise & Parken</h4>
-          <p class="info-card-text" data-i18n="info_travel_desc">Kostenfreie Parkplätze stehen direkt an der Villa Honegg zur Verfügung. Die Zufahrt erfolgt über die Panoramastrasse von Ennetbürgen.</p>
-        </div>
-
-        <div class="info-card">
-          <div class="info-icon">🏛️</div>
-          <h4 class="info-card-title" data-i18n="info_rome_title">Grosse Feier in Rom</h4>
-          <p class="info-card-text" data-i18n="info_rome_desc">Unsere kirchliche Trauung und das grosse Hochzeitsfest finden am <strong>17. April 2027 in Rom</strong> statt.<br><a href="/" style="color: var(--color-gold); font-weight: 500; text-decoration: underline;">Zur Rom Einladung →</a></p>
-        </div>
-
-      </div>
-
-      <!-- Add to Calendar Box -->
-      <div class="calendar-card">
-        <h3 class="calendar-title" data-i18n="cal_title">Termin im Kalender speichern</h3>
-        <p class="calendar-desc" data-i18n="cal_desc">Fügt die Zivile Trauung von Elia & Daniel mit einem Klick zu eurem Apple-, Google- oder Outlook-Kalender hinzu.</p>
-        <div class="calendar-buttons">
-          <button class="btn btn-gold" onclick="downloadICS()">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            <span data-i18n="cal_btn_ics">Kalendereintrag (.ics)</span>
-          </button>
-          <a id="googleCalBtn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Zivile+Trauung+Elia+%26+Daniel&dates=20270218T113000Z/20270218T180000Z&details=Einladung+zur+zivilen+Trauung+von+Elia+Innamorati+%26+Daniel+Meister+in+der+Villa+Honegg%2C+Ennetb%C3%BCrgen.&location=Hotel+Villa+Honegg%2C+Honegg%2C+6373+Ennetb%C3%BCrgen%2C+Schweiz" target="_blank" rel="noopener" class="btn btn-dark">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            Google Calendar
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- RSVP Section -->
-  <section class="section rsvp-section" id="rsvp">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-eyebrow" data-i18n="rsvp_eyebrow">Rückmeldung</p>
-        <h2 class="section-title" data-i18n="rsvp_title">RSVP</h2>
-        <div class="section-divider"></div>
-        <p style="margin-top: 1rem; color: var(--color-muted); font-size: 0.95rem;" data-i18n="rsvp_subtitle">
-          Bitte gebt uns bis zum <strong>15. Januar</strong> Bescheid, ob wir mit euch rechnen dürfen.
-        </p>
-      </div>
-
-      <div class="rsvp-card">
-        <form id="rsvpForm" onsubmit="handleRSVPSubmit(event)">
+        <form id="weddingRsvpForm" onsubmit="submitRSVP(event)">
           
           <div class="form-group">
-            <label class="form-label" data-i18n="form_response_label">Eure Teilnahme</label>
-            <div class="radio-group">
-              <label class="radio-card selected" id="radioAccept" onclick="selectAttendance('accept')">
+            <label class="form-label" data-i18n="f_attendance_label">Teilnahme</label>
+            <div class="attendance-options">
+              <label class="attendance-btn selected" id="optAccept" onclick="pickAttendance('accept')">
                 <input type="radio" name="attendance" value="accept" checked>
-                <span data-i18n="form_accept">✨ Ich/Wir nehmen voller Freude teil</span>
+                <span data-i18n="f_accept">✨ Zusage</span>
               </label>
-              <label class="radio-card" id="radioDecline" onclick="selectAttendance('decline')">
+              <label class="attendance-btn" id="optDecline" onclick="pickAttendance('decline')">
                 <input type="radio" name="attendance" value="decline">
-                <span data-i18n="form_decline">🤍 Ich/Wir können leider nicht</span>
+                <span data-i18n="f_decline">Absage</span>
               </label>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="guestNames" data-i18n="form_names_label">Vor- und Nachname(n) der Gäste *</label>
-            <input type="text" id="guestNames" class="form-control" placeholder="z.B. Anna & Marco Muster" required>
+            <label class="form-label" for="guestName" data-i18n="f_names_label">Name(n) der Gäste *</label>
+            <input type="text" id="guestName" class="form-input" placeholder="z.B. Anna & Marco" required>
           </div>
 
-          <div class="form-group" id="guestsCountGroup">
-            <label class="form-label" for="guestCount" data-i18n="form_count_label">Anzahl Personen</label>
-            <select id="guestCount" class="form-control">
+          <div class="form-group" id="groupCount">
+            <label class="form-label" for="guestNum" data-i18n="f_count_label">Anzahl Personen</label>
+            <select id="guestNum" class="form-input">
               <option value="1">1 Person</option>
               <option value="2" selected>2 Personen</option>
               <option value="3">3 Personen</option>
@@ -1346,378 +650,229 @@
             </select>
           </div>
 
-          <div class="form-group" id="dietaryGroup">
-            <label class="form-label" for="dietary" data-i18n="form_dietary_label">Menüwünsche / Allergien & Unverträglichkeiten</label>
-            <input type="text" id="dietary" class="form-control" placeholder="z.B. Vegetarisch, keine Nüsse, etc.">
+          <div class="form-group" id="groupDiet">
+            <label class="form-label" for="guestDiet" data-i18n="f_diet_label">Menüwünsche / Allergien</label>
+            <input type="text" id="guestDiet" class="form-input" placeholder="z.B. Vegetarisch, keine Nüsse, etc.">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="guestMessage" data-i18n="form_msg_label">Persönliche Nachricht an das Brautpaar (Optional)</label>
-            <textarea id="guestMessage" class="form-control" rows="3" placeholder="Ein lieber Gruss an Elia & Daniel..."></textarea>
+            <label class="form-label" for="guestNote" data-i18n="f_note_label">Nachricht an Elia & Daniel (Optional)</label>
+            <textarea id="guestNote" class="form-input" rows="3" placeholder="Persönliche Nachricht..."></textarea>
           </div>
 
-          <button type="submit" class="btn btn-gold" style="width: 100%; padding: 1.2rem; font-size: 0.9rem;" data-i18n="form_submit_btn">
-            Rückmeldung absenden
+          <button type="submit" class="btn btn-gold" style="width: 100%; padding: 1.1rem; border-radius: 2px;" data-i18n="btn_submit">
+            Rückmeldung senden
           </button>
-
         </form>
-      </div>
-    </div>
-  </section>
+      </section>
+
+    </article>
+  </main>
 
   <!-- Confirmation Modal -->
-  <div class="modal-overlay" id="confirmationModal">
-    <div class="modal-content">
-      <div class="modal-icon">✨</div>
-      <h3 class="modal-title" data-i18n="modal_title">Vielen Dank!</h3>
-      <p class="modal-text" id="modalMessage" data-i18n="modal_text">
-        Deine Rückmeldung wurde erfolgreich übermittelt. Wir freuen uns riesig auf die gemeinsamen Momente in der Villa Honegg!
-      </p>
-      <button class="btn btn-gold" onclick="closeModal()" data-i18n="modal_close">Schliessen</button>
+  <div class="modal-backdrop" id="rsvpModal">
+    <div class="modal-box">
+      <h3 data-i18n="m_title">Vielen Dank</h3>
+      <p id="mDesc" data-i18n="m_desc">Deine Rückmeldung wurde direkt an Elia & Daniel übermittelt.</p>
+      <button class="btn btn-gold" onclick="closeModal()" data-i18n="m_close">Schliessen</button>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-monogram">
-      <img src="/logo.svg" alt="Monogram E & D">
-    </div>
-    <div class="footer-names">Elia & Daniel</div>
-    <div class="footer-date" data-i18n="footer_details">18. Februar · Villa Honegg, Ennetbürgen</div>
-    
-    <div class="footer-links">
-      <a href="#einladung" data-i18n="nav_invitation">Einladung</a>
-      <a href="#ablauf" data-i18n="nav_schedule">Tagesablauf</a>
-      <a href="#ort" data-i18n="nav_venue">Location</a>
-      <a href="/" data-i18n="footer_rome_link">Rom Hochzeit (17. April 2027)</a>
-    </div>
-
-    <div class="footer-copy">
-      &copy; 2027 Elia Innamorati & Daniel Meister. All rights reserved.
-    </div>
+  <footer class="simple-footer">
+    Elia & Daniel · Villa Honegg
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Translations Data
-    const i18n = {
+    const content = {
       de: {
-        nav_invitation: "Einladung",
-        nav_schedule: "Tagesablauf",
-        nav_venue: "Location",
-        nav_details: "Details",
-        nav_rsvp: "Rückmeldung",
-        hero_eyebrow: "Zivile Trauung & Feier",
-        hero_subtitle: "Einladung zu unserem besonderen Moment in den Schweizer Bergen",
-        card_date_label: "Datum",
-        card_date_val: "Donnerstag, 18. Feb",
-        card_time_label: "Uhrzeit",
-        card_time_val: "12:30 Uhr",
-        card_venue_label: "Ort",
-        card_venue_val: "Villa Honegg · Ennetbürgen",
-        btn_rsvp: "Jetzt zusagen",
-        btn_details: "Tagesablauf ansehen",
-        unit_days: "Tage",
-        unit_hours: "Stunden",
-        unit_minutes: "Minuten",
-        unit_seconds: "Sekunden",
-        welcome_eyebrow: "Herzliche Einladung",
-        welcome_title: "Wir sagen Ja",
-        letter_paragraph_1: "Liebe Familie, liebe Freunde,<br><br>Bevor wir unser grosses Fest in Rom feiern, möchten wir im engsten Kreis den Bund fürs Leben schliessen. Wir laden euch von ganzem Herzen ein, unsere zivile Trauung und diesen unvergesslichen Meilenstein mit uns in der Villa Honegg hoch über dem Vierwaldstättersee zu feiern.",
-        letter_paragraph_2: "Wir freuen uns auf ein festliches Beisammensein, ein exquisites Hochzeitsessen und wunderschöne gemeinsame Momente mit Blick auf die verschneite Alpenkulisse.",
-        schedule_eyebrow: "Programm",
-        schedule_title: "Tagesablauf",
-        sched_1_title: "Ankunft & Willkommens-Apéro",
-        sched_1_desc: "Herzlicher Empfang in den eleganten Räumlichkeiten der Villa Honegg mit Erfrischungen und Blick auf das winterliche Bergpanorama.",
-        sched_2_title: "Zivile Trauungszeremonie",
-        sched_2_desc: "Feierliche standesamtliche Zeremonie und unser offizielles Ja-Wort im engsten Kreis.",
-        sched_3_title: "Champagner-Toast & Gratulationen",
-        sched_3_desc: "Festliches Anstossen mit Champagner, feinen Canapés und gemeinsamen Erinnerungsfotos.",
-        sched_4_title: "Festliches Hochzeitsessen",
-        sched_4_desc: "Exquisites Mehrgang-Menü des Küchenchefs der Villa Honegg, begleitet von erlesenen Weinen in privatem Ambiente.",
-        sched_5_title: "Ausklang & Feier",
-        sched_5_desc: "Kaffee, Digestif und gemütlicher Ausklang des festlichen Nachmittags im warmen Schein der alpinen Abenddämmerung.",
-        venue_eyebrow: "Der Veranstaltungsort",
-        venue_card_title: "Ein Schweizer Juwel",
-        venue_desc_text: "Hoch über dem Vierwaldstättersee thront das geschichtsträchtige 5-Sterne-Boutique-Hotel Villa Honegg. Eingebettet in die spektakuläre Bergwelt des Bürgenstocks bietet dieser magische Ort die perfekte Kulisse für unsere standesamtliche Hochzeit.",
-        info_dress_title: "Dresscode",
-        info_dress_desc: "<strong>Alpine Elegance / Elegant Chic</strong><br>Festliche Kleidung. Ein warmer Mantel oder Schal wird für den Außenempfang und Fotos auf der Panoramaterrasse empfohlen.",
-        info_travel_title: "Anreise & Parken",
-        info_travel_desc: "Kostenfreie Parkplätze stehen direkt an der Villa Honegg zur Verfügung. Die Zufahrt erfolgt über die Panoramastrasse von Ennetbürgen.",
-        info_rome_title: "Grosse Feier in Rom",
-        info_rome_desc: "Unsere kirchliche Trauung und das grosse Hochzeitsfest finden am <strong>17. April 2027 in Rom</strong> statt.<br><a href='/' style='color: var(--color-gold); font-weight: 500; text-decoration: underline;'>Zur Rom Einladung →</a>",
-        cal_title: "Termin im Kalender speichern",
-        cal_desc: "Fügt die Zivile Trauung von Elia & Daniel mit einem Klick zu eurem Apple-, Google- oder Outlook-Kalender hinzu.",
-        cal_btn_ics: "Kalendereintrag (.ics)",
-        rsvp_eyebrow: "Rückmeldung",
-        rsvp_title: "RSVP",
-        rsvp_subtitle: "Bitte gebt uns bis zum <strong>15. Januar</strong> Bescheid, ob wir mit euch rechnen dürfen.",
-        form_response_label: "Eure Teilnahme",
-        form_accept: "✨ Ich/Wir nehmen voller Freude teil",
-        form_decline: "🤍 Ich/Wir können leider nicht",
-        form_names_label: "Vor- und Nachname(n) der Gäste *",
-        form_count_label: "Anzahl Personen",
-        form_dietary_label: "Menüwünsche / Allergien & Unverträglichkeiten",
-        form_msg_label: "Persönliche Nachricht an das Brautpaar (Optional)",
-        form_submit_btn: "Rückmeldung absenden",
-        modal_title: "Vielen Dank!",
-        modal_text: "Deine Rückmeldung wurde erfolgreich übermittelt. Wir freuen uns riesig auf die gemeinsamen Momente in der Villa Honegg!",
-        modal_close: "Schliessen",
-        footer_details: "18. Februar · Villa Honegg, Ennetbürgen",
-        footer_rome_link: "Rom Hochzeit (17. April 2027)"
+        eyebrow: "Zivile Trauung",
+        event_date: "Donnerstag, 18. Februar",
+        event_time: "12:30 Uhr",
+        letter_text: "Liebe Familie, liebe Freunde,<br><br>Wir freuen uns von ganzem Herzen, unsere zivile Trauung im engsten Kreis mit euch zu feiern. Wir laden euch ein, diesen besonderen Tag gemeinsam mit uns in der Villa Honegg zu verbringen.",
+        btn_rsvp_jump: "Rückmeldung",
+        btn_calendar: "Kalendereintrag (.ics)",
+        btn_maps: "Anfahrt / Karte",
+        sched_heading: "Tagesablauf",
+        s1_title: "Empfang & Apéro",
+        s1_desc: "Ankunft der Gäste in der Villa Honegg",
+        s2_title: "Zivile Zeremonie",
+        s2_desc: "Standesamtliche Trauung",
+        s3_title: "Champagner-Toast",
+        s3_desc: "Gratulationen & gemeinsame Fotos",
+        s4_title: "Hochzeitsessen",
+        s4_desc: "Festliches Mehrgang-Menü",
+        s5_title: "Ausklang",
+        s5_desc: "Gemütlicher Abschluss der Feier",
+        rsvp_label: "Rückmeldung",
+        rsvp_deadline: "Bitte gebt uns bis zum <strong>15. Januar</strong> Bescheid.",
+        f_attendance_label: "Teilnahme",
+        f_accept: "✨ Zusage",
+        f_decline: "Absage",
+        f_names_label: "Name(n) der Gäste *",
+        f_count_label: "Anzahl Personen",
+        f_diet_label: "Menüwünsche / Allergien",
+        f_note_label: "Nachricht an Elia & Daniel (Optional)",
+        btn_submit: "Rückmeldung senden",
+        m_title: "Vielen Dank",
+        m_desc: "Deine Rückmeldung wurde direkt an Elia & Daniel übermittelt.",
+        m_close: "Schliessen"
       },
       en: {
-        nav_invitation: "Invitation",
-        nav_schedule: "Schedule",
-        nav_venue: "Venue",
-        nav_details: "Details",
-        nav_rsvp: "RSVP",
-        hero_eyebrow: "Civil Wedding & Celebration",
-        hero_subtitle: "Invitation to our special moment in the Swiss Alps",
-        card_date_label: "Date",
-        card_date_val: "Thursday, Feb 18th",
-        card_time_label: "Time",
-        card_time_val: "12:30 PM",
-        card_venue_label: "Venue",
-        card_venue_val: "Villa Honegg · Ennetbürgen",
-        btn_rsvp: "RSVP Now",
-        btn_details: "View Schedule",
-        unit_days: "Days",
-        unit_hours: "Hours",
-        unit_minutes: "Minutes",
-        unit_seconds: "Seconds",
-        welcome_eyebrow: "Warm Invitation",
-        welcome_title: "We are getting married",
-        letter_paragraph_1: "Dear family and friends,<br><br>Before we celebrate our grand wedding in Rome, we wish to officially tie the knot surrounded by our closest circle. We cordially invite you to celebrate our civil wedding and this unforgettable milestone with us at Hotel Villa Honegg high above Lake Lucerne.",
-        letter_paragraph_2: "We look forward to an intimate festive gathering, an exquisite celebratory luncheon, and cherished moments overlooking the snow-dusted Alpine peaks.",
-        schedule_eyebrow: "Program",
-        schedule_title: "Day Schedule",
-        sched_1_title: "Arrival & Welcome Drinks",
-        sched_1_desc: "Warm welcome at the elegant Villa Honegg with refreshments and panoramic views of the winter mountain landscape.",
-        sched_2_title: "Civil Wedding Ceremony",
-        sched_2_desc: "Intimate civil ceremony and our official wedding vows in the presence of our closest loved ones.",
-        sched_3_title: "Champagne Toast & Congratulations",
-        sched_3_desc: "Celebratory toast with champagne, delicate canapés, and group photos on the terrace.",
-        sched_4_title: "Festive Wedding Luncheon",
-        sched_4_desc: "Exquisite multi-course luncheon prepared by the chef of Villa Honegg, paired with fine wines in an exclusive private setting.",
-        sched_5_title: "Sunset Celebration & Farewell",
-        sched_5_desc: "Coffee, digestifs, and a relaxed conclusion as the evening Alpine glow settles over the lake.",
-        venue_eyebrow: "The Venue",
-        venue_card_title: "A Swiss Masterpiece",
-        venue_desc_text: "Perched high above Lake Lucerne, the historic 5-star boutique Hotel Villa Honegg offers an extraordinary setting. Surrounded by the serene beauty of Mount Bürgenstock, it provides the quintessential backdrop for our civil wedding.",
-        info_dress_title: "Dress Code",
-        info_dress_desc: "<strong>Alpine Elegance / Elegant Chic</strong><br>Festive attire. A warm coat or wrap is recommended for the outdoor reception and terrace photography.",
-        info_travel_title: "Travel & Parking",
-        info_travel_desc: "Complimentary private parking is available directly at Villa Honegg. Access is via the scenic mountain road from Ennetbürgen.",
-        info_rome_title: "Main Celebration in Rome",
-        info_rome_desc: "Our religious wedding ceremony and grand celebration will take place on <strong>April 17, 2027 in Rome, Italy</strong>.<br><a href='/' style='color: var(--color-gold); font-weight: 500; text-decoration: underline;'>Visit Rome Wedding Page →</a>",
-        cal_title: "Save the Date in Your Calendar",
-        cal_desc: "Add Elia & Daniel's Civil Wedding with one click to your Apple, Google, or Outlook calendar.",
-        cal_btn_ics: "Add to Calendar (.ics)",
-        rsvp_eyebrow: "RSVP",
-        rsvp_title: "Rückmeldung",
-        rsvp_subtitle: "Kindly let us know by <strong>January 15th</strong> if you will be able to join us.",
-        form_response_label: "Your Attendance",
-        form_accept: "✨ Joyfully accept",
-        form_decline: "🤍 Regretfully decline",
-        form_names_label: "Full Name(s) of Guest(s) *",
-        form_count_label: "Number of Guests",
-        form_dietary_label: "Dietary Preferences / Allergies",
-        form_msg_label: "Personal Note to the Couple (Optional)",
-        form_submit_btn: "Send RSVP",
-        modal_title: "Thank You!",
-        modal_text: "Your response has been received. We are so excited to share these special moments with you at Villa Honegg!",
-        modal_close: "Close",
-        footer_details: "February 18th · Villa Honegg, Ennetbürgen",
-        footer_rome_link: "Rome Wedding (April 17, 2027)"
+        eyebrow: "Civil Wedding",
+        event_date: "Thursday, February 18th",
+        event_time: "12:30 PM",
+        letter_text: "Dear family and friends,<br><br>We are truly delighted to celebrate our civil wedding with our closest circle. We warmly invite you to share this special day with us at Villa Honegg.",
+        btn_rsvp_jump: "RSVP",
+        btn_calendar: "Add to Calendar (.ics)",
+        btn_maps: "Directions / Map",
+        sched_heading: "Day Schedule",
+        s1_title: "Welcome Drinks",
+        s1_desc: "Arrival of guests at Villa Honegg",
+        s2_title: "Civil Ceremony",
+        s2_desc: "Official wedding ceremony",
+        s3_title: "Champagne Toast",
+        s3_desc: "Celebration & group photos",
+        s4_title: "Wedding Luncheon",
+        s4_desc: "Festive multi-course luncheon",
+        s5_title: "Farewell",
+        s5_desc: "A relaxed conclusion to the celebration",
+        rsvp_label: "RSVP",
+        rsvp_deadline: "Kindly reply by <strong>January 15th</strong>.",
+        f_attendance_label: "Attendance",
+        f_accept: "✨ Joyfully Accept",
+        f_decline: "Decline",
+        f_names_label: "Full Name(s) of Guest(s) *",
+        f_count_label: "Number of Guests",
+        f_diet_label: "Dietary Requests / Allergies",
+        f_note_label: "Message to Elia & Daniel (Optional)",
+        btn_submit: "Submit RSVP",
+        m_title: "Thank You",
+        m_desc: "Your response has been sent directly to Elia & Daniel.",
+        m_close: "Close"
       }
     };
 
-    let currentLang = 'de';
+    let activeLang = 'de';
 
-    function setLanguage(lang) {
-      currentLang = lang;
+    function switchLang(lang) {
+      activeLang = lang;
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (i18n[lang] && i18n[lang][key]) {
-          el.innerHTML = i18n[lang][key];
+        if (content[lang] && content[lang][key]) {
+          el.innerHTML = content[lang][key];
         }
       });
-
       document.getElementById('btnDE').classList.toggle('active', lang === 'de');
       document.getElementById('btnEN').classList.toggle('active', lang === 'en');
       document.documentElement.lang = lang;
     }
 
-    // Scroll Navbar Effect
-    window.addEventListener('scroll', () => {
-      const nav = document.getElementById('mainNav');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
+    function pickAttendance(val) {
+      const optAccept = document.getElementById('optAccept');
+      const optDecline = document.getElementById('optDecline');
+      const groupCount = document.getElementById('groupCount');
+      const groupDiet = document.getElementById('groupDiet');
+
+      if (val === 'accept') {
+        optAccept.classList.add('selected');
+        optAccept.querySelector('input').checked = true;
+        optDecline.classList.remove('selected');
+        groupCount.style.display = 'block';
+        groupDiet.style.display = 'block';
       } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    // Countdown Timer to February 18th, 12:30 PM (2027)
-    function updateCountdown() {
-      // Civil wedding date: Feb 18, 2027 at 12:30 PM UTC+1 (Switzerland Time)
-      const targetDate = new Date('2027-02-18T12:30:00+01:00').getTime();
-      const now = new Date().getTime();
-      const diff = targetDate - now;
-
-      if (diff > 0) {
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        document.getElementById('countDays').innerText = String(days).padStart(2, '0');
-        document.getElementById('countHours').innerText = String(hours).padStart(2, '0');
-        document.getElementById('countMinutes').innerText = String(minutes).padStart(2, '0');
-        document.getElementById('countSeconds').innerText = String(seconds).padStart(2, '0');
-      } else {
-        document.getElementById('countDays').innerText = "00";
-        document.getElementById('countHours').innerText = "00";
-        document.getElementById('countMinutes').innerText = "00";
-        document.getElementById('countSeconds').innerText = "00";
-      }
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // Attendance Toggle
-    function selectAttendance(type) {
-      const acceptCard = document.getElementById('radioAccept');
-      const declineCard = document.getElementById('radioDecline');
-      const countGroup = document.getElementById('guestsCountGroup');
-      const dietaryGroup = document.getElementById('dietaryGroup');
-
-      if (type === 'accept') {
-        acceptCard.classList.add('selected');
-        acceptCard.querySelector('input').checked = true;
-        declineCard.classList.remove('selected');
-        countGroup.style.display = 'block';
-        dietaryGroup.style.display = 'block';
-      } else {
-        declineCard.classList.add('selected');
-        declineCard.querySelector('input').checked = true;
-        acceptCard.classList.remove('selected');
-        countGroup.style.display = 'none';
-        dietaryGroup.style.display = 'none';
+        optDecline.classList.add('selected');
+        optDecline.querySelector('input').checked = true;
+        optAccept.classList.remove('selected');
+        groupCount.style.display = 'none';
+        groupDiet.style.display = 'none';
       }
     }
 
-    // Handle RSVP Form & Send Email to elia.innamorati@gmail.com
-    async function handleRSVPSubmit(e) {
+    async function submitRSVP(e) {
       e.preventDefault();
-      const submitBtn = e.target.querySelector('button[type="submit"]');
-      const origText = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = currentLang === 'de' ? 'Wird übermittelt...' : 'Sending...';
+      const btn = e.target.querySelector('button[type="submit"]');
+      const orig = btn.innerText;
+      btn.disabled = true;
+      btn.innerText = activeLang === 'de' ? 'Wird gesendet...' : 'Sending...';
 
       const attendance = document.querySelector('input[name="attendance"]:checked').value;
-      const names = document.getElementById('guestNames').value;
-      const count = document.getElementById('guestCount').value;
-      const dietary = document.getElementById('dietary').value;
-      const message = document.getElementById('guestMessage').value;
+      const name = document.getElementById('guestName').value;
+      const count = document.getElementById('guestNum').value;
+      const diet = document.getElementById('guestDiet').value;
+      const note = document.getElementById('guestNote').value;
 
-      const rsvpData = {
-        event: "Zivile Trauung Villa Honegg (18. Februar 2027)",
-        attendance: attendance === 'accept' ? 'Zusage / Joyfully Accept' : 'Absage / Regretfully Decline',
-        names: names,
-        guest_count: attendance === 'accept' ? count : '0',
-        dietary_requests: dietary || 'Keine besonderen Wünsche / None',
-        personal_message: message || 'Keine Nachricht / None',
-        submitted_at: new Date().toLocaleString('de-CH', { timeZone: 'Europe/Zurich' })
-      };
-
-      // 1. Send email directly to elia.innamorati@gmail.com via FormSubmit AJAX
-      const formData = new FormData();
-      formData.append('Event', rsvpData.event);
-      formData.append('Status', rsvpData.attendance);
-      formData.append('Name(n) der Gäste', rsvpData.names);
-      formData.append('Anzahl Personen', rsvpData.guest_count);
-      formData.append('Menü / Allergien', rsvpData.dietary_requests);
-      formData.append('Persönliche Nachricht', rsvpData.personal_message);
-      formData.append('Datum & Uhrzeit', rsvpData.submitted_at);
-      formData.append('_subject', `RSVP Villa Honegg: ${names} (${attendance === 'accept' ? 'Zusage ✨' : 'Absage 🤍'})`);
-      formData.append('_template', 'table');
-      formData.append('_captcha', 'false');
+      const fd = new FormData();
+      fd.append('Event', 'Zivile Trauung Villa Honegg (18. Februar)');
+      fd.append('Status', attendance === 'accept' ? 'Zusage ✨' : 'Absage 🤍');
+      fd.append('Name der Gäste', name);
+      fd.append('Personen', attendance === 'accept' ? count : '0');
+      fd.append('Menü / Allergien', diet || 'Keine');
+      fd.append('Nachricht', note || 'Keine');
+      fd.append('Zeitpunkt', new Date().toLocaleString('de-CH', { timeZone: 'Europe/Zurich' }));
+      fd.append('_subject', `RSVP Villa Honegg: ${name} (${attendance === 'accept' ? 'Zusage' : 'Absage'})`);
+      fd.append('_template', 'table');
+      fd.append('_captcha', 'false');
 
       try {
         await fetch('https://formsubmit.co/ajax/elia.innamorati@gmail.com', {
           method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
+          body: fd,
+          headers: { 'Accept': 'application/json' }
         });
-      } catch (err) {
-        console.error('Error sending RSVP email:', err);
-      }
-
-      // 2. Backup to LocalStorage
-      try {
-        const stored = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-        stored.push(rsvpData);
-        localStorage.setItem('wedding_rsvps', JSON.stringify(stored));
       } catch (err) {
         console.error(err);
       }
 
-      // 3. Reset button & show modal
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = origText;
+      btn.disabled = false;
+      btn.innerText = orig;
 
-      const modal = document.getElementById('confirmationModal');
-      const modalMsg = document.getElementById('modalMessage');
+      const modal = document.getElementById('rsvpModal');
+      const mDesc = document.getElementById('mDesc');
       if (attendance === 'accept') {
-        modalMsg.innerHTML = currentLang === 'de' 
-          ? `Liebe(r) <strong>${names}</strong>, deine Zusage wurde erfolgreich an Elia & Daniel übermittelt! Wir freuen uns riesig auf das Fest mit dir in der Villa Honegg.`
-          : `Dear <strong>${names}</strong>, your RSVP has been sent directly to Elia & Daniel! We cannot wait to celebrate with you at Villa Honegg.`;
+        mDesc.innerText = activeLang === 'de'
+          ? `Liebe(r) ${name}, deine Zusage wurde direkt an Elia & Daniel übermittelt. Wir freuen uns auf dich!`
+          : `Dear ${name}, your RSVP has been sent directly to Elia & Daniel. We look forward to celebrating together!`;
       } else {
-        modalMsg.innerHTML = currentLang === 'de'
-          ? `Liebe(r) <strong>${names}</strong>, vielen Dank für deine Rückmeldung. Wir werden dich im Herzen dabeihaben!`
-          : `Dear <strong>${names}</strong>, thank you for letting us know. You will be warmly in our hearts!`;
+        mDesc.innerText = activeLang === 'de'
+          ? `Liebe(r) ${name}, vielen Dank für deine Rückmeldung!`
+          : `Dear ${name}, thank you for letting us know!`;
       }
-      modal.classList.add('active');
+      modal.classList.add('open');
     }
 
     function closeModal() {
-      document.getElementById('confirmationModal').classList.remove('active');
-      document.getElementById('rsvpForm').reset();
-      selectAttendance('accept');
+      document.getElementById('rsvpModal').classList.remove('open');
+      document.getElementById('weddingRsvpForm').reset();
+      pickAttendance('accept');
     }
 
-    // Generate and Download .ics File
     function downloadICS() {
-      const icsContent = [
+      const ics = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//Elia and Daniel//Wedding Invitation//EN',
+        'PRODID:-//Elia and Daniel//Civil Wedding//DE',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         'BEGIN:VEVENT',
-        'UID:elia-daniel-civil-wedding-20270218@innamorati-meister.com',
+        'UID:elia-daniel-villa-honegg-20270218@innamorati-meister.com',
         'DTSTAMP:20260925T100000Z',
         'DTSTART:20270218T113000Z',
         'DTEND:20270218T180000Z',
         'SUMMARY:Zivile Trauung: Elia & Daniel (Villa Honegg)',
-        'DESCRIPTION:Einladung zur zivilen Trauung und Hochzeitsfeier von Elia Innamorati und Daniel Meister in der Villa Honegg\\nBeginn: 12:30 Uhr\\nhttps://innamorati-meister.com/hochzeit',
+        'DESCRIPTION:Zivile Trauung von Elia & Daniel in der Villa Honegg, Ennetbürgen.\\nBeginn: 12:30 Uhr\\nhttps://innamorati-meister.com/hochzeit',
         'LOCATION:Hotel Villa Honegg, Honegg, 6373 Ennetbürgen, Schweiz',
         'STATUS:CONFIRMED',
         'END:VEVENT',
         'END:VCALENDAR'
       ].join('\r\n');
 
-      const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
-      const link = document.createElement('a');
-      link.href = window.URL.createObjectURL(blob);
-      link.setAttribute('download', 'Elia_Daniel_Zivile_Trauung_Villa_Honegg.ics');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = window.URL.createObjectURL(blob);
+      a.setAttribute('download', 'Elia_Daniel_Zivile_Trauung.ics');
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   </script>
 </body>
