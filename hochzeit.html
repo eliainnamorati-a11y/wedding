@@ -853,49 +853,74 @@
       const btn = e.target.querySelector('button[type="submit"]');
       const orig = btn.innerText;
       btn.disabled = true;
-      btn.innerText = activeLang === 'de' ? 'Wird gesendet...' : 'Sending...';
+      btn.innerText = activeLang === 'de' ? 'Wird übermittelt...' : 'Sending...';
 
       const attendance = document.querySelector('input[name="attendance"]:checked').value;
       const name = document.getElementById('guestName').value;
       const count = document.getElementById('guestNum').value;
       const diet = document.getElementById('guestDiet').value;
       const note = document.getElementById('guestNote').value;
+      const submittedAt = new Date().toLocaleString('de-CH', { timeZone: 'Europe/Zurich' });
 
-      const fd = new FormData();
-      fd.append('Event', 'Zivile Trauung Villa Honegg (18. Februar)');
-      fd.append('Status', attendance === 'accept' ? 'Zusage ✨' : 'Absage 🤍');
-      fd.append('Name der Gäste', name);
-      fd.append('Personen', attendance === 'accept' ? count : '0');
-      fd.append('Menü / Allergien', diet || 'Keine');
-      fd.append('Nachricht', note || 'Keine');
-      fd.append('Zeitpunkt', new Date().toLocaleString('de-CH', { timeZone: 'Europe/Zurich' }));
-      fd.append('_subject', `RSVP Villa Honegg: ${name} (${attendance === 'accept' ? 'Zusage' : 'Absage'})`);
-      fd.append('_template', 'table');
-      fd.append('_captcha', 'false');
+      const payload = {
+        _subject: `RSVP Villa Honegg: ${name} (${attendance === 'accept' ? 'Zusage ✨' : 'Absage 🤍'})`,
+        _template: "table",
+        _captcha: "false",
+        "Event": "Hochzeitsfeier Villa Honegg (18. Februar 2027)",
+        "Status": attendance === 'accept' ? "Zusage ✨ (Teilnahme)" : "Absage 🤍",
+        "Name der Gäste": name,
+        "Anzahl Personen": attendance === 'accept' ? count : "0",
+        "Menü / Allergien": diet || "Keine besonderen Wünsche / Normal",
+        "Persönliche Nachricht": note || "Keine Nachricht",
+        "Eingereicht am": submittedAt
+      };
 
+      // 1. Save to LocalStorage immediately so data is never lost
       try {
-        await fetch('https://formsubmit.co/ajax/elia.innamorati@gmail.com', {
-          method: 'POST',
-          body: fd,
-          headers: { 'Accept': 'application/json' }
+        const stored = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
+        stored.push({
+          name: name,
+          status: attendance === 'accept' ? 'Zusage' : 'Absage',
+          count: attendance === 'accept' ? count : '0',
+          diet: diet || 'Keine',
+          note: note || 'Keine',
+          timestamp: submittedAt
         });
+        localStorage.setItem('wedding_rsvps', JSON.stringify(stored));
       } catch (err) {
-        console.error(err);
+        console.error("Storage error:", err);
+      }
+
+      // 2. Deliver to FormSubmit via JSON POST
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/elia.innamorati@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        const resData = await res.json();
+        console.log("FormSubmit response:", resData);
+      } catch (err) {
+        console.error("Delivery error:", err);
       }
 
       btn.disabled = false;
       btn.innerText = orig;
 
+      // 3. Show confirmation modal
       const modal = document.getElementById('rsvpModal');
       const mDesc = document.getElementById('mDesc');
       if (attendance === 'accept') {
-        mDesc.innerText = activeLang === 'de'
-          ? `Liebe(r) ${name}, deine Zusage wurde direkt an Elia & Daniel übermittelt. Wir freuen uns auf dich!`
-          : `Dear ${name}, your RSVP has been sent directly to Elia & Daniel. We look forward to celebrating together!`;
+        mDesc.innerHTML = activeLang === 'de'
+          ? `Liebe(r) <strong>${name}</strong>, deine Zusage wurde erfolgreich übermittelt! Wir freuen uns riesig auf das Fest mit dir in der Villa Honegg.`
+          : `Dear <strong>${name}</strong>, your RSVP has been received! We cannot wait to celebrate with you at Villa Honegg.`;
       } else {
-        mDesc.innerText = activeLang === 'de'
-          ? `Liebe(r) ${name}, vielen Dank für deine Rückmeldung!`
-          : `Dear ${name}, thank you for letting us know!`;
+        mDesc.innerHTML = activeLang === 'de'
+          ? `Liebe(r) <strong>${name}</strong>, vielen Dank für deine Rückmeldung. Wir werden dich im Herzen dabeihaben!`
+          : `Dear <strong>${name}</strong>, thank you for letting us know. You will be warmly in our hearts!`;
       }
       modal.classList.add('open');
     }
