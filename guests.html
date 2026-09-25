@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elia & Daniel | Guest List & RSVPs</title>
+  
+  <!-- Link Preview Meta Tags -->
+  <meta property="og:title" content="Elia & Daniel | Guest List & RSVPs">
+  <meta property="og:description" content="Wedding Guest List & RSVP Management Dashboard">
+  <meta property="og:image" content="https://innamorati-meister.com/JPGS/03.jpg">
+  <meta property="og:url" content="https://innamorati-meister.com/guests">
+
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    @font-face {
+      font-family: 'Mozart Script Thin';
+      src: url('/assets/fonts/MozartScript-Thin.ttf') format('truetype'),
+           url('assets/fonts/MozartScript-Thin.ttf') format('truetype'),
+           url('../assets/fonts/MozartScript-Thin.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-script: 'Mozart Script Thin', cursive;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      
+      --color-white: #FFFFFF;
+      --color-cream: #FCFAF8;
+      --color-bg: #F7F5F0;
+      --color-dark: #1A1918;
+      --color-charcoal: #2C2A29;
+      --color-muted: #7E7A75;
+      --color-gold: #BFA175;
+      --color-gold-hover: #9E825A;
+      --color-gold-soft: #F5EFEB;
+      --color-border: #ECE6DE;
+      --color-border-light: #F4EFEA;
+      --color-green: #2E7D32;
+      --color-green-bg: #E8F5E9;
+      --color-red: #C62828;
+      --color-red-bg: #FFEBEE;
+      
+      --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.03);
+      --shadow-card: 0 15px 50px rgba(0, 0, 0, 0.04);
+      --shadow-hover: 0 20px 60px rgba(191, 161, 117, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-charcoal);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 6rem;
+    }
+
+    /* Top Navigation Header */
+    .nav-header {
+      background: #FFFFFF;
+      border-bottom: 1px solid var(--color-border);
+      padding: 1.2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-title {
+      font-family: var(--font-script);
+      font-size: 2.2rem;
+      color: var(--color-gold);
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      border-left: 1px solid var(--color-border);
+      padding-left: 1rem;
+      font-weight: 500;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .btn-action {
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-gold {
+      background: var(--color-gold);
+      color: #FFFFFF;
+      border: 1px solid var(--color-gold);
+    }
+    .btn-gold:hover {
+      background: var(--color-gold-hover);
+    }
+
+    .btn-outline {
+      background: #FFFFFF;
+      color: var(--color-charcoal);
+      border: 1px solid var(--color-border);
+    }
+    .btn-outline:hover {
+      background: var(--color-cream);
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+    }
+
+    /* Main Container */
+    .main-content {
+      max-width: 1280px;
+      margin: 2.5rem auto 0;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero / Title Section */
+    .dashboard-title-box {
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .dash-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .dash-heading {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      line-height: 1.15;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #E8F5E9;
+      color: #2E7D32;
+      font-size: 0.74rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: #2E7D32;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+
+    /* Summary Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stat-card {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      padding: 1.4rem 1.6rem;
+      box-shadow: var(--shadow-subtle);
+      transition: transform 0.2s ease;
+    }
+    .stat-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .stat-label {
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-number {
+      font-family: var(--font-sans);
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-sub {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* Filter Tabs & Search Controls */
+    .controls-card {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: 6px 6px 0 0;
+      padding: 1.2rem 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .tab-pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-pill {
+      padding: 0.45rem 1rem;
+      border-radius: 20px;
+      border: 1px solid var(--color-border);
+      background: var(--color-cream);
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--color-charcoal);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-pill.active {
+      background: var(--color-gold);
+      color: #FFFFFF;
+      border-color: var(--color-gold);
+      font-weight: 600;
+    }
+
+    .search-box {
+      position: relative;
+      min-width: 260px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.55rem 1rem 0.55rem 2.2rem;
+      border: 1px solid var(--color-border);
+      border-radius: 20px;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      background: var(--color-cream);
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--color-gold);
+      background: #FFFFFF;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-muted);
+      pointer-events: none;
+    }
+
+    /* Main Table Container */
+    .table-container {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      box-shadow: var(--shadow-card);
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      background: #FAF8F5;
+      padding: 1rem 1.4rem;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      font-weight: 600;
+      border-bottom: 1px solid var(--color-border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 1.2rem 1.4rem;
+      font-size: 0.88rem;
+      border-bottom: 1px solid var(--color-border-light);
+      color: var(--color-charcoal);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #FCFAF8;
+    }
+
+    .guest-name-cell {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--color-dark);
+    }
+
+    .badge-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 12px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .badge-attending {
+      background: var(--color-green-bg);
+      color: var(--color-green);
+    }
+
+    .badge-declined {
+      background: var(--color-red-bg);
+      color: var(--color-red);
+    }
+
+    .event-badge {
+      display: inline-block;
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--color-gold);
+      background: var(--color-gold-soft);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+
+    .event-pills-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.8rem;
+    }
+
+    .pill-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .tag-yes { color: var(--color-green); font-weight: 600; }
+    .tag-no { color: #999; }
+
+    .btn-del {
+      background: transparent;
+      border: 1px solid #E0DCD6;
+      color: #999;
+      padding: 0.35rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-del:hover {
+      background: var(--color-red-bg);
+      border-color: var(--color-red);
+      color: var(--color-red);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 5rem 2rem;
+      color: var(--color-muted);
+    }
+
+    .empty-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--color-gold);
+    }
+
+    /* Manual Add Guest Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1.5rem;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      background: #FFFFFF;
+      border-radius: 6px;
+      padding: 2.5rem;
+      max-width: 520px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .modal-heading {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      color: var(--color-dark);
+    }
+
+    .m-input, .m-select, .m-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      background: var(--color-cream);
+    }
+
+    .m-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-header {
+        padding: 1rem;
+      }
+      .brand-sub {
+        display: none;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="nav-header">
+    <a href="/" class="brand">
+      <span class="brand-title">Elia & Daniel</span>
+      <span class="brand-sub">Guest List & RSVPs</span>
+    </a>
+    <div class="header-actions">
+      <button class="btn-action btn-outline" onclick="loadGuests()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+        Sync
+      </button>
+      <button class="btn-action btn-outline" onclick="exportCSV()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Export CSV
+      </button>
+      <button class="btn-action btn-gold" onclick="openAddModal()">
+        + Add Guest
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <div class="dashboard-title-box">
+      <div>
+        <div class="dash-eyebrow">LIVE ATTENDANCE OVERVIEW</div>
+        <h1 class="dash-heading">Wedding Guests & Registrations</h1>
+      </div>
+      <div class="live-badge">
+        <span class="pulse-dot"></span>
+        <span id="syncStatusText">Cloud Synced & Live</span>
+      </div>
+    </div>
+
+    <!-- Summary Metrics Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Responses</div>
+        <div class="stat-number" id="statTotalResponses">0</div>
+        <div class="stat-sub">Across all invitation pages</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Villa Honegg (Civil)</div>
+        <div class="stat-number" id="statHoneggPax" style="color: var(--color-gold);">0</div>
+        <div class="stat-sub" id="statHoneggDetail">0 Accepted · 0 Declined</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Rome: Welcome Dinner</div>
+        <div class="stat-number" id="statCiampini">0</div>
+        <div class="stat-sub">Ciampini (16 Apr)</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Rome: Wedding Day</div>
+        <div class="stat-number" id="statRomeWedding">0</div>
+        <div class="stat-sub">Vatican & Villa Aurelia (17 Apr)</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-label">Rome: Farewell Brunch</div>
+        <div class="stat-number" id="statBrunch">0</div>
+        <div class="stat-sub">Hotel Hassler (18 Apr)</div>
+      </div>
+    </div>
+
+    <!-- Filter Tabs & Controls -->
+    <div class="controls-card">
+      <div class="tab-pills">
+        <button class="tab-pill active" onclick="setFilter('all', this)">All Guests (<span id="countAll">0</span>)</button>
+        <button class="tab-pill" onclick="setFilter('honegg', this)">Villa Honegg (<span id="countHonegg">0</span>)</button>
+        <button class="tab-pill" onclick="setFilter('rome', this)">Rome Weekend (<span id="countRome">0</span>)</button>
+        <button class="tab-pill" onclick="setFilter('attending', this)">Attending Only (<span id="countAttending">0</span>)</button>
+      </div>
+
+      <div class="search-box">
+        <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by name, diet, note..." oninput="renderTable()">
+      </div>
+    </div>
+
+    <!-- Table Container -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Guest</th>
+            <th>Event / Invitation</th>
+            <th>Status</th>
+            <th>Details / Breakdown</th>
+            <th>Dietary Preferences & Notes</th>
+            <th>Submitted</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="guestsTableBody">
+          <tr>
+            <td colspan="7" class="empty-state">
+              <div class="empty-icon">⏳</div>
+              <p>Loading guest records from cloud...</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <!-- Add Guest Modal -->
+  <div id="addModal" class="modal-overlay">
+    <div class="modal-box">
+      <h3 class="modal-heading">Add Manual Guest RSVP</h3>
+      
+      <label style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: var(--color-muted); display: block; margin-bottom: 0.3rem;">Event Invitation</label>
+      <select id="mEvent" class="m-select" onchange="toggleManualEventFields()">
+        <option value="honegg">Villa Honegg (Civil Wedding · 18 Feb 2027)</option>
+        <option value="rome">Rome Weekend (16–18 Apr 2027 · Ciampini / Vatican / Hassler)</option>
+      </select>
+
+      <label style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: var(--color-muted); display: block; margin-bottom: 0.3rem;">Guest Full Name</label>
+      <input type="text" id="mName" class="m-input" placeholder="e.g. John Doe" required>
+
+      <label style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: var(--color-muted); display: block; margin-bottom: 0.3rem;">Attendance Status</label>
+      <select id="mStatus" class="m-select">
+        <option value="Attending">Attending (Zusage)</option>
+        <option value="Declined">Declined (Absage)</option>
+      </select>
+
+      <div id="mHoneggFields">
+        <label style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: var(--color-muted); display: block; margin-bottom: 0.3rem;">Number of Guests (Pax)</label>
+        <input type="number" id="mCount" class="m-input" value="1" min="1" max="10">
+      </div>
+
+      <div id="mRomeFields" style="display: none;">
+        <label style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: var(--color-muted); display: block; margin-bottom: 0.3rem;">Rome Events Attendance</label>
+        <div style="display: flex; gap: 1rem; margin-bottom: 1rem; font-size: 0.85rem;">
+          <label><input type="checkbox" id="mCiampini" checked> Ciampini</label>
+          <label><input type="checkbox" id="mVatican" checked> Vatican & Aurelia</label>
+          <label><input type="checkbox" id="mBrunch" checked> Brunch</label>
+        </div>
+      </div>
+
+      <label style="font-size: 0.75rem; text-transform: uppercase; font-weight: 600; color: var(--color-muted); display: block; margin-bottom: 0.3rem;">Dietary / Allergies / Notes</label>
+      <textarea id="mNotes" class="m-textarea" rows="2" placeholder="Vegetarian, allergies, notes..."></textarea>
+
+      <div class="m-actions">
+        <button class="btn-action btn-outline" onclick="closeAddModal()">Cancel</button>
+        <button class="btn-action btn-gold" onclick="saveManualGuest()">Save Guest</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const CLOUD_DB_URL = 'https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136';
+    let allRsvps = [];
+    let currentFilter = 'all';
+
+    async function loadGuests() {
+      document.getElementById('syncStatusText').innerText = 'Syncing...';
+      try {
+        const res = await fetch(CLOUD_DB_URL + '?nocache=' + Date.now());
+        if (res.ok) {
+          const json = await res.json();
+          allRsvps = json.data?.rsvps || [];
+          localStorage.setItem('wedding_rsvps', JSON.stringify(allRsvps));
+        } else {
+          allRsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
+        }
+      } catch (err) {
+        allRsvps = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
+      }
+
+      document.getElementById('syncStatusText').innerText = 'Cloud Synced & Live';
+      updateStats();
+      renderTable();
+    }
+
+    function updateStats() {
+      const total = allRsvps.length;
+      document.getElementById('statTotalResponses').innerText = total;
+
+      // Villa Honegg
+      const honeggGuests = allRsvps.filter(r => r.source === 'hochzeit' || r.event?.includes('Honegg'));
+      const honeggAttending = honeggGuests.filter(r => r.status.toLowerCase().includes('attending') || r.status.includes('Zusage') || r.status.includes('ZUSAGE'));
+      const honeggDeclined = honeggGuests.filter(r => r.status.toLowerCase().includes('declined') || r.status.includes('Absage') || r.status.includes('ABSAGE'));
+      
+      let honeggPax = 0;
+      honeggAttending.forEach(r => {
+        honeggPax += (parseInt(r.count, 10) || 1);
+      });
+
+      document.getElementById('statHoneggPax').innerText = honeggPax;
+      document.getElementById('statHoneggDetail').innerText = honeggAttending.length + ' Accepted · ' + honeggDeclined.length + ' Declined';
+
+      // Rome events
+      const romeGuests = allRsvps.filter(r => r.source === 'rome' || r.event?.includes('Rome'));
+      let ciampiniCount = 0;
+      let weddingCount = 0;
+      let brunchCount = 0;
+
+      romeGuests.forEach(r => {
+        if (r.ciampini === 'Attending' || r.ciampini === 'YES' || r.ciampini === true || r.details?.ciampini === true) ciampiniCount++;
+        if (r.vatican_aurelia === 'Attending' || r.vatican_aurelia === 'YES' || r.vatican_aurelia === true || r.details?.vatican_aurelia === true) weddingCount++;
+        if (r.brunch === 'Attending' || r.brunch === 'YES' || r.brunch === true || r.details?.brunch === true) brunchCount++;
+      });
+
+      document.getElementById('statCiampini').innerText = ciampiniCount;
+      document.getElementById('statRomeWedding').innerText = weddingCount;
+      document.getElementById('statBrunch').innerText = brunchCount;
+
+      // Counts for filter pills
+      document.getElementById('countAll').innerText = total;
+      document.getElementById('countHonegg').innerText = honeggGuests.length;
+      document.getElementById('countRome').innerText = romeGuests.length;
+      document.getElementById('countAttending').innerText = honeggAttending.length + romeGuests.filter(r => r.status.toLowerCase().includes('attending')).length;
+    }
+
+    function setFilter(filter, btn) {
+      currentFilter = filter;
+      document.querySelectorAll('.tab-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      renderTable();
+    }
+
+    function renderTable() {
+      const tbody = document.getElementById('guestsTableBody');
+      const search = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      let filtered = allRsvps.filter(r => {
+        // filter tab
+        if (currentFilter === 'honegg') {
+          if (r.source !== 'hochzeit' && !r.event?.includes('Honegg')) return false;
+        } else if (currentFilter === 'rome') {
+          if (r.source !== 'rome' && !r.event?.includes('Rome')) return false;
+        } else if (currentFilter === 'attending') {
+          if (!r.status.toLowerCase().includes('attending') && !r.status.includes('Zusage') && !r.status.includes('ZUSAGE')) return false;
+        }
+
+        // search box
+        if (search) {
+          const str = (r.guest + ' ' + r.event + ' ' + r.diet + ' ' + r.note + ' ' + r.status).toLowerCase();
+          if (!str.includes(search)) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="7" class="empty-state">
+              <div class="empty-icon">🍃</div>
+              <p>No guest registrations found matching the criteria.</p>
+            </td>
+          </tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map((r, idx) => {
+        const isAttending = r.status.toLowerCase().includes('attending') || r.status.includes('Zusage') || r.status.includes('ZUSAGE') || r.status.includes('SI');
+        const badgeClass = isAttending ? 'badge-attending' : 'badge-declined';
+        const badgeText = isAttending ? 'Attending ✨' : 'Declined 🤍';
+        
+        let eventName = r.source === 'hochzeit' ? 'Villa Honegg (Civil)' : 'Rome Weekend';
+        if (r.event) {
+          if (r.event.includes('Honegg')) eventName = 'Villa Honegg (Civil)';
+          else if (r.event.includes('Rome')) eventName = 'Rome Weekend';
+        }
+
+        // Details column
+        let detailsHtml = '';
+        if (eventName.includes('Honegg')) {
+          detailsHtml = isAttending ? `<strong>${r.count || 1}</strong> Person(s)` : '0 Guests';
+        } else {
+          const cYes = r.ciampini === 'Attending' || r.ciampini === 'YES' || r.ciampini === true || r.details?.ciampini === true;
+          const vYes = r.vatican_aurelia === 'Attending' || r.vatican_aurelia === 'YES' || r.vatican_aurelia === true || r.details?.vatican_aurelia === true;
+          const bYes = r.brunch === 'Attending' || r.brunch === 'YES' || r.brunch === true || r.details?.brunch === true;
+
+          detailsHtml = `
+            <div class="event-pills-list">
+              <span class="pill-item">1. Ciampini: <span class="${cYes ? 'tag-yes' : 'tag-no'}">${cYes ? 'Yes' : 'No'}</span></span>
+              <span class="pill-item">2. Wedding: <span class="${vYes ? 'tag-yes' : 'tag-no'}">${vYes ? 'Yes' : 'No'}</span></span>
+              <span class="pill-item">3. Brunch: <span class="${bYes ? 'tag-yes' : 'tag-no'}">${bYes ? 'Yes' : 'No'}</span></span>
+            </div>`;
+        }
+
+        const notesText = [r.diet, r.note].filter(Boolean).filter(n => n !== 'None' && n !== 'Keine' && n !== 'Nessuna').join(' · ') || '<span style="color:#aaa;">None</span>';
+
+        return `
+          <tr>
+            <td class="guest-name-cell">${r.guest || 'Anonymous'}</td>
+            <td><span class="event-badge">${eventName}</span></td>
+            <td><span class="badge-status ${badgeClass}">${badgeText}</span></td>
+            <td>${detailsHtml}</td>
+            <td style="max-width: 250px;">${notesText}</td>
+            <td style="font-size: 0.78rem; color: var(--color-muted);">${r.timestamp || 'N/A'}</td>
+            <td>
+              <button class="btn-del" onclick="deleteGuest('${r.id || r.guest}')" title="Delete RSVP">Remove</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function deleteGuest(idOrName) {
+      if (!confirm('Are you sure you want to remove this guest response?')) return;
+      
+      allRsvps = allRsvps.filter(r => (r.id !== idOrName && r.guest !== idOrName));
+      
+      try {
+        await fetch(CLOUD_DB_URL, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'Innamorati_Meister_Wedding_RSVPs',
+            data: { rsvps: allRsvps }
+          })
+        });
+      } catch (e) {
+        console.error(e);
+      }
+
+      localStorage.setItem('wedding_rsvps', JSON.stringify(allRsvps));
+      updateStats();
+      renderTable();
+    }
+
+    function openAddModal() {
+      document.getElementById('addModal').classList.add('open');
+    }
+
+    function closeAddModal() {
+      document.getElementById('addModal').classList.remove('open');
+    }
+
+    function toggleManualEventFields() {
+      const type = document.getElementById('mEvent').value;
+      document.getElementById('mHoneggFields').style.display = type === 'honegg' ? 'block' : 'none';
+      document.getElementById('mRomeFields').style.display = type === 'rome' ? 'block' : 'none';
+    }
+
+    async function saveManualGuest() {
+      const name = document.getElementById('mName').value.trim();
+      if (!name) {
+        alert('Please enter guest name');
+        return;
+      }
+
+      const type = document.getElementById('mEvent').value;
+      const status = document.getElementById('mStatus').value;
+      const isAttending = status === 'Attending';
+      const notes = document.getElementById('mNotes').value.trim();
+      const submittedAt = new Date().toLocaleString('en-US');
+
+      let entry = {
+        id: 'rsvp_' + Date.now(),
+        guest: name,
+        status: status,
+        diet: notes || 'None',
+        note: notes || '',
+        timestamp: submittedAt + ' (Manual)'
+      };
+
+      if (type === 'honegg') {
+        entry.source = 'hochzeit';
+        entry.event = 'Civil Wedding Villa Honegg (18 Feb 2027)';
+        entry.count = isAttending ? (parseInt(document.getElementById('mCount').value, 10) || 1) : 0;
+      } else {
+        entry.source = 'rome';
+        entry.event = 'Rome Wedding Weekend (16-18 Apr 2027)';
+        entry.count = isAttending ? 1 : 0;
+        entry.ciampini = isAttending && document.getElementById('mCiampini').checked ? 'Attending' : 'Decline';
+        entry.vatican_aurelia = isAttending && document.getElementById('mVatican').checked ? 'Attending' : 'Decline';
+        entry.brunch = isAttending && document.getElementById('mBrunch').checked ? 'Attending' : 'Decline';
+      }
+
+      allRsvps.unshift(entry);
+
+      try {
+        await fetch(CLOUD_DB_URL, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: 'Innamorati_Meister_Wedding_RSVPs',
+            data: { rsvps: allRsvps }
+          })
+        });
+      } catch (err) {}
+
+      localStorage.setItem('wedding_rsvps', JSON.stringify(allRsvps));
+      closeAddModal();
+      document.getElementById('mName').value = '';
+      document.getElementById('mNotes').value = '';
+      updateStats();
+      renderTable();
+    }
+
+    function exportCSV() {
+      if (allRsvps.length === 0) {
+        alert('No guest responses to export yet.');
+        return;
+      }
+
+      let csv = 'Guest Name,Event,Status,Headcount / Attending,Rome Ciampini,Rome Vatican & Aurelia,Rome Brunch,Dietary Preferences,Personal Message,Submission Date\n';
+      
+      allRsvps.forEach(r => {
+        const guest = '"' + (r.guest || '').replace(/"/g, '""') + '"';
+        const event = '"' + (r.event || '').replace(/"/g, '""') + '"';
+        const status = '"' + (r.status || '').replace(/"/g, '""') + '"';
+        const count = r.count || (r.status.includes('Attending') ? 1 : 0);
+        const ciampini = r.ciampini || (r.details?.ciampini ? 'Attending' : 'N/A');
+        const vatican = r.vatican_aurelia || (r.details?.vatican_aurelia ? 'Attending' : 'N/A');
+        const brunch = r.brunch || (r.details?.brunch ? 'Attending' : 'N/A');
+        const diet = '"' + (r.diet || '').replace(/"/g, '""') + '"';
+        const note = '"' + (r.note || '').replace(/"/g, '""') + '"';
+        const time = '"' + (r.timestamp || '').replace(/"/g, '""') + '"';
+
+        csv += `${guest},${event},${status},${count},${ciampini},${vatican},${brunch},${diet},${note},${time}\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', 'wedding_guests_' + new Date().toISOString().slice(0,10) + '.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // Initial load
+    window.addEventListener('DOMContentLoaded', loadGuests);
+  </script>
+</body>
+</html>

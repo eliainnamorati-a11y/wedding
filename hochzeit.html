@@ -855,23 +855,70 @@
       btn.disabled = true;
       btn.innerText = activeLang === 'de' ? 'Wird übermittelt...' : 'Sending...';
 
-      const attendance = document.querySelector('input[name="attendance"]:checked').value;
-      const name = document.getElementById('guestName').value;
-      const count = document.getElementById('guestNum').value;
-      const diet = document.getElementById('guestDiet').value;
-      const note = document.getElementById('guestNote').value;
+      const attendanceInput = document.querySelector('input[name="attendance"]:checked');
+      const attendance = attendanceInput ? attendanceInput.value : 'accept';
+      const name = document.getElementById('guestName').value.trim();
+      const countEl = document.getElementById('guestNum');
+      const count = countEl ? countEl.value : '1';
+      const diet = document.getElementById('guestDiet') ? document.getElementById('guestDiet').value.trim() : '';
+      const note = document.getElementById('guestNote') ? document.getElementById('guestNote').value.trim() : '';
       const submittedAt = new Date().toLocaleString('de-CH', { timeZone: 'Europe/Zurich' });
 
+      const newEntry = {
+        id: 'rsvp_' + Date.now(),
+        source: 'hochzeit',
+        event: 'Civil Wedding Villa Honegg (18 Feb 2027)',
+        guest: name,
+        status: attendance === 'accept' ? 'Attending' : 'Declined',
+        count: attendance === 'accept' ? (parseInt(count, 10) || 1) : 0,
+        diet: diet || 'None',
+        note: note || '',
+        timestamp: submittedAt
+      };
+
+      // 1. Sync to Global Cloud Database
+      try {
+        const cloudGet = await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136');
+        if (cloudGet.ok) {
+          const cloudObj = await cloudGet.json();
+          const rsvpsList = cloudObj.data?.rsvps || [];
+          const existingIdx = rsvpsList.findIndex(r => r.guest.toLowerCase() === name.toLowerCase() && r.source === 'hochzeit');
+          if (existingIdx >= 0) {
+            rsvpsList[existingIdx] = newEntry;
+          } else {
+            rsvpsList.push(newEntry);
+          }
+          await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: 'Innamorati_Meister_Wedding_RSVPs',
+              data: { rsvps: rsvpsList }
+            })
+          });
+        }
+      } catch (cErr) {
+        console.warn('Cloud sync note:', cErr);
+      }
+
+      // 2. Save locally
+      try {
+        const local = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
+        local.push(newEntry);
+        localStorage.setItem('wedding_rsvps', JSON.stringify(local));
+      } catch (lErr) {}
+
+      // 3. Email via FormSubmit
       const payload = {
-        _subject: `RSVP Villa Honegg: ${name} (${attendance === 'accept' ? 'Zusage ✨' : 'Absage 🤍'})`,
+        _subject: 'RSVP Villa Honegg: ' + name + ' (' + (attendance === 'accept' ? 'Zusage ✨' : 'Absage 🤍') + ')',
         _template: "table",
         _captcha: "false",
-        "Event": "Hochzeitsfeier Villa Honegg (18. Februar 2027)",
-        "Status": attendance === 'accept' ? "Zusage ✨" : "Absage 🤍",
-        "Name der Gäste": name,
-        "Anzahl Personen": attendance === 'accept' ? count : "0",
-        "Menü / Allergien": diet || "Keine besonderen Wünsche",
-        "Persönliche Nachricht": note || "Keine Nachricht",
+        "Event": "Zivile Trauung Villa Honegg",
+        "Antwort": attendance === 'accept' ? "ZUSAGE (Kommt)" : "ABSAGE (Kann leider nicht)",
+        "Name": name,
+        "Anzahl Gäste": attendance === 'accept' ? count : "0",
+        "Diät / Allergien": diet || "Keine",
+        "Persönliche Nachricht": note || "Keine",
         "Eingereicht am": submittedAt
       };
 
@@ -885,31 +932,19 @@
           body: JSON.stringify(payload)
         });
       } catch (err) {
-        console.error("Delivery error:", err);
+        console.error(err);
       }
 
       btn.disabled = false;
       btn.innerText = orig;
 
-      // Show confirmation modal
-      const modal = document.getElementById('rsvpModal');
-      const mDesc = document.getElementById('mDesc');
-      if (attendance === 'accept') {
-        mDesc.innerHTML = activeLang === 'de'
-          ? `Liebe(r) <strong>${name}</strong>, deine Zusage wurde erfolgreich an Elia & Daniel übermittelt! Wir freuen uns riesig auf das Fest mit dir in der Villa Honegg.`
-          : `Dear <strong>${name}</strong>, your RSVP has been sent directly to Elia & Daniel! We cannot wait to celebrate with you at Villa Honegg.`;
-      } else {
-        mDesc.innerHTML = activeLang === 'de'
-          ? `Liebe(r) <strong>${name}</strong>, vielen Dank für deine Rückmeldung. Wir werden dich im Herzen dabeihaben!`
-          : `Dear <strong>${name}</strong>, thank you for letting us know. You will be warmly in our hearts!`;
+      const modalDesc = document.getElementById('mDesc');
+      if (modalDesc) {
+        modalDesc.innerHTML = activeLang === 'de'
+          ? 'Liebe/r <strong>' + name + '</strong>, deine Rückmeldung wurde direkt an Elia & Daniel übermittelt! Wir freuen uns sehr.'
+          : 'Dear <strong>' + name + '</strong>, your RSVP has been sent directly to Elia & Daniel! We cannot wait to celebrate with you.';
       }
-      modal.classList.add('open');
+      const rModal = document.getElementById('rsvpModal');
+      if (rModal) rModal.classList.add('open');
     }
-
-    function closeModal() {
-      document.getElementById('rsvpModal').classList.remove('open');
-      document.getElementById('weddingRsvpForm').reset();
-      pickAttendance('accept');
-    }
-
     
