@@ -24,7 +24,8 @@
     @font-face {
       font-family: 'Mozart Script Thin';
       src: url('/assets/fonts/MozartScript-Thin.ttf') format('truetype'),
-           url('assets/fonts/MozartScript-Thin.ttf') format('truetype');
+           url('assets/fonts/MozartScript-Thin.ttf') format('truetype'),
+           url('../assets/fonts/MozartScript-Thin.ttf') format('truetype');
       font-weight: normal;
       font-style: normal;
     }
@@ -48,12 +49,13 @@
       
       --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.03);
       --shadow-card: 0 15px 50px rgba(0, 0, 0, 0.04);
+      --shadow-hover: 0 20px 60px rgba(191, 161, 117, 0.12);
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -61,84 +63,38 @@
     }
 
     body {
-      font-family: var(--font-sans);
       background-color: var(--color-cream);
       color: var(--color-charcoal);
-      line-height: 1.8;
+      font-family: var(--font-sans);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
 
-    /* Top Bar */
-    .top-nav {
-      width: 100%;
-      padding: 2.5rem 3rem 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: transparent;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .nav-monogram {
-      width: 38px;
-      height: 38px;
-      opacity: 0.85;
-      transition: opacity 0.3s;
-    }
-
-    .svg-monogram { width: 100%; height: 100%; display: block; }
-    .nav-monogram img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .lang-toggle {
-      display: inline-flex;
-      border: 1px solid var(--color-border);
-      border-radius: 20px;
-      padding: 2px;
-      background: #fff;
-    }
-
-    .lang-btn {
-      background: transparent;
-      border: none;
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      padding: 5px 12px;
-      border-radius: 16px;
-      cursor: pointer;
-      color: var(--color-muted);
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-
-    .lang-btn.active {
-      background: var(--color-dark);
-      color: #fff;
-    }
-
-    /* Main Container / Wedding Invitation Card Style */
+    /* Page Wrapper */
     .page-wrapper {
-      max-width: 820px;
-      margin: 1rem auto 5rem;
-      padding: 0 1.5rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4.5rem 1.5rem 6rem;
     }
 
+    /* Stationery Card Container */
     .invitation-card {
       background: var(--color-surface);
+      max-width: 680px;
+      width: 100%;
       border: 1px solid var(--color-border);
-      border-radius: 2px;
-      padding: 5.5rem 4.5rem;
       box-shadow: var(--shadow-card);
-      position: relative;
+      padding: 5rem 4rem;
       text-align: center;
+      position: relative;
+      border-radius: 4px;
     }
 
-    /* Subtle Inner Double Border for luxury paper feel */
+    /* Double-line inner border */
     .invitation-card::after {
       content: '';
       position: absolute;
@@ -146,41 +102,29 @@
       left: 14px;
       right: 14px;
       bottom: 14px;
-      border: 1px solid rgba(191, 161, 117, 0.22);
+      border: 1px solid var(--color-border-light);
       pointer-events: none;
     }
 
-    /* Monogram */
-    .brand-monogram {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 2rem;
-    }
-
-    .brand-monogram img {
-      width: 100%;
-      height: 100%;
-    }
-
+    /* Typography */
     .eyebrow {
+      font-family: var(--font-sans);
       font-size: 0.78rem;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--color-gold);
       font-weight: 500;
-      margin-bottom: 3.8rem;
+      margin-bottom: 1.2rem;
     }
 
     .names-heading {
       font-family: 'Mozart Script Thin', cursive;
-      font-size: clamp(3.2rem, 8.5vw, 5.8rem);
+      font-size: clamp(3.4rem, 9vw, 5.8rem);
       font-weight: 400;
-      line-height: 1.15;
       color: var(--color-dark);
-      margin-top: 0.5rem;
-      margin-bottom: 2.4rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
       letter-spacing: normal;
-      text-transform: none;
     }
 
     .divider-gold {
@@ -188,213 +132,231 @@
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      margin: 2rem auto;
-      max-width: 280px;
+      margin: 1.8rem auto;
+      color: var(--color-gold);
+      opacity: 0.6;
+      font-size: 0.9rem;
     }
 
     .divider-gold::before,
     .divider-gold::after {
       content: '';
-      flex: 1;
+      display: block;
+      width: 45px;
       height: 1px;
-      background: var(--color-border);
+      background: var(--color-gold);
+      opacity: 0.5;
     }
 
-    .divider-gold span {
-      color: var(--color-gold);
-      font-size: 0.9rem;
+    /* Couple Portrait in Invitation */
+    .couple-portrait-box {
+      margin: 2.2rem auto 2.5rem;
+      max-width: 400px;
+      width: 100%;
+      border: 1px solid var(--color-border);
+      padding: 8px;
+      background: #FFFFFF;
+      border-radius: 4px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
     }
 
-    /* Date & Location Highlight */
+    .couple-portrait-img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+
     .event-meta {
-      margin: 2.2rem 0;
+      margin-bottom: 2rem;
     }
 
     .event-date {
       font-family: var(--font-serif);
-      font-size: 1.85rem;
+      font-size: 1.9rem;
       font-weight: 400;
       color: var(--color-dark);
-      letter-spacing: 0.04em;
       margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
     }
 
     .event-time {
-      font-size: 0.9rem;
-      letter-spacing: 0.25em;
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--color-gold);
       font-weight: 500;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.2rem;
     }
 
     .event-venue {
       font-family: var(--font-serif);
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-style: italic;
-      color: var(--color-charcoal);
-    }
-
-    .event-address {
-      font-size: 0.85rem;
-      color: var(--color-muted);
-      letter-spacing: 0.05em;
-      margin-top: 0.2rem;
-    }
-
-    /* Welcome Letter */
-    .letter-body {
-      font-family: var(--font-serif);
-      font-size: 1.35rem;
-      line-height: 1.9;
-      color: var(--color-charcoal);
-      font-weight: 300;
-      max-width: 620px;
-      margin: 3rem auto 2.5rem;
-    }
-
-    /* Schedule */
-    .schedule-block {
-      margin: 4rem 0 3rem;
-      text-align: center;
-    }
-
-    .section-subtitle {
-      font-size: 0.75rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-      font-weight: 500;
-      margin-bottom: 2rem;
-    }
-
-    .schedule-list {
-      max-width: 500px;
-      margin: 0 auto;
-      text-align: left;
-    }
-
-    .schedule-row {
-      display: flex;
-      padding: 1.2rem 0;
-      border-bottom: 1px solid var(--color-border-light);
-      align-items: baseline;
-      gap: 2rem;
-    }
-
-    .schedule-row:last-child {
-      border-bottom: none;
-    }
-
-    .schedule-time {
-      font-family: var(--font-serif);
-      font-size: 1.3rem;
-      font-weight: 500;
-      color: var(--color-gold);
-      width: 75px;
-      flex-shrink: 0;
-    }
-
-    .schedule-info h4 {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
       color: var(--color-dark);
-      font-weight: 500;
       margin-bottom: 0.2rem;
     }
 
-    .schedule-info p {
+    .event-address {
+      font-family: var(--font-sans);
       font-size: 0.85rem;
       color: var(--color-muted);
-      line-height: 1.5;
+      font-weight: 300;
     }
 
-    /* Actions / Buttons */
+    .letter-body {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      line-height: 1.85;
+      color: var(--color-charcoal);
+      font-weight: 300;
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* Buttons */
     .actions-group {
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin: 2.5rem 0 4rem;
       flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8rem;
+      margin-bottom: 3.5rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.9rem 2.2rem;
+      padding: 0.75rem 1.6rem;
       font-family: var(--font-sans);
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      border-radius: 30px;
       text-decoration: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
       font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
       border: 1px solid transparent;
+      border-radius: 2px;
     }
 
     .btn-gold {
-      background: var(--color-gold);
-      color: #fff;
+      background-color: var(--color-gold);
+      color: var(--color-white);
     }
 
     .btn-gold:hover {
-      background: var(--color-gold-hover);
-      color: #fff;
+      background-color: var(--color-gold-hover);
       transform: translateY(-1px);
+      box-shadow: 0 4px 15px rgba(191, 161, 117, 0.3);
     }
 
     .btn-outline {
-      background: transparent;
+      background-color: transparent;
       border-color: var(--color-border);
-      color: var(--color-dark);
+      color: var(--color-charcoal);
     }
 
     .btn-outline:hover {
-      border-color: var(--color-dark);
-      background: var(--color-dark);
-      color: #fff;
-      transform: translateY(-1px);
+      border-color: var(--color-gold);
+      color: var(--color-gold);
+      background-color: var(--color-gold-soft);
+    }
+
+    /* Schedule Section */
+    .schedule-block {
+      border-top: 1px solid var(--color-border-light);
+      padding-top: 2.8rem;
+      margin-top: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-subtitle {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--color-dark);
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .schedule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 440px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .schedule-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.8rem;
+    }
+
+    .schedule-time {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      color: var(--color-gold);
+      font-weight: 500;
+      min-width: 55px;
+      padding-top: 2px;
+    }
+
+    .schedule-info h4 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--color-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .schedule-info p {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      font-weight: 300;
     }
 
     /* RSVP Form */
     .rsvp-container {
-      margin-top: 3.5rem;
-      padding-top: 3.5rem;
       border-top: 1px solid var(--color-border-light);
-      text-align: left;
+      padding-top: 2.8rem;
     }
 
     .rsvp-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
     .form-group {
-      margin-bottom: 1.6rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
     }
 
     .form-label {
       display: block;
-      font-size: 0.74rem;
-      letter-spacing: 0.15em;
+      font-family: var(--font-sans);
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      color: var(--color-charcoal);
       font-weight: 500;
-      color: var(--color-dark);
       margin-bottom: 0.5rem;
     }
 
     .form-input {
       width: 100%;
-      padding: 0.95rem 1.1rem;
-      font-family: var(--font-sans);
-      font-size: 0.92rem;
-      color: var(--color-dark);
+      padding: 0.85rem 1rem;
       background: var(--color-cream);
       border: 1px solid var(--color-border);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      color: var(--color-dark);
       border-radius: 2px;
       transition: all 0.3s;
     }
@@ -434,125 +396,74 @@
     .attendance-btn.selected {
       border-color: var(--color-gold);
       background: var(--color-gold-soft);
-      color: var(--color-dark);
+      color: var(--color-gold-hover);
       font-weight: 500;
+      box-shadow: 0 2px 10px rgba(191, 161, 117, 0.15);
     }
 
-    
-    /* Admin Guest List Modal */
-    .admin-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(26, 25, 24, 0.85);
-      backdrop-filter: blur(10px);
-      z-index: 3000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    .admin-modal.open {
-      opacity: 1;
-      visibility: visible;
-    }
-    .admin-box {
-      background: #fff;
-      padding: 2.5rem;
-      max-width: 750px;
-      width: 100%;
-      max-height: 85vh;
-      overflow-y: auto;
-      border-radius: 4px;
-      text-align: left;
-    }
-    .admin-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-      font-size: 0.85rem;
-    }
-    .admin-table th, .admin-table td {
-      padding: 10px 12px;
-      border-bottom: 1px solid var(--color-border);
-      text-align: left;
-    }
-    .admin-table th {
-      background: var(--color-sand);
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-muted);
-    }
-
-    /* Modal */
+    /* Modal Backdrop */
     .modal-backdrop {
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(26, 25, 24, 0.6);
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(5px);
-      z-index: 2000;
+      z-index: 1000;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
       opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1.5rem;
     }
 
     .modal-backdrop.open {
       opacity: 1;
-      visibility: visible;
+      pointer-events: auto;
     }
 
     .modal-box {
       background: #fff;
       padding: 3.5rem 2.5rem;
-      max-width: 460px;
+      max-width: 440px;
       width: 100%;
       text-align: center;
       border: 1px solid var(--color-border);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-      border-radius: 2px;
+      border-radius: 4px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
     }
 
     .modal-box h3 {
       font-family: var(--font-serif);
       font-size: 2rem;
+      font-weight: 400;
       color: var(--color-dark);
       margin-bottom: 0.8rem;
     }
 
     .modal-box p {
+      font-family: var(--font-sans);
       font-size: 0.92rem;
       color: var(--color-muted);
-      margin-bottom: 2rem;
       line-height: 1.6;
+      margin-bottom: 2rem;
     }
 
     /* Footer */
     .simple-footer {
       text-align: center;
-      padding: 3rem 1.5rem;
+      padding: 2.5rem 1.5rem;
+      font-family: var(--font-sans);
       font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--color-muted);
     }
 
     @media (max-width: 768px) {
-      .top-nav {
-        padding: 1.5rem;
-      }
       .invitation-card {
         padding: 3.5rem 1.8rem;
       }
@@ -576,57 +487,26 @@
 </head>
 <body>
 
-  <!-- Top Bar -->
-  <header class="top-nav">
-    <div class="nav-monogram"><?xml version="1.0" encoding="UTF-8"?>
-<svg class="svg-monogram" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 134.6 141.7">
-  <!-- Generator: Adobe Illustrator 30.0.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 123)  -->
-  <defs>
-    <style>
-      .st0 {
-        fill: #231f20;
-      }
-    </style>
-  </defs>
-  <path class="st0" d="M45,84.5h0c-4.2-.7-7.3-8.1-.3-17.7,6-8.2,14.7-12.6,22.1-14.1-1.7-.7-2.5-2.2-2.7-4-5.7,2.2-12.6,3.9-19.4,3.5-18.4-1.1-17.5-17.6-6.5-22v.5c-9.3,4-11,20,6.6,21,6.8.4,13.6-1.3,19.2-3.5-.1-3,1.3-6.7,3.6-9.7,4.1-5.3,11.1-9.2,14.3-7.7,4.4,2-1.7,8.9-6.2,11.9-2.3,1.6-6.3,3.8-11.2,5.8,0,2,1,3.6,3.1,4.1.6-.1,1.2-.2,1.8-.3.7,0,1.6,0,1.6.4,0,.4-1.2.5-1.8.5s-1.1,0-1.5-.1c-7.3,1.1-14.7,5.7-20.9,14.2-6.8,9.2-5.7,16-1.7,16.7.5-2.3,1.4-4.6,2.9-6.9,11.5-18.2,27.7-17,14.1-1.1-5.4,6.3-12.2,8.9-16.6,8.6-.8,3.9-.3,7.5.8,9.8l-.5.3c-1.2-2.3-1.7-6.1-.9-10.1ZM61.8,75.5c12.8-15-2.2-15.7-13.3,1.9-1.4,2.2-2.3,4.5-2.8,6.7,4.2.4,10.8-2.3,16.1-8.6ZM75.5,42.3c4-2.7,10.1-9.3,6.2-11.1-3-1.4-9.4,2.7-13.3,7.8-2.2,2.9-3.7,6.3-3.8,9,4.8-1.9,8.7-4.1,10.9-5.7Z"/>
-  <path class="st0" d="M58.1,114c-.3,0-.5-.2-.8-.2-3.2,1.6-6.5,2.5-9.8,2.5s-6.4-1.1-5.5-2.7c.7-1.3,3.2-2.3,5.9-2.3,2.6,0,5.9.9,9.2,1.9,9.2-4.9,17-15.3,21.2-21.4,4.3-6,11-15.3,18.1-21.9-3-4.2-7.8-6.9-14.4-6.8-9.7.1-18,5.5-23.4,12.1-7.1,8.7-8.8,19.1-3.6,22.1,8.6,5.1,16.4-6.5,15.4-8.9l.5-.2c1.6,4-7.9,14.4-16.1,9.5-5.5-3.3-4.4-14.3,2.9-23.2,5.4-6.6,14.6-11.9,24.4-12,6.7,0,11.6,2.7,14.8,7,4.2-3.8,8.6-6.7,12.6-7.2v.5c-4.2.6-8.2,3.4-12.2,7.3,4.9,7.1,5,18,.1,26.7-8.1,14.3-19.7,19.3-28,19.5-3.3,0-7.4-1.2-11.3-2.5ZM42.4,113.7c-.6,1.2,1.4,2,5.1,2s6.1-.9,9-2.3c-3.1-1-6.1-1.8-8.5-1.8-2.6,0-4.9.9-5.5,2.1h0ZM58.3,113.5c3.9,1.2,7.9,2.5,11.1,2.4,8.2-.2,19.3-5.2,27.2-19.3,4.8-8.5,4.9-19.1.3-26-5.8,5.9-11.3,14.3-16.6,21.8-4.2,5.9-12.7,16.1-22.3,21h.3Z"/>
-</svg></div>
-    
-    <div class="lang-toggle">
-      <button class="lang-btn active" id="btnDE" onclick="switchLang('de')">DE</button>
-      <button class="lang-btn" id="btnEN" onclick="switchLang('en')">EN</button>
-    </div>
-  </header>
-
   <!-- Main Invitation Card -->
   <main class="page-wrapper">
     <article class="invitation-card">
-      
-      <div class="brand-monogram"><?xml version="1.0" encoding="UTF-8"?>
-<svg class="svg-monogram" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 134.6 141.7">
-  <!-- Generator: Adobe Illustrator 30.0.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 123)  -->
-  <defs>
-    <style>
-      .st0 {
-        fill: #231f20;
-      }
-    </style>
-  </defs>
-  <path class="st0" d="M45,84.5h0c-4.2-.7-7.3-8.1-.3-17.7,6-8.2,14.7-12.6,22.1-14.1-1.7-.7-2.5-2.2-2.7-4-5.7,2.2-12.6,3.9-19.4,3.5-18.4-1.1-17.5-17.6-6.5-22v.5c-9.3,4-11,20,6.6,21,6.8.4,13.6-1.3,19.2-3.5-.1-3,1.3-6.7,3.6-9.7,4.1-5.3,11.1-9.2,14.3-7.7,4.4,2-1.7,8.9-6.2,11.9-2.3,1.6-6.3,3.8-11.2,5.8,0,2,1,3.6,3.1,4.1.6-.1,1.2-.2,1.8-.3.7,0,1.6,0,1.6.4,0,.4-1.2.5-1.8.5s-1.1,0-1.5-.1c-7.3,1.1-14.7,5.7-20.9,14.2-6.8,9.2-5.7,16-1.7,16.7.5-2.3,1.4-4.6,2.9-6.9,11.5-18.2,27.7-17,14.1-1.1-5.4,6.3-12.2,8.9-16.6,8.6-.8,3.9-.3,7.5.8,9.8l-.5.3c-1.2-2.3-1.7-6.1-.9-10.1ZM61.8,75.5c12.8-15-2.2-15.7-13.3,1.9-1.4,2.2-2.3,4.5-2.8,6.7,4.2.4,10.8-2.3,16.1-8.6ZM75.5,42.3c4-2.7,10.1-9.3,6.2-11.1-3-1.4-9.4,2.7-13.3,7.8-2.2,2.9-3.7,6.3-3.8,9,4.8-1.9,8.7-4.1,10.9-5.7Z"/>
-  <path class="st0" d="M58.1,114c-.3,0-.5-.2-.8-.2-3.2,1.6-6.5,2.5-9.8,2.5s-6.4-1.1-5.5-2.7c.7-1.3,3.2-2.3,5.9-2.3,2.6,0,5.9.9,9.2,1.9,9.2-4.9,17-15.3,21.2-21.4,4.3-6,11-15.3,18.1-21.9-3-4.2-7.8-6.9-14.4-6.8-9.7.1-18,5.5-23.4,12.1-7.1,8.7-8.8,19.1-3.6,22.1,8.6,5.1,16.4-6.5,15.4-8.9l.5-.2c1.6,4-7.9,14.4-16.1,9.5-5.5-3.3-4.4-14.3,2.9-23.2,5.4-6.6,14.6-11.9,24.4-12,6.7,0,11.6,2.7,14.8,7,4.2-3.8,8.6-6.7,12.6-7.2v.5c-4.2.6-8.2,3.4-12.2,7.3,4.9,7.1,5,18,.1,26.7-8.1,14.3-19.7,19.3-28,19.5-3.3,0-7.4-1.2-11.3-2.5ZM42.4,113.7c-.6,1.2,1.4,2,5.1,2s6.1-.9,9-2.3c-3.1-1-6.1-1.8-8.5-1.8-2.6,0-4.9.9-5.5,2.1h0ZM58.3,113.5c3.9,1.2,7.9,2.5,11.1,2.4,8.2-.2,19.3-5.2,27.2-19.3,4.8-8.5,4.9-19.1.3-26-5.8,5.9-11.3,14.3-16.6,21.8-4.2,5.9-12.7,16.1-22.3,21h.3Z"/>
-</svg></div>
 
-      <p class="eyebrow" data-i18n="eyebrow">Hochzeitsfeier</p>
+      <p class="eyebrow">Hochzeitsfeier</p>
       
       <h1 class="names-heading">Elia & Daniel</h1>
+
+      <!-- Portrait of Elia & Daniel -->
+      <div class="couple-portrait-box">
+        <img src="/couple_photo.jpg" alt="Elia & Daniel" class="couple-portrait-img" onerror="this.src='couple_photo.jpg';">
+      </div>
 
       <div class="divider-gold">
         <span>✦</span>
       </div>
 
       <div class="event-meta">
-        <div class="event-date" data-i18n="event_date">Donnerstag, 18. Februar</div>
-        <div class="event-time" data-i18n="event_time">12:30 Uhr</div>
+        <div class="event-date">Donnerstag, 18. Februar 2027</div>
+        <div class="event-time">12:30 Uhr</div>
         <div class="event-venue">Villa Honegg</div>
         <div class="event-address">Honegg · 6373 Ennetbürgen</div>
       </div>
@@ -635,44 +515,44 @@
         <span>✦</span>
       </div>
 
-      <p class="letter-body" data-i18n="letter_text">
+      <p class="letter-body">
         Liebe Familie, liebe Freunde,<br><br>
         Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag ab 12:30 Uhr gemeinsam mit uns in der Villa Honegg zu verbringen.
       </p>
 
       <!-- Quick Action Buttons -->
       <div class="actions-group">
-        <a href="#rsvp" class="btn btn-gold" data-i18n="btn_rsvp_jump">Rückmeldung</a>
-        <button onclick="downloadICS()" class="btn btn-outline" data-i18n="btn_calendar">Kalendereintrag (.ics)</button>
-        <a href="https://maps.google.com/?q=Hotel+Villa+Honegg+Ennetbuergen" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="btn_maps">Anfahrt / Karte</a>
+        <a href="#rsvp" class="btn btn-gold">Rückmeldung</a>
+        <button onclick="downloadICS()" class="btn btn-outline">Kalendereintrag (.ics)</button>
+        <a href="https://maps.google.com/?q=Hotel+Villa+Honegg+Ennetbuergen" target="_blank" rel="noopener" class="btn btn-outline">Anfahrt / Karte</a>
       </div>
 
       <!-- Schedule -->
       <section class="schedule-block">
-        <p class="section-subtitle" data-i18n="sched_heading">Tagesablauf</p>
+        <p class="section-subtitle">Tagesablauf</p>
         
         <div class="schedule-list">
           <div class="schedule-row">
             <span class="schedule-time">12:30</span>
             <div class="schedule-info">
-              <h4 data-i18n="s1_title">Empfang & Champagner-Apéro</h4>
-              <p data-i18n="s1_desc">Ankunft & Willkommens-Drink in der Villa Honegg</p>
+              <h4>Empfang & Champagner-Apéro</h4>
+              <p>Ankunft & Willkommens-Drink in der Villa Honegg</p>
             </div>
           </div>
 
           <div class="schedule-row">
             <span class="schedule-time">13:30</span>
             <div class="schedule-info">
-              <h4 data-i18n="s2_title">Festliches Hochzeitsessen</h4>
-              <p data-i18n="s2_desc">Gemeinsames Mehrgang-Menü</p>
+              <h4>Festliches Hochzeitsessen</h4>
+              <p>Gemeinsames Mehrgang-Menü</p>
             </div>
           </div>
 
           <div class="schedule-row">
             <span class="schedule-time">16:30</span>
             <div class="schedule-info">
-              <h4 data-i18n="s3_title">Ausklang</h4>
-              <p data-i18n="s3_desc">Kaffee, Digestif & gemütliches Beisammensein</p>
+              <h4>Ausklang</h4>
+              <p>Kaffee, Digestif & gemütliches Beisammensein</p>
             </div>
           </div>
         </div>
@@ -681,8 +561,8 @@
       <!-- RSVP Form -->
       <section class="rsvp-container" id="rsvp">
         <div class="rsvp-header">
-          <p class="section-subtitle" data-i18n="rsvp_label">Rückmeldung</p>
-          <p style="font-size: 0.9rem; color: var(--color-muted); margin-top: 0.4rem;" data-i18n="rsvp_deadline">
+          <p class="section-subtitle">Rückmeldung</p>
+          <p style="font-size: 0.9rem; color: var(--color-muted); margin-top: 0.4rem;">
             Bitte gebt uns bis zum <strong>15. Januar</strong> Bescheid.
           </p>
         </div>
@@ -690,26 +570,26 @@
         <form id="weddingRsvpForm" onsubmit="submitRSVP(event)">
           
           <div class="form-group">
-            <label class="form-label" data-i18n="f_attendance_label">Teilnahme</label>
+            <label class="form-label">Teilnahme</label>
             <div class="attendance-options">
               <label class="attendance-btn selected" id="optAccept" onclick="pickAttendance('accept')">
                 <input type="radio" name="attendance" value="accept" checked>
-                <span data-i18n="f_accept">✨ Zusage</span>
+                <span>✨ Zusage</span>
               </label>
               <label class="attendance-btn" id="optDecline" onclick="pickAttendance('decline')">
                 <input type="radio" name="attendance" value="decline">
-                <span data-i18n="f_decline">Absage</span>
+                <span>Absage</span>
               </label>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="guestName" data-i18n="f_names_label">Name(n) der Gäste *</label>
+            <label class="form-label" for="guestName">Name(n) der Gäste *</label>
             <input type="text" id="guestName" class="form-input" placeholder="z.B. Anna & Marco" required>
           </div>
 
           <div class="form-group" id="groupCount">
-            <label class="form-label" for="guestNum" data-i18n="f_count_label">Anzahl Personen</label>
+            <label class="form-label" for="guestNum">Anzahl Personen</label>
             <select id="guestNum" class="form-input">
               <option value="1">1 Person</option>
               <option value="2" selected>2 Personen</option>
@@ -719,16 +599,16 @@
           </div>
 
           <div class="form-group" id="groupDiet">
-            <label class="form-label" for="guestDiet" data-i18n="f_diet_label">Menüwünsche / Allergien</label>
+            <label class="form-label" for="guestDiet">Menüwünsche / Allergien</label>
             <input type="text" id="guestDiet" class="form-input" placeholder="z.B. Vegetarisch, keine Nüsse, etc.">
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="guestNote" data-i18n="f_note_label">Nachricht an Elia & Daniel (Optional)</label>
+          <div class="form-group" id="groupNote">
+            <label class="form-label" for="guestNote">Nachricht an Elia & Daniel (Optional)</label>
             <textarea id="guestNote" class="form-input" rows="3" placeholder="Persönliche Nachricht..."></textarea>
           </div>
 
-          <button type="submit" class="btn btn-gold" style="width: 100%; padding: 1.1rem; border-radius: 2px;" data-i18n="btn_submit">
+          <button type="submit" class="btn btn-gold" style="width: 100%; padding: 1.1rem; border-radius: 2px;">
             Rückmeldung senden
           </button>
         </form>
@@ -740,9 +620,9 @@
   <!-- Confirmation Modal -->
   <div class="modal-backdrop" id="rsvpModal">
     <div class="modal-box">
-      <h3 data-i18n="m_title">Vielen Dank</h3>
-      <p id="mDesc" data-i18n="m_desc">Deine Rückmeldung wurde direkt an Elia & Daniel übermittelt.</p>
-      <button class="btn btn-gold" onclick="closeModal()" data-i18n="m_close">Schliessen</button>
+      <h3>Vielen Dank</h3>
+      <p id="mDesc">Deine Rückmeldung wurde direkt an Elia & Daniel übermittelt.</p>
+      <button class="btn btn-gold" onclick="closeModal()">Schliessen</button>
     </div>
   </div>
 
@@ -751,81 +631,7 @@
   </footer>
 
   <script>
-    const content = {
-      de: {
-        eyebrow: "Hochzeitsfeier",
-        event_date: "Donnerstag, 18. Februar",
-        event_time: "12:30 Uhr",
-        letter_text: "Liebe Familie, liebe Freunde,<br><br>Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag ab 12:30 Uhr gemeinsam mit uns in der Villa Honegg zu verbringen.",
-        btn_rsvp_jump: "Rückmeldung",
-        btn_calendar: "Kalendereintrag (.ics)",
-        btn_maps: "Anfahrt / Karte",
-        sched_heading: "Tagesablauf",
-        s1_title: "Empfang & Champagner-Apéro",
-        s1_desc: "Ankunft & Willkommens-Drink in der Villa Honegg",
-        s2_title: "Festliches Hochzeitsessen",
-        s2_desc: "Gemeinsames Mehrgang-Menü",
-        s3_title: "Ausklang",
-        s3_desc: "Kaffee, Digestif & gemütliches Beisammensein",
-        rsvp_label: "Rückmeldung",
-        rsvp_deadline: "Bitte gebt uns bis zum <strong>15. Januar</strong> Bescheid.",
-        f_attendance_label: "Teilnahme",
-        f_accept: "✨ Zusage",
-        f_decline: "Absage",
-        f_names_label: "Name(n) der Gäste *",
-        f_count_label: "Anzahl Personen",
-        f_diet_label: "Menüwünsche / Allergien",
-        f_note_label: "Nachricht an Elia & Daniel (Optional)",
-        btn_submit: "Rückmeldung senden",
-        m_title: "Vielen Dank",
-        m_desc: "Deine Rückmeldung wurde direkt an Elia & Daniel übermittelt.",
-        m_close: "Schliessen"
-      },
-      en: {
-        eyebrow: "Wedding Celebration",
-        event_date: "Thursday, February 18th",
-        event_time: "12:30 PM",
-        letter_text: "Dear family and friends,<br><br>We are truly delighted to celebrate our civil wedding with our closest circle. We warmly invite you to join us starting at 12:30 PM at Villa Honegg.",
-        btn_rsvp_jump: "RSVP",
-        btn_calendar: "Add to Calendar (.ics)",
-        btn_maps: "Directions / Map",
-        sched_heading: "Day Schedule",
-        s1_title: "Reception & Champagne Welcome",
-        s1_desc: "Arrival & welcome drinks at Villa Honegg",
-        s2_title: "Celebratory Luncheon",
-        s2_desc: "Multi-course festive luncheon",
-        s3_title: "Farewell",
-        s3_desc: "Coffee, digestifs & relaxed conclusion",
-        rsvp_label: "RSVP",
-        rsvp_deadline: "Kindly reply by <strong>January 15th</strong>.",
-        f_attendance_label: "Attendance",
-        f_accept: "✨ Joyfully Accept",
-        f_decline: "Decline",
-        f_names_label: "Full Name(s) of Guest(s) *",
-        f_count_label: "Number of Guests",
-        f_diet_label: "Dietary Requests / Allergies",
-        f_note_label: "Message to Elia & Daniel (Optional)",
-        btn_submit: "Submit RSVP",
-        m_title: "Thank You",
-        m_desc: "Your response has been sent directly to Elia & Daniel.",
-        m_close: "Close"
-      }
-    };
-
-    let activeLang = 'de';
-
-    function switchLang(lang) {
-      activeLang = lang;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (content[lang] && content[lang][key]) {
-          el.innerHTML = content[lang][key];
-        }
-      });
-      document.getElementById('btnDE').classList.toggle('active', lang === 'de');
-      document.getElementById('btnEN').classList.toggle('active', lang === 'en');
-      document.documentElement.lang = lang;
-    }
+    const CLOUD_DB_URL = 'https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136';
 
     function pickAttendance(val) {
       const optAccept = document.getElementById('optAccept');
@@ -848,12 +654,12 @@
       }
     }
 
-            async function submitRSVP(e) {
+    async function submitRSVP(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button[type="submit"]');
       const orig = btn.innerText;
       btn.disabled = true;
-      btn.innerText = activeLang === 'de' ? 'Wird übermittelt...' : 'Sending...';
+      btn.innerText = 'Wird übermittelt...';
 
       const attendanceInput = document.querySelector('input[name="attendance"]:checked');
       const attendance = attendanceInput ? attendanceInput.value : 'accept';
@@ -871,14 +677,14 @@
         guest: name,
         status: attendance === 'accept' ? 'Attending' : 'Declined',
         count: attendance === 'accept' ? (parseInt(count, 10) || 1) : 0,
-        diet: diet || 'None',
+        diet: diet || 'Keine',
         note: note || '',
         timestamp: submittedAt
       };
 
       // 1. Sync to Global Cloud Database
       try {
-        const cloudGet = await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136');
+        const cloudGet = await fetch(CLOUD_DB_URL);
         if (cloudGet.ok) {
           const cloudObj = await cloudGet.json();
           const rsvpsList = cloudObj.data?.rsvps || [];
@@ -888,7 +694,7 @@
           } else {
             rsvpsList.push(newEntry);
           }
-          await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136', {
+          await fetch(CLOUD_DB_URL, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -940,17 +746,44 @@
 
       const modalDesc = document.getElementById('mDesc');
       if (modalDesc) {
-        modalDesc.innerHTML = activeLang === 'de'
-          ? 'Liebe/r <strong>' + name + '</strong>, deine Rückmeldung wurde direkt an Elia & Daniel übermittelt! Wir freuen uns sehr.'
-          : 'Dear <strong>' + name + '</strong>, your RSVP has been sent directly to Elia & Daniel! We cannot wait to celebrate with you.';
+        modalDesc.innerHTML = 'Liebe/r <strong>' + name + '</strong>, deine Rückmeldung wurde direkt an Elia & Daniel übermittelt! Wir freuen uns sehr.';
       }
       const rModal = document.getElementById('rsvpModal');
       if (rModal) rModal.classList.add('open');
     }
-    
+
     function closeModal() {
       const rModal = document.getElementById('rsvpModal');
       if (rModal) rModal.classList.remove('open');
+    }
+
+    function downloadICS() {
+      const icsData = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Elia and Daniel//Wedding RSVP//DE',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'UID:elia-daniel-honegg-20270218@innamorati-meister.com',
+        'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
+        'DTSTART;TZID=Europe/Zurich:20270218T123000',
+        'DTEND;TZID=Europe/Zurich:20270218T180000',
+        'SUMMARY:Zivile Trauung & Feier von Elia & Daniel',
+        'DESCRIPTION:Feierliche zivile Hochzeit und Festessen in der Villa Honegg.',
+        'LOCATION:Hotel Villa Honegg\\, Honegg\\, 6373 Ennetbürgen\\, Schweiz',
+        'STATUS:CONFIRMED',
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', 'Elia-Daniel-Zivile-Hochzeit.ics');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   </script>
 </body>

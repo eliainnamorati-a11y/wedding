@@ -33,21 +33,24 @@
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       
       --color-white: #FFFFFF;
-      --color-cream: #FCFAF8;
-      --color-bg: #F7F5F0;
+      --color-cream: #FCFAF7;
+      --color-bg: #F7F4EE;
+      --color-bg-alt: #F2ECE2;
       --color-surface: #FFFFFF;
       --color-dark: #1A1918;
       --color-charcoal: #2C2A29;
-      --color-muted: #7E7A75;
+      --color-muted: #7A756F;
       --color-gold: #BFA175;
       --color-gold-hover: #9E825A;
-      --color-gold-soft: #F5EFEB;
-      --color-border: #ECE6DE;
-      --color-border-light: #F4EFEA;
+      --color-gold-light: #F7F1E8;
+      --color-gold-border: rgba(191, 161, 117, 0.4);
+      --color-border: #E8E2D8;
+      --color-border-light: #F0EAE0;
       
-      --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.03);
-      --shadow-card: 0 15px 50px rgba(0, 0, 0, 0.04);
-      --shadow-hover: 0 20px 60px rgba(191, 161, 117, 0.12);
+      --shadow-subtle: 0 4px 25px rgba(0, 0, 0, 0.03);
+      --shadow-card: 0 15px 45px rgba(26, 25, 24, 0.05);
+      --shadow-hover: 0 25px 60px rgba(191, 161, 117, 0.16);
+      --shadow-frame: 0 14px 40px rgba(0, 0, 0, 0.09);
     }
 
     * {
@@ -64,7 +67,7 @@
       background-color: var(--color-bg);
       color: var(--color-charcoal);
       font-family: var(--font-sans);
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
@@ -101,7 +104,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.55) 100%);
+      background: radial-gradient(circle at center, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.6) 100%);
       z-index: 2;
     }
 
@@ -191,7 +194,7 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.85);
       font-family: var(--font-sans);
       font-size: 0.72rem;
       letter-spacing: 0.22em;
@@ -215,205 +218,431 @@
       position: relative;
       z-index: 20;
       background-color: var(--color-bg);
-      padding: 6rem 1.5rem 8rem;
     }
 
     .container {
-      max-width: 820px;
+      max-width: 1240px;
       margin: 0 auto;
+      padding: 0 2rem;
     }
 
-    /* Personal Welcome Card */
+    /* Personal Welcome Section */
+    .welcome-section {
+      padding: 6.5rem 1.5rem 5rem;
+      background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-cream) 100%);
+    }
+
     .card-editorial {
       background: var(--color-white);
       border: 1px solid var(--color-border);
       border-radius: 4px;
-      padding: 4.5rem 3.5rem;
+      padding: 5rem 4rem;
       box-shadow: var(--shadow-card);
       text-align: center;
-      margin-bottom: 5.5rem;
+      max-width: 880px;
+      margin: 0 auto;
       position: relative;
+    }
+
+    .card-editorial::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid var(--color-gold-border);
+      pointer-events: none;
+      border-radius: 2px;
+    }
+
+    .letter-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
     }
 
     .letter-title {
       font-family: var(--font-serif);
-      font-size: 2.3rem;
+      font-size: clamp(2.3rem, 4vw, 3.2rem);
       font-weight: 400;
       font-style: italic;
       color: var(--color-dark);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.8rem;
+      letter-spacing: -0.01em;
     }
 
     .letter-text {
       font-family: var(--font-serif);
       font-size: 1.35rem;
-      line-height: 1.9;
+      line-height: 1.95;
       color: var(--color-charcoal);
       font-weight: 300;
-      max-width: 640px;
-      margin: 0 auto 2.5rem;
+      max-width: 700px;
+      margin: 0 auto 2.8rem;
     }
 
     .letter-sig {
       font-family: var(--font-script);
-      font-size: 3.2rem;
+      font-size: 3.6rem;
       color: var(--color-gold);
       line-height: 1;
     }
 
-    /* Section Headings */
-    .section-eyebrow {
+    /* Full-Page Day Sections */
+    .day-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6.5rem 0;
+      border-top: 1px solid var(--color-border);
+      position: relative;
+    }
+
+    .day-section:nth-child(even) {
+      background-color: var(--color-cream);
+    }
+
+    .day-section:nth-child(odd) {
+      background-color: var(--color-bg);
+    }
+
+    .day-header-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .day-badge-line {
+      height: 1px;
+      width: 70px;
+      background: var(--color-gold);
+      opacity: 0.5;
+    }
+
+    .day-badge-text {
       font-family: var(--font-sans);
-      font-size: 0.75rem;
-      letter-spacing: 0.24em;
+      font-size: 0.78rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--color-gold);
-      font-weight: 500;
-      text-align: center;
-      margin-bottom: 0.6rem;
+      font-weight: 600;
     }
 
-    .section-heading {
-      font-family: var(--font-serif);
-      font-size: 2.5rem;
-      font-weight: 400;
-      color: var(--color-dark);
-      text-align: center;
-      margin-bottom: 3.5rem;
-      letter-spacing: -0.01em;
+    /* Two-Column Day Layout */
+    .day-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 4.5rem;
+      align-items: start;
     }
 
-    /* Program Events List */
-    .events-grid {
+    /* Left Visual Column: Watercolor Artwork & Attire Preview */
+    .day-visual-col {
       display: flex;
       flex-direction: column;
       gap: 2.2rem;
-      margin-bottom: 6rem;
     }
 
-    .event-card-item {
+    .watercolor-frame-container {
+      position: relative;
       background: var(--color-white);
+      padding: 1.3rem;
       border: 1px solid var(--color-border);
       border-radius: 4px;
-      padding: 3rem;
-      box-shadow: var(--shadow-card);
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 2.5rem;
-      align-items: center;
+      box-shadow: var(--shadow-frame);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
 
-    .event-card-item:hover {
-      transform: translateY(-3px);
+    .watercolor-frame-container:hover {
+      transform: translateY(-4px);
       box-shadow: var(--shadow-hover);
     }
 
-    .stamp-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .stamp-img {
-      width: 90px;
-      height: 90px;
-      object-fit: contain;
-      filter: sepia(0.2) contrast(1.05);
-      border-radius: 50%;
-      border: 1px dashed var(--color-gold);
-      padding: 4px;
+    .watercolor-inner-mat {
       background: #faf8f5;
+      padding: 0.9rem;
+      border: 1px solid var(--color-gold-border);
+      position: relative;
+      overflow: hidden;
     }
 
-    .event-details {
+    .watercolor-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+      transition: transform 0.4s ease;
+    }
+
+    .watercolor-frame-container:hover .watercolor-img {
+      transform: scale(1.02);
+    }
+
+    .artwork-caption-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding: 0 0.4rem;
+    }
+
+    .artwork-title {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--color-dark);
+    }
+
+    .artwork-zoom-hint {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Attire Box Component */
+    .attire-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow-subtle);
+      position: relative;
+    }
+
+    .attire-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--color-border-light);
+    }
+
+    .attire-tag {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-weight: 600;
+    }
+
+    .attire-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--color-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .attire-desc {
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--color-charcoal);
+      margin-bottom: 1.4rem;
+    }
+
+    .attire-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--color-gold-light);
+      border: 1px solid var(--color-gold-border);
+      color: var(--color-charcoal);
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 0.8rem 1.5rem;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .attire-btn:hover {
+      background: var(--color-gold);
+      color: #ffffff;
+      border-color: var(--color-gold);
+    }
+
+    /* Right Column: Program Specifics & Timeline */
+    .day-info-col {
       display: flex;
       flex-direction: column;
     }
 
-    .event-time-tag {
+    .day-date-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 4vw, 3.3rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--color-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .day-subtitle {
       font-family: var(--font-sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--color-gold);
-      font-weight: 500;
-      margin-bottom: 0.5rem;
+      font-weight: 600;
+      margin-bottom: 1.8rem;
     }
 
-    .event-title {
+    .day-overview-text {
       font-family: var(--font-serif);
-      font-size: 1.85rem;
+      font-size: 1.25rem;
+      line-height: 1.8;
+      color: var(--color-charcoal);
+      margin-bottom: 2.2rem;
+      font-weight: 300;
+    }
+
+    /* Event Itinerary Blocks */
+    .itinerary-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .timeline-item {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-gold);
+      border-radius: 0 4px 4px 0;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .timeline-time-badge {
+      font-family: var(--font-sans);
+      font-size: 0.74rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-event-name {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
       font-weight: 500;
       color: var(--color-dark);
-      margin-bottom: 0.6rem;
-      line-height: 1.25;
+      margin-bottom: 0.4rem;
     }
 
-    .event-place {
+    .timeline-location {
       font-family: var(--font-sans);
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       color: var(--color-muted);
-      margin-bottom: 0.9rem;
-      font-weight: 400;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
 
-    .event-desc {
+    .timeline-details {
       font-family: var(--font-sans);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       line-height: 1.7;
       color: var(--color-charcoal);
-      margin-bottom: 1.2rem;
     }
 
-    .event-map-link {
+    .location-actions {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+
+    .action-link {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
       font-family: var(--font-sans);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--color-gold);
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.2s ease, transform 0.2s ease;
-      align-self: flex-start;
+      transition: all 0.2s ease;
     }
 
-    .event-map-link:hover {
+    .action-link:hover {
       color: var(--color-gold-hover);
       transform: translateX(3px);
     }
 
-    /* Sub-timeline for main wedding */
-    .timeline-mini {
-      border-left: 2px solid var(--color-gold);
-      padding-left: 1.2rem;
-      margin: 1rem 0 1.4rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
+    /* RSVP Box Section */
+    .rsvp-section {
+      padding: 7rem 0 8rem;
+      background: var(--color-cream);
+      border-top: 1px solid var(--color-border);
     }
 
-    .timeline-row {
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      color: var(--color-charcoal);
-    }
-
-    .timeline-row strong {
-      color: var(--color-dark);
-      font-weight: 600;
-    }
-
-    /* RSVP Box */
     .rsvp-box {
       background: var(--color-white);
       border: 1px solid var(--color-border);
       border-radius: 4px;
       padding: 4.5rem 3.5rem;
       box-shadow: var(--shadow-card);
+      max-width: 820px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .rsvp-box::before {
+      content: "";
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1px solid var(--color-gold-border);
+      pointer-events: none;
+      border-radius: 2px;
+    }
+
+    .rsvp-eyebrow {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      font-weight: 500;
+      text-align: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .rsvp-heading {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      text-align: center;
+      margin-bottom: 0.8rem;
     }
 
     .rsvp-subtext {
@@ -421,8 +650,8 @@
       font-family: var(--font-sans);
       font-size: 0.92rem;
       color: var(--color-muted);
-      margin: -2.2rem auto 3rem;
-      max-width: 500px;
+      margin: 0 auto 3rem;
+      max-width: 520px;
     }
 
     .event-check-list {
@@ -519,7 +748,7 @@
       font-size: 0.92rem;
       color: var(--color-dark);
       outline: none;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s ease, background 0.2s ease;
     }
 
     .form-input:focus, .form-textarea:focus {
@@ -529,7 +758,7 @@
 
     .btn-submit {
       width: 100%;
-      padding: 1.2rem;
+      padding: 1.25rem;
       background: var(--color-gold);
       color: #ffffff;
       border: none;
@@ -549,15 +778,15 @@
       transform: translateY(-2px);
     }
 
-    /* Modal Confirmation */
+    /* Modals (Attire Moodboard, Image Lightbox, RSVP Confirmation) */
     .modal-backdrop {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.65);
-      backdrop-filter: blur(4px);
+      background: rgba(18, 17, 16, 0.75);
+      backdrop-filter: blur(6px);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -573,45 +802,121 @@
       pointer-events: auto;
     }
 
-    .modal-card {
+    .modal-box {
       background: #ffffff;
       border: 1px solid var(--color-border);
       border-radius: 4px;
-      padding: 3.5rem 2.5rem;
-      max-width: 480px;
+      padding: 3rem;
+      max-width: 680px;
       width: 100%;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
-    .modal-card h3 {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
-      font-weight: 400;
+    .modal-close-icon {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: #f3efe8;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      line-height: 1;
       color: var(--color-dark);
-      margin-bottom: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
     }
 
-    .modal-card p {
-      font-family: var(--font-sans);
-      font-size: 0.95rem;
-      color: var(--color-muted);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .modal-close-btn {
-      padding: 0.8rem 2.2rem;
+    .modal-close-icon:hover {
       background: var(--color-gold);
       color: #ffffff;
-      border: none;
+    }
+
+    .moodboard-modal-img {
+      width: 100%;
+      height: auto;
       border-radius: 3px;
+      border: 1px solid var(--color-border);
+      margin-bottom: 1.8rem;
+    }
+
+    .moodboard-title {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--color-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .moodboard-subtitle {
       font-family: var(--font-sans);
       font-size: 0.75rem;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 1.2rem;
       font-weight: 600;
-      cursor: pointer;
+    }
+
+    .moodboard-notes {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: var(--color-charcoal);
+      margin-bottom: 1.5rem;
+    }
+
+    .palette-swatches {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      color: var(--color-muted);
+    }
+
+    .swatch-color {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* Lightbox Modal for Artworks */
+    .lightbox-modal .modal-box {
+      max-width: 900px;
+      padding: 2rem;
+      background: #FAF8F5;
+      text-align: center;
+    }
+
+    .lightbox-img {
+      width: 100%;
+      max-height: 75vh;
+      object-fit: contain;
+      border-radius: 2px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .lightbox-caption {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--color-dark);
+      margin-top: 1.2rem;
     }
 
     /* Footer */
@@ -619,11 +924,29 @@
       background: #111111;
       color: rgba(255, 255, 255, 0.5);
       text-align: center;
-      padding: 3rem 1.5rem;
+      padding: 3.5rem 1.5rem;
       font-family: var(--font-sans);
       font-size: 0.75rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 992px) {
+      .day-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .day-section {
+        min-height: auto;
+        padding: 5rem 0;
+      }
+      .day-header-badge {
+        margin-bottom: 2.5rem;
+      }
+      .coordinates-bar {
+        padding: 0 2rem;
+      }
     }
 
     @media (max-width: 768px) {
@@ -633,33 +956,59 @@
       .coords {
         font-size: 0.68rem;
       }
+      .welcome-section {
+        padding: 4rem 1rem 3rem;
+      }
       .card-editorial {
-        padding: 3rem 1.5rem;
+        padding: 3.5rem 1.5rem;
       }
-      .event-card-item {
-        grid-template-columns: 1fr;
-        text-align: center;
-        padding: 2.5rem 1.5rem;
+      .card-editorial::before {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
       }
-      .stamp-img {
-        margin: 0 auto;
+      .letter-title {
+        font-size: 2.2rem;
       }
-      .event-map-link {
-        align-self: center;
+      .letter-text {
+        font-size: 1.15rem;
+      }
+      .letter-sig {
+        font-size: 2.8rem;
+      }
+      .day-date-title {
+        font-size: 2.2rem;
+      }
+      .day-overview-text {
+        font-size: 1.1rem;
+      }
+      .attire-card {
+        padding: 1.8rem 1.4rem;
       }
       .rsvp-box {
-        padding: 3rem 1.5rem;
+        padding: 3.5rem 1.5rem;
+      }
+      .rsvp-box::before {
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
       }
       .event-check-row {
         flex-direction: column;
         text-align: center;
+        gap: 1.2rem;
+      }
+      .modal-box {
+        padding: 2rem 1.5rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Fullscreen Hero (Matching Homepage Video & Layout) -->
+  <!-- Fullscreen Hero (Matching innamorati-meister.com) -->
   <header class="hero">
     <video autoplay loop muted playsinline preload="auto" class="hero-bg-video">
       <source src="/Elia%20wedding.mp4" type="video/mp4">
@@ -690,176 +1039,397 @@
       </div>
     </div>
 
-    <a href="#details" class="scroll-down">
-      <span>Invitation & Details</span>
+    <a href="#invitation" class="scroll-down">
+      <span>Invitation & Itinerary</span>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
     </a>
   </header>
 
-  <!-- Page Content -->
-  <main class="page-body" id="details">
-    <div class="container">
+  <!-- Main Content -->
+  <main class="page-body">
 
-      <!-- Personal Welcome Card -->
-      <article class="card-editorial">
-        <h2 class="letter-title">Dear Fausto,</h2>
-        <p class="letter-text">
-          We are overjoyed to invite you to celebrate our wedding in Rome with us. It is a true honour and immense joy to have you by our side for the entire weekend, from the welcome dinner to the farewell brunch.
-        </p>
-        <div class="letter-sig">Elia & Daniel</div>
-      </article>
+    <!-- Personal Invitation Letter -->
+    <section class="welcome-section" id="invitation">
+      <div class="container">
+        <article class="card-editorial">
+          <div class="letter-eyebrow">INVITO SPECIALE &middot; ROMA 2027</div>
+          <h2 class="letter-title">Dear Fausto,</h2>
+          <p class="letter-text">
+            We are overjoyed to invite you to celebrate our wedding in Rome with us. It is a true honour and immense joy to have you by our side for the entire weekend, from our welcome dinner overlooking the eternal city to our solemn nuptial blessing at the Vatican, our evening gala at Villa Aurelia, and our farewell rooftop brunch.
+          </p>
+          <div class="letter-sig">Elia & Daniel</div>
+        </article>
+      </div>
+    </section>
 
-      <!-- Program Section -->
-      <section>
-        <div class="section-eyebrow">PROGRAM</div>
-        <h2 class="section-heading">The Itinerary</h2>
+    <!-- DAY 1: FRIDAY, APRIL 16 -->
+    <section class="day-section" id="day1">
+      <div class="container">
+        
+        <div class="day-header-badge">
+          <div class="day-badge-line"></div>
+          <span class="day-badge-text">DAY I &middot; VENERDÌ 16 APRILE 2027</span>
+          <div class="day-badge-line"></div>
+        </div>
 
-        <div class="events-grid">
-
-          <!-- 1. Ciampini -->
-          <div class="event-card-item">
-            <div class="stamp-container">
-              <img src="/assets/images/hassler_stamp.jpg" alt="Ciampini Rome" class="stamp-img" onerror="this.src='assets/images/hassler_stamp.jpg'">
+        <div class="day-grid">
+          
+          <!-- Visual & Attire Column -->
+          <div class="day-visual-col">
+            
+            <!-- Watercolor Frame -->
+            <div class="watercolor-frame-container" onclick="openLightbox('/assets/images/ciampini_watercolor.jpg', 'Ciampini & Piazza Trinità dei Monti, Roma')">
+              <div class="watercolor-inner-mat">
+                <img src="/assets/images/ciampini_watercolor.jpg" alt="Ciampini & Trinità dei Monti watercolor" class="watercolor-img" onerror="this.src='assets/images/ciampini_watercolor.jpg'">
+              </div>
+              <div class="artwork-caption-bar">
+                <span class="artwork-title">Ciampini & Piazza Trinità dei Monti</span>
+                <span class="artwork-zoom-hint">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  View Painting
+                </span>
+              </div>
             </div>
-            <div class="event-details">
-              <span class="event-time-tag">Friday, April 16, 2027 · 7:00 PM</span>
-              <h3 class="event-title">Welcome Dinner · Ciampini</h3>
-              <p class="event-place">Piazza Trinità dei Monti (near Hotel Hassler), Rome</p>
-              <p class="event-desc">
-                An intimate welcome reception and dinner overlooking Rome to kick off an unforgettable wedding weekend together.
+
+            <!-- Attire & Inspiration Card -->
+            <div class="attire-card">
+              <div class="attire-header">
+                <span class="attire-tag">ATTIRE & MOOD</span>
+                <span style="font-size: 0.8rem; color: var(--color-muted);">Day 1</span>
+              </div>
+              <h4 class="attire-title">Roman Cocktail Chic</h4>
+              <p class="attire-desc">
+                Smart, effortless elegance with Italian flair for a golden-hour terrace welcome. Gentlemen in tailored lightweight blazers or suits (tie optional); ladies in chic cocktail dresses, silk slip dresses, or refined separates in sunset hues.
               </p>
-              <a href="https://maps.google.com/?q=Ciampini+Roma+Trinita+dei+Monti" target="_blank" class="event-map-link">
-                Open on Google Maps &rarr;
-              </a>
+              <button type="button" class="attire-btn" onclick="openMoodboard('day1')">
+                <span>✦ View Attire & Moodboard Inspiration</span>
+              </button>
             </div>
+
           </div>
 
-          <!-- 2. Vatican & Villa Aurelia -->
-          <div class="event-card-item">
-            <div class="stamp-container">
-              <img src="/assets/images/vatican_stamp.png" alt="St. Peter's Basilica" class="stamp-img" onerror="this.src='assets/images/vatican_stamp.png'">
-            </div>
-            <div class="event-details">
-              <span class="event-time-tag">Saturday, April 17, 2027 · 3:30 PM</span>
-              <h3 class="event-title">Wedding Ceremony & Reception</h3>
-              <p class="event-place">Vatican City & Villa Aurelia, Rome</p>
+          <!-- Specifics & Timeline Column -->
+          <div class="day-info-col">
+            <div class="day-subtitle">WELCOME RECEPTION & DINNER</div>
+            <h3 class="day-date-title">Friday Sunset in Rome</h3>
+            <p class="day-overview-text">
+              To commence our wedding weekend, we gather for an intimate cocktail reception and dinner as the Roman sunset illuminates the domes and terracotta rooftops of the Eternal City.
+            </p>
+
+            <div class="itinerary-timeline">
               
-              <div class="timeline-mini">
-                <div class="timeline-row">
-                  <strong>3:30 PM</strong> &mdash; Choir Chapel (Cappella del Coro), St. Peter's Basilica in the Vatican
+              <div class="timeline-item">
+                <div class="timeline-time-badge">19:00 &middot; 7:00 PM ONWARDS</div>
+                <h4 class="timeline-event-name">Welcome Aperitivo & Terrace Dinner</h4>
+                <div class="timeline-location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Ciampini Roma &middot; Piazza Trinità dei Monti</span>
                 </div>
-                <div class="timeline-row">
-                  <strong>Followed by</strong> &mdash; Cocktail, gala dinner & celebrations at Villa Aurelia (Janiculum Hill)
+                <p class="timeline-details">
+                  Join us on the panoramic terrace of Ciampini, perched atop the Spanish Steps next to Hotel Hassler. Enjoy signature Italian cocktails, classic Roman aperitivi, and an evening dinner celebrating together before the wedding day.
+                </p>
+                <div class="location-actions">
+                  <a href="https://maps.google.com/?q=Ciampini+Roma+Trinita+dei+Monti" target="_blank" class="action-link">
+                    <span>Google Maps Directions &rarr;</span>
+                  </a>
                 </div>
               </div>
 
-              <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                <a href="https://maps.google.com/?q=St+Peters+Basilica+Vatican" target="_blank" class="event-map-link">
-                  Vatican Map &rarr;
-                </a>
-                <a href="https://maps.google.com/?q=Villa+Aurelia+Rome" target="_blank" class="event-map-link">
-                  Villa Aurelia Map &rarr;
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. Brunch Hassler -->
-          <div class="event-card-item">
-            <div class="stamp-container">
-              <img src="/assets/images/hassler_stamp.jpg" alt="Hotel Hassler Rome" class="stamp-img" onerror="this.src='assets/images/hassler_stamp.jpg'">
-            </div>
-            <div class="event-details">
-              <span class="event-time-tag">Sunday, April 18, 2027 · 12:00 PM</span>
-              <h3 class="event-title">Farewell Brunch · Hotel Hassler</h3>
-              <p class="event-place">Hotel Hassler Roma · Piazza Trinità dei Monti, 6</p>
-              <p class="event-desc">
-                A relaxed farewell brunch with panoramic views over the Roman rooftops before departing.
-              </p>
-              <a href="https://maps.google.com/?q=Hotel+Hassler+Roma" target="_blank" class="event-map-link">
-                Open on Google Maps &rarr;
-              </a>
             </div>
           </div>
 
         </div>
-      </section>
 
-      <!-- RSVP Form -->
-      <section class="rsvp-box">
-        <div class="section-eyebrow">R.S.V.P.</div>
-        <h2 class="section-heading" style="margin-bottom: 0.8rem;">Confirm Your Attendance</h2>
-        <p class="rsvp-subtext">
-          Please let us know your attendance for each event:
-        </p>
+      </div>
+    </section>
 
-        <form id="faustoForm" onsubmit="handleFaustoSubmit(event)">
+    <!-- DAY 2: SATURDAY, APRIL 17 -->
+    <section class="day-section" id="day2">
+      <div class="container">
+        
+        <div class="day-header-badge">
+          <div class="day-badge-line"></div>
+          <span class="day-badge-text">DAY II &middot; SABATO 17 APRILE 2027</span>
+          <div class="day-badge-line"></div>
+        </div>
+
+        <div class="day-grid">
           
-          <div class="event-check-list">
+          <!-- Visual & Attire Column -->
+          <div class="day-visual-col">
             
-            <!-- Event 1 -->
-            <div class="event-check-row">
-              <div>
-                <div class="event-check-name">1. Welcome Dinner · Ciampini</div>
-                <div class="event-check-sub">Friday, April 16 · 7:00 PM</div>
+            <!-- Watercolor Frame: Villa Aurelia & Vatican -->
+            <div class="watercolor-frame-container" onclick="openLightbox('/assets/images/villa_aurelia_watercolor.jpg', 'Villa Aurelia & Janiculum Gardens, Roma')">
+              <div class="watercolor-inner-mat">
+                <img src="/assets/images/villa_aurelia_watercolor.jpg" alt="Villa Aurelia Rome watercolor" class="watercolor-img" onerror="this.src='assets/images/villa_aurelia_watercolor.jpg'">
               </div>
-              <div class="toggle-group">
-                <button type="button" class="toggle-btn active-yes" onclick="setChoice(1, true, this)">Attending</button>
-                <button type="button" class="toggle-btn" onclick="setChoice(1, false, this)">Decline</button>
-              </div>
-            </div>
-
-            <!-- Event 2 -->
-            <div class="event-check-row">
-              <div>
-                <div class="event-check-name">2. Vatican Ceremony & Villa Aurelia</div>
-                <div class="event-check-sub">Saturday, April 17 · 3:30 PM</div>
-              </div>
-              <div class="toggle-group">
-                <button type="button" class="toggle-btn active-yes" onclick="setChoice(2, true, this)">Attending</button>
-                <button type="button" class="toggle-btn" onclick="setChoice(2, false, this)">Decline</button>
+              <div class="artwork-caption-bar">
+                <span class="artwork-title">Villa Aurelia & Janiculum Gardens</span>
+                <span class="artwork-zoom-hint">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  View Painting
+                </span>
               </div>
             </div>
 
-            <!-- Event 3 -->
-            <div class="event-check-row">
-              <div>
-                <div class="event-check-name">3. Farewell Brunch · Hotel Hassler</div>
-                <div class="event-check-sub">Sunday, April 18 · 12:00 PM</div>
+            <!-- Attire & Inspiration Card -->
+            <div class="attire-card">
+              <div class="attire-header">
+                <span class="attire-tag">ATTIRE & MOOD</span>
+                <span style="font-size: 0.8rem; color: var(--color-muted);">Day 2</span>
               </div>
-              <div class="toggle-group">
-                <button type="button" class="toggle-btn active-yes" onclick="setChoice(3, true, this)">Attending</button>
-                <button type="button" class="toggle-btn" onclick="setChoice(3, false, this)">Decline</button>
-              </div>
+              <h4 class="attire-title">Black Tie Optional & Formal Gala</h4>
+              <p class="attire-desc">
+                Tuxedos or formal dark suits for gentlemen; elegant floor-length or sophisticated evening gowns for ladies.<br>
+                <em>*Vatican Chapel Note:</em> Shoulders and knees must be respectfully covered during the religious blessing (a light silk wrap or shawl is ideal).
+              </p>
+              <button type="button" class="attire-btn" onclick="openMoodboard('day2')">
+                <span>✦ View Attire & Moodboard Inspiration</span>
+              </button>
             </div>
 
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="guestName">Full Name *</label>
-            <input type="text" id="guestName" class="form-input" value="Fausto Innamorati" required>
+          <!-- Specifics & Timeline Column -->
+          <div class="day-info-col">
+            <div class="day-subtitle">NUPTIAL CEREMONY & EVENING GALA</div>
+            <h3 class="day-date-title">The Wedding Day</h3>
+            <p class="day-overview-text">
+              A sacred celebration in the heart of the Vatican followed by an enchanting evening reception, seated banquet, and midnight dancing at historic Villa Aurelia.
+            </p>
+
+            <div class="itinerary-timeline">
+              
+              <!-- Vatican Ceremony -->
+              <div class="timeline-item">
+                <div class="timeline-time-badge">15:30 &middot; 3:30 PM</div>
+                <h4 class="timeline-event-name">Solemn Religious Blessing</h4>
+                <div class="timeline-location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Cappella del Coro &middot; St. Peter's Basilica, Vatican City</span>
+                </div>
+                <p class="timeline-details">
+                  Our wedding ceremony takes place inside the historic Choir Chapel (Cappella del Coro) within St. Peter's Basilica. Guests are kindly requested to arrive by 15:00 for security entry and seating.
+                </p>
+                <div class="location-actions">
+                  <a href="https://maps.google.com/?q=St+Peters+Basilica+Vatican" target="_blank" class="action-link">
+                    <span>Vatican Map &rarr;</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Villa Aurelia Gala -->
+              <div class="timeline-item">
+                <div class="timeline-time-badge">17:30 &middot; 5:30 PM TILL LATE</div>
+                <h4 class="timeline-event-name">Cocktails, Gala Dinner & Celebrations</h4>
+                <div class="timeline-location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Villa Aurelia &middot; Porta San Pancrazio, Janiculum Hill</span>
+                </div>
+                <p class="timeline-details">
+                  Following the ceremony, private transfers lead guests to Villa Aurelia atop the Janiculum hill. An aperitivo in the gardens is followed by dinner in the noble salons, cake cutting on the terrace, open bar, live music, and dancing under the stars.
+                </p>
+                <div class="location-actions">
+                  <a href="https://maps.google.com/?q=Villa+Aurelia+Rome" target="_blank" class="action-link">
+                    <span>Villa Aurelia Map &rarr;</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label" for="guestNote">Dietary Preferences or Message (Optional)</label>
-            <textarea id="guestNote" class="form-textarea" rows="3" placeholder="Allergies, dietary preferences or a note for Elia & Daniel..."></textarea>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DAY 3: SUNDAY, APRIL 18 -->
+    <section class="day-section" id="day3">
+      <div class="container">
+        
+        <div class="day-header-badge">
+          <div class="day-badge-line"></div>
+          <span class="day-badge-text">DAY III &middot; DOMENICA 18 APRILE 2027</span>
+          <div class="day-badge-line"></div>
+        </div>
+
+        <div class="day-grid">
+          
+          <!-- Visual & Attire Column -->
+          <div class="day-visual-col">
+            
+            <!-- Watercolor Frame: Hotel Hassler -->
+            <div class="watercolor-frame-container" onclick="openLightbox('/assets/images/hassler_watercolor.jpg', 'Hotel Hassler Roma & Spanish Steps Panorama')">
+              <div class="watercolor-inner-mat">
+                <img src="/assets/images/hassler_watercolor.jpg" alt="Hotel Hassler Rome watercolor" class="watercolor-img" onerror="this.src='assets/images/hassler_watercolor.jpg'">
+              </div>
+              <div class="artwork-caption-bar">
+                <span class="artwork-title">Hotel Hassler & Spanish Steps</span>
+                <span class="artwork-zoom-hint">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  View Painting
+                </span>
+              </div>
+            </div>
+
+            <!-- Attire & Inspiration Card -->
+            <div class="attire-card">
+              <div class="attire-header">
+                <span class="attire-tag">ATTIRE & MOOD</span>
+                <span style="font-size: 0.8rem; color: var(--color-muted);">Day 3</span>
+              </div>
+              <h4 class="attire-title">Sunday Casual Chic & Linens</h4>
+              <p class="attire-desc">
+                Relaxed Mediterranean elegance for a sunlit rooftop brunch. Light Italian linen shirts, comfortable trousers, breezy pastel sundresses, woven accessories, and sunglasses.
+              </p>
+              <button type="button" class="attire-btn" onclick="openMoodboard('day3')">
+                <span>✦ View Attire & Moodboard Inspiration</span>
+              </button>
+            </div>
+
           </div>
 
-          <button type="submit" class="btn-submit">Submit RSVP</button>
-        </form>
-      </section>
+          <!-- Specifics & Timeline Column -->
+          <div class="day-info-col">
+            <div class="day-subtitle">FAREWELL ROOFTOP BRUNCH</div>
+            <h3 class="day-date-title">Sunday in the Sun</h3>
+            <p class="day-overview-text">
+              Before saying goodbye, we gather high above Rome on the terrace of legendary Hotel Hassler to toast our unforgettable weekend together.
+            </p>
 
-    </div>
+            <div class="itinerary-timeline">
+              
+              <div class="timeline-item">
+                <div class="timeline-time-badge">12:00 &middot; 12:00 PM &mdash; 15:30</div>
+                <h4 class="timeline-event-name">Panoramic Farewell Brunch</h4>
+                <div class="timeline-location">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Hotel Hassler Roma &middot; Piazza Trinità dei Monti, 6</span>
+                </div>
+                <p class="timeline-details">
+                  A leisurely Italian Sunday brunch featuring artisanal pastries, Roman delicacies, prosecco, and espresso with breathtaking 360-degree views from Trinità dei Monti overlooking the Spanish Steps and Roman skyline.
+                </p>
+                <div class="location-actions">
+                  <a href="https://maps.google.com/?q=Hotel+Hassler+Roma" target="_blank" class="action-link">
+                    <span>Hotel Hassler Map &rarr;</span>
+                  </a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="rsvp-section" id="rsvp">
+      <div class="container">
+        <div class="rsvp-box">
+          <div class="rsvp-eyebrow">R.S.V.P.</div>
+          <h2 class="rsvp-heading">Confirm Attendance</h2>
+          <p class="rsvp-subtext">
+            Please let us know your attendance for each event of our wedding weekend:
+          </p>
+
+          <form id="faustoForm" onsubmit="handleFaustoSubmit(event)">
+            
+            <div class="event-check-list">
+              
+              <!-- Event 1 -->
+              <div class="event-check-row">
+                <div>
+                  <div class="event-check-name">1. Welcome Dinner &middot; Ciampini</div>
+                  <div class="event-check-sub">Friday, April 16 &middot; 7:00 PM &middot; Trinità dei Monti</div>
+                </div>
+                <div class="toggle-group">
+                  <button type="button" class="toggle-btn active-yes" onclick="setChoice(1, true, this)">Attending</button>
+                  <button type="button" class="toggle-btn" onclick="setChoice(1, false, this)">Decline</button>
+                </div>
+              </div>
+
+              <!-- Event 2 -->
+              <div class="event-check-row">
+                <div>
+                  <div class="event-check-name">2. Vatican Blessing & Villa Aurelia Gala</div>
+                  <div class="event-check-sub">Saturday, April 17 &middot; 3:30 PM &middot; San Pietro & Villa Aurelia</div>
+                </div>
+                <div class="toggle-group">
+                  <button type="button" class="toggle-btn active-yes" onclick="setChoice(2, true, this)">Attending</button>
+                  <button type="button" class="toggle-btn" onclick="setChoice(2, false, this)">Decline</button>
+                </div>
+              </div>
+
+              <!-- Event 3 -->
+              <div class="event-check-row">
+                <div>
+                  <div class="event-check-name">3. Farewell Brunch &middot; Hotel Hassler</div>
+                  <div class="event-check-sub">Sunday, April 18 &middot; 12:00 PM &middot; Panoramic Terrace</div>
+                </div>
+                <div class="toggle-group">
+                  <button type="button" class="toggle-btn active-yes" onclick="setChoice(3, true, this)">Attending</button>
+                  <button type="button" class="toggle-btn" onclick="setChoice(3, false, this)">Decline</button>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="guestName">Full Name *</label>
+              <input type="text" id="guestName" class="form-input" value="Fausto Innamorati" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="guestNote">Dietary Preferences or Message for Elia & Daniel (Optional)</label>
+              <textarea id="guestNote" class="form-textarea" rows="3" placeholder="Allergies, dietary preferences, or a personal note for Elia & Daniel..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Confirm RSVP</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Modal Confirmation -->
+  <!-- Attire & Moodboard Modal -->
+  <div id="moodboardModal" class="modal-backdrop" onclick="handleModalBackdropClick(event)">
+    <div class="modal-box">
+      <button class="modal-close-icon" onclick="closeMoodboard()">&times;</button>
+      
+      <img id="modalMoodboardImg" src="" alt="Attire Moodboard" class="moodboard-modal-img">
+      
+      <div class="moodboard-subtitle" id="modalMoodboardSubtitle">DAY I &middot; ROMAN COCKTAIL CHIC</div>
+      <h3 class="moodboard-title" id="modalMoodboardTitle">Dress Code & Style Inspiration</h3>
+      
+      <div class="palette-swatches" id="modalSwatches"></div>
+
+      <div class="moodboard-notes" id="modalMoodboardNotes"></div>
+
+      <button class="btn-submit" style="margin-top: 1rem;" onclick="closeMoodboard()">Close Lookbook</button>
+    </div>
+  </div>
+
+  <!-- Lightbox Artwork Modal -->
+  <div id="lightboxModal" class="modal-backdrop lightbox-modal" onclick="handleModalBackdropClick(event)">
+    <div class="modal-box">
+      <button class="modal-close-icon" onclick="closeLightbox()">&times;</button>
+      <img id="lightboxImg" src="" alt="Artwork Painting" class="lightbox-img">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- RSVP Confirmation Modal -->
   <div id="confirmModal" class="modal-backdrop">
-    <div class="modal-card">
-      <h3>Thank You Fausto!</h3>
-      <p>
-        Your response has been sent directly to Elia & Daniel. We cannot wait to celebrate together in Rome!
+    <div class="modal-box" style="text-align: center; max-width: 480px;">
+      <h3 style="font-family: var(--font-serif); font-size: 2.3rem; margin-bottom: 0.8rem; font-weight: 400;">Thank You Fausto!</h3>
+      <p style="font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-muted); line-height: 1.7; margin-bottom: 2rem;">
+        Your attendance confirmation has been delivered directly to Elia & Daniel. We cannot wait to celebrate together in Rome!
       </p>
-      <button class="modal-close-btn" onclick="closeModal()">Close</button>
+      <button class="btn-submit" onclick="closeConfirmModal()">Close</button>
     </div>
   </div>
 
@@ -871,6 +1441,58 @@
   <script>
     const CLOUD_DB_URL = 'https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136';
     const choices = { 1: true, 2: true, 3: true };
+
+    const MOODBOARD_DATA = {
+      day1: {
+        img: '/assets/images/day1_attire.jpg',
+        fallback: 'assets/images/day1_attire.jpg',
+        subtitle: 'DAY I &middot; FRIDAY, APRIL 16 &middot; CIAMPINI',
+        title: 'Roman Cocktail Chic',
+        swatches: [
+          { name: 'Italian Linen', color: '#D6C7B2' },
+          { name: 'Terracotta Silk', color: '#C05C3D' },
+          { name: 'Olive Green', color: '#5B6846' },
+          { name: 'Amber Sunset', color: '#D9823B' }
+        ],
+        notes: `
+          <p><strong>Gentlemen:</strong> Lightweight tailored blazers in linen, cotton, or fine summer wool in warm neutral tones (beige, tobacco, sage, navy). Dress trousers or tailored chinos, collared shirt (tie optional), and suede or leather loafers.</p><br>
+          <p><strong>Ladies:</strong> Cocktail dresses, silk slip dresses, or elegant tailored jumpsuit separates in rich sunset and Roman earth tones (terracotta, amber, olive, champagne). Block heels or refined flats are recommended for cobblestone strolls around Trinità dei Monti.</p>
+        `
+      },
+      day2: {
+        img: '/assets/images/day2_attire.jpg',
+        fallback: 'assets/images/day2_attire.jpg',
+        subtitle: 'DAY II &middot; SATURDAY, APRIL 17 &middot; VATICAN & VILLA AURELIA',
+        title: 'Black Tie Optional & Evening Gala',
+        swatches: [
+          { name: 'Classic Black', color: '#111111' },
+          { name: 'Midnight Navy', color: '#1B2430' },
+          { name: 'Emerald Green', color: '#0E3B2E' },
+          { name: 'Roman Gold', color: '#BFA175' }
+        ],
+        notes: `
+          <p><strong>Gentlemen:</strong> Classic black tuxedo with black bow tie, or a dark formal suit (midnight navy or charcoal) with an elegant silk tie and polished dress shoes.</p><br>
+          <p><strong>Ladies:</strong> Floor-length evening gowns or sophisticated gala cocktail dresses in jewel tones, classic black, emerald, or deep sapphire, accented with fine jewelry.</p><br>
+          <p><strong>*Vatican Chapel Modesty Requirement:</strong> For the religious blessing inside Cappella del Coro at St. Peter's Basilica, shoulders and knees must be respectfully covered. A matching silk scarf, shawl, or tailored jacket is ideal.</p>
+        `
+      },
+      day3: {
+        img: '/assets/images/day3_attire.jpg',
+        fallback: 'assets/images/day3_attire.jpg',
+        subtitle: 'DAY III &middot; SUNDAY, APRIL 18 &middot; HOTEL HASSLER',
+        title: 'Sunday Casual Chic & Rooftop Linens',
+        swatches: [
+          { name: 'Crisp Linen White', color: '#FFFFFF' },
+          { name: 'Travertine Sand', color: '#DFD5C6' },
+          { name: 'Sage Blossom', color: '#A3B19B' },
+          { name: 'Citrus Gold', color: '#E8C568' }
+        ],
+        notes: `
+          <p><strong>Gentlemen:</strong> Crisp white or pastel linen button-up shirts, relaxed tailored trousers or linen pants, woven belt, espadrilles or loafers, and sunglasses for rooftop terrace sunshine.</p><br>
+          <p><strong>Ladies:</strong> Breezy sundresses, linen sets, floral garden dresses, stylish straw hats, and comfortable chic footwear for enjoying the morning vistas over the Spanish Steps.</p>
+        `
+      }
+    };
 
     function setChoice(eventId, isAttending, clickedBtn) {
       choices[eventId] = isAttending;
@@ -885,6 +1507,55 @@
       } else {
         bNo.classList.add('active-no');
         bYes.classList.remove('active-yes');
+      }
+    }
+
+    function openMoodboard(dayKey) {
+      const data = MOODBOARD_DATA[dayKey];
+      if (!data) return;
+
+      const imgEl = document.getElementById('modalMoodboardImg');
+      imgEl.src = data.img;
+      imgEl.onerror = () => { imgEl.src = data.fallback; };
+      
+      document.getElementById('modalMoodboardSubtitle').innerHTML = data.subtitle;
+      document.getElementById('modalMoodboardTitle').innerText = data.title;
+      document.getElementById('modalMoodboardNotes').innerHTML = data.notes;
+
+      const swatchesContainer = document.getElementById('modalSwatches');
+      swatchesContainer.innerHTML = data.swatches.map(s => `
+        <div class="swatch">
+          <span class="swatch-color" style="background: ${s.color};"></span>
+          <span>${s.name}</span>
+        </div>
+      `).join('');
+
+      document.getElementById('moodboardModal').classList.add('open');
+    }
+
+    function closeMoodboard() {
+      document.getElementById('moodboardModal').classList.remove('open');
+    }
+
+    function openLightbox(imgSrc, caption) {
+      const imgEl = document.getElementById('lightboxImg');
+      imgEl.src = imgSrc;
+      imgEl.onerror = () => { imgEl.src = imgSrc.replace('/assets/', 'assets/'); };
+      document.getElementById('lightboxCaption').innerText = caption;
+      document.getElementById('lightboxModal').classList.add('open');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('open');
+    }
+
+    function closeConfirmModal() {
+      document.getElementById('confirmModal').classList.remove('open');
+    }
+
+    function handleModalBackdropClick(e) {
+      if (e.target.classList.contains('modal-backdrop')) {
+        e.target.classList.remove('open');
       }
     }
 
@@ -978,10 +1649,6 @@
       btn.innerText = origText;
 
       document.getElementById('confirmModal').classList.add('open');
-    }
-
-    function closeModal() {
-      document.getElementById('confirmModal').classList.remove('open');
     }
   </script>
 </body>
