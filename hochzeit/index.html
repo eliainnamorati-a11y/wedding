@@ -848,7 +848,7 @@
       }
     }
 
-        async function submitRSVP(e) {
+            async function submitRSVP(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button[type="submit"]');
       const orig = btn.innerText;
@@ -862,79 +862,42 @@
       const note = document.getElementById('guestNote').value;
       const submittedAt = new Date().toLocaleString('de-CH', { timeZone: 'Europe/Zurich' });
 
-      const newEntry = {
-        event: "Zivile Hochzeit Villa Honegg (18. Feb 2027)",
-        guest: name,
-        status: attendance === 'accept' ? "Zusage ✨" : "Absage 🤍",
-        count: attendance === 'accept' ? count : "0",
-        diet: diet || "Keine",
-        note: note || "Keine",
-        timestamp: submittedAt
+      const payload = {
+        _subject: `RSVP Villa Honegg: ${name} (${attendance === 'accept' ? 'Zusage ✨' : 'Absage 🤍'})`,
+        _template: "table",
+        _captcha: "false",
+        "Event": "Hochzeitsfeier Villa Honegg (18. Februar 2027)",
+        "Status": attendance === 'accept' ? "Zusage ✨" : "Absage 🤍",
+        "Name der Gäste": name,
+        "Anzahl Personen": attendance === 'accept' ? count : "0",
+        "Menü / Allergien": diet || "Keine besonderen Wünsche",
+        "Persönliche Nachricht": note || "Keine Nachricht",
+        "Eingereicht am": submittedAt
       };
 
-      // 1. Sync to Global Cloud Database (so responses from all phones/devices are collected)
       try {
-        const cloudGet = await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136');
-        if (cloudGet.ok) {
-          const cloudObj = await cloudGet.json();
-          const rsvpsList = cloudObj.data?.rsvps || [];
-          rsvpsList.push(newEntry);
-          await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136', {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: "Innamorati_Meister_Wedding_RSVPs",
-              data: { rsvps: rsvpsList }
-            })
-          });
-        }
-      } catch (err) {
-        console.error("Cloud DB sync error:", err);
-      }
-
-      // 2. Backup to LocalStorage
-      try {
-        const stored = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-        stored.push(newEntry);
-        localStorage.setItem('wedding_rsvps', JSON.stringify(stored));
-      } catch (err) {
-        console.error("Storage error:", err);
-      }
-
-      // 3. Deliver to FormSubmit email
-      try {
-        const payload = {
-          _subject: `RSVP Villa Honegg: ${name} (${attendance === 'accept' ? 'Zusage ✨' : 'Absage 🤍'})`,
-          _template: "table",
-          _captcha: "false",
-          "Event": "Hochzeitsfeier Villa Honegg (18. Februar 2027)",
-          "Status": attendance === 'accept' ? "Zusage ✨ (Teilnahme)" : "Absage 🤍",
-          "Name der Gäste": name,
-          "Anzahl Personen": attendance === 'accept' ? count : "0",
-          "Menü / Allergien": diet || "Keine besonderen Wünsche",
-          "Persönliche Nachricht": note || "Keine Nachricht",
-          "Eingereicht am": submittedAt
-        };
-
         await fetch('https://formsubmit.co/ajax/elia.innamorati@gmail.com', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
           body: JSON.stringify(payload)
         });
       } catch (err) {
-        console.error("Email delivery error:", err);
+        console.error("Delivery error:", err);
       }
 
       btn.disabled = false;
       btn.innerText = orig;
 
-      // 4. Show confirmation modal
+      // Show confirmation modal
       const modal = document.getElementById('rsvpModal');
       const mDesc = document.getElementById('mDesc');
       if (attendance === 'accept') {
         mDesc.innerHTML = activeLang === 'de'
-          ? `Liebe(r) <strong>${name}</strong>, deine Zusage wurde erfolgreich übermittelt! Wir freuen uns riesig auf das Fest mit dir in der Villa Honegg.`
-          : `Dear <strong>${name}</strong>, your RSVP has been received! We cannot wait to celebrate with you at Villa Honegg.`;
+          ? `Liebe(r) <strong>${name}</strong>, deine Zusage wurde erfolgreich an Elia & Daniel übermittelt! Wir freuen uns riesig auf das Fest mit dir in der Villa Honegg.`
+          : `Dear <strong>${name}</strong>, your RSVP has been sent directly to Elia & Daniel! We cannot wait to celebrate with you at Villa Honegg.`;
       } else {
         mDesc.innerHTML = activeLang === 'de'
           ? `Liebe(r) <strong>${name}</strong>, vielen Dank für deine Rückmeldung. Wir werden dich im Herzen dabeihaben!`
@@ -943,127 +906,10 @@
       modal.classList.add('open');
     }
 
-    async function openAdminModal() {
-      const modal = document.getElementById('adminModal');
-      const container = document.getElementById('adminTableContainer');
-      container.innerHTML = '<p style="padding: 2rem; text-align: center; color: var(--color-muted);">Lade aktuelle Gästeliste aus der Cloud...</p>';
-      modal.classList.add('open');
-
-      let list = [];
-      try {
-        const cloudGet = await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136');
-        if (cloudGet.ok) {
-          const cloudObj = await cloudGet.json();
-          list = cloudObj.data?.rsvps || [];
-        }
-      } catch (err) {
-        console.error("Could not fetch cloud list:", err);
-      }
-
-      if (list.length === 0) {
-        list = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-      }
-
-      if (list.length === 0) {
-        container.innerHTML = '<p style="padding: 2rem; text-align: center; color: var(--color-muted);">Noch keine Rückmeldungen vorhanden.</p>';
-      } else {
-        let rows = list.map((r, i) => `
-          <tr>
-            <td><strong>${r.guest || r.name || r.names || '-'}</strong></td>
-            <td><span style="color: ${r.status?.includes('Zusage') || r.status?.includes('SI') ? '#2e7d32' : '#c62828'}; font-weight: 500;">${r.status || r.attendance || '-'}</span></td>
-            <td>${r.count || r.guest_count || r.Personen || '1'}</td>
-            <td>${r.diet || r.dietary || r.dietary_requests || '-'}</td>
-            <td>${r.note || r.message || r.personal_message || '-'}</td>
-            <td><small style="color: #999;">${r.timestamp || r.submitted_at || r.Zeitpunkt || '-'}</small></td>
-          </tr>
-        `).join('');
-
-        container.innerHTML = `
-          <div style="overflow-x: auto;">
-            <table class="admin-table">
-              <thead>
-                <tr>
-                  <th>Gast</th>
-                  <th>Status</th>
-                  <th>Personen</th>
-                  <th>Menü / Allergien</th>
-                  <th>Nachricht</th>
-                  <th>Zeitpunkt</th>
-                </tr>
-              </thead>
-              <tbody>${rows}</tbody>
-            </table>
-          </div>
-        `;
-      }
+    function closeModal() {
+      document.getElementById('rsvpModal').classList.remove('open');
+      document.getElementById('weddingRsvpForm').reset();
+      pickAttendance('accept');
     }
 
-    async function exportAdminCSV() {
-      let list = [];
-      try {
-        const cloudGet = await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136');
-        if (cloudGet.ok) {
-          const cloudObj = await cloudGet.json();
-          list = cloudObj.data?.rsvps || [];
-        }
-      } catch (err) {
-        console.error("Could not fetch cloud list:", err);
-      }
-      if (list.length === 0) {
-        list = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-      }
-      if (list.length === 0) {
-        alert('Keine Einträge vorhanden.');
-        return;
-      }
-      const headers = ['Event', 'Gast', 'Status', 'Personen', 'Menü / Allergien', 'Nachricht', 'Zeitpunkt'];
-      const csvRows = [headers.join(',')];
-
-      list.forEach(r => {
-        const row = [
-          `"${(r.event || 'Hochzeit').replace(/"/g, '""')}"`,
-          `"${(r.guest || r.name || r.names || '').replace(/"/g, '""')}"`,
-          `"${(r.status || r.attendance || '').replace(/"/g, '""')}"`,
-          `"${(r.count || r.guest_count || r.Personen || '1')}"`,
-          `"${(r.diet || r.dietary || r.dietary_requests || '').replace(/"/g, '""')}"`,
-          `"${(r.note || r.message || r.personal_message || '').replace(/"/g, '""')}"`,
-          `"${(r.timestamp || r.submitted_at || r.Zeitpunkt || '')}"`
-        ];
-        csvRows.push(row.join(','));
-      });
-
-      const blob = new Blob([csvRows.join('\n')], { type: 'text/csv;charset=utf-8;' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.setAttribute('download', `Gaesteliste_Zivile_Trauung_${new Date().toISOString().slice(0,10)}.csv`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  </script>
-
-  <!-- Admin Guest List & CSV Export Modal -->
-  <div class="admin-modal" id="adminModal">
-    <div class="admin-box">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-        <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--color-dark);">Gästeliste & RSVPs</h3>
-        <button onclick="closeAdminModal()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-muted);">&times;</button>
-      </div>
-      <p style="font-size: 0.85rem; color: var(--color-muted);">Alle auf diesem Gerät und über das Formular gespeicherten Rückmeldungen.</p>
-      
-      <div id="adminTableContainer">
-        <p style="padding: 2rem; text-align: center; color: var(--color-muted);">Keine Rückmeldungen vorhanden.</p>
-      </div>
-
-      <div style="display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
-        <button class="btn btn-gold" onclick="exportAdminCSV()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-          Gästeliste als CSV herunterladen
-        </button>
-        <button class="btn btn-outline" onclick="closeAdminModal()">Schliessen</button>
-      </div>
-    </div>
-  </div>
-
-</body>
-</html>
+    

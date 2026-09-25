@@ -1096,7 +1096,7 @@
       document.documentElement.lang = lang;
     }
 
-        async function handleFaustoSubmit(e) {
+            async function handleFaustoSubmit(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button[type="submit"]');
       const origText = btn.innerHTML;
@@ -1109,69 +1109,31 @@
       const msg = document.getElementById('guestMessage').value;
       const submittedAt = new Date().toLocaleString('it-IT', { timeZone: 'Europe/Rome' });
 
-      const rsvpSummary = {
-        event: "Roma Wedding Weekend (16 - 18 Aprile 2027)",
-        guest: name,
-        welcome_dinner_ciampini: eventStates[1] ? 'SI (Partecipo)' : 'NO (Assente)',
-        wedding_ceremony_villa_aurelia: eventStates[2] ? 'SI (Partecipo)' : 'NO (Assente)',
-        farewell_brunch_hassler: eventStates[3] ? 'SI (Partecipo)' : 'NO (Assente)',
-        count: count,
-        diet: diet || 'Nessuna',
-        note: msg || 'Nessuno',
-        timestamp: submittedAt
+      const payload = {
+        _subject: `RSVP Roma: ${name} (Ciampini: ${eventStates[1]?'SI':'NO'} | Nozze: ${eventStates[2]?'SI':'NO'} | Brunch: ${eventStates[3]?'SI':'NO'})`,
+        _template: "table",
+        _captcha: "false",
+        "Ospite": name,
+        "1. Cena Ciampini (16 Apr)": eventStates[1] ? "SI (Partecipo)" : "NO (Assente)",
+        "2. Matrimonio Vaticano & Aurelia (17 Apr)": eventStates[2] ? "SI (Partecipo)" : "NO (Assente)",
+        "3. Brunch Hassler (18 Apr)": eventStates[3] ? "SI (Partecipo)" : "NO (Assente)",
+        "Numero Partecipanti": count,
+        "Dieta / Allergie": diet || "Nessuna",
+        "Messaggio": msg || "Nessuno",
+        "Eingereicht am": submittedAt
       };
 
-      // 1. Sync to Global Cloud Database
       try {
-        const cloudGet = await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136');
-        if (cloudGet.ok) {
-          const cloudObj = await cloudGet.json();
-          const rsvpsList = cloudObj.data?.rsvps || [];
-          rsvpsList.push(rsvpSummary);
-          await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136', {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: "Innamorati_Meister_Wedding_RSVPs",
-              data: { rsvps: rsvpsList }
-            })
-          });
-        }
-      } catch (err) {
-        console.error("Cloud DB sync error:", err);
-      }
-
-      // 2. Local storage backup
-      try {
-        const stored = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-        stored.push(rsvpSummary);
-        localStorage.setItem('wedding_rsvps', JSON.stringify(stored));
-      } catch (err) {
-        console.error(err);
-      }
-
-      // 3. FormSubmit email delivery
-      try {
-        const fd = new FormData();
-        fd.append('Ospite', rsvpSummary.guest);
-        fd.append('1. Cena Ciampini (16 Apr)', rsvpSummary.welcome_dinner_ciampini);
-        fd.append('2. Matrimonio Vaticano & Aurelia (17 Apr)', rsvpSummary.wedding_ceremony_villa_aurelia);
-        fd.append('3. Brunch Hassler (18 Apr)', rsvpSummary.farewell_brunch_hassler);
-        fd.append('Numero Ospiti', rsvpSummary.count);
-        fd.append('Dieta / Allergie', rsvpSummary.diet);
-        fd.append('Messaggio', rsvpSummary.note);
-        fd.append('Data Invio', rsvpSummary.timestamp);
-        fd.append('_subject', `RSVP Roma: ${name} (Ciampini: ${eventStates[1]?'SI':'NO'} | Nozze: ${eventStates[2]?'SI':'NO'} | Brunch: ${eventStates[3]?'SI':'NO'})`);
-        fd.append('_template', 'table');
-        fd.append('_captcha', 'false');
-
         await fetch('https://formsubmit.co/ajax/elia.innamorati@gmail.com', {
           method: 'POST',
-          body: fd,
-          headers: { 'Accept': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
         });
       } catch (err) {
-        console.error(err);
+        console.error("Email delivery error:", err);
       }
 
       btn.disabled = false;
