@@ -848,7 +848,7 @@
       }
     }
 
-    async function submitRSVP(e) {
+        async function submitRSVP(e) {
       e.preventDefault();
       const btn = e.target.querySelector('button[type="submit"]');
       const orig = btn.innerText;
@@ -862,55 +862,73 @@
       const note = document.getElementById('guestNote').value;
       const submittedAt = new Date().toLocaleString('de-CH', { timeZone: 'Europe/Zurich' });
 
-      const payload = {
-        _subject: `RSVP Villa Honegg: ${name} (${attendance === 'accept' ? 'Zusage ✨' : 'Absage 🤍'})`,
-        _template: "table",
-        _captcha: "false",
-        "Event": "Hochzeitsfeier Villa Honegg (18. Februar 2027)",
-        "Status": attendance === 'accept' ? "Zusage ✨ (Teilnahme)" : "Absage 🤍",
-        "Name der Gäste": name,
-        "Anzahl Personen": attendance === 'accept' ? count : "0",
-        "Menü / Allergien": diet || "Keine besonderen Wünsche / Normal",
-        "Persönliche Nachricht": note || "Keine Nachricht",
-        "Eingereicht am": submittedAt
+      const newEntry = {
+        event: "Zivile Hochzeit Villa Honegg (18. Feb 2027)",
+        guest: name,
+        status: attendance === 'accept' ? "Zusage ✨" : "Absage 🤍",
+        count: attendance === 'accept' ? count : "0",
+        diet: diet || "Keine",
+        note: note || "Keine",
+        timestamp: submittedAt
       };
 
-      // 1. Save to LocalStorage immediately so data is never lost
+      // 1. Sync to Global Cloud Database (so responses from all phones/devices are collected)
+      try {
+        const cloudGet = await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136');
+        if (cloudGet.ok) {
+          const cloudObj = await cloudGet.json();
+          const rsvpsList = cloudObj.data?.rsvps || [];
+          rsvpsList.push(newEntry);
+          await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: "Innamorati_Meister_Wedding_RSVPs",
+              data: { rsvps: rsvpsList }
+            })
+          });
+        }
+      } catch (err) {
+        console.error("Cloud DB sync error:", err);
+      }
+
+      // 2. Backup to LocalStorage
       try {
         const stored = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-        stored.push({
-          name: name,
-          status: attendance === 'accept' ? 'Zusage' : 'Absage',
-          count: attendance === 'accept' ? count : '0',
-          diet: diet || 'Keine',
-          note: note || 'Keine',
-          timestamp: submittedAt
-        });
+        stored.push(newEntry);
         localStorage.setItem('wedding_rsvps', JSON.stringify(stored));
       } catch (err) {
         console.error("Storage error:", err);
       }
 
-      // 2. Deliver to FormSubmit via JSON POST
+      // 3. Deliver to FormSubmit email
       try {
-        const res = await fetch('https://formsubmit.co/ajax/elia.innamorati@gmail.com', {
+        const payload = {
+          _subject: `RSVP Villa Honegg: ${name} (${attendance === 'accept' ? 'Zusage ✨' : 'Absage 🤍'})`,
+          _template: "table",
+          _captcha: "false",
+          "Event": "Hochzeitsfeier Villa Honegg (18. Februar 2027)",
+          "Status": attendance === 'accept' ? "Zusage ✨ (Teilnahme)" : "Absage 🤍",
+          "Name der Gäste": name,
+          "Anzahl Personen": attendance === 'accept' ? count : "0",
+          "Menü / Allergien": diet || "Keine besonderen Wünsche",
+          "Persönliche Nachricht": note || "Keine Nachricht",
+          "Eingereicht am": submittedAt
+        };
+
+        await fetch('https://formsubmit.co/ajax/elia.innamorati@gmail.com', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload)
         });
-        const resData = await res.json();
-        console.log("FormSubmit response:", resData);
       } catch (err) {
-        console.error("Delivery error:", err);
+        console.error("Email delivery error:", err);
       }
 
       btn.disabled = false;
       btn.innerText = orig;
 
-      // 3. Show confirmation modal
+      // 4. Show confirmation modal
       const modal = document.getElementById('rsvpModal');
       const mDesc = document.getElementById('mDesc');
       if (attendance === 'accept') {
@@ -925,69 +943,34 @@
       modal.classList.add('open');
     }
 
-    function closeModal() {
-      document.getElementById('rsvpModal').classList.remove('open');
-      document.getElementById('weddingRsvpForm').reset();
-      pickAttendance('accept');
-    }
-
-    function downloadICS() {
-      const ics = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Elia and Daniel//Civil Wedding//DE',
-        'CALSCALE:GREGORIAN',
-        'METHOD:PUBLISH',
-        'BEGIN:VEVENT',
-        'UID:elia-daniel-villa-honegg-20270218@innamorati-meister.com',
-        'DTSTAMP:20260925T100000Z',
-        'DTSTART:20270218T113000Z',
-        'DTEND:20270218T180000Z',
-        'SUMMARY:Hochzeitsfeier: Elia & Daniel (Villa Honegg)',
-        'DESCRIPTION:Hochzeitsfeier von Elia & Daniel in der Villa Honegg, Ennetbürgen.\\nBeginn: 12:30 Uhr\\nhttps://innamorati-meister.com/hochzeit',
-        'LOCATION:Hotel Villa Honegg, Honegg, 6373 Ennetbürgen, Schweiz',
-        'STATUS:CONFIRMED',
-        'END:VEVENT',
-        'END:VCALENDAR'
-      ].join('\r\n');
-
-      const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-      const a = document.createElement('a');
-      a.href = window.URL.createObjectURL(blob);
-      a.setAttribute('download', 'Elia_Daniel_Zivile_Trauung.ics');
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-    }
-  
-    // Admin Guest List Modal Logic (Triggered via URL ?admin=1 or 3 clicks on the monogram)
-    let logoClicks = 0;
-    document.querySelectorAll('.brand-monogram, .nav-monogram').forEach(el => {
-      el.addEventListener('click', () => {
-        logoClicks++;
-        if (logoClicks >= 3) {
-          openAdminModal();
-          logoClicks = 0;
-        }
-      });
-    });
-
-    if (window.location.search.includes('admin') || window.location.search.includes('guestlist')) {
-      setTimeout(openAdminModal, 500);
-    }
-
-    function openAdminModal() {
+    async function openAdminModal() {
       const modal = document.getElementById('adminModal');
       const container = document.getElementById('adminTableContainer');
-      const stored = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
+      container.innerHTML = '<p style="padding: 2rem; text-align: center; color: var(--color-muted);">Lade aktuelle Gästeliste aus der Cloud...</p>';
+      modal.classList.add('open');
 
-      if (stored.length === 0) {
-        container.innerHTML = '<p style="padding: 2rem; text-align: center; color: var(--color-muted);">Noch keine lokalen Rückmeldungen erfasst.</p>';
+      let list = [];
+      try {
+        const cloudGet = await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136');
+        if (cloudGet.ok) {
+          const cloudObj = await cloudGet.json();
+          list = cloudObj.data?.rsvps || [];
+        }
+      } catch (err) {
+        console.error("Could not fetch cloud list:", err);
+      }
+
+      if (list.length === 0) {
+        list = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = '<p style="padding: 2rem; text-align: center; color: var(--color-muted);">Noch keine Rückmeldungen vorhanden.</p>';
       } else {
-        let rows = stored.map((r, i) => `
+        let rows = list.map((r, i) => `
           <tr>
-            <td><strong>${r.name || r.names || '-'}</strong></td>
-            <td><span style="color: ${r.status?.includes('Zusage') ? '#2e7d32' : '#c62828'}; font-weight: 500;">${r.status || r.attendance}</span></td>
+            <td><strong>${r.guest || r.name || r.names || '-'}</strong></td>
+            <td><span style="color: ${r.status?.includes('Zusage') || r.status?.includes('SI') ? '#2e7d32' : '#c62828'}; font-weight: 500;">${r.status || r.attendance || '-'}</span></td>
             <td>${r.count || r.guest_count || r.Personen || '1'}</td>
             <td>${r.diet || r.dietary || r.dietary_requests || '-'}</td>
             <td>${r.note || r.message || r.personal_message || '-'}</td>
@@ -1013,25 +996,33 @@
           </div>
         `;
       }
-      modal.classList.add('open');
     }
 
-    function closeAdminModal() {
-      document.getElementById('adminModal').classList.remove('open');
-    }
-
-    function exportAdminCSV() {
-      const stored = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-      if (stored.length === 0) {
+    async function exportAdminCSV() {
+      let list = [];
+      try {
+        const cloudGet = await fetch('https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136');
+        if (cloudGet.ok) {
+          const cloudObj = await cloudGet.json();
+          list = cloudObj.data?.rsvps || [];
+        }
+      } catch (err) {
+        console.error("Could not fetch cloud list:", err);
+      }
+      if (list.length === 0) {
+        list = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
+      }
+      if (list.length === 0) {
         alert('Keine Einträge vorhanden.');
         return;
       }
-      const headers = ['Gast', 'Status', 'Personen', 'Menü / Allergien', 'Nachricht', 'Zeitpunkt'];
+      const headers = ['Event', 'Gast', 'Status', 'Personen', 'Menü / Allergien', 'Nachricht', 'Zeitpunkt'];
       const csvRows = [headers.join(',')];
 
-      stored.forEach(r => {
+      list.forEach(r => {
         const row = [
-          `"${(r.name || r.names || '').replace(/"/g, '""')}"`,
+          `"${(r.event || 'Hochzeit').replace(/"/g, '""')}"`,
+          `"${(r.guest || r.name || r.names || '').replace(/"/g, '""')}"`,
           `"${(r.status || r.attendance || '').replace(/"/g, '""')}"`,
           `"${(r.count || r.guest_count || r.Personen || '1')}"`,
           `"${(r.diet || r.dietary || r.dietary_requests || '').replace(/"/g, '""')}"`,
@@ -1049,7 +1040,6 @@
       link.click();
       document.body.removeChild(link);
     }
-
   </script>
 
   <!-- Admin Guest List & CSV Export Modal -->
