@@ -12,10 +12,11 @@
   <meta property="og:url" content="https://innamorati-meister.com/fausto">
   <meta property="og:type" content="website">
 
-  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel="icon" type="image/svg+xml" href="/heart.svg" onerror="this.href='heart.svg'">
+  <link rel="alternate icon" type="image/svg+xml" href="heart.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Great+Vibes&family=Inter:wght@200;300;400;500;600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Great+Vibes&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
   
   <style>
     @font-face {
@@ -29,28 +30,20 @@
 
     :root {
       --font-serif: 'Cormorant Garamond', Georgia, serif;
-      --font-script: 'Mozart Script Thin', cursive;
+      --font-script: 'Mozart Script Thin', 'Great Vibes', cursive;
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       
       --color-white: #FFFFFF;
-      --color-cream: #FCFAF7;
-      --color-bg: #F7F4EE;
-      --color-bg-alt: #F2ECE2;
-      --color-surface: #FFFFFF;
+      --color-bg: #F9F7F2;
+      --color-bg-subtle: #F4F0E8;
       --color-dark: #1A1918;
-      --color-charcoal: #2C2A29;
-      --color-muted: #7A756F;
+      --color-charcoal: #2E2B29;
+      --color-muted: #7E7870;
       --color-gold: #BFA175;
       --color-gold-hover: #9E825A;
-      --color-gold-light: #F7F1E8;
-      --color-gold-border: rgba(191, 161, 117, 0.4);
-      --color-border: #E8E2D8;
-      --color-border-light: #F0EAE0;
-      
-      --shadow-subtle: 0 4px 25px rgba(0, 0, 0, 0.03);
-      --shadow-card: 0 15px 45px rgba(26, 25, 24, 0.05);
-      --shadow-hover: 0 25px 60px rgba(191, 161, 117, 0.16);
-      --shadow-frame: 0 14px 40px rgba(0, 0, 0, 0.09);
+      --color-gold-tint: rgba(191, 161, 117, 0.12);
+      --color-hairline: rgba(191, 161, 117, 0.3);
+      --color-border-subtle: #E8E2D8;
     }
 
     * {
@@ -67,7 +60,7 @@
       background-color: var(--color-bg);
       color: var(--color-charcoal);
       font-family: var(--font-sans);
-      line-height: 1.65;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
@@ -104,48 +97,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at center, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.6) 100%);
+      background: radial-gradient(circle at center, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.62) 100%);
       z-index: 2;
-    }
-
-    .top-bar {
-      position: absolute;
-      top: 2.2rem;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      z-index: 10;
-      color: #ffffff;
-      font-family: var(--font-sans);
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-      font-weight: 300;
-      opacity: 0.95;
-    }
-
-    .coordinates-bar {
-      position: absolute;
-      top: 2.2rem;
-      left: 0;
-      width: 100%;
-      z-index: 10;
-      color: #ffffff;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding: 0 3.5rem;
-      box-sizing: border-box;
-      pointer-events: none;
-    }
-
-    .coords {
-      font-family: var(--font-sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.22em;
-      opacity: 0.85;
-      text-transform: uppercase;
-      font-weight: 300;
     }
 
     .hero-content {
@@ -160,7 +113,7 @@
     }
 
     .h1-mega {
-      font-size: clamp(3.8rem, 9.5vw, 6.8rem);
+      font-size: clamp(4rem, 10vw, 7.2rem);
       font-family: var(--font-script);
       font-weight: normal;
       line-height: 1.05;
@@ -173,7 +126,7 @@
     .location-text {
       font-family: var(--font-sans);
       font-size: 0.85rem;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: rgba(255, 255, 255, 0.92);
       margin-bottom: 0.4rem;
@@ -183,27 +136,27 @@
     .hero-date {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       color: rgba(255, 255, 255, 0.95);
       letter-spacing: 0.04em;
     }
 
     .scroll-down {
       position: absolute;
-      bottom: 2.2rem;
+      bottom: 2.4rem;
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
       color: rgba(255, 255, 255, 0.85);
       font-family: var(--font-sans);
       font-size: 0.72rem;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.5rem;
       transition: all 0.3s ease;
       font-weight: 300;
     }
@@ -213,580 +166,463 @@
       transform: translate(-50%, 3px);
     }
 
-    /* Page Content Styling */
+    /* Page Content Structure */
     .page-body {
       position: relative;
       z-index: 20;
       background-color: var(--color-bg);
     }
 
-    .container {
-      max-width: 1240px;
+    /* Personal Welcome Letterhead */
+    .welcome-editorial {
+      padding: 9rem 2rem 7rem;
+      max-width: 820px;
       margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* Personal Welcome Section */
-    .welcome-section {
-      padding: 6.5rem 1.5rem 5rem;
-      background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-cream) 100%);
-    }
-
-    .card-editorial {
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
-      padding: 5rem 4rem;
-      box-shadow: var(--shadow-card);
       text-align: center;
-      max-width: 880px;
-      margin: 0 auto;
-      position: relative;
     }
 
-    .card-editorial::before {
-      content: "";
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      border: 1px solid var(--color-gold-border);
-      pointer-events: none;
-      border-radius: 2px;
-    }
-
-    .letter-eyebrow {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-      font-weight: 500;
-      margin-bottom: 1.2rem;
-    }
-
-    .letter-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.3rem, 4vw, 3.2rem);
-      font-weight: 400;
-      font-style: italic;
+    .welcome-title {
+      font-family: 'Mozart Script Thin', 'Great Vibes', cursive;
+      font-size: clamp(2.8rem, 4.2vw, 3.6rem);
+      font-weight: normal;
+      line-height: 1.25;
       color: var(--color-dark);
       margin-bottom: 1.8rem;
-      letter-spacing: -0.01em;
+      letter-spacing: normal;
     }
 
-    .letter-text {
+    .welcome-text {
       font-family: var(--font-serif);
-      font-size: 1.35rem;
-      line-height: 1.95;
+      font-size: clamp(1.35rem, 2vw, 1.55rem);
+      line-height: 2;
       color: var(--color-charcoal);
       font-weight: 300;
-      max-width: 700px;
-      margin: 0 auto 2.8rem;
+      margin: 0 auto 3rem;
+      max-width: 720px;
     }
 
-    .letter-sig {
+    .welcome-sig {
       font-family: var(--font-script);
-      font-size: 3.6rem;
+      font-size: 4rem;
       color: var(--color-gold);
       line-height: 1;
     }
 
-    /* Full-Page Day Sections */
-    .day-section {
+    .editorial-divider {
+      width: 1px;
+      height: 70px;
+      background: var(--color-gold);
+      opacity: 0.4;
+      margin: 5rem auto 0;
+    }
+
+    /* Full-Screen Centered Day Sections (No side images, Gold venue icon at top) */
+    .day-spread {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 6.5rem 0;
-      border-top: 1px solid var(--color-border);
-      position: relative;
-    }
-
-    .day-section:nth-child(even) {
-      background-color: var(--color-cream);
-    }
-
-    .day-section:nth-child(odd) {
-      background-color: var(--color-bg);
-    }
-
-    .day-header-badge {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 4rem;
+      padding: 7.5rem 2rem;
+      position: relative;
+      border-top: 1px solid var(--color-border-subtle);
+    }
+
+    .day-spread:nth-of-type(even) {
+      background-color: var(--color-bg-subtle);
+    }
+
+    .day-container-centered {
+      max-width: 760px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Small Gold Venue Icon */
+    .venue-gold-icon {
+      width: 38px;
+      height: 38px;
+      margin-bottom: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+    }
+
+    .venue-gold-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--color-gold);
+      stroke-width: 1.1;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .day-main-title {
+      font-family: var(--font-script);
+      font-size: clamp(2.2rem, 3.2vw, 2.9rem);
+      font-weight: normal;
+      line-height: 1.25;
+      color: var(--color-dark);
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      letter-spacing: normal;
+    }
+
+    .day-date-sub {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--color-muted);
+      margin-bottom: 2rem;
+    }
+
+    .day-prose {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      line-height: 1.95;
+      color: var(--color-charcoal);
+      font-weight: 300;
+      margin-bottom: 2.8rem;
+      max-width: 660px;
+    }
+
+    /* Schedule / Specifics Timeline (Minimalist Centered) */
+    .schedule-block-centered {
+      border-top: 1px solid var(--color-hairline);
+      padding-top: 2.2rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .schedule-entry-centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
     }
 
-    .day-badge-line {
-      height: 1px;
-      width: 70px;
-      background: var(--color-gold);
-      opacity: 0.5;
-    }
-
-    .day-badge-text {
+    .schedule-time {
       font-family: var(--font-sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.3em;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--color-gold);
       font-weight: 600;
-    }
-
-    /* Two-Column Day Layout */
-    .day-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 1fr;
-      gap: 4.5rem;
-      align-items: start;
-    }
-
-    /* Left Visual Column: Watercolor Artwork & Attire Preview */
-    .day-visual-col {
-      display: flex;
-      flex-direction: column;
-      gap: 2.2rem;
-    }
-
-    .watercolor-frame-container {
-      position: relative;
-      background: var(--color-white);
-      padding: 1.3rem;
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
-      box-shadow: var(--shadow-frame);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-    }
-
-    .watercolor-frame-container:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-hover);
-    }
-
-    .watercolor-inner-mat {
-      background: #faf8f5;
-      padding: 0.9rem;
-      border: 1px solid var(--color-gold-border);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .watercolor-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 2px;
-      transition: transform 0.4s ease;
-    }
-
-    .watercolor-frame-container:hover .watercolor-img {
-      transform: scale(1.02);
-    }
-
-    .artwork-caption-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1rem;
-      padding: 0 0.4rem;
-    }
-
-    .artwork-title {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--color-dark);
-    }
-
-    .artwork-zoom-hint {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    /* Attire Box Component */
-    .attire-card {
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
-      padding: 2.2rem;
-      box-shadow: var(--shadow-subtle);
-      position: relative;
-    }
-
-    .attire-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1rem;
-      padding-bottom: 0.8rem;
-      border-bottom: 1px solid var(--color-border-light);
-    }
-
-    .attire-tag {
-      font-family: var(--font-sans);
-      font-size: 0.72rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-      font-weight: 600;
-    }
-
-    .attire-title {
-      font-family: var(--font-serif);
-      font-size: 1.6rem;
-      font-weight: 500;
-      color: var(--color-dark);
-      margin-bottom: 0.6rem;
-    }
-
-    .attire-desc {
-      font-family: var(--font-sans);
-      font-size: 0.88rem;
-      line-height: 1.7;
-      color: var(--color-charcoal);
-      margin-bottom: 1.4rem;
-    }
-
-    .attire-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--color-gold-light);
-      border: 1px solid var(--color-gold-border);
-      color: var(--color-charcoal);
-      font-family: var(--font-sans);
-      font-size: 0.74rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      font-weight: 600;
-      padding: 0.8rem 1.5rem;
-      border-radius: 3px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    .attire-btn:hover {
-      background: var(--color-gold);
-      color: #ffffff;
-      border-color: var(--color-gold);
-    }
-
-    /* Right Column: Program Specifics & Timeline */
-    .day-info-col {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .day-date-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.4rem, 4vw, 3.3rem);
-      font-weight: 400;
-      line-height: 1.15;
-      color: var(--color-dark);
       margin-bottom: 0.4rem;
     }
 
-    .day-subtitle {
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--color-gold);
-      font-weight: 600;
-      margin-bottom: 1.8rem;
-    }
-
-    .day-overview-text {
+    .schedule-info h4 {
       font-family: var(--font-serif);
-      font-size: 1.25rem;
-      line-height: 1.8;
+      font-size: 1.55rem;
+      font-weight: 500;
+      color: var(--color-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .schedule-location {
+      font-family: var(--font-sans);
+      font-size: 0.84rem;
+      color: var(--color-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .schedule-desc {
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+      line-height: 1.7;
       color: var(--color-charcoal);
-      margin-bottom: 2.2rem;
-      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    /* Event Itinerary Blocks */
-    .itinerary-timeline {
+    .schedule-links {
       display: flex;
-      flex-direction: column;
-      gap: 1.8rem;
-      margin-bottom: 2.5rem;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
     }
 
-    .timeline-item {
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-left: 3px solid var(--color-gold);
-      border-radius: 0 4px 4px 0;
-      padding: 1.8rem;
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .timeline-time-badge {
+    .inline-map-link {
       font-family: var(--font-sans);
       font-size: 0.74rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--color-gold);
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .timeline-event-name {
-      font-family: var(--font-serif);
-      font-size: 1.55rem;
-      font-weight: 500;
-      color: var(--color-dark);
-      margin-bottom: 0.4rem;
-    }
-
-    .timeline-location {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
-      color: var(--color-muted);
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .timeline-details {
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: var(--color-charcoal);
-    }
-
-    .location-actions {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
-      margin-top: 1.2rem;
-    }
-
-    .action-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: var(--font-sans);
-      font-size: 0.74rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--color-gold);
       text-decoration: none;
       font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
       transition: all 0.2s ease;
     }
 
-    .action-link:hover {
+    .inline-map-link:hover {
       color: var(--color-gold-hover);
       transform: translateX(3px);
     }
 
-    /* RSVP Box Section */
-    .rsvp-section {
-      padding: 7rem 0 8rem;
-      background: var(--color-cream);
-      border-top: 1px solid var(--color-border);
+    /* Attire Editorial Section (Centered) */
+    .attire-editorial-centered {
+      border-top: 1px solid var(--color-hairline);
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.6rem;
+      width: 100%;
     }
 
-    .rsvp-box {
-      background: var(--color-white);
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
-      padding: 4.5rem 3.5rem;
-      box-shadow: var(--shadow-card);
-      max-width: 820px;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    .rsvp-box::before {
-      content: "";
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      border: 1px solid var(--color-gold-border);
-      pointer-events: none;
-      border-radius: 2px;
-    }
-
-    .rsvp-eyebrow {
+    .attire-label {
       font-family: var(--font-sans);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 0.26em;
       text-transform: uppercase;
       color: var(--color-gold);
-      font-weight: 500;
-      text-align: center;
-      margin-bottom: 0.6rem;
+      font-weight: 600;
     }
 
-    .rsvp-heading {
+    .attire-theme-name {
       font-family: var(--font-serif);
-      font-size: 2.5rem;
-      font-weight: 400;
+      font-size: 1.55rem;
+      font-weight: 500;
       color: var(--color-dark);
-      text-align: center;
-      margin-bottom: 0.8rem;
     }
 
-    .rsvp-subtext {
-      text-align: center;
+    .attire-summary-text {
       font-family: var(--font-sans);
       font-size: 0.92rem;
-      color: var(--color-muted);
-      margin: 0 auto 3rem;
-      max-width: 520px;
+      line-height: 1.7;
+      color: var(--color-charcoal);
+      max-width: 580px;
     }
 
-    .event-check-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .event-check-row {
-      background: var(--color-cream);
-      border: 1px solid var(--color-border-light);
-      border-radius: 4px;
-      padding: 1.4rem 1.8rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .event-check-name {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: var(--color-dark);
-    }
-
-    .event-check-sub {
-      font-family: var(--font-sans);
-      font-size: 0.78rem;
-      color: var(--color-muted);
-      margin-top: 0.2rem;
-      letter-spacing: 0.05em;
-    }
-
-    .toggle-group {
+    .attire-lookbook-link {
       display: inline-flex;
-      background: #eeeae4;
-      padding: 3px;
-      border-radius: 3px;
-      gap: 3px;
-    }
-
-    .toggle-btn {
-      padding: 0.55rem 1.2rem;
+      align-items: center;
+      gap: 0.6rem;
       font-family: var(--font-sans);
-      font-size: 0.74rem;
-      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      font-weight: 500;
+      color: var(--color-dark);
+      background: none;
       border: none;
-      background: transparent;
-      color: #666;
+      border-bottom: 1px solid var(--color-gold);
+      padding-bottom: 0.3rem;
+      font-weight: 600;
       cursor: pointer;
-      border-radius: 2px;
+      margin-top: 0.8rem;
       transition: all 0.2s ease;
     }
 
-    .toggle-btn.active-yes {
+    .attire-lookbook-link:hover {
+      color: var(--color-gold);
+      border-bottom-color: var(--color-gold-hover);
+      transform: translateX(4px);
+    }
+
+    /* RSVP Section — Authentic Italian Letterpress Stationery */
+    .rsvp-editorial-section {
+      scroll-margin-top: 5rem;
+      padding: 8rem 2rem 10rem;
+      max-width: 740px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .rsvp-headline {
+      font-family: 'Mozart Script Thin', 'Great Vibes', cursive;
+      font-size: clamp(2.4rem, 3.6vw, 3.2rem);
+      font-weight: normal;
+      color: var(--color-dark);
+      margin-top: 0.5rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: normal;
+      line-height: 1.35;
+    }
+
+    .rsvp-lead {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-style: italic;
+      color: var(--color-muted);
+      margin-bottom: 3.5rem;
+    }
+
+    .stationery-form {
+      text-align: left;
+    }
+
+    .stationery-event-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .stationery-event-card {
+      border-bottom: 1px solid var(--color-hairline);
+      padding-bottom: 1.8rem;
+    }
+
+    .stationery-event-header {
+      margin-bottom: 1rem;
+    }
+
+    .stationery-event-name {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--color-dark);
+    }
+
+    .stationery-event-date {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      letter-spacing: 0.06em;
+      margin-top: 0.2rem;
+    }
+
+    .stationery-options {
+      display: flex;
+      gap: 2.2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .stationery-radio-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .stationery-radio-label input[type="radio"] {
+      display: none;
+    }
+
+    .radio-circle {
+      width: 17px;
+      height: 17px;
+      border: 1px solid var(--color-gold);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      background: transparent;
+      flex-shrink: 0;
+    }
+
+    .radio-circle::after {
+      content: "";
+      width: 7px;
+      height: 7px;
       background: var(--color-gold);
-      color: #ffffff;
-      font-weight: 600;
-      box-shadow: 0 2px 8px rgba(191, 161, 117, 0.4);
+      border-radius: 50%;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.2s ease;
     }
 
-    .toggle-btn.active-no {
-      background: #888480;
-      color: #ffffff;
-      font-weight: 600;
+    .stationery-radio-label input[type="radio"]:checked + .radio-circle::after {
+      opacity: 1;
+      transform: scale(1);
     }
 
-    .form-group {
-      margin-bottom: 1.8rem;
+    .stationery-radio-label input[type="radio"]:checked + .radio-circle {
+      border-color: var(--color-gold-hover);
+      box-shadow: 0 0 0 1px var(--color-gold);
     }
 
-    .form-label {
-      display: block;
-      font-family: var(--font-sans);
-      font-size: 0.74rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
+    .radio-text {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
       color: var(--color-charcoal);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
+      transition: color 0.2s ease;
     }
 
-    .form-input, .form-textarea {
+    .stationery-radio-label input[type="radio"]:checked ~ .radio-text {
+      color: var(--color-dark);
+      font-weight: 500;
+    }
+
+    /* Handwritten / Letterpress Baseline Fields */
+    .stationery-input-group {
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .stationery-input-label {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--color-muted);
+    }
+
+    .stationery-line-input {
       width: 100%;
-      padding: 1rem 1.2rem;
-      background: var(--color-cream);
-      border: 1px solid var(--color-border);
-      border-radius: 3px;
-      font-family: var(--font-sans);
-      font-size: 0.92rem;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--color-gold);
+      padding: 0.6rem 0;
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
       color: var(--color-dark);
       outline: none;
-      transition: border-color 0.2s ease, background 0.2s ease;
+      transition: border-color 0.25s ease;
     }
 
-    .form-input:focus, .form-textarea:focus {
-      border-color: var(--color-gold);
-      background: #ffffff;
+    .stationery-line-input:focus {
+      border-bottom-color: var(--color-dark);
     }
 
-    .btn-submit {
-      width: 100%;
-      padding: 1.25rem;
+    .stationery-submit-btn {
+      margin: 3rem auto 0;
+      display: block;
       background: var(--color-gold);
       color: #ffffff;
-      border: none;
-      border-radius: 3px;
+      border: 1px solid var(--color-gold);
+      padding: 1.1rem 3rem;
       font-family: var(--font-sans);
-      font-size: 0.82rem;
-      letter-spacing: 0.2em;
+      font-size: 0.78rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-      margin-top: 1rem;
+      transition: all 0.3s ease;
     }
 
-    .btn-submit:hover {
+    .stationery-submit-btn:hover {
       background: var(--color-gold-hover);
+      border-color: var(--color-gold-hover);
       transform: translateY(-2px);
     }
 
-    /* Modals (Attire Moodboard, Image Lightbox, RSVP Confirmation) */
-    .modal-backdrop {
+    /* Lookbook Modal */
+    .modal-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(18, 17, 16, 0.75);
-      backdrop-filter: blur(6px);
+      background: rgba(18, 17, 16, 0.85);
+      backdrop-filter: blur(8px);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -794,240 +630,187 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.3s ease;
-      padding: 1.5rem;
+      padding: 2rem;
     }
 
-    .modal-backdrop.open {
+    .modal-overlay.open {
       opacity: 1;
       pointer-events: auto;
     }
 
-    .modal-box {
-      background: #ffffff;
-      border: 1px solid var(--color-border);
-      border-radius: 4px;
-      padding: 3rem;
+    .lookbook-modal-content {
+      background: var(--color-bg);
       max-width: 680px;
       width: 100%;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      padding: 3rem 2.8rem;
       position: relative;
       max-height: 90vh;
       overflow-y: auto;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
     }
 
-    .modal-close-icon {
+    .lookbook-close {
       position: absolute;
       top: 1.5rem;
       right: 1.5rem;
-      background: #f3efe8;
+      background: transparent;
       border: none;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      line-height: 1;
+      font-size: 1.6rem;
       color: var(--color-dark);
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s ease;
+      line-height: 1;
+      padding: 0.4rem;
     }
 
-    .modal-close-icon:hover {
-      background: var(--color-gold);
-      color: #ffffff;
-    }
-
-    .moodboard-modal-img {
+    .lookbook-img {
       width: 100%;
       height: auto;
-      border-radius: 3px;
-      border: 1px solid var(--color-border);
-      margin-bottom: 1.8rem;
+      display: block;
+      margin-bottom: 2rem;
+      filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.08));
     }
 
-    .moodboard-title {
-      font-family: var(--font-serif);
-      font-size: 2rem;
-      color: var(--color-dark);
-      margin-bottom: 0.6rem;
-    }
-
-    .moodboard-subtitle {
+    .lookbook-tag {
       font-family: var(--font-sans);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--color-gold);
-      margin-bottom: 1.2rem;
       font-weight: 600;
+      margin-bottom: 0.4rem;
     }
 
-    .moodboard-notes {
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: var(--color-charcoal);
-      margin-bottom: 1.5rem;
+    .lookbook-title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: var(--color-dark);
+      margin-bottom: 1.2rem;
     }
 
-    .palette-swatches {
+    .lookbook-palette {
       display: flex;
-      gap: 0.8rem;
-      margin-bottom: 1.5rem;
+      gap: 1rem;
+      margin-bottom: 1.6rem;
       flex-wrap: wrap;
     }
 
-    .swatch {
+    .lookbook-swatch {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       font-family: var(--font-sans);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       color: var(--color-muted);
     }
 
-    .swatch-color {
-      width: 22px;
-      height: 22px;
+    .swatch-dot {
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       border: 1px solid rgba(0, 0, 0, 0.1);
     }
 
-    /* Lightbox Modal for Artworks */
-    .lightbox-modal .modal-box {
-      max-width: 900px;
-      padding: 2rem;
-      background: #FAF8F5;
-      text-align: center;
-    }
-
-    .lightbox-img {
-      width: 100%;
-      max-height: 75vh;
-      object-fit: contain;
-      border-radius: 2px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-    }
-
-    .lightbox-caption {
+    .lookbook-text {
       font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-style: italic;
-      color: var(--color-dark);
-      margin-top: 1.2rem;
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--color-charcoal);
+      margin-bottom: 2rem;
     }
 
-    /* Footer */
-    footer {
-      background: #111111;
-      color: rgba(255, 255, 255, 0.5);
+    /* Confirmation Dialog */
+    .confirmation-box {
+      background: var(--color-bg);
+      max-width: 480px;
+      width: 100%;
+      padding: 3.5rem 2.5rem;
       text-align: center;
-      padding: 3.5rem 1.5rem;
-      font-family: var(--font-sans);
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
     }
 
-    /* Responsive Breakpoints */
-    @media (max-width: 992px) {
-      .day-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-      .day-section {
-        min-height: auto;
-        padding: 5rem 0;
-      }
-      .day-header-badge {
-        margin-bottom: 2.5rem;
-      }
-      .coordinates-bar {
-        padding: 0 2rem;
-      }
-    }
-
+    /* Responsive */
     @media (max-width: 768px) {
-      .coordinates-bar {
-        padding: 0 1.2rem;
+      .welcome-editorial {
+        padding: 6rem 1.5rem 4rem;
       }
-      .coords {
-        font-size: 0.68rem;
+      .welcome-sig {
+        font-size: 3.2rem;
       }
-      .welcome-section {
-        padding: 4rem 1rem 3rem;
+      .day-spread {
+        padding: 5rem 1.5rem;
       }
-      .card-editorial {
-        padding: 3.5rem 1.5rem;
-      }
-      .card-editorial::before {
-        top: 8px;
-        left: 8px;
-        right: 8px;
-        bottom: 8px;
-      }
-      .letter-title {
-        font-size: 2.2rem;
-      }
-      .letter-text {
-        font-size: 1.15rem;
-      }
-      .letter-sig {
-        font-size: 2.8rem;
-      }
-      .day-date-title {
-        font-size: 2.2rem;
-      }
-      .day-overview-text {
-        font-size: 1.1rem;
-      }
-      .attire-card {
-        padding: 1.8rem 1.4rem;
-      }
-      .rsvp-box {
-        padding: 3.5rem 1.5rem;
-      }
-      .rsvp-box::before {
-        top: 8px;
-        left: 8px;
-        right: 8px;
-        bottom: 8px;
-      }
-      .event-check-row {
+      .rsvp-item-row {
         flex-direction: column;
-        text-align: center;
-        gap: 1.2rem;
+        align-items: flex-start;
+        gap: 1rem;
       }
-      .modal-box {
-        padding: 2rem 1.5rem;
+      .lookbook-modal-content {
+        padding: 2.2rem 1.5rem;
       }
     }
+  
+    /* Luxury Reveal & Loading Animations */
+    @keyframes luxuryFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes luxuryFade {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .hero-content .h1-mega {
+      opacity: 0;
+      animation: luxuryFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+    }
+
+    .hero-content .location-text {
+      opacity: 0;
+      animation: luxuryFadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+    }
+
+    .hero-content .hero-date {
+      opacity: 0;
+      animation: luxuryFadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+    }
+
+    .hero .scroll-down,
+    .hero-scroll-btn {
+      opacity: 0;
+      animation: luxuryFade 1.6s ease 1.2s forwards;
+    }
+
+    /* Scroll Reveal for Sections */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- Fullscreen Hero (Matching innamorati-meister.com) -->
+  <!-- Fullscreen Cinematic Hero -->
   <header class="hero">
     <video autoplay loop muted playsinline preload="auto" class="hero-bg-video">
       <source src="/Elia%20wedding.mp4" type="video/mp4">
       <source src="Elia%20wedding.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
-    
-    <div class="top-bar">
-      <span>ROME, ITALY</span>
-    </div>
-
-    <div class="coordinates-bar">
-      <div class="coords">
-        <span>ST. PETER'S BASILICA</span>
-      </div>
-      <div class="coords">
-        <span>VILLA AURELIA</span>
-      </div>
-    </div>
 
     <div class="hero-content">
       <h1 class="h1-mega">Elia & Daniel</h1>
@@ -1045,408 +828,327 @@
     </a>
   </header>
 
-  <!-- Main Content -->
+  <!-- Main Editorial Content -->
   <main class="page-body">
 
-    <!-- Personal Invitation Letter -->
-    <section class="welcome-section" id="invitation">
-      <div class="container">
-        <article class="card-editorial">
-          <div class="letter-eyebrow">INVITO SPECIALE &middot; ROMA 2027</div>
-          <h2 class="letter-title">Dear Fausto,</h2>
-          <p class="letter-text">
-            We are overjoyed to invite you to celebrate our wedding in Rome with us. It is a true honour and immense joy to have you by our side for the entire weekend, from our welcome dinner overlooking the eternal city to our solemn nuptial blessing at the Vatican, our evening gala at Villa Aurelia, and our farewell rooftop brunch.
-          </p>
-          <div class="letter-sig">Elia & Daniel</div>
-        </article>
-      </div>
+    <!-- Personal Invitation Letterhead -->
+    <section class="welcome-editorial" id="invitation">
+      <h2 class="welcome-title">Dear Fausto,</h2>
+      <p class="welcome-text">
+        We are overjoyed to invite you to celebrate our wedding in Rome with us. It is a true honour and immense joy to have you by our side for the entire weekend &mdash; from our welcome dinner overlooking the Eternal City, to our nuptial blessing in the Vatican, our evening gala at Villa Aurelia, and our farewell rooftop brunch.
+      </p>
+            <div class="editorial-divider"></div>
     </section>
 
     <!-- DAY 1: FRIDAY, APRIL 16 -->
-    <section class="day-section" id="day1">
-      <div class="container">
+    <section class="day-spread" id="day1">
+      <div class="day-container-centered">
         
-        <div class="day-header-badge">
-          <div class="day-badge-line"></div>
-          <span class="day-badge-text">DAY I &middot; VENERDÌ 16 APRILE 2027</span>
-          <div class="day-badge-line"></div>
+        <!-- Small Gold Venue Icon: Roman Terrace / Obelisk Arch -->
+        <div class="venue-gold-icon">
+          <svg viewBox="0 0 48 48">
+            <!-- Twin church towers of Trinita dei Monti & obelisk -->
+            <path d="M12 40V24L17 18L22 24V40M26 40V24L31 18L36 24V40M24 10V22M8 40H40"/>
+            <circle cx="17" cy="22" r="1.5"/>
+            <circle cx="31" cy="22" r="1.5"/>
+            <path d="M17 18V12M31 18V12"/>
+          </svg>
         </div>
 
-        <div class="day-grid">
-          
-          <!-- Visual & Attire Column -->
-          <div class="day-visual-col">
-            
-            <!-- Watercolor Frame -->
-            <div class="watercolor-frame-container" onclick="openLightbox('/assets/images/ciampini_watercolor.jpg', 'Ciampini & Piazza Trinità dei Monti, Roma')">
-              <div class="watercolor-inner-mat">
-                <img src="/assets/images/ciampini_watercolor.jpg" alt="Ciampini & Trinità dei Monti watercolor" class="watercolor-img" onerror="this.src='assets/images/ciampini_watercolor.jpg'">
-              </div>
-              <div class="artwork-caption-bar">
-                <span class="artwork-title">Ciampini & Piazza Trinità dei Monti</span>
-                <span class="artwork-zoom-hint">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                  View Painting
-                </span>
-              </div>
-            </div>
+        <h3 class="day-main-title">Welcome Dinner</h3>
+        <div class="day-date-sub">Friday, April 16, 2027 &middot; Trinità dei Monti</div>
+        
+        <p class="day-prose">
+          To begin our wedding weekend, we gather for an intimate welcome reception and sunset dinner overlooking the ancient domes and terracotta rooftops of Rome.
+        </p>
 
-            <!-- Attire & Inspiration Card -->
-            <div class="attire-card">
-              <div class="attire-header">
-                <span class="attire-tag">ATTIRE & MOOD</span>
-                <span style="font-size: 0.8rem; color: var(--color-muted);">Day 1</span>
-              </div>
-              <h4 class="attire-title">Roman Cocktail Chic</h4>
-              <p class="attire-desc">
-                Smart, effortless elegance with Italian flair for a golden-hour terrace welcome. Gentlemen in tailored lightweight blazers or suits (tie optional); ladies in chic cocktail dresses, silk slip dresses, or refined separates in sunset hues.
+        <!-- Timeline Specifics -->
+        <div class="schedule-block-centered">
+          <div class="schedule-entry-centered">
+            <div class="schedule-time">19:00</div>
+            <div class="schedule-info">
+              <h4>Welcome Reception & Terrace Dinner</h4>
+              <div class="schedule-location">Ciampini Roma &middot; Piazza Trinità dei Monti (top of Spanish Steps)</div>
+              <p class="schedule-desc">
+                Aperitivo and dinner on the panoramic terrace celebrating together before the wedding day.
               </p>
-              <button type="button" class="attire-btn" onclick="openMoodboard('day1')">
-                <span>✦ View Attire & Moodboard Inspiration</span>
-              </button>
-            </div>
-
-          </div>
-
-          <!-- Specifics & Timeline Column -->
-          <div class="day-info-col">
-            <div class="day-subtitle">WELCOME RECEPTION & DINNER</div>
-            <h3 class="day-date-title">Friday Sunset in Rome</h3>
-            <p class="day-overview-text">
-              To commence our wedding weekend, we gather for an intimate cocktail reception and dinner as the Roman sunset illuminates the domes and terracotta rooftops of the Eternal City.
-            </p>
-
-            <div class="itinerary-timeline">
-              
-              <div class="timeline-item">
-                <div class="timeline-time-badge">19:00 &middot; 7:00 PM ONWARDS</div>
-                <h4 class="timeline-event-name">Welcome Aperitivo & Terrace Dinner</h4>
-                <div class="timeline-location">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Ciampini Roma &middot; Piazza Trinità dei Monti</span>
-                </div>
-                <p class="timeline-details">
-                  Join us on the panoramic terrace of Ciampini, perched atop the Spanish Steps next to Hotel Hassler. Enjoy signature Italian cocktails, classic Roman aperitivi, and an evening dinner celebrating together before the wedding day.
-                </p>
-                <div class="location-actions">
-                  <a href="https://maps.google.com/?q=Ciampini+Roma+Trinita+dei+Monti" target="_blank" class="action-link">
-                    <span>Google Maps Directions &rarr;</span>
-                  </a>
-                </div>
+              <div class="schedule-links">
+                <a href="https://maps.google.com/?q=Ciampini+Roma+Trinita+dei+Monti" target="_blank" class="inline-map-link">
+                  Google Maps &rarr;
+                </a>
               </div>
-
             </div>
           </div>
+        </div>
 
+        <!-- Attire & Inspiration Feature -->
+        <div class="attire-editorial-centered">
+          <div class="attire-label">DRESS CODE & INSPIRATION</div>
+          <div class="attire-theme-name">Roman Cocktail Chic</div>
+          <p class="attire-summary-text">
+            Lightweight tailored blazers (tie optional) for gentlemen; refined cocktail dresses, silk slips, or elegant separates in warm sunset hues for ladies.
+          </p>
+          <button type="button" class="attire-lookbook-link" onclick="openLookbook('day1')">
+            <span>View Fashion Lookbook & Moodboard &rarr;</span>
+          </button>
         </div>
 
       </div>
     </section>
 
     <!-- DAY 2: SATURDAY, APRIL 17 -->
-    <section class="day-section" id="day2">
-      <div class="container">
+    <section class="day-spread" id="day2">
+      <div class="day-container-centered">
         
-        <div class="day-header-badge">
-          <div class="day-badge-line"></div>
-          <span class="day-badge-text">DAY II &middot; SABATO 17 APRILE 2027</span>
-          <div class="day-badge-line"></div>
+        <!-- Small Gold Venue Icon: Classical Vatican Dome & Villa Colonnade -->
+        <div class="venue-gold-icon">
+          <svg viewBox="0 0 48 48">
+            <!-- Dome & Classical Colonnade Facade -->
+            <path d="M24 6V10M16 20C16 14.5 19.5 10 24 10C28.5 10 32 14.5 32 20M12 24H36M14 24V40M20 24V40M28 24V40M34 24V40M10 40H38"/>
+            <path d="M12 20H36"/>
+          </svg>
         </div>
 
-        <div class="day-grid">
+        <h3 class="day-main-title">The Wedding Day</h3>
+        <div class="day-date-sub">Saturday, April 17, 2027 &middot; Vatican & Villa Aurelia</div>
+        
+        <p class="day-prose">
+          A solemn blessing in the Choir Chapel of St. Peter's Basilica, followed by an evening gala banquet, champagne, and dancing under the stars at historic Villa Aurelia.
+        </p>
+
+        <!-- Timeline Specifics -->
+        <div class="schedule-block-centered">
           
-          <!-- Visual & Attire Column -->
-          <div class="day-visual-col">
-            
-            <!-- Watercolor Frame: Villa Aurelia & Vatican -->
-            <div class="watercolor-frame-container" onclick="openLightbox('/assets/images/villa_aurelia_watercolor.jpg', 'Villa Aurelia & Janiculum Gardens, Roma')">
-              <div class="watercolor-inner-mat">
-                <img src="/assets/images/villa_aurelia_watercolor.jpg" alt="Villa Aurelia Rome watercolor" class="watercolor-img" onerror="this.src='assets/images/villa_aurelia_watercolor.jpg'">
-              </div>
-              <div class="artwork-caption-bar">
-                <span class="artwork-title">Villa Aurelia & Janiculum Gardens</span>
-                <span class="artwork-zoom-hint">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                  View Painting
-                </span>
-              </div>
-            </div>
-
-            <!-- Attire & Inspiration Card -->
-            <div class="attire-card">
-              <div class="attire-header">
-                <span class="attire-tag">ATTIRE & MOOD</span>
-                <span style="font-size: 0.8rem; color: var(--color-muted);">Day 2</span>
-              </div>
-              <h4 class="attire-title">Black Tie Optional & Formal Gala</h4>
-              <p class="attire-desc">
-                Tuxedos or formal dark suits for gentlemen; elegant floor-length or sophisticated evening gowns for ladies.<br>
-                <em>*Vatican Chapel Note:</em> Shoulders and knees must be respectfully covered during the religious blessing (a light silk wrap or shawl is ideal).
+          <div class="schedule-entry-centered" style="margin-bottom: 1.5rem;">
+            <div class="schedule-time">15:30</div>
+            <div class="schedule-info">
+              <h4>Solemn Religious Blessing</h4>
+              <div class="schedule-location">Cappella del Coro &middot; St. Peter's Basilica, Vatican City</div>
+              <p class="schedule-desc">
+                Please arrive by 15:00 for security entry and chapel seating.
               </p>
-              <button type="button" class="attire-btn" onclick="openMoodboard('day2')">
-                <span>✦ View Attire & Moodboard Inspiration</span>
-              </button>
-            </div>
-
-          </div>
-
-          <!-- Specifics & Timeline Column -->
-          <div class="day-info-col">
-            <div class="day-subtitle">NUPTIAL CEREMONY & EVENING GALA</div>
-            <h3 class="day-date-title">The Wedding Day</h3>
-            <p class="day-overview-text">
-              A sacred celebration in the heart of the Vatican followed by an enchanting evening reception, seated banquet, and midnight dancing at historic Villa Aurelia.
-            </p>
-
-            <div class="itinerary-timeline">
-              
-              <!-- Vatican Ceremony -->
-              <div class="timeline-item">
-                <div class="timeline-time-badge">15:30 &middot; 3:30 PM</div>
-                <h4 class="timeline-event-name">Solemn Religious Blessing</h4>
-                <div class="timeline-location">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Cappella del Coro &middot; St. Peter's Basilica, Vatican City</span>
-                </div>
-                <p class="timeline-details">
-                  Our wedding ceremony takes place inside the historic Choir Chapel (Cappella del Coro) within St. Peter's Basilica. Guests are kindly requested to arrive by 15:00 for security entry and seating.
-                </p>
-                <div class="location-actions">
-                  <a href="https://maps.google.com/?q=St+Peters+Basilica+Vatican" target="_blank" class="action-link">
-                    <span>Vatican Map &rarr;</span>
-                  </a>
-                </div>
+              <div class="schedule-links">
+                <a href="https://maps.google.com/?q=St+Peters+Basilica+Vatican" target="_blank" class="inline-map-link">
+                  Vatican Map &rarr;
+                </a>
               </div>
-
-              <!-- Villa Aurelia Gala -->
-              <div class="timeline-item">
-                <div class="timeline-time-badge">17:30 &middot; 5:30 PM TILL LATE</div>
-                <h4 class="timeline-event-name">Cocktails, Gala Dinner & Celebrations</h4>
-                <div class="timeline-location">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Villa Aurelia &middot; Porta San Pancrazio, Janiculum Hill</span>
-                </div>
-                <p class="timeline-details">
-                  Following the ceremony, private transfers lead guests to Villa Aurelia atop the Janiculum hill. An aperitivo in the gardens is followed by dinner in the noble salons, cake cutting on the terrace, open bar, live music, and dancing under the stars.
-                </p>
-                <div class="location-actions">
-                  <a href="https://maps.google.com/?q=Villa+Aurelia+Rome" target="_blank" class="action-link">
-                    <span>Villa Aurelia Map &rarr;</span>
-                  </a>
-                </div>
-              </div>
-
             </div>
           </div>
 
+          <div class="schedule-entry-centered">
+            <div class="schedule-time">17:30</div>
+            <div class="schedule-info">
+              <h4>Garden Cocktails, Seated Gala & Party</h4>
+              <div class="schedule-location">Villa Aurelia &middot; Porta San Pancrazio, Janiculum Hill</div>
+              <p class="schedule-desc">
+                Private transfers to Villa Aurelia. Aperitivo in the gardens, imperial dinner in the villa salons, cake cutting on the panoramic terrace, open bar & dancing until late.
+              </p>
+              <div class="schedule-links">
+                <a href="https://maps.google.com/?q=Villa+Aurelia+Rome" target="_blank" class="inline-map-link">
+                  Villa Aurelia Map &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Attire & Inspiration Feature -->
+        <div class="attire-editorial-centered">
+          <div class="attire-label">DRESS CODE & INSPIRATION</div>
+          <div class="attire-theme-name">Black Tie Optional & Evening Gala</div>
+          <p class="attire-summary-text">
+            Tuxedos or formal dark suits for gentlemen; floor-length or gala evening gowns for ladies.<br>
+            <em>*Vatican Chapel requirement:</em> Shoulders and knees covered during the ceremony (silk shawl/wrap recommended).
+          </p>
+          <button type="button" class="attire-lookbook-link" onclick="openLookbook('day2')">
+            <span>View Fashion Lookbook & Moodboard &rarr;</span>
+          </button>
         </div>
 
       </div>
     </section>
 
     <!-- DAY 3: SUNDAY, APRIL 18 -->
-    <section class="day-section" id="day3">
-      <div class="container">
+    <section class="day-spread" id="day3">
+      <div class="day-container-centered">
         
-        <div class="day-header-badge">
-          <div class="day-badge-line"></div>
-          <span class="day-badge-text">DAY III &middot; DOMENICA 18 APRILE 2027</span>
-          <div class="day-badge-line"></div>
+        <!-- Small Gold Venue Icon: Rooftop Terrace / Bell & Skyline -->
+        <div class="venue-gold-icon">
+          <svg viewBox="0 0 48 48">
+            <!-- Hassler Terrace / Bell Tower & Roman Skyline view -->
+            <path d="M14 38V22C14 18 18 14 24 14C30 14 34 18 34 22V38M24 8V14M10 38H38M18 24H30M24 24V32"/>
+            <circle cx="24" cy="32" r="2"/>
+            <path d="M8 42H40"/>
+          </svg>
         </div>
 
-        <div class="day-grid">
-          
-          <!-- Visual & Attire Column -->
-          <div class="day-visual-col">
-            
-            <!-- Watercolor Frame: Hotel Hassler -->
-            <div class="watercolor-frame-container" onclick="openLightbox('/assets/images/hassler_watercolor.jpg', 'Hotel Hassler Roma & Spanish Steps Panorama')">
-              <div class="watercolor-inner-mat">
-                <img src="/assets/images/hassler_watercolor.jpg" alt="Hotel Hassler Rome watercolor" class="watercolor-img" onerror="this.src='assets/images/hassler_watercolor.jpg'">
-              </div>
-              <div class="artwork-caption-bar">
-                <span class="artwork-title">Hotel Hassler & Spanish Steps</span>
-                <span class="artwork-zoom-hint">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                  View Painting
-                </span>
-              </div>
-            </div>
+        <h3 class="day-main-title">Farewell Brunch</h3>
+        <div class="day-date-sub">Sunday, April 18, 2027 &middot; Hotel Hassler Roma</div>
+        
+        <p class="day-prose">
+          Before departing, we gather on the iconic 7th-floor terrace of Hotel Hassler for an effortless Roman brunch with 360-degree views over the Spanish Steps and city skyline.
+        </p>
 
-            <!-- Attire & Inspiration Card -->
-            <div class="attire-card">
-              <div class="attire-header">
-                <span class="attire-tag">ATTIRE & MOOD</span>
-                <span style="font-size: 0.8rem; color: var(--color-muted);">Day 3</span>
-              </div>
-              <h4 class="attire-title">Sunday Casual Chic & Linens</h4>
-              <p class="attire-desc">
-                Relaxed Mediterranean elegance for a sunlit rooftop brunch. Light Italian linen shirts, comfortable trousers, breezy pastel sundresses, woven accessories, and sunglasses.
+        <!-- Timeline Specifics -->
+        <div class="schedule-block-centered">
+          <div class="schedule-entry-centered">
+            <div class="schedule-time">12:00</div>
+            <div class="schedule-info">
+              <h4>Sunday Brunch & Toast</h4>
+              <div class="schedule-location">Hotel Hassler Roma &middot; Piazza Trinità dei Monti, 6</div>
+              <p class="schedule-desc">
+                Artisanal Italian pastries, Roman delicacies, champagne, and espresso overlooking the city.
               </p>
-              <button type="button" class="attire-btn" onclick="openMoodboard('day3')">
-                <span>✦ View Attire & Moodboard Inspiration</span>
-              </button>
-            </div>
-
-          </div>
-
-          <!-- Specifics & Timeline Column -->
-          <div class="day-info-col">
-            <div class="day-subtitle">FAREWELL ROOFTOP BRUNCH</div>
-            <h3 class="day-date-title">Sunday in the Sun</h3>
-            <p class="day-overview-text">
-              Before saying goodbye, we gather high above Rome on the terrace of legendary Hotel Hassler to toast our unforgettable weekend together.
-            </p>
-
-            <div class="itinerary-timeline">
-              
-              <div class="timeline-item">
-                <div class="timeline-time-badge">12:00 &middot; 12:00 PM &mdash; 15:30</div>
-                <h4 class="timeline-event-name">Panoramic Farewell Brunch</h4>
-                <div class="timeline-location">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Hotel Hassler Roma &middot; Piazza Trinità dei Monti, 6</span>
-                </div>
-                <p class="timeline-details">
-                  A leisurely Italian Sunday brunch featuring artisanal pastries, Roman delicacies, prosecco, and espresso with breathtaking 360-degree views from Trinità dei Monti overlooking the Spanish Steps and Roman skyline.
-                </p>
-                <div class="location-actions">
-                  <a href="https://maps.google.com/?q=Hotel+Hassler+Roma" target="_blank" class="action-link">
-                    <span>Hotel Hassler Map &rarr;</span>
-                  </a>
-                </div>
+              <div class="schedule-links">
+                <a href="https://maps.google.com/?q=Hotel+Hassler+Roma" target="_blank" class="inline-map-link">
+                  Hotel Hassler Map &rarr;
+                </a>
               </div>
-
             </div>
           </div>
+        </div>
 
+        <!-- Attire & Inspiration Feature -->
+        <div class="attire-editorial-centered">
+          <div class="attire-label">DRESS CODE & INSPIRATION</div>
+          <div class="attire-theme-name">Sunday Casual Chic & Linens</div>
+          <p class="attire-summary-text">
+            Effortless Mediterranean elegance: Crisp Italian linen shirts, relaxed trousers, floral pastel sundresses, woven accessories, and sunglasses.
+          </p>
+          <button type="button" class="attire-lookbook-link" onclick="openLookbook('day3')">
+            <span>View Fashion Lookbook & Moodboard &rarr;</span>
+          </button>
         </div>
 
       </div>
     </section>
 
-    <!-- RSVP Section -->
-    <section class="rsvp-section" id="rsvp">
-      <div class="container">
-        <div class="rsvp-box">
-          <div class="rsvp-eyebrow">R.S.V.P.</div>
-          <h2 class="rsvp-heading">Confirm Attendance</h2>
-          <p class="rsvp-subtext">
-            Please let us know your attendance for each event of our wedding weekend:
-          </p>
+    <!-- RSVP Section (Pure Haute Couture Stationery) -->
+    <section class="rsvp-editorial-section" id="rsvp">
+      <h2 class="rsvp-headline">Confirm Attendance</h2>
+      <p class="rsvp-lead">Please confirm your presence for each event of our wedding weekend:</p>
 
-          <form id="faustoForm" onsubmit="handleFaustoSubmit(event)">
-            
-            <div class="event-check-list">
-              
-              <!-- Event 1 -->
-              <div class="event-check-row">
-                <div>
-                  <div class="event-check-name">1. Welcome Dinner &middot; Ciampini</div>
-                  <div class="event-check-sub">Friday, April 16 &middot; 7:00 PM &middot; Trinità dei Monti</div>
-                </div>
-                <div class="toggle-group">
-                  <button type="button" class="toggle-btn active-yes" onclick="setChoice(1, true, this)">Attending</button>
-                  <button type="button" class="toggle-btn" onclick="setChoice(1, false, this)">Decline</button>
-                </div>
-              </div>
-
-              <!-- Event 2 -->
-              <div class="event-check-row">
-                <div>
-                  <div class="event-check-name">2. Vatican Blessing & Villa Aurelia Gala</div>
-                  <div class="event-check-sub">Saturday, April 17 &middot; 3:30 PM &middot; San Pietro & Villa Aurelia</div>
-                </div>
-                <div class="toggle-group">
-                  <button type="button" class="toggle-btn active-yes" onclick="setChoice(2, true, this)">Attending</button>
-                  <button type="button" class="toggle-btn" onclick="setChoice(2, false, this)">Decline</button>
-                </div>
-              </div>
-
-              <!-- Event 3 -->
-              <div class="event-check-row">
-                <div>
-                  <div class="event-check-name">3. Farewell Brunch &middot; Hotel Hassler</div>
-                  <div class="event-check-sub">Sunday, April 18 &middot; 12:00 PM &middot; Panoramic Terrace</div>
-                </div>
-                <div class="toggle-group">
-                  <button type="button" class="toggle-btn active-yes" onclick="setChoice(3, true, this)">Attending</button>
-                  <button type="button" class="toggle-btn" onclick="setChoice(3, false, this)">Decline</button>
-                </div>
-              </div>
-
+      <form id="faustoForm" class="stationery-form" onsubmit="handleFaustoSubmit(event)">
+        
+        <div class="stationery-event-list">
+          
+          <!-- Event 1 -->
+          <div class="stationery-event-card">
+            <div class="stationery-event-header">
+              <div class="stationery-event-name">1. Welcome Reception &middot; Ciampini</div>
+              <div class="stationery-event-date">Friday, April 16 &middot; 19:00 &middot; Piazza Trinità dei Monti</div>
             </div>
-
-            <div class="form-group">
-              <label class="form-label" for="guestName">Full Name *</label>
-              <input type="text" id="guestName" class="form-input" value="Fausto Innamorati" required>
+            <div class="stationery-options">
+              <label class="stationery-radio-label">
+                <input type="radio" name="choice_1" value="yes" checked onchange="setStationeryChoice(1, true)">
+                <span class="radio-circle"></span>
+                <span class="radio-text">Joyfully Accepts</span>
+              </label>
+              <label class="stationery-radio-label">
+                <input type="radio" name="choice_1" value="no" onchange="setStationeryChoice(1, false)">
+                <span class="radio-circle"></span>
+                <span class="radio-text">Regretfully Declines</span>
+              </label>
             </div>
+          </div>
 
-            <div class="form-group">
-              <label class="form-label" for="guestNote">Dietary Preferences or Message for Elia & Daniel (Optional)</label>
-              <textarea id="guestNote" class="form-textarea" rows="3" placeholder="Allergies, dietary preferences, or a personal note for Elia & Daniel..."></textarea>
+          <!-- Event 2 -->
+          <div class="stationery-event-card">
+            <div class="stationery-event-header">
+              <div class="stationery-event-name">2. Vatican Blessing & Villa Aurelia Gala</div>
+              <div class="stationery-event-date">Saturday, April 17 &middot; 15:30 &middot; San Pietro & Villa Aurelia</div>
             </div>
+            <div class="stationery-options">
+              <label class="stationery-radio-label">
+                <input type="radio" name="choice_2" value="yes" checked onchange="setStationeryChoice(2, true)">
+                <span class="radio-circle"></span>
+                <span class="radio-text">Joyfully Accepts</span>
+              </label>
+              <label class="stationery-radio-label">
+                <input type="radio" name="choice_2" value="no" onchange="setStationeryChoice(2, false)">
+                <span class="radio-circle"></span>
+                <span class="radio-text">Regretfully Declines</span>
+              </label>
+            </div>
+          </div>
 
-            <button type="submit" class="btn-submit">Confirm RSVP</button>
-          </form>
+          <!-- Event 3 -->
+          <div class="stationery-event-card">
+            <div class="stationery-event-header">
+              <div class="stationery-event-name">3. Farewell Brunch &middot; Hotel Hassler</div>
+              <div class="stationery-event-date">Sunday, April 18 &middot; 12:00 &middot; Panoramic Terrace</div>
+            </div>
+            <div class="stationery-options">
+              <label class="stationery-radio-label">
+                <input type="radio" name="choice_3" value="yes" checked onchange="setStationeryChoice(3, true)">
+                <span class="radio-circle"></span>
+                <span class="radio-text">Joyfully Accepts</span>
+              </label>
+              <label class="stationery-radio-label">
+                <input type="radio" name="choice_3" value="no" onchange="setStationeryChoice(3, false)">
+                <span class="radio-circle"></span>
+                <span class="radio-text">Regretfully Declines</span>
+              </label>
+            </div>
+          </div>
+
         </div>
-      </div>
+
+        <div class="stationery-input-group">
+          <label class="stationery-input-label" for="guestName">Guest Name</label>
+          <input type="text" id="guestName" class="stationery-line-input" value="Fausto Innamorati" required>
+        </div>
+
+        <div class="stationery-input-group">
+          <label class="stationery-input-label" for="guestNote">Dietary requirements or a message for Elia &amp; Daniel</label>
+          <input type="text" id="guestNote" class="stationery-line-input" placeholder="Allergies, dietary preferences, or a personal note...">
+        </div>
+
+        <button type="submit" class="stationery-submit-btn">Send RSVP</button>
+      </form>
     </section>
 
   </main>
 
-  <!-- Attire & Moodboard Modal -->
-  <div id="moodboardModal" class="modal-backdrop" onclick="handleModalBackdropClick(event)">
-    <div class="modal-box">
-      <button class="modal-close-icon" onclick="closeMoodboard()">&times;</button>
+  <!-- Attire Lookbook Modal -->
+  <div id="lookbookModal" class="modal-overlay" onclick="handleBackdropClick(event)">
+    <div class="lookbook-modal-content">
+      <button class="lookbook-close" onclick="closeLookbook()">&times;</button>
       
-      <img id="modalMoodboardImg" src="" alt="Attire Moodboard" class="moodboard-modal-img">
+      <img id="modalLookbookImg" src="" alt="Fashion Lookboard" class="lookbook-img">
       
-      <div class="moodboard-subtitle" id="modalMoodboardSubtitle">DAY I &middot; ROMAN COCKTAIL CHIC</div>
-      <h3 class="moodboard-title" id="modalMoodboardTitle">Dress Code & Style Inspiration</h3>
+      <div class="lookbook-tag" id="modalLookbookTag">FRIDAY, APRIL 16 &middot; CIAMPINI</div>
+      <h3 class="lookbook-title" id="modalLookbookTitle">Style Guide & Inspiration</h3>
       
-      <div class="palette-swatches" id="modalSwatches"></div>
+      <div class="lookbook-palette" id="modalLookbookSwatches"></div>
 
-      <div class="moodboard-notes" id="modalMoodboardNotes"></div>
+      <div class="lookbook-text" id="modalLookbookNotes"></div>
 
-      <button class="btn-submit" style="margin-top: 1rem;" onclick="closeMoodboard()">Close Lookbook</button>
+      <button type="button" class="rsvp-submit-btn" style="max-width: 100%; margin-top: 0;" onclick="closeLookbook()">Close Lookbook</button>
     </div>
   </div>
 
-  <!-- Lightbox Artwork Modal -->
-  <div id="lightboxModal" class="modal-backdrop lightbox-modal" onclick="handleModalBackdropClick(event)">
-    <div class="modal-box">
-      <button class="modal-close-icon" onclick="closeLightbox()">&times;</button>
-      <img id="lightboxImg" src="" alt="Artwork Painting" class="lightbox-img">
-      <div class="lightbox-caption" id="lightboxCaption"></div>
-    </div>
-  </div>
-
-  <!-- RSVP Confirmation Modal -->
-  <div id="confirmModal" class="modal-backdrop">
-    <div class="modal-box" style="text-align: center; max-width: 480px;">
-      <h3 style="font-family: var(--font-serif); font-size: 2.3rem; margin-bottom: 0.8rem; font-weight: 400;">Thank You Fausto!</h3>
-      <p style="font-family: var(--font-sans); font-size: 0.95rem; color: var(--color-muted); line-height: 1.7; margin-bottom: 2rem;">
-        Your attendance confirmation has been delivered directly to Elia & Daniel. We cannot wait to celebrate together in Rome!
+  <!-- RSVP Confirmation Dialog -->
+  <div id="confirmModal" class="modal-overlay">
+    <div class="lookbook-modal-content confirmation-box">
+      <h3 style="font-family: var(--font-serif); font-size: 2.4rem; font-weight: 400; color: var(--color-dark); margin-bottom: 0.8rem;">Thank You Fausto!</h3>
+      <p style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--color-charcoal); line-height: 1.8; margin-bottom: 2.2rem;">
+        Your response has been delivered directly to Elia & Daniel. We look forward with immense joy to celebrating together in Rome!
       </p>
-      <button class="btn-submit" onclick="closeConfirmModal()">Close</button>
+      <button class="rsvp-submit-btn" style="margin: 0 auto;" onclick="closeConfirmModal()">Close</button>
     </div>
   </div>
-
-  <!-- Footer -->
-  <footer>
-    Elia & Daniel &middot; Rome 2027
-  </footer>
 
   <script>
     const CLOUD_DB_URL = 'https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136';
     const choices = { 1: true, 2: true, 3: true };
 
-    const MOODBOARD_DATA = {
+    const LOOKBOOK_DATA = {
       day1: {
         img: '/assets/images/day1_attire.jpg',
         fallback: 'assets/images/day1_attire.jpg',
-        subtitle: 'DAY I &middot; FRIDAY, APRIL 16 &middot; CIAMPINI',
+        tag: 'FRIDAY, APRIL 16 &middot; CIAMPINI',
         title: 'Roman Cocktail Chic',
         swatches: [
           { name: 'Italian Linen', color: '#D6C7B2' },
@@ -1462,7 +1164,7 @@
       day2: {
         img: '/assets/images/day2_attire.jpg',
         fallback: 'assets/images/day2_attire.jpg',
-        subtitle: 'DAY II &middot; SATURDAY, APRIL 17 &middot; VATICAN & VILLA AURELIA',
+        tag: 'SATURDAY, APRIL 17 &middot; VATICAN & VILLA AURELIA',
         title: 'Black Tie Optional & Evening Gala',
         swatches: [
           { name: 'Classic Black', color: '#111111' },
@@ -1479,8 +1181,8 @@
       day3: {
         img: '/assets/images/day3_attire.jpg',
         fallback: 'assets/images/day3_attire.jpg',
-        subtitle: 'DAY III &middot; SUNDAY, APRIL 18 &middot; HOTEL HASSLER',
-        title: 'Sunday Casual Chic & Rooftop Linens',
+        tag: 'SUNDAY, APRIL 18 &middot; HOTEL HASSLER',
+        title: 'Sunday Casual Chic & Linens',
         swatches: [
           { name: 'Crisp Linen White', color: '#FFFFFF' },
           { name: 'Travertine Sand', color: '#DFD5C6' },
@@ -1494,10 +1196,14 @@
       }
     };
 
+    function setStationeryChoice(eventId, isAttending) {
+      choices[eventId] = isAttending;
+    }
+
     function setChoice(eventId, isAttending, clickedBtn) {
       choices[eventId] = isAttending;
       const group = clickedBtn.parentElement;
-      const btns = group.querySelectorAll('.toggle-btn');
+      const btns = group.querySelectorAll('.pill-toggle-btn');
       const bYes = btns[0];
       const bNo = btns[1];
 
@@ -1510,51 +1216,39 @@
       }
     }
 
-    function openMoodboard(dayKey) {
-      const data = MOODBOARD_DATA[dayKey];
+    function openLookbook(dayKey) {
+      const data = LOOKBOOK_DATA[dayKey];
       if (!data) return;
 
-      const imgEl = document.getElementById('modalMoodboardImg');
+      const imgEl = document.getElementById('modalLookbookImg');
       imgEl.src = data.img;
       imgEl.onerror = () => { imgEl.src = data.fallback; };
       
-      document.getElementById('modalMoodboardSubtitle').innerHTML = data.subtitle;
-      document.getElementById('modalMoodboardTitle').innerText = data.title;
-      document.getElementById('modalMoodboardNotes').innerHTML = data.notes;
+      document.getElementById('modalLookbookTag').innerHTML = data.tag;
+      document.getElementById('modalLookbookTitle').innerText = data.title;
+      document.getElementById('modalLookbookNotes').innerHTML = data.notes;
 
-      const swatchesContainer = document.getElementById('modalSwatches');
+      const swatchesContainer = document.getElementById('modalLookbookSwatches');
       swatchesContainer.innerHTML = data.swatches.map(s => `
-        <div class="swatch">
-          <span class="swatch-color" style="background: ${s.color};"></span>
+        <div class="lookbook-swatch">
+          <span class="swatch-dot" style="background: ${s.color};"></span>
           <span>${s.name}</span>
         </div>
       `).join('');
 
-      document.getElementById('moodboardModal').classList.add('open');
+      document.getElementById('lookbookModal').classList.add('open');
     }
 
-    function closeMoodboard() {
-      document.getElementById('moodboardModal').classList.remove('open');
-    }
-
-    function openLightbox(imgSrc, caption) {
-      const imgEl = document.getElementById('lightboxImg');
-      imgEl.src = imgSrc;
-      imgEl.onerror = () => { imgEl.src = imgSrc.replace('/assets/', 'assets/'); };
-      document.getElementById('lightboxCaption').innerText = caption;
-      document.getElementById('lightboxModal').classList.add('open');
-    }
-
-    function closeLightbox() {
-      document.getElementById('lightboxModal').classList.remove('open');
+    function closeLookbook() {
+      document.getElementById('lookbookModal').classList.remove('open');
     }
 
     function closeConfirmModal() {
       document.getElementById('confirmModal').classList.remove('open');
     }
 
-    function handleModalBackdropClick(e) {
-      if (e.target.classList.contains('modal-backdrop')) {
+    function handleBackdropClick(e) {
+      if (e.target.classList.contains('modal-overlay')) {
         e.target.classList.remove('open');
       }
     }
