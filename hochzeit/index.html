@@ -647,49 +647,64 @@
       }
     }
   
-    /* Luxury Reveal & Loading Animations */
+    /* Luxury Reveal & Staggered Entry Animations */
     @keyframes luxuryFadeUp {
       0% {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(26px);
+        filter: blur(3px);
       }
       100% {
         opacity: 1;
         transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes luxurySubReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+        letter-spacing: 0.18em;
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0.32em;
       }
     }
 
     @keyframes luxuryFade {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      0% { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     .hero-content .h1-mega {
       opacity: 0;
-      animation: luxuryFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+      animation: luxuryFadeUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
     }
 
     .hero-content .location-text {
       opacity: 0;
-      animation: luxuryFadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+      animation: luxurySubReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
     }
 
     .hero-content .hero-date {
       opacity: 0;
-      animation: luxuryFadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+      animation: luxuryFadeUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
     }
 
     .hero .scroll-down,
     .hero-scroll-btn {
       opacity: 0;
-      animation: luxuryFade 1.6s ease 1.2s forwards;
+      animation: luxuryFade 1.6s ease 1.25s forwards;
     }
 
-    /* Scroll Reveal for Sections */
+    /* Staggered Scroll Reveals */
     .reveal-on-scroll {
       opacity: 0;
-      transform: translateY(22px);
-      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(24px);
+      transition: opacity 1.3s cubic-bezier(0.16, 1, 0.3, 1), transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
     }
 
@@ -697,7 +712,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-
   </style>
 </head>
 <body>
