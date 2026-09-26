@@ -1134,33 +1134,44 @@
       flex-wrap: wrap;
     }
 
+        .schedule-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.2rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
     .stationery-action-pill,
     .inline-action-link {
       font-family: var(--font-sans) !important;
-      font-size: 0.72rem !important;
-      letter-spacing: 0.2em !important;
+      font-size: 0.74rem !important;
+      letter-spacing: 0.22em !important;
       text-transform: uppercase !important;
       color: var(--color-charcoal) !important;
       text-decoration: none !important;
-      font-weight: 500 !important;
+      font-weight: 600 !important;
       display: inline-flex !important;
       align-items: center !important;
-      gap: 0.5rem !important;
-      background: rgba(255, 255, 255, 0.75) !important;
-      border: 1px solid var(--color-hairline) !important;
-      padding: 0.85rem 1.8rem !important;
+      gap: 0.35rem !important;
+      background: none !important;
+      border: none !important;
+      border-radius: 0 !important;
+      padding: 0.2rem 0 !important;
+      border-bottom: 1px solid var(--color-gold) !important;
+      box-shadow: none !important;
       cursor: pointer !important;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+      transition: color 0.25s ease, border-bottom-color 0.25s ease, transform 0.25s ease !important;
     }
 
     .stationery-action-pill:hover,
     .inline-action-link:hover {
-      background: #FFFFFF !important;
-      border-color: var(--color-gold) !important;
+      background: none !important;
+      border-color: transparent !important;
+      border-bottom: 1px solid var(--color-dark) !important;
       color: var(--color-dark) !important;
-      transform: translateY(-2px) !important;
-      box-shadow: 0 8px 24px rgba(191, 161, 117, 0.18) !important;
+      transform: translateY(-1px) !important;
+      box-shadow: none !important;
     }
 
   </style>
