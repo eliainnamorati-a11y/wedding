@@ -68,8 +68,10 @@
     /* Fullscreen Hero matching innamorati-meister.com */
     .hero {
       position: relative;
-      width: 100vw;
+      width: 100%;
+      max-width: 100%;
       height: 100vh;
+      height: 100svh;
       min-height: 650px;
       display: flex;
       flex-direction: column;
@@ -143,27 +145,41 @@
 
     .scroll-down {
       position: absolute;
-      bottom: 2.4rem;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 2.2rem;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      width: max-content;
+      max-width: 90vw;
       z-index: 10;
       color: rgba(255, 255, 255, 0.85);
       font-family: var(--font-sans);
       font-size: 0.72rem;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       gap: 0.5rem;
-      transition: all 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
       font-weight: 300;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .scroll-down span {
+      display: block;
+      margin-right: -0.22em;
+      text-align: center;
     }
 
     .scroll-down:hover {
       color: #ffffff;
-      transform: translate(-50%, 3px);
+      transform: translateY(3px) !important;
     }
 
     /* Page Content Structure */
@@ -619,8 +635,10 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
+      max-width: 100%;
       height: 100vh;
+      height: 100svh;
       background: rgba(18, 17, 16, 0.85);
       backdrop-filter: blur(8px);
       z-index: 1000;
@@ -814,6 +832,198 @@
       opacity: 1;
       transform: translateY(0);
     }
+  
+    /* =========================================
+       LUXURY ANIMATIONS & TRANSITIONS
+       ========================================= */
+
+    /* Hero Background Zoom */
+    @keyframes heroBgZoom {
+      0% {
+        transform: scale(1.09);
+        filter: brightness(0.85);
+      }
+      100% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+    }
+
+    .hero-bg-img,
+    .hero-bg-video {
+      animation: heroBgZoom 3.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      will-change: transform, filter;
+    }
+
+    /* Hero Text Keyframes */
+    @keyframes luxuryFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(32px) scale(0.97);
+        filter: blur(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes luxurySubReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(18px);
+        letter-spacing: 0.14em;
+        filter: blur(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0.32em;
+        filter: blur(0);
+      }
+    }
+
+    @keyframes luxuryFadeUpSubtle {
+      0% {
+        opacity: 0;
+        transform: translateY(22px);
+        filter: blur(6px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes luxuryFadeCenter {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(4px);
+      }
+      100% {
+        opacity: 0.9;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes subtlePulseArrow {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(4px);
+      }
+    }
+
+    .hero-content .h1-mega {
+      opacity: 0;
+      animation: luxuryFadeUp 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+    }
+
+    .hero-content .location-text {
+      opacity: 0;
+      animation: luxurySubReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    .hero-content .hero-date {
+      opacity: 0;
+      animation: luxuryFadeUpSubtle 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+    }
+
+    .hero .scroll-down,
+    .hero-scroll-btn {
+      opacity: 0;
+      animation: luxuryFadeCenter 1.6s cubic-bezier(0.16, 1, 0.3, 1) 1.25s forwards;
+    }
+
+    .scroll-down svg {
+      animation: subtlePulseArrow 2.2s ease-in-out 2.8s infinite;
+    }
+
+    .scroll-down:hover svg {
+      animation: none;
+      transform: translateY(3px);
+    }
+
+    /* Universal Staggered Scroll/Load Reveal */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(3px);
+      transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--delay, 0s);
+      will-change: opacity, transform, filter;
+    }
+
+    .reveal-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    /* Expanding gold divider */
+    .editorial-divider {
+      width: 1px;
+      height: 70px;
+      background: var(--color-gold);
+      opacity: 0.4;
+      margin: 4rem auto 0;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--delay, 0.2s);
+    }
+
+    .editorial-divider.is-visible {
+      transform: scaleY(1);
+    }
+
+    /* Interactive micro-animations */
+    .stationery-line-input {
+      position: relative;
+      transition: border-bottom-color 0.35s ease, background-color 0.35s ease, padding-left 0.25s ease;
+    }
+
+    .stationery-line-input:focus {
+      border-bottom-color: var(--color-gold);
+      padding-left: 4px;
+    }
+
+    .stationery-radio-label {
+      transition: transform 0.25s ease;
+    }
+
+    .stationery-radio-label:hover {
+      transform: translateY(-1px);
+    }
+
+    .stationery-submit-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stationery-submit-btn::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      transform: rotate(30deg);
+      transition: transform 0.75s ease;
+    }
+
+    .stationery-submit-btn:hover::after {
+      transform: rotate(30deg) translate(300%, -20%);
+    }
+
   </style>
 </head>
 <body>
@@ -847,11 +1057,11 @@
 
     <!-- Personal Invitation Letterhead -->
     <section class="welcome-editorial" id="invitation">
-      <h2 class="welcome-title">Dear Fausto,</h2>
-      <p class="welcome-text">
+      <h2 class="welcome-title reveal-item" style="--delay: 0.1s;">Dear Fausto,</h2>
+      <p class="welcome-text reveal-item" style="--delay: 0.25s;">
         We are overjoyed to invite you to celebrate our wedding in Rome with us. It is a true honour and immense joy to have you by our side for the entire weekend &mdash; from our welcome dinner overlooking the Eternal City, to our nuptial blessing in the Vatican, our evening gala at Villa Aurelia, and our farewell rooftop brunch.
       </p>
-            <div class="editorial-divider"></div>
+            <div class="editorial-divider reveal-item" style="--delay: 0.4s;"></div>
     </section>
 
     <!-- DAY 1: FRIDAY, APRIL 16 -->
@@ -869,16 +1079,16 @@
           </svg>
         </div>
 
-        <h3 class="day-main-title">Welcome Dinner</h3>
-        <div class="day-date-sub">Friday, April 16, 2027 &middot; Trinità dei Monti</div>
+        <h3 class="day-main-title reveal-item" style="--delay: 0.1s;">Welcome Dinner</h3>
+        <div class="day-date-sub reveal-item" style="--delay: 0.2s;">Friday, April 16, 2027 &middot; Trinità dei Monti</div>
         
-        <p class="day-prose">
+        <p class="day-prose reveal-item" style="--delay: 0.3s;">
           To begin our wedding weekend, we gather for an intimate welcome reception and sunset dinner overlooking the ancient domes and terracotta rooftops of Rome.
         </p>
 
         <!-- Timeline Specifics -->
         <div class="schedule-block-centered">
-          <div class="schedule-entry-centered">
+          <div class="schedule-entry-centered reveal-item" style="--delay: 0.4s;">
             <div class="schedule-time">19:00</div>
             <div class="schedule-info">
               <h4>Welcome Reception & Terrace Dinner</h4>
@@ -886,7 +1096,7 @@
               <p class="schedule-desc">
                 Aperitivo and dinner on the panoramic terrace celebrating together before the wedding day.
               </p>
-              <div class="schedule-links">
+              <div class="schedule-links reveal-item" style="--delay: 0.5s;">
                 <a href="https://maps.google.com/?q=Ciampini+Roma+Trinita+dei+Monti" target="_blank" class="inline-map-link">
                   Google Maps &rarr;
                 </a>
@@ -923,10 +1133,10 @@
           </svg>
         </div>
 
-        <h3 class="day-main-title">The Wedding Day</h3>
-        <div class="day-date-sub">Saturday, April 17, 2027 &middot; Vatican & Villa Aurelia</div>
+        <h3 class="day-main-title reveal-item" style="--delay: 0.1s;">The Wedding Day</h3>
+        <div class="day-date-sub reveal-item" style="--delay: 0.2s;">Saturday, April 17, 2027 &middot; Vatican & Villa Aurelia</div>
         
-        <p class="day-prose">
+        <p class="day-prose reveal-item" style="--delay: 0.3s;">
           A solemn blessing in the Choir Chapel of St. Peter's Basilica, followed by an evening gala banquet, champagne, and dancing under the stars at historic Villa Aurelia.
         </p>
 
@@ -941,7 +1151,7 @@
               <p class="schedule-desc">
                 Please arrive by 15:00 for security entry and chapel seating.
               </p>
-              <div class="schedule-links">
+              <div class="schedule-links reveal-item" style="--delay: 0.5s;">
                 <a href="https://maps.google.com/?q=St+Peters+Basilica+Vatican" target="_blank" class="inline-map-link">
                   Vatican Map &rarr;
                 </a>
@@ -949,7 +1159,7 @@
             </div>
           </div>
 
-          <div class="schedule-entry-centered">
+          <div class="schedule-entry-centered reveal-item" style="--delay: 0.4s;">
             <div class="schedule-time">17:30</div>
             <div class="schedule-info">
               <h4>Garden Cocktails, Seated Gala & Party</h4>
@@ -957,7 +1167,7 @@
               <p class="schedule-desc">
                 Private transfers to Villa Aurelia. Aperitivo in the gardens, imperial dinner in the villa salons, cake cutting on the panoramic terrace, open bar & dancing until late.
               </p>
-              <div class="schedule-links">
+              <div class="schedule-links reveal-item" style="--delay: 0.5s;">
                 <a href="https://maps.google.com/?q=Villa+Aurelia+Rome" target="_blank" class="inline-map-link">
                   Villa Aurelia Map &rarr;
                 </a>
@@ -997,16 +1207,16 @@
           </svg>
         </div>
 
-        <h3 class="day-main-title">Farewell Brunch</h3>
-        <div class="day-date-sub">Sunday, April 18, 2027 &middot; Hotel Hassler Roma</div>
+        <h3 class="day-main-title reveal-item" style="--delay: 0.1s;">Farewell Brunch</h3>
+        <div class="day-date-sub reveal-item" style="--delay: 0.2s;">Sunday, April 18, 2027 &middot; Hotel Hassler Roma</div>
         
-        <p class="day-prose">
+        <p class="day-prose reveal-item" style="--delay: 0.3s;">
           Before departing, we gather on the iconic 7th-floor terrace of Hotel Hassler for an effortless Roman brunch with 360-degree views over the Spanish Steps and city skyline.
         </p>
 
         <!-- Timeline Specifics -->
         <div class="schedule-block-centered">
-          <div class="schedule-entry-centered">
+          <div class="schedule-entry-centered reveal-item" style="--delay: 0.4s;">
             <div class="schedule-time">12:00</div>
             <div class="schedule-info">
               <h4>Sunday Brunch & Toast</h4>
@@ -1014,7 +1224,7 @@
               <p class="schedule-desc">
                 Artisanal Italian pastries, Roman delicacies, champagne, and espresso overlooking the city.
               </p>
-              <div class="schedule-links">
+              <div class="schedule-links reveal-item" style="--delay: 0.5s;">
                 <a href="https://maps.google.com/?q=Hotel+Hassler+Roma" target="_blank" class="inline-map-link">
                   Hotel Hassler Map &rarr;
                 </a>
@@ -1040,15 +1250,15 @@
 
     <!-- RSVP Section (Pure Haute Couture Stationery) -->
     <section class="rsvp-editorial-section" id="rsvp">
-      <h2 class="rsvp-headline">Confirm Attendance</h2>
-      <p class="rsvp-lead">Please confirm your presence for each event of our wedding weekend:</p>
+      <h2 class="rsvp-headline reveal-item" style="--delay: 0.1s;">Confirm Attendance</h2>
+      <p class="rsvp-lead reveal-item" style="--delay: 0.2s;">Please confirm your presence for each event of our wedding weekend:</p>
 
       <form id="faustoForm" class="stationery-form" onsubmit="handleFaustoSubmit(event)">
         
         <div class="stationery-event-list">
           
           <!-- Event 1 -->
-          <div class="stationery-event-card">
+          <div class="stationery-event-card reveal-item" style="--delay: 0.3s;">
             <div class="stationery-event-header">
               <div class="stationery-event-name">1. Welcome Reception &middot; Ciampini</div>
               <div class="stationery-event-date">Friday, April 16 &middot; 19:00 &middot; Piazza Trinità dei Monti</div>
@@ -1068,7 +1278,7 @@
           </div>
 
           <!-- Event 2 -->
-          <div class="stationery-event-card">
+          <div class="stationery-event-card reveal-item" style="--delay: 0.3s;">
             <div class="stationery-event-header">
               <div class="stationery-event-name">2. Vatican Blessing & Villa Aurelia Gala</div>
               <div class="stationery-event-date">Saturday, April 17 &middot; 15:30 &middot; San Pietro & Villa Aurelia</div>
@@ -1088,7 +1298,7 @@
           </div>
 
           <!-- Event 3 -->
-          <div class="stationery-event-card">
+          <div class="stationery-event-card reveal-item" style="--delay: 0.3s;">
             <div class="stationery-event-header">
               <div class="stationery-event-name">3. Farewell Brunch &middot; Hotel Hassler</div>
               <div class="stationery-event-date">Sunday, April 18 &middot; 12:00 &middot; Panoramic Terrace</div>
@@ -1109,17 +1319,17 @@
 
         </div>
 
-        <div class="stationery-input-group">
+        <div class="stationery-input-group reveal-item" style="--delay: 0.35s;">
           <label class="stationery-input-label" for="guestName">Guest Name</label>
           <input type="text" id="guestName" class="stationery-line-input" value="Fausto Innamorati" required>
         </div>
 
-        <div class="stationery-input-group">
+        <div class="stationery-input-group reveal-item" style="--delay: 0.35s;">
           <label class="stationery-input-label" for="guestNote">Dietary requirements or a message for Elia &amp; Daniel</label>
           <input type="text" id="guestNote" class="stationery-line-input" placeholder="Allergies, dietary preferences, or a personal note...">
         </div>
 
-        <button type="submit" class="stationery-submit-btn">Send RSVP</button>
+        <button type="submit" class="stationery-submit-btn reveal-item" style="--delay: 0.55s;">Send RSVP</button>
       </form>
     </section>
 
@@ -1358,6 +1568,36 @@
 
       document.getElementById('confirmModal').classList.add('open');
     }
+  
+    // Silky smooth scroll & load reveal observer
+    function initScrollReveals() {
+      const reveals = document.querySelectorAll('.reveal-item, .editorial-divider');
+      if (!('IntersectionObserver' in window)) {
+        reveals.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -30px 0px'
+      });
+
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollReveals);
+    } else {
+      initScrollReveals();
+    }
+
   </script>
 </body>
 </html>

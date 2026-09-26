@@ -68,8 +68,10 @@
     /* Fullscreen Hero matching innamorati-meister.com */
     .hero {
       position: relative;
-      width: 100vw;
+      width: 100%;
+      max-width: 100%;
       height: 100vh;
+      height: 100svh;
       min-height: 650px;
       display: flex;
       flex-direction: column;
@@ -149,27 +151,41 @@
 
     .scroll-down {
       position: absolute;
-      bottom: 2.4rem;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 2.2rem;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+      width: max-content;
+      max-width: 90vw;
       z-index: 10;
       color: rgba(255, 255, 255, 0.85);
       font-family: var(--font-sans);
       font-size: 0.72rem;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      text-align: center;
       gap: 0.5rem;
-      transition: all 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
       font-weight: 300;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+
+    .scroll-down span {
+      display: block;
+      margin-right: -0.22em;
+      text-align: center;
     }
 
     .scroll-down:hover {
       color: #ffffff;
-      transform: translate(-50%, 3px);
+      transform: translateY(3px) !important;
     }
 
     /* Page Content Structure */
@@ -603,8 +619,10 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
+      max-width: 100%;
       height: 100vh;
+      height: 100svh;
       background: rgba(18, 17, 16, 0.85);
       backdrop-filter: blur(8px);
       z-index: 1000;
@@ -712,6 +730,198 @@
       opacity: 1;
       transform: translateY(0);
     }
+  
+    /* =========================================
+       LUXURY ANIMATIONS & TRANSITIONS
+       ========================================= */
+
+    /* Hero Background Zoom */
+    @keyframes heroBgZoom {
+      0% {
+        transform: scale(1.09);
+        filter: brightness(0.85);
+      }
+      100% {
+        transform: scale(1);
+        filter: brightness(1);
+      }
+    }
+
+    .hero-bg-img,
+    .hero-bg-video {
+      animation: heroBgZoom 3.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      will-change: transform, filter;
+    }
+
+    /* Hero Text Keyframes */
+    @keyframes luxuryFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(32px) scale(0.97);
+        filter: blur(8px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes luxurySubReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(18px);
+        letter-spacing: 0.14em;
+        filter: blur(4px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0.32em;
+        filter: blur(0);
+      }
+    }
+
+    @keyframes luxuryFadeUpSubtle {
+      0% {
+        opacity: 0;
+        transform: translateY(22px);
+        filter: blur(6px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes luxuryFadeCenter {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(4px);
+      }
+      100% {
+        opacity: 0.9;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes subtlePulseArrow {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(4px);
+      }
+    }
+
+    .hero-content .h1-mega {
+      opacity: 0;
+      animation: luxuryFadeUp 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+    }
+
+    .hero-content .location-text {
+      opacity: 0;
+      animation: luxurySubReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    .hero-content .hero-date {
+      opacity: 0;
+      animation: luxuryFadeUpSubtle 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+    }
+
+    .hero .scroll-down,
+    .hero-scroll-btn {
+      opacity: 0;
+      animation: luxuryFadeCenter 1.6s cubic-bezier(0.16, 1, 0.3, 1) 1.25s forwards;
+    }
+
+    .scroll-down svg {
+      animation: subtlePulseArrow 2.2s ease-in-out 2.8s infinite;
+    }
+
+    .scroll-down:hover svg {
+      animation: none;
+      transform: translateY(3px);
+    }
+
+    /* Universal Staggered Scroll/Load Reveal */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(3px);
+      transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--delay, 0s);
+      will-change: opacity, transform, filter;
+    }
+
+    .reveal-item.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+
+    /* Expanding gold divider */
+    .editorial-divider {
+      width: 1px;
+      height: 70px;
+      background: var(--color-gold);
+      opacity: 0.4;
+      margin: 4rem auto 0;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: var(--delay, 0.2s);
+    }
+
+    .editorial-divider.is-visible {
+      transform: scaleY(1);
+    }
+
+    /* Interactive micro-animations */
+    .stationery-line-input {
+      position: relative;
+      transition: border-bottom-color 0.35s ease, background-color 0.35s ease, padding-left 0.25s ease;
+    }
+
+    .stationery-line-input:focus {
+      border-bottom-color: var(--color-gold);
+      padding-left: 4px;
+    }
+
+    .stationery-radio-label {
+      transition: transform 0.25s ease;
+    }
+
+    .stationery-radio-label:hover {
+      transform: translateY(-1px);
+    }
+
+    .stationery-submit-btn {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stationery-submit-btn::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      transform: rotate(30deg);
+      transition: transform 0.75s ease;
+    }
+
+    .stationery-submit-btn:hover::after {
+      transform: rotate(30deg) translate(300%, -20%);
+    }
+
   </style>
 </head>
 <body>
@@ -742,27 +952,27 @@
 
     <!-- Personal Welcome Letterhead -->
     <section class="welcome-editorial" id="invitation">
-      <h2 class="welcome-title">Liebe Familie, liebe Freunde,</h2>
-      <p class="welcome-text">
+      <h2 class="welcome-title reveal-item" style="--delay: 0.1s;">Liebe Familie, liebe Freunde,</h2>
+      <p class="welcome-text reveal-item" style="--delay: 0.25s;">
         Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag ab 12:30 Uhr gemeinsam mit uns in der wundersch&ouml;nen Villa Honegg zu verbringen.
       </p>
-      <div class="editorial-divider"></div>
+      <div class="editorial-divider reveal-item" style="--delay: 0.4s;"></div>
     </section>
 
     <!-- Event & Tagesablauf Spread -->
     <section class="day-spread" id="details">
       <div class="day-container-centered">
-        <h3 class="day-main-title">Zivile Trauung & Feier</h3>
-        <div class="day-date-sub">Donnerstag, 18. Februar 2027 &middot; Villa Honegg, Ennetb&uuml;rgen</div>
+        <h3 class="day-main-title reveal-item" style="--delay: 0.1s;">Zivile Trauung & Feier</h3>
+        <div class="day-date-sub reveal-item" style="--delay: 0.2s;">Donnerstag, 18. Februar 2027 &middot; Villa Honegg, Ennetb&uuml;rgen</div>
         
-        <p class="day-prose">
+        <p class="day-prose reveal-item" style="--delay: 0.3s;">
           Hoch &uuml;ber dem Vierwaldst&auml;ttersee und umgeben von der schneebedeckten Schweizer Bergwelt kommen wir zusammen, um unsere Liebe zu feiern und diesen einzigartigen Tag unvergesslich zu machen.
         </p>
 
                 <!-- Timeline Specifics -->
         <div class="schedule-block-centered">
           
-          <div class="schedule-entry-centered">
+          <div class="schedule-entry-centered reveal-item" style="--delay: 0.4s;">
             <div class="schedule-time">12:30 UHR</div>
             <div class="schedule-info">
               <h4>Empfang &amp; Hochzeitslunch</h4>
@@ -773,7 +983,7 @@
             </div>
           </div>
 
-          <div class="schedule-links">
+          <div class="schedule-links reveal-item" style="--delay: 0.5s;">
             <a href="https://maps.google.com/?q=Hotel+Villa+Honegg+Ennetbuergen" target="_blank" class="inline-action-link">
               Google Maps Anfahrt &rarr;
             </a>
@@ -792,14 +1002,14 @@
 
     <!-- RSVP Section (Authentic Letterpress Stationery) -->
     <section class="rsvp-editorial-section" id="rsvp">
-      <h2 class="rsvp-headline">R&uuml;ckmeldung</h2>
-      <p class="rsvp-lead">Bitte gebt uns bis zum <strong>15. Januar 2027</strong> Bescheid:</p>
+      <h2 class="rsvp-headline reveal-item" style="--delay: 0.1s;">R&uuml;ckmeldung</h2>
+      <p class="rsvp-lead reveal-item" style="--delay: 0.2s;">Bitte gebt uns bis zum <strong>15. Januar 2027</strong> Bescheid:</p>
 
       <form id="weddingRsvpForm" class="stationery-form" onsubmit="submitRSVP(event)">
         
         <div class="stationery-event-list">
           
-          <div class="stationery-event-card">
+          <div class="stationery-event-card reveal-item" style="--delay: 0.3s;">
             <div class="stationery-event-header">
               <div class="stationery-event-name">Zivile Trauung &amp; Festessen &middot; Villa Honegg</div>
               <div class="stationery-event-date">Donnerstag, 18. Februar 2027 &middot; 12:30 Uhr</div>
@@ -820,12 +1030,12 @@
 
         </div>
 
-        <div class="stationery-input-group">
+        <div class="stationery-input-group reveal-item" style="--delay: 0.35s;">
           <label class="stationery-input-label" for="guestName">Name(n) der G&auml;ste *</label>
           <input type="text" id="guestName" class="stationery-line-input" placeholder="Vor- und Nachname" required>
         </div>
 
-        <div class="stationery-input-group" id="groupCount">
+        <div class="stationery-input-group reveal-item" id="groupCount" style="--delay: 0.4s;">
           <label class="stationery-input-label" for="guestNum">Anzahl Personen</label>
           <select id="guestNum" class="stationery-line-input stationery-select">
             <option value="1 Person">1 Person</option>
@@ -835,7 +1045,7 @@
           </select>
         </div>
 
-        <div class="stationery-input-group" id="groupMenu">
+        <div class="stationery-input-group reveal-item" id="groupMenu" style="--delay: 0.45s;">
           <label class="stationery-input-label">Men&uuml;wahl</label>
           <div class="stationery-options" style="margin-top: 0.6rem; gap: 2.2rem;">
             <label class="stationery-radio-label">
@@ -856,17 +1066,17 @@
           </div>
         </div>
 
-        <div class="stationery-input-group" id="groupDiet">
+        <div class="stationery-input-group reveal-item" id="groupDiet" style="--delay: 0.5s;">
           <label class="stationery-input-label" for="guestDiet">Allergien &amp; Unvertr&auml;glichkeiten (Optional)</label>
           <input type="text" id="guestDiet" class="stationery-line-input" placeholder="z.B. Glutenfrei, Laktosefrei, N&uuml;sse...">
         </div>
 
-        <div class="stationery-input-group">
+        <div class="stationery-input-group reveal-item" style="--delay: 0.35s;">
           <label class="stationery-input-label" for="guestNote">Pers&ouml;nliche Nachricht (Optional)</label>
           <input type="text" id="guestNote" class="stationery-line-input" placeholder="Eure Nachricht an Elia &amp; Daniel...">
         </div>
 
-        <button type="submit" class="stationery-submit-btn">R&uuml;ckmeldung senden</button>
+        <button type="submit" class="stationery-submit-btn reveal-item" style="--delay: 0.55s;">R&uuml;ckmeldung senden</button>
       </form>
     </section>
 
@@ -1035,6 +1245,36 @@
       link.click();
       document.body.removeChild(link);
     }
+  
+    // Silky smooth scroll & load reveal observer
+    function initScrollReveals() {
+      const reveals = document.querySelectorAll('.reveal-item, .editorial-divider');
+      if (!('IntersectionObserver' in window)) {
+        reveals.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -30px 0px'
+      });
+
+      reveals.forEach(el => observer.observe(el));
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initScrollReveals);
+    } else {
+      initScrollReveals();
+    }
+
   </script>
 </body>
 </html>
