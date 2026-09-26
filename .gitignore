@@ -1,1 +1,3 @@
 *.zip
+*-raw.jpg
+.DS_Store
