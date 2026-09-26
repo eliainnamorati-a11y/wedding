@@ -1112,7 +1112,7 @@
       const btn = e.target.querySelector('button[type="submit"]');
       const orig = btn.innerText;
       btn.disabled = true;
-      btn.innerText = 'Wird &uuml;bermittelt...';
+      btn.innerText = 'Wird übermittelt...';
 
       const name = document.getElementById('guestName').value.trim();
       const count = document.getElementById('guestNum') ? document.getElementById('guestNum').value.trim() : '1';
@@ -1200,7 +1200,7 @@
 
       const modalDesc = document.getElementById('mDesc');
       if (modalDesc) {
-        modalDesc.innerHTML = 'Liebe/r <strong>' + name + '</strong>, deine R&uuml;ckmeldung wurde direkt an Elia &amp; Daniel &uuml;bermittelt! Wir freuen uns sehr.';
+        modalDesc.innerHTML = 'Liebe/r <strong>' + name + '</strong>, deine Rückmeldung wurde direkt an Elia & Daniel übermittelt! Wir freuen uns sehr.';
       }
       const rModal = document.getElementById('rsvpModal');
       if (rModal) rModal.classList.add('open');
