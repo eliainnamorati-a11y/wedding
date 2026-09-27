@@ -651,20 +651,7 @@
       position: relative;
     }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .welcome-editorial {
-        padding: 6rem 1.5rem 4rem;
-      }
-      .day-spread {
-        padding: 5rem 1.5rem;
-      }
-      .stationery-options {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-    }
+    
   
     /* Luxury Reveal & Staggered Entry Animations */
     @keyframes luxuryFadeUp {
@@ -1174,6 +1161,116 @@
       box-shadow: none !important;
     }
 
+  
+  /* =========================================
+     RESPONSIVE EDITORIAL & MOBILE CURSIVE STYLES
+     ========================================= */
+  @media (max-width: 768px) {
+    .hero-content {
+      padding: 0 1.25rem !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+      box-sizing: border-box !important;
+    }
+
+    .h1-mega {
+      font-size: clamp(2.35rem, 8vw, 3.8rem) !important;
+      line-height: 1.25 !important;
+      margin: 0.2rem 0 0.8rem !important;
+      padding: 0 0.5rem !important;
+      overflow: visible !important;
+      white-space: nowrap !important;
+    }
+
+    .location-text {
+      font-size: clamp(0.7rem, 2.6vw, 0.82rem) !important;
+      letter-spacing: 0.26em !important;
+      margin-top: 0.35rem !important;
+      margin-bottom: 0.6rem !important;
+      padding: 0 0.5rem !important;
+    }
+
+    .hero-date.cursive-date {
+      font-size: clamp(1.6rem, 5.2vw, 2.3rem) !important;
+      line-height: 1.35 !important;
+      margin-top: 0.6rem !important;
+      padding: 0 0.8rem !important;
+      overflow: visible !important;
+      white-space: nowrap !important;
+    }
+
+    .welcome-editorial {
+      padding: 5.5rem 1.8rem 3.5rem !important;
+      box-sizing: border-box !important;
+    }
+
+    .welcome-title {
+      font-size: clamp(1.8rem, 5.6vw, 2.4rem) !important;
+      line-height: 1.48 !important;
+      margin-bottom: 1.5rem !important;
+      padding: 0 0.8rem !important;
+      overflow: visible !important;
+      word-break: normal !important;
+    }
+
+    .day-spread {
+      padding: 4.5rem 1.6rem !important;
+      box-sizing: border-box !important;
+    }
+
+    .day-main-title {
+      font-size: clamp(1.75rem, 5.2vw, 2.3rem) !important;
+      line-height: 1.4 !important;
+      margin-bottom: 0.5rem !important;
+      padding: 0 0.8rem !important;
+      overflow: visible !important;
+    }
+
+    .rsvp-editorial-section {
+      padding: 5.5rem 1.6rem 7rem !important;
+      box-sizing: border-box !important;
+    }
+
+    .rsvp-headline {
+      font-size: clamp(1.9rem, 6.2vw, 2.5rem) !important;
+      line-height: 1.35 !important;
+      margin-bottom: 0.8rem !important;
+      padding: 0 0.8rem !important;
+      overflow: visible !important;
+    }
+
+    .confirmation-box h3 {
+      font-size: clamp(1.9rem, 6vw, 2.5rem) !important;
+      line-height: 1.35 !important;
+      overflow: visible !important;
+    }
+
+    .stationery-options {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .h1-mega {
+      font-size: clamp(1.85rem, 7.2vw, 2.3rem) !important;
+    }
+    .hero-date.cursive-date {
+      font-size: clamp(1.35rem, 4.4vw, 1.65rem) !important;
+    }
+    .welcome-title {
+      font-size: clamp(1.55rem, 4.8vw, 1.9rem) !important;
+      line-height: 1.5 !important;
+    }
+    .day-main-title {
+      font-size: clamp(1.5rem, 4.6vw, 1.85rem) !important;
+    }
+    .rsvp-headline {
+      font-size: clamp(1.65rem, 5.2vw, 2rem) !important;
+    }
+  }
+
   </style>
 </head>
 <body>
@@ -1360,7 +1457,7 @@
   <!-- Confirmation Modal -->
   <div id="rsvpModal" class="modal-overlay" onclick="handleModalOverlayClick(event)">
     <div class="confirmation-box">
-      <h3 style="font-family: var(--font-script); font-size: 2.8rem; font-weight: normal; color: var(--color-dark); margin-bottom: 0.8rem;">Vielen Dank!</h3>
+      <h3 style="font-family: var(--font-script); font-size: clamp(2rem, 6vw, 2.8rem); font-weight: normal; color: var(--color-dark); margin-bottom: 0.8rem; line-height: 1.35; overflow: visible; padding: 0 0.5rem;">Vielen Dank!</h3>
       <p id="mDesc" style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--color-charcoal); line-height: 1.8; margin-bottom: 2.2rem;">
         Deine R&uuml;ckmeldung wurde direkt an Elia &amp; Daniel &uuml;bermittelt. Wir freuen uns von ganzem Herzen!
       </p>
