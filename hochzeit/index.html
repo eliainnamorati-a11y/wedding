@@ -1431,7 +1431,7 @@
     <section class="welcome-editorial" id="invitation">
       <h2 class="welcome-title reveal-item" id="welcomeTitle" style="--delay: 0.1s;"><span class="line-block">Liebe Familie,</span> <span class="line-block">Liebe Freunde,</span></h2>
       <p class="welcome-text reveal-item" id="welcomeText" style="--delay: 0.25s;">
-        Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag von 12:30 bis 16:30 Uhr gemeinsam mit uns in der wunderschönen Villa Honegg zu verbringen.
+        Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag gemeinsam mit uns in der wunderschönen Villa Honegg zu verbringen.
       </p>
       <div class="editorial-divider reveal-item" style="--delay: 0.4s;"></div>
     </section>
@@ -1451,7 +1451,7 @@
               <h4 id="scheduleTitle">Empfang &amp; Hochzeitslunch</h4>
               <div class="schedule-location" id="scheduleLocation">Hotel Villa Honegg · Honegg, 6373 Ennetbürgen</div>
               <p class="schedule-desc" id="scheduleDesc">
-                Wir starten um 12:30 Uhr mit einem Apéro, gefolgt von einem gemeinsamen festlichen Mittagessen und Ausklang bis 16:30 Uhr.
+                Wir starten um 12:30 Uhr mit einem Apéro, gefolgt von einem gemeinsamen festlichen Mittagessen.
               </p>
             </div>
           </div>
@@ -1535,13 +1535,18 @@
           </div>
         </div>
 
+        <div class="stationery-input-group reveal-item" id="groupDiet1" style="--delay: 0.45s;">
+          <label class="stationery-input-label" for="guestDiet" id="lblDiet1">Allergien &amp; Unverträglichkeiten (1. Gast)</label>
+          <input type="text" id="guestDiet" class="stationery-line-input" placeholder="z.B. Glutenfrei, Laktosefrei, Nüsse...">
+        </div>
+
         <!-- Gast 2 (shown when 2 Personen) -->
-        <div class="stationery-input-group reveal-item" id="groupGuest2" style="--delay: 0.46s;">
+        <div class="stationery-input-group reveal-item" id="groupGuest2" style="--delay: 0.48s;">
           <label class="stationery-input-label" for="guestName2" id="lblGuestName2">Name des 2. Gastes *</label>
           <input type="text" id="guestName2" class="stationery-line-input" placeholder="Vor- und Nachname" required>
         </div>
 
-        <div class="stationery-input-group reveal-item" id="groupMenu2" style="--delay: 0.5s;">
+        <div class="stationery-input-group reveal-item" id="groupMenu2" style="--delay: 0.52s;">
           <label class="stationery-input-label" id="lblMenu2">Menüwahl (2. Gast)</label>
           <div class="stationery-options" style="margin-top: 0.6rem; gap: 2.2rem;">
             <label class="stationery-radio-label">
@@ -1562,12 +1567,12 @@
           </div>
         </div>
 
-        <div class="stationery-input-group reveal-item" id="groupDiet" style="--delay: 0.54s;">
-          <label class="stationery-input-label" for="guestDiet" id="lblDiet">Allergien &amp; Unverträglichkeiten (Optional)</label>
-          <input type="text" id="guestDiet" class="stationery-line-input" placeholder="z.B. Glutenfrei, Laktosefrei, Nüsse...">
+        <div class="stationery-input-group reveal-item" id="groupDiet2" style="--delay: 0.55s;">
+          <label class="stationery-input-label" for="guestDiet2" id="lblDiet2">Allergien &amp; Unverträglichkeiten (2. Gast)</label>
+          <input type="text" id="guestDiet2" class="stationery-line-input" placeholder="z.B. Glutenfrei, Laktosefrei, Nüsse...">
         </div>
 
-        <div class="stationery-input-group reveal-item" style="--delay: 0.58s;">
+        <div class="stationery-input-group reveal-item" id="groupNote" style="--delay: 0.58s;">
           <label class="stationery-input-label" for="guestNote" id="lblNote">Persönliche Nachricht (Optional)</label>
           <input type="text" id="guestNote" class="stationery-line-input" placeholder="Eure Nachricht an Elia &amp; Daniel...">
         </div>
@@ -1601,13 +1606,13 @@
         heroDate: '18. FEBRUAR 2027',
         heroScroll: 'Einladung & Details',
         welcomeTitle: '<span class="line-block">Liebe Familie,</span> <span class="line-block">Liebe Freunde,</span>',
-        welcomeText: 'Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag von 12:30 bis 16:30 Uhr gemeinsam mit uns in der wunderschönen Villa Honegg zu verbringen.',
+        welcomeText: 'Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag gemeinsam mit uns in der wunderschönen Villa Honegg zu verbringen.',
         dayMainTitle: '<span class="line-block">Zivile Trauung</span> <span class="line-block">&amp; Feier</span>',
         dayDateSub: 'Donnerstag, 18. Februar 2027 · Villa Honegg, Ennetbürgen',
         scheduleTime: '12:30 – 16:30 UHR',
         scheduleTitle: 'Empfang & Hochzeitslunch',
         scheduleLocation: 'Hotel Villa Honegg · Honegg, 6373 Ennetbürgen',
-        scheduleDesc: 'Wir starten um 12:30 Uhr mit einem Apéro, gefolgt von einem gemeinsamen festlichen Mittagessen und Ausklang bis 16:30 Uhr.',
+        scheduleDesc: 'Wir starten um 12:30 Uhr mit einem Apéro, gefolgt von einem gemeinsamen festlichen Mittagessen.',
         mapsLink: 'Google Maps Anfahrt &rarr;',
         calendarLink: 'Kalendereintrag (.ics) &rarr;',
         rsvpHeadline: 'Rückmeldung',
@@ -1629,7 +1634,9 @@
         menuMeat: 'Fleisch',
         menuFish: 'Fisch',
         menuVeg: 'Vegetarisch',
-        dietLabel: 'Allergien & Unverträglichkeiten (Optional)',
+        dietLabelSingle: 'Allergien & Unverträglichkeiten (Optional)',
+        dietLabel1: 'Allergien & Unverträglichkeiten (1. Gast)',
+        dietLabel2: 'Allergien & Unverträglichkeiten (2. Gast)',
         dietPlaceholder: 'z.B. Glutenfrei, Laktosefrei, Nüsse...',
         noteLabel: 'Persönliche Nachricht (Optional)',
         notePlaceholder: 'Eure Nachricht an Elia & Daniel...',
@@ -1647,13 +1654,13 @@
         heroDate: '18 FEBRUARY 2027',
         heroScroll: 'Invitation & Details',
         welcomeTitle: '<span class="line-block">Dear Family,</span> <span class="line-block">Dear Friends,</span>',
-        welcomeText: 'We are overjoyed to celebrate our civil wedding in an intimate circle with you. We warmly invite you to spend this special day with us from 12:30 PM to 4:30 PM at the beautiful Villa Honegg.',
+        welcomeText: 'We are overjoyed to celebrate our civil wedding in an intimate circle with you. We warmly invite you to spend this special day with us at the beautiful Villa Honegg.',
         dayMainTitle: '<span class="line-block">Civil Wedding</span> <span class="line-block">&amp; Celebration</span>',
         dayDateSub: 'Thursday, February 18, 2027 · Villa Honegg, Ennetbürgen',
         scheduleTime: '12:30 – 4:30 PM',
         scheduleTitle: 'Reception & Wedding Luncheon',
         scheduleLocation: 'Hotel Villa Honegg · Honegg, 6373 Ennetbürgen, Switzerland',
-        scheduleDesc: 'We will begin at 12:30 PM with an apéro, followed by a celebratory luncheon together until 4:30 PM.',
+        scheduleDesc: 'We will begin at 12:30 PM with an apéro, followed by a celebratory luncheon together.',
         mapsLink: 'Google Maps Directions &rarr;',
         calendarLink: 'Calendar Invitation (.ics) &rarr;',
         rsvpHeadline: 'RSVP',
@@ -1675,7 +1682,9 @@
         menuMeat: 'Meat',
         menuFish: 'Fish',
         menuVeg: 'Vegetarian',
-        dietLabel: 'Dietary Restrictions & Allergies (Optional)',
+        dietLabelSingle: 'Dietary Restrictions & Allergies (Optional)',
+        dietLabel1: 'Dietary Restrictions & Allergies (Guest 1)',
+        dietLabel2: 'Dietary Restrictions & Allergies (Guest 2)',
         dietPlaceholder: 'e.g. Gluten-free, lactose-free, nuts...',
         noteLabel: 'Personal Message (Optional)',
         notePlaceholder: 'Your message to Elia & Daniel...',
@@ -1788,10 +1797,14 @@
       const lVeg2 = document.getElementById('lblMenuVeg2');
       if (lVeg2) lVeg2.innerText = t.menuVeg;
 
-      const lDiet = document.getElementById('lblDiet');
-      if (lDiet) lDiet.innerHTML = t.dietLabel;
-      const iDiet = document.getElementById('guestDiet');
-      if (iDiet) iDiet.placeholder = t.dietPlaceholder;
+      const lDiet1 = document.getElementById('lblDiet1');
+      if (lDiet1) lDiet1.innerHTML = t.dietLabel1;
+      const lDiet2 = document.getElementById('lblDiet2');
+      if (lDiet2) lDiet2.innerHTML = t.dietLabel2;
+      const iDiet1 = document.getElementById('guestDiet');
+      if (iDiet1) iDiet1.placeholder = t.dietPlaceholder;
+      const iDiet2 = document.getElementById('guestDiet2');
+      if (iDiet2) iDiet2.placeholder = t.dietPlaceholder;
       const lNote = document.getElementById('lblNote');
       if (lNote) lNote.innerHTML = t.noteLabel;
       const iNote = document.getElementById('guestNote');
@@ -1827,16 +1840,20 @@
 
       const lGName = document.getElementById('lblGuestName');
       const lMenu1 = document.getElementById('lblMenu1');
+      const lDiet1 = document.getElementById('lblDiet1');
       const lGName2 = document.getElementById('lblGuestName2');
       const lMenu2 = document.getElementById('lblMenu2');
+      const lDiet2 = document.getElementById('lblDiet2');
       const grpGuest2 = document.getElementById('groupGuest2');
       const grpMenu2 = document.getElementById('groupMenu2');
+      const grpDiet2 = document.getElementById('groupDiet2');
       const iGName2 = document.getElementById('guestName2');
 
       if (!isAttending) {
         if (lGName) lGName.innerText = t.guestNameLabelDecline;
         if (grpGuest2) grpGuest2.style.display = 'none';
         if (grpMenu2) grpMenu2.style.display = 'none';
+        if (grpDiet2) grpDiet2.style.display = 'none';
         if (iGName2) iGName2.required = false;
         return;
       }
@@ -1844,16 +1861,21 @@
       if (isTwo) {
         if (lGName) lGName.innerText = t.guestNameLabel1;
         if (lMenu1) lMenu1.innerText = t.menuLabel1;
+        if (lDiet1) lDiet1.innerText = t.dietLabel1;
         if (lGName2) lGName2.innerText = t.guestNameLabel2;
         if (lMenu2) lMenu2.innerText = t.menuLabel2;
+        if (lDiet2) lDiet2.innerText = t.dietLabel2;
         if (grpGuest2) grpGuest2.style.display = 'flex';
         if (grpMenu2) grpMenu2.style.display = 'flex';
+        if (grpDiet2) grpDiet2.style.display = 'flex';
         if (iGName2) iGName2.required = true;
       } else {
         if (lGName) lGName.innerText = t.guestNameLabelSingle;
         if (lMenu1) lMenu1.innerText = t.menuLabelSingle;
+        if (lDiet1) lDiet1.innerText = t.dietLabelSingle;
         if (grpGuest2) grpGuest2.style.display = 'none';
         if (grpMenu2) grpMenu2.style.display = 'none';
+        if (grpDiet2) grpDiet2.style.display = 'none';
         if (iGName2) iGName2.required = false;
       }
     }
@@ -1863,20 +1885,22 @@
       const grpCount = document.getElementById('groupCount');
       const grpGuest1 = document.getElementById('groupGuest1');
       const grpMenu1 = document.getElementById('groupMenu1');
+      const grpDiet1 = document.getElementById('groupDiet1');
       const grpGuest2 = document.getElementById('groupGuest2');
       const grpMenu2 = document.getElementById('groupMenu2');
-      const grpDiet = document.getElementById('groupDiet');
+      const grpDiet2 = document.getElementById('groupDiet2');
       const lGName = document.getElementById('lblGuestName');
       const t = i18n[currentLang] || i18n.de;
 
       if (grpCount) grpCount.style.display = attending ? 'flex' : 'none';
       if (grpGuest1) grpGuest1.style.display = 'flex';
       if (grpMenu1) grpMenu1.style.display = attending ? 'flex' : 'none';
-      if (grpDiet) grpDiet.style.display = attending ? 'flex' : 'none';
+      if (grpDiet1) grpDiet1.style.display = attending ? 'flex' : 'none';
 
       if (!attending) {
         if (grpGuest2) grpGuest2.style.display = 'none';
         if (grpMenu2) grpMenu2.style.display = 'none';
+        if (grpDiet2) grpDiet2.style.display = 'none';
         const iGName2 = document.getElementById('guestName2');
         if (iGName2) iGName2.required = false;
         if (lGName) lGName.innerText = t.guestNameLabelDecline;
@@ -1909,7 +1933,24 @@
       const fullMenu = (isTwo && name2) ? `${name1}: ${menuChoice1} | ${name2}: ${menuChoice2}` : menuChoice1;
       const countNum = isAttending ? (isTwo ? 2 : 1) : 0;
 
-      const diet = document.getElementById('guestDiet') ? document.getElementById('guestDiet').value.trim() : '';
+      const diet1 = document.getElementById('guestDiet') ? document.getElementById('guestDiet').value.trim() : '';
+      const diet2 = (isTwo && document.getElementById('guestDiet2')) ? document.getElementById('guestDiet2').value.trim() : '';
+
+      let fullDiet = '';
+      if (isTwo && name2) {
+        if (diet1 && diet2) {
+          fullDiet = `${name1}: ${diet1} | ${name2}: ${diet2}`;
+        } else if (diet1) {
+          fullDiet = `${name1}: ${diet1} | ${name2}: Keine`;
+        } else if (diet2) {
+          fullDiet = `${name1}: Keine | ${name2}: ${diet2}`;
+        } else {
+          fullDiet = 'Keine';
+        }
+      } else {
+        fullDiet = diet1 || 'Keine';
+      }
+
       const note = document.getElementById('guestNote') ? document.getElementById('guestNote').value.trim() : '';
       const submittedAt = new Date().toLocaleString('de-CH', { timeZone: 'Europe/Zurich' });
 
@@ -1921,7 +1962,7 @@
         status: isAttending ? 'Attending' : 'Declined',
         count: countNum,
         menu: isAttending ? fullMenu : '-',
-        diet: diet || 'Keine',
+        diet: isAttending ? fullDiet : '-',
         note: note || '',
         timestamp: submittedAt
       };
@@ -1940,7 +1981,7 @@
         status: isAttending ? 'Attending' : 'Declined',
         count: countNum,
         menu: isAttending ? fullMenu : '-',
-        diet: diet || 'Keine',
+        diet: isAttending ? fullDiet : '-',
         note: note || '',
         lang: currentLang
       };
@@ -1969,7 +2010,9 @@
         "Menüwahl Gast 1": isAttending ? `${name1} → ${menuChoice1}` : "-",
         "Menüwahl Gast 2": (isAttending && isTwo) ? `${name2} → ${menuChoice2}` : "-",
         "Menü Zusammenfassung": isAttending ? fullMenu : "-",
-        "Allergien / Unverträglichkeiten": diet || "Keine",
+        "Allergien Gast 1": isAttending ? `${name1} → ${diet1 || 'Keine'}` : "-",
+        "Allergien Gast 2": (isAttending && isTwo) ? `${name2} → ${diet2 || 'Keine'}` : "-",
+        "Allergien Zusammenfassung": isAttending ? fullDiet : "-",
         "Persönliche Nachricht": note || "Keine",
         "Eingereicht am": submittedAt
       };
