@@ -659,7 +659,7 @@
 
     .lookbook-modal-content {
       background: var(--color-bg);
-      max-width: 680px;
+      max-width: 920px;
       width: 100%;
       padding: 3rem 2.8rem;
       position: relative;
@@ -1319,10 +1319,11 @@
         <!-- Attire & Inspiration Feature -->
         <div class="attire-editorial-centered">
           <div class="attire-label">DRESS CODE & INSPIRATION</div>
-          <div class="attire-theme-name">Black Tie Optional & Evening Gala</div>
+          <div class="attire-theme-name">Black Tie for Men &amp; Pastel Colors for Women</div>
           <p class="attire-summary-text">
-            Tuxedos or formal dark suits for gentlemen; floor-length or gala evening gowns for ladies.<br>
-            <em>*Vatican Chapel requirement:</em> Shoulders and knees covered during the ceremony (silk shawl/wrap recommended).
+            <strong>Gentlemen:</strong> Black Tie &mdash; Classic black tuxedo with black bow tie and polished dress shoes.<br>
+            <strong>Ladies:</strong> Floor-length gala evening gowns in delicate pastel colors.<br>
+            <em>*Vatican Chapel Requirement (Mandatory):</em> Shoulders covered are mandatory inside St. Peter's Basilica (gowns with sleeves, elegant capelet designs, or matching wraps).
           </p>
           <button type="button" class="attire-lookbook-link" onclick="openLookbook('day2')">
             <span>View Fashion Lookbook & Moodboard &rarr;</span>
@@ -1516,17 +1517,19 @@
         img: '/assets/images/day2_attire.jpg',
         fallback: 'assets/images/day2_attire.jpg',
         tag: 'SATURDAY, APRIL 17 &middot; VATICAN & VILLA AURELIA',
-        title: 'Black Tie Optional & Evening Gala',
+        title: 'Black Tie for Men &amp; Pastel Colors for Women',
         swatches: [
-          { name: 'Classic Black', color: '#111111' },
-          { name: 'Midnight Navy', color: '#1B2430' },
-          { name: 'Emerald Green', color: '#0E3B2E' },
-          { name: 'Roman Gold', color: '#BFA175' }
+          { name: 'Black Tie', color: '#111111' },
+          { name: 'Powder Blue', color: '#B6CFE2' },
+          { name: 'Pastel Pink', color: '#E8C5C8' },
+          { name: 'Soft Lavender', color: '#D8BFD8' },
+          { name: 'Butter Yellow', color: '#EDE4B8' },
+          { name: 'Champagne Rose', color: '#D9C3B0' }
         ],
         notes: `
-          <p><strong>Gentlemen:</strong> Classic black tuxedo with black bow tie, or a dark formal suit (midnight navy or charcoal) with an elegant silk tie and polished dress shoes.</p><br>
-          <p><strong>Ladies:</strong> Floor-length evening gowns or sophisticated gala cocktail dresses in jewel tones, classic black, emerald, or deep sapphire, accented with fine jewelry.</p><br>
-          <p><strong>*Vatican Chapel Modesty Requirement:</strong> For the religious blessing inside Cappella del Coro at St. Peter's Basilica, shoulders and knees must be respectfully covered. A matching silk scarf, shawl, or tailored jacket is ideal.</p>
+          <p><strong>Gentlemen:</strong> Black Tie &mdash; Classic black tuxedo with black bow tie, crisp white formal shirt, and polished black dress shoes.</p><br>
+          <p><strong>Ladies:</strong> Floor-length gala evening gowns in delicate pastel colors (powder blue, blush pink, soft lavender, butter yellow, or champagne rose).</p><br>
+          <p><strong>*Vatican Chapel Requirement (Mandatory):</strong> For our solemn religious blessing inside Cappella del Coro at St. Peter's Basilica, shoulders covered are strictly mandatory. Gowns with sleeves, elegant capelet designs, or matching shawls/wraps are required for entry.</p>
         `
       },
       day3: {
@@ -1557,7 +1560,13 @@
 
       const imgEl = document.getElementById('modalLookbookImg');
       imgEl.src = data.img;
-      imgEl.onerror = () => { imgEl.src = data.fallback; };
+      imgEl.onerror = () => {
+        if (!imgEl.src.includes('../')) {
+          imgEl.src = '../' + data.fallback;
+        } else {
+          imgEl.src = data.fallback;
+        }
+      };
       
       document.getElementById('modalLookbookTag').innerHTML = data.tag;
       document.getElementById('modalLookbookTitle').innerText = data.title;
