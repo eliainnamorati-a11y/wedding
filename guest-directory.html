@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elia & Daniel — Wedding Guest Directory & Personalized Links</title>
+  <link rel="icon" type="image/svg+xml" href="heart.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+      --color-bg: #FAF9F6;
+      --color-white: #FFFFFF;
+      --color-dark: #1A1918;
+      --color-charcoal: #3A3836;
+      --color-gold: #BFA175;
+      --color-gold-hover: #9E825A;
+      --color-border: #E8E2D8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-bg);
+      color: var(--color-dark);
+      padding: 2.5rem 1.5rem;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      font-weight: 400;
+      color: var(--color-dark);
+      margin-bottom: 0.5rem;
+    }
+    .subtitle {
+      color: var(--color-gold);
+      font-size: 0.95rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .stat-badge {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 30px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.85rem;
+      color: var(--color-charcoal);
+    }
+    .stat-badge strong {
+      color: var(--color-gold);
+    }
+    .controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .search-box {
+      flex: 1;
+      min-width: 250px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: var(--font-sans);
+      outline: none;
+      background: var(--color-white);
+    }
+    .search-input:focus {
+      border-color: var(--color-gold);
+    }
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--color-border);
+      background: var(--color-white);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--color-charcoal);
+      transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      color: var(--color-white);
+    }
+    .table-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+    th {
+      background: #F4EFE8;
+      padding: 1rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      border-bottom: 1px solid var(--color-border);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-charcoal);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #FAF7F2; }
+    .guest-name {
+      font-weight: 600;
+      color: var(--color-dark);
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-right: 0.3rem;
+    }
+    .badge-couple { background: #F6EDF8; color: #7B3E8C; }
+    .badge-solo { background: #EDF3F7; color: #355E7A; }
+    .badge-3days { background: #EBF3EA; color: #2B6B27; }
+    .badge-2days { background: #EEF4F8; color: #23527C; }
+    .badge-1day { background: #F8F1E7; color: #8A5A1F; }
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .btn-action {
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid var(--color-border);
+      background: var(--color-white);
+      color: var(--color-dark);
+      transition: all 0.2s;
+    }
+    .btn-action:hover {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      color: var(--color-white);
+    }
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #1A1918;
+      color: #fff;
+      padding: 0.8rem 1.4rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Elia & Daniel</h1>
+      <div class="subtitle">Rome Wedding — Guest Directory & Personalized Links</div>
+      
+      <div class="stats-bar">
+        <div class="stat-badge">Total Invitations: <strong>58</strong></div>
+        <div class="stat-badge">Total Guests: <strong>76</strong></div>
+        <div class="stat-badge">Couples: <strong>18</strong></div>
+        <div class="stat-badge">Solo: <strong>40</strong></div>
+        <div class="stat-badge">3 Days (Full Weekend): <strong>31</strong></div>
+        <div class="stat-badge">2 Days (Sat + Sun): <strong>19</strong></div>
+        <div class="stat-badge">Saturday Only: <strong>8</strong></div>
+      </div>
+    </header>
+
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search by name, side, or partner..." oninput="filterTable()">
+      </div>
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="setFilter('all', this)">All (58)</button>
+        <button class="tab-btn" onclick="setFilter('couples', this)">Couples (18)</button>
+        <button class="tab-btn" onclick="setFilter('solo', this)">Solo (40)</button>
+        <button class="tab-btn" onclick="setFilter('3days', this)">3 Days (31)</button>
+        <button class="tab-btn" onclick="setFilter('2days', this)">2 Days (19)</button>
+        <button class="tab-btn" onclick="setFilter('1day', this)">Sat Only (8)</button>
+        <button class="tab-btn" onclick="setFilter('daniel', this)">Daniel's Side</button>
+        <button class="tab-btn" onclick="setFilter('elia', this)">Elia's Side</button>
+      </div>
+      <a href="guests.csv" download="wedding_guests.csv" class="btn-action" style="padding: 0.6rem 1.1rem; background: var(--color-gold); color: #fff; border-color: var(--color-gold); font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download CSV
+      </a>
+    </div>
+
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 45px;">No.</th>
+            <th>Invitation &amp; Guests</th>
+            <th>Party</th>
+            <th>Side</th>
+            <th>Invited Events</th>
+            <th style="text-align: right;">Personalized Link</th>
+          </tr>
+        </thead>
+        <tbody id="guestTableBody"></tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 2rem; text-align: center; color: #8C8882; font-size: 0.85rem;">
+      <p>💡 <strong>Tip for editing:</strong> You can edit <code>guests.csv</code> or <code>guests.json</code> at any time and run <code>python3 generate_invitations.py</code> to regenerate all pages in 1 second.</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Link copied to clipboard!</div>
+
+  <script>
+    const data = [{"order": 1, "name": "Marisa Rafaiani", "slug": "marisa-rafaiani", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/marisa-rafaiani", "members": ["Marisa Rafaiani"]}, {"order": 2, "name": "Roberto Rafaiani", "slug": "roberto-rafaiani", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/roberto-rafaiani", "members": ["Roberto Rafaiani"]}, {"order": 3, "name": "Luigi & Giulia Rafaiani", "slug": "luigi-and-giulia", "is_couple": true, "party_size": 2, "side": "Elia Innamorati", "group": "Family Rafaiani", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/luigi-and-giulia", "members": ["Luigi Rafaiani", "Giulia Rafaiani"]}, {"order": 5, "name": "Piergiorgio Rafaiani", "slug": "piergiorgio-rafaiani", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/piergiorgio-rafaiani", "members": ["Piergiorgio Rafaiani"]}, {"order": 6, "name": "Maria Chiara Rafaiani & Fabrizio Sinisi", "slug": "maria-chiara-and-fabrizio", "is_couple": true, "party_size": 2, "side": "Elia Innamorati", "group": "Family Rafaiani", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/maria-chiara-and-fabrizio", "members": ["Maria Chiara Rafaiani", "Fabrizio Sinisi"]}, {"order": 8, "name": "Gabriela & Roberto Picardi", "slug": "gabriela-and-roberto", "is_couple": true, "party_size": 2, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/gabriela-and-roberto", "members": ["Roberto Picardi", "Gabriela Picardi", " Roberto Picardi"]}, {"order": 10, "name": "Cardinal Fernando Vergez", "slug": "cardinal-fernando-vergez", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/cardinal-fernando-vergez", "members": ["Cardinal Fernando Vergez"]}, {"order": 11, "name": "Roberto & Rodi Castellani", "slug": "roberto-and-rodi", "is_couple": true, "party_size": 2, "side": "Elia Innamorati", "group": "Family Castellani", "has_fri": false, "has_sun": false, "events_count": 1, "events": "Sat (Wedding)", "url": "https://innamorati-meister.com/roberto-and-rodi", "members": ["Roberto Castellani", "Rodi Castellani"]}, {"order": 13, "name": "Rita Castellani", "slug": "rita-castellani", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": false, "events_count": 1, "events": "Sat (Wedding)", "url": "https://innamorati-meister.com/rita-castellani", "members": ["Rita Castellani"]}, {"order": 14, "name": "Giovanni & Eleonora Castellani", "slug": "giovanni-and-eleonora", "is_couple": true, "party_size": 2, "side": "Elia Innamorati", "group": "Family Castellani", "has_fri": false, "has_sun": false, "events_count": 1, "events": "Sat (Wedding)", "url": "https://innamorati-meister.com/giovanni-and-eleonora", "members": ["Giovanni Castellani", "Eleonora Castellani"]}, {"order": 16, "name": "Giorgio Castellani", "slug": "giorgio-castellani", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": false, "events_count": 1, "events": "Sat (Wedding)", "url": "https://innamorati-meister.com/giorgio-castellani", "members": ["Giorgio Castellani"]}, {"order": 17, "name": "Valeria Castellani", "slug": "valeria-castellani", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": false, "events_count": 1, "events": "Sat (Wedding)", "url": "https://innamorati-meister.com/valeria-castellani", "members": ["Valeria Castellani"]}, {"order": 18, "name": "Elena & Sabino Selicato", "slug": "elena-and-sabino", "is_couple": true, "party_size": 2, "side": "Elia Innamorati", "group": "Family Selicato", "has_fri": false, "has_sun": false, "events_count": 1, "events": "Sat (Wedding)", "url": "https://innamorati-meister.com/elena-and-sabino", "members": ["Elena Selicato", "Sabino Selicato"]}, {"order": 20, "name": "Ludovica Selicato", "slug": "ludovica-selicato", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": false, "events_count": 1, "events": "Sat (Wedding)", "url": "https://innamorati-meister.com/ludovica-selicato", "members": ["Ludovica Selicato"]}, {"order": 21, "name": "Benedetta Selicato", "slug": "benedetta-selicato", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": false, "events_count": 1, "events": "Sat (Wedding)", "url": "https://innamorati-meister.com/benedetta-selicato", "members": ["Benedetta Selicato"]}, {"order": 22, "name": "Miguel Angel Ciccia Vasquez", "slug": "miguel-angel-ciccia-vasquez", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/miguel-angel-ciccia-vasquez", "members": ["Miguel Angel Ciccia Vasquez"]}, {"order": 23, "name": "Akemy & Miguel Angel Ciccia", "slug": "akemy-and-miguel", "is_couple": true, "party_size": 2, "side": "Elia Innamorati", "group": "Family Ciccia", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/akemy-and-miguel", "members": ["Akemy Ciccia", "Miguel Angel Ciccia Ayllon"]}, {"order": 25, "name": "Pierito Ciccia", "slug": "pierito-ciccia", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/pierito-ciccia", "members": ["Pierito Ciccia"]}, {"order": 26, "name": "Paola Ciccia & Denis", "slug": "paola-and-denis", "is_couple": true, "party_size": 2, "side": "Elia Innamorati", "group": "Family Ciccia", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/paola-and-denis", "members": ["Paola Ciccia Ayllon", "Paola's Husband", "Denis"]}, {"order": 28, "name": "Monica Ciccia Huayama", "slug": "monica-ciccia-huayama", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Family", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/monica-ciccia-huayama", "members": ["Monica Ciccia Huayama"]}, {"order": 29, "name": "Carmen Font", "slug": "carmen-font", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Friends", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/carmen-font", "members": ["Carmen Font"]}, {"order": 30, "name": "Dennis Mangone", "slug": "dennis-mangone", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Friends", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/dennis-mangone", "members": ["Dennis Mangone"]}, {"order": 31, "name": "Alina Kukarchuk", "slug": "alina-kukarchuk", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "Friends", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/alina-kukarchuk", "members": ["Alina Kukarchuk"]}, {"order": 32, "name": "Tato Walter", "slug": "tato-walter", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/tato-walter", "members": ["Tato Walter"]}, {"order": 33, "name": "Tata Emperatriz", "slug": "tata-emperatriz", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/tata-emperatriz", "members": ["Tata Emperatriz"]}, {"order": 34, "name": "Filip Schelfhout & Adriana Leskiv", "slug": "filip-and-adriana", "is_couple": true, "party_size": 2, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/filip-and-adriana", "members": ["Filip Schelfhout", "Adriana Leskiv"]}, {"order": 36, "name": "Celine Gillian", "slug": "celine-gillian", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/celine-gillian", "members": ["Celine Gillian"]}, {"order": 37, "name": "Olena & Eric Gillian", "slug": "olena-and-eric", "is_couple": true, "party_size": 2, "side": "Daniel Meister", "group": "Family Gillian", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/olena-and-eric", "members": ["Olena Gillian", "Eric Gillian"]}, {"order": 39, "name": "Meister 1", "slug": "meister-1", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/meister-1", "members": ["Meister 1"]}, {"order": 40, "name": "Meister 2", "slug": "meister-2", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/meister-2", "members": ["Meister 2"]}, {"order": 41, "name": "Meister 3", "slug": "meister-3", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/meister-3", "members": ["Meister 3"]}, {"order": 42, "name": "Meister 4", "slug": "meister-4", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/meister-4", "members": ["Meister 4"]}, {"order": 43, "name": "Meister 5", "slug": "meister-5", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/meister-5", "members": ["Meister 5"]}, {"order": 44, "name": "Meister 6", "slug": "meister-6", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/meister-6", "members": ["Meister 6"]}, {"order": 45, "name": "Meister 7", "slug": "meister-7", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/meister-7", "members": ["Meister 7"]}, {"order": 46, "name": "Meister 8", "slug": "meister-8", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/meister-8", "members": ["Meister 8"]}, {"order": 47, "name": "Elias Stassinopoulos & Marion", "slug": "elias-and-marion", "is_couple": true, "party_size": 2, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/elias-and-marion", "members": ["Elias Stassinopoulos", "Marion", "Marion "]}, {"order": 49, "name": "Florence", "slug": "florence", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/florence", "members": ["Florence"]}, {"order": 50, "name": "Mireille", "slug": "mireille", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/mireille", "members": ["Mireille"]}, {"order": 51, "name": "Jan Meister", "slug": "jan-meister", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/jan-meister", "members": ["Jan Meister"]}, {"order": 52, "name": "Aline", "slug": "aline", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/aline", "members": ["Aline"]}, {"order": 53, "name": "Miguel", "slug": "miguel", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/miguel", "members": ["Miguel"]}, {"order": 54, "name": "Michelle & Johannes Blochlinger", "slug": "michelle-and-johannes", "is_couple": true, "party_size": 2, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/michelle-and-johannes", "members": ["Michelle Blochlinger", "Johannes Blochlinger"]}, {"order": 56, "name": "Nick & Claudia Moore", "slug": "nick-and-claudia", "is_couple": true, "party_size": 2, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/nick-and-claudia", "members": ["Nick Moore", "Claude Moore", "Claude Moore ", "Claudia Moore"]}, {"order": 58, "name": "Luzia & Franz Grüter", "slug": "luzia-and-franz", "is_couple": true, "party_size": 2, "side": "Daniel Meister", "group": "Family", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/luzia-and-franz", "members": ["Franz Grüter", "Luzia Grüter"]}, {"order": 60, "name": "Ines Franke & Nayam de Groot", "slug": "ines-and-nayam", "is_couple": true, "party_size": 2, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/ines-and-nayam", "members": ["Ines Franke", "Nayam de Groot"]}, {"order": 62, "name": "Elia Innamorati", "slug": "elia-innamorati", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "-", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/elia-innamorati", "members": ["Elia Innamorati"]}, {"order": 63, "name": "Daniel Meister", "slug": "daniel-meister", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "-", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/daniel-meister", "members": ["Daniel Meister"]}, {"order": 64, "name": "Fausto Innamorati", "slug": "fausto-innamorati", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "-", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/fausto-innamorati", "members": ["Fausto Innamorati"]}, {"order": 65, "name": "Maria Ciccia", "slug": "maria-ciccia", "is_couple": false, "party_size": 1, "side": "Elia Innamorati", "group": "-", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/maria-ciccia", "members": ["Maria Ciccia"]}, {"order": 66, "name": "Lila & Adam Thompson", "slug": "lila-and-adam", "is_couple": true, "party_size": 2, "side": "Elia Innamorati", "group": "Friends", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/lila-and-adam", "members": ["Lila Chertman Thompson", "Adam Thompson"]}, {"order": 68, "name": "Florence Lasance + 1", "slug": "florence-lasance-plus-one", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "-", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/florence-lasance-plus-one", "members": ["Florence Lasance + 1"]}, {"order": 69, "name": "Mireille Lasance + 1", "slug": "mireille-lasance-plus-one", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "-", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/mireille-lasance-plus-one", "members": ["Mireille Lasance + 1"]}, {"order": 70, "name": "Martin Lasance", "slug": "martin-lasance", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "-", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/martin-lasance", "members": ["Martin Lasance"]}, {"order": 71, "name": "Carlos Vigil", "slug": "carlos-vigil", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "-", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/carlos-vigil", "members": ["Carlos Vigil"]}, {"order": 72, "name": "Carlos Vigil +1", "slug": "carlos-vigil-plus-one", "is_couple": false, "party_size": 1, "side": "Daniel Meister", "group": "-", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/carlos-vigil-plus-one", "members": ["Carlos Vigil +1"]}, {"order": 73, "name": "Olga Padilla & Scott Scharg", "slug": "olga-and-scott", "is_couple": true, "party_size": 2, "side": "Elia Innamorati", "group": "Friends", "has_fri": false, "has_sun": true, "events_count": 2, "events": "Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/olga-and-scott", "members": ["Olga Padilla", "Scott Scharg", "Olga Padilla "]}, {"order": 75, "name": "Franca & Arno Marnin", "slug": "franca-and-arno", "is_couple": true, "party_size": 2, "side": "Daniel Meister", "group": "Friends", "has_fri": true, "has_sun": true, "events_count": 3, "events": "Fri (Ciampini) + Sat (Wedding) + Sun (Brunch)", "url": "https://innamorati-meister.com/franca-and-arno", "members": ["Franca Marnin", "Arno Marnin"]}];
+    let currentFilter = 'all';
+
+    function renderTable() {
+      const tbody = document.getElementById('guestTableBody');
+      const search = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      const filtered = data.filter(item => {
+        if (currentFilter === 'couples' && !item.is_couple) return false;
+        if (currentFilter === 'solo' && item.is_couple) return false;
+        if (currentFilter === '3days' && item.events_count !== 3) return false;
+        if (currentFilter === '2days' && item.events_count !== 2) return false;
+        if (currentFilter === '1day' && item.events_count !== 1) return false;
+        if (currentFilter === 'daniel' && !item.side.includes('Daniel')) return false;
+        if (currentFilter === 'elia' && !item.side.includes('Elia')) return false;
+
+        if (search) {
+          const matchName = item.name.toLowerCase().includes(search);
+          const matchSide = item.side.toLowerCase().includes(search);
+          const matchSlug = item.slug.toLowerCase().includes(search);
+          const matchMembers = item.members && item.members.some(m => m.toLowerCase().includes(search));
+          if (!matchName && !matchSide && !matchSlug && !matchMembers) return false;
+        }
+        return true;
+      });
+
+      tbody.innerHTML = filtered.map((item, idx) => {
+        let badgeClass = 'badge-3days';
+        let badgeText = '3 Days (Full Weekend)';
+        if (item.events_count === 2) {
+          badgeClass = 'badge-2days';
+          badgeText = '2 Days (Sat + Sun)';
+        } else if (item.events_count === 1) {
+          badgeClass = 'badge-1day';
+          badgeText = 'Saturday Only';
+        }
+
+        const partyBadge = item.is_couple 
+          ? '<span class="badge badge-couple">Couple (2 Pax)</span>' 
+          : '<span class="badge badge-solo">Solo (1 Pax)</span>';
+
+        return `
+          <tr>
+            <td style="color: #8C8882;">${idx + 1}</td>
+            <td>
+              <div class="guest-name">${item.name}</div>
+              <div style="font-size: 0.78rem; color: #8C8882;">/${item.slug}</div>
+            </td>
+            <td>${partyBadge}</td>
+            <td>${item.side}</td>
+            <td>
+              <span class="badge ${badgeClass}">${badgeText}</span>
+            </td>
+            <td style="text-align: right;">
+              <div class="actions" style="justify-content: flex-end;">
+                <button class="btn-action" onclick="copyLink('${item.url}')">Copy Link</button>
+                <a href="/${item.slug}" target="_blank" class="btn-action">Open &rarr;</a>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function setFilter(filter, btn) {
+      currentFilter = filter;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderTable();
+    }
+
+    function filterTable() {
+      renderTable();
+    }
+
+    function copyLink(url) {
+      navigator.clipboard.writeText(url).then(() => {
+        const toast = document.getElementById('toast');
+        toast.innerText = 'Copied: ' + url;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2200);
+      });
+    }
+
+    renderTable();
+  </script>
+</body>
+</html>
