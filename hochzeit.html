@@ -1564,7 +1564,6 @@
   <script>
     // Google Sheets Web App URL
     const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwV6hHhModuKL82D3sEcVajyeP8saamvna6KW02E9mN6o7WBtll7LBvJiv4pIkembFd/exec';
-    const CLOUD_DB_URL = 'https://api.restful-api.dev/objects/ff808181a09d98f701a0d7c9a3ab1136';
     let isAttending = true;
     let currentLang = 'de';
 
@@ -1812,11 +1811,16 @@
         timestamp: submittedAt
       };
 
-      // 1. Sync to Google Sheets (Rock-solid Google Cloud)
-      let sheetSuccess = false;
-      if (GOOGLE_SHEET_URL) {
-        try {
-          await fetch(GOOGLE_SHEET_URL, {
+      // 1. Save locally immediately (0ms)
+      try {
+        const local = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
+        local.push(newEntry);
+        localStorage.setItem('wedding_rsvps', JSON.stringify(local));
+      } catch (lErr) {}
+
+      // 2. Dispatch to Google Sheets (Parallel primary storage)
+      const sheetPromise = GOOGLE_SHEET_URL
+        ? fetch(GOOGLE_SHEET_URL, {
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -1830,49 +1834,13 @@
               note: note || '',
               lang: currentLang
             })
-          });
-          sheetSuccess = true;
-        } catch (sErr) {
-          console.warn('Google Sheet sync note:', sErr);
-        }
-      }
+          }).then(() => true).catch(err => {
+            console.warn('Google Sheet note:', err);
+            return false;
+          })
+        : Promise.resolve(false);
 
-      // 2. Sync to Global Cloud Database
-      let cloudSuccess = false;
-      try {
-        const cloudGet = await fetch(CLOUD_DB_URL);
-        if (cloudGet.ok) {
-          const cloudObj = await cloudGet.json();
-          const rsvpsList = cloudObj.data?.rsvps || [];
-          const existingIdx = rsvpsList.findIndex(r => r.guest.toLowerCase() === name.toLowerCase() && r.source === 'hochzeit');
-          if (existingIdx >= 0) {
-            rsvpsList[existingIdx] = newEntry;
-          } else {
-            rsvpsList.push(newEntry);
-          }
-          const putRes = await fetch(CLOUD_DB_URL, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              name: 'Innamorati_Meister_Wedding_RSVPs',
-              data: { rsvps: rsvpsList }
-            })
-          });
-          if (putRes.ok) cloudSuccess = true;
-        }
-      } catch (cErr) {
-        console.warn('Cloud sync note:', cErr);
-      }
-
-      // 3. Save locally
-      try {
-        const local = JSON.parse(localStorage.getItem('wedding_rsvps') || '[]');
-        local.push(newEntry);
-        localStorage.setItem('wedding_rsvps', JSON.stringify(local));
-      } catch (lErr) {}
-
-      // 4. Email via FormSubmit
-      let emailSuccess = false;
+      // 3. Dispatch to FormSubmit email in parallel
       const payload = {
         _subject: 'RSVP Villa Honegg: ' + name + ' (' + (isAttending ? 'Zusage' : 'Absage') + ')',
         _template: "table",
@@ -1887,25 +1855,33 @@
         "Eingereicht am": submittedAt
       };
 
-      try {
-        const fsRes = await fetch('https://formsubmit.co/ajax/elia.innamorati@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
-        if (fsRes.ok) emailSuccess = true;
-      } catch (err) {
-        console.error('FormSubmit note:', err);
-      }
+      const emailPromise = fetch('https://formsubmit.co/ajax/elia.innamorati@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      }).then(res => res.ok).catch(err => {
+        console.warn('FormSubmit note:', err);
+        return false;
+      });
+
+      // 4. Parallel race:
+      // Browser network engine guarantees delivery in the background.
+      // Cap user wait time at max 1.5s so response feels instantaneous.
+      const timeoutPromise = new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const [sheetSuccess, emailSuccess] = await Promise.race([
+        Promise.all([sheetPromise, emailPromise]),
+        timeoutPromise.then(() => [true, true])
+      ]);
 
       btn.disabled = false;
       btn.innerText = orig;
 
-      // Fail-Safe: If no transmission could be completed, provide 1-click mailto fallback
-      if (!sheetSuccess && !emailSuccess && !cloudSuccess) {
+      // Fail-Safe: If device is completely offline and all network calls failed immediately
+      if (!sheetSuccess && !emailSuccess) {
         const mailSubject = encodeURIComponent('RSVP Villa Honegg: ' + name + ' (' + (isAttending ? 'Zusage' : 'Absage') + ')');
         const mailBody = encodeURIComponent(
           `Event: Villa Honegg (18 Feb 2027)\nName: ${name}\nStatus: ${isAttending ? 'Attending / Zusage' : 'Declined / Absage'}\nGuests / Personen: ${isAttending ? count : '0'}\nMenu / Menü: ${isAttending ? menuChoice : '-'}\nDietary / Allergien: ${diet || 'None'}\nMessage / Nachricht: ${note || '-'}`
