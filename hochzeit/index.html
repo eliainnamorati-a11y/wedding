@@ -871,46 +871,31 @@
       }
     }
 
-    /* Natural Italic Calligraphy Handwriting Draw */
-    .cursive-write {
-      display: inline-block;
-      white-space: nowrap;
-      clip-path: polygon(-30% -50%, -30% -50%, -60% 150%, -60% 150%);
-      padding: 0.15em 0.35em;
-      margin: -0.15em -0.35em;
-      will-change: clip-path;
-    }
-
     .hero-content .h1-mega {
-      opacity: 1;
+      opacity: 0;
+      transform: translateY(18px);
     }
 
-    .hero.hero-revealed .cursive-write {
-      animation: cursiveHandwritingDraw 4.6s cubic-bezier(0.35, 0, 0.22, 1) 0.3s forwards;
-    }
-
-    @keyframes cursiveHandwritingDraw {
-      to {
-        clip-path: polygon(-30% -50%, 140% -50%, 115% 150%, -60% 150%);
-      }
+    .hero.hero-revealed .h1-mega {
+      animation: luxuryFadeUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
     }
 
     .hero-content .location-text {
       opacity: 0;
-      transform: translateY(18px);
+      transform: translateY(14px);
     }
 
     .hero.hero-revealed .location-text {
-      animation: luxurySubReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 3.8s forwards;
+      animation: luxurySubReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
     }
 
     .hero-content .hero-date {
       opacity: 0;
-      transform: translateY(18px);
+      transform: translateY(14px);
     }
 
     .hero.hero-revealed .hero-date {
-      animation: luxurySubReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 4.3s forwards;
+      animation: luxurySubReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
     }
 
     .hero .scroll-down,
@@ -920,7 +905,7 @@
 
     .hero.hero-revealed .scroll-down,
     .hero.hero-revealed .hero-scroll-btn {
-      animation: luxuryFadeCenter 1.5s cubic-bezier(0.16, 1, 0.3, 1) 4.9s forwards;
+      animation: luxuryFadeCenter 1.4s cubic-bezier(0.16, 1, 0.3, 1) 1.0s forwards;
     }
 
     .top-nav-lang {
@@ -928,11 +913,11 @@
     }
 
     .hero.hero-revealed .top-nav-lang {
-      animation: luxuryFade 1.4s ease 1.2s forwards;
+      animation: luxuryFade 1.2s ease 0.3s forwards;
     }
 
     .scroll-down svg {
-      animation: subtlePulseArrow 2.2s ease-in-out 5.3s infinite;
+      animation: subtlePulseArrow 2.2s ease-in-out 1.8s infinite;
     }
 
     .scroll-down:hover svg {
@@ -941,10 +926,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .cursive-write {
-        clip-path: none !important;
-        animation: none !important;
-      }
+      .hero-content .h1-mega,
       .location-text, .hero-date, .scroll-down, .top-nav-lang {
         opacity: 1 !important;
         transform: none !important;
@@ -1427,9 +1409,9 @@
     </nav>
 
     <div class="hero-content">
-      <h1 class="h1-mega"><span class="cursive-write">Elia &amp; Daniel</span></h1>
+      <h1 class="h1-mega">Elia &amp; Daniel</h1>
       <div class="location-text">
-        VILLA HONEGG &middot; ENNETB&Uuml;RGEN
+        VILLA HONEGG · ENNETBÜRGEN
       </div>
       <div class="hero-date" id="heroDate">
         18. FEBRUAR 2027
@@ -1447,9 +1429,9 @@
 
     <!-- Personal Welcome Letterhead -->
     <section class="welcome-editorial" id="invitation">
-      <h2 class="welcome-title reveal-item" id="welcomeTitle" style="--delay: 0.1s;"><span class="line-block">Liebe Familie,</span> <span class="line-block">liebe Freunde,</span></h2>
+      <h2 class="welcome-title reveal-item" id="welcomeTitle" style="--delay: 0.1s;"><span class="line-block">Liebe Familie,</span> <span class="line-block">Liebe Freunde,</span></h2>
       <p class="welcome-text reveal-item" id="welcomeText" style="--delay: 0.25s;">
-        Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag ab 12:30 Uhr gemeinsam mit uns in der wundersch&ouml;nen Villa Honegg zu verbringen.
+        Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag ab 12:30 Uhr gemeinsam mit uns in der wunderschönen Villa Honegg zu verbringen.
       </p>
       <div class="editorial-divider reveal-item" style="--delay: 0.4s;"></div>
     </section>
@@ -1458,27 +1440,23 @@
     <section class="day-spread" id="details">
       <div class="day-container-centered">
         <h3 class="day-main-title reveal-item" id="dayMainTitle" style="--delay: 0.1s;"><span class="line-block">Zivile Trauung</span> <span class="line-block">&amp; Feier</span></h3>
-        <div class="day-date-sub reveal-item" id="dayDateSub" style="--delay: 0.2s;">Donnerstag, 18. Februar 2027 &middot; Villa Honegg, Ennetb&uuml;rgen</div>
-        
-        <p class="day-prose reveal-item" id="dayProse" style="--delay: 0.3s;">
-          Hoch &uuml;ber dem Vierwaldst&auml;ttersee und umgeben von der schneebedeckten Schweizer Bergwelt kommen wir zusammen, um unsere Liebe zu feiern und diesen einzigartigen Tag unvergesslich zu machen.
-        </p>
+        <div class="day-date-sub reveal-item" id="dayDateSub" style="--delay: 0.2s;">Donnerstag, 18. Februar 2027 · Villa Honegg, Ennetbürgen</div>
 
         <!-- Timeline Specifics -->
         <div class="schedule-block-centered">
           
-          <div class="schedule-entry-centered reveal-item" style="--delay: 0.4s;">
+          <div class="schedule-entry-centered reveal-item" style="--delay: 0.3s;">
             <div class="schedule-time" id="scheduleTime">12:30 UHR</div>
             <div class="schedule-info">
               <h4 id="scheduleTitle">Empfang &amp; Hochzeitslunch</h4>
-              <div class="schedule-location" id="scheduleLocation">Hotel Villa Honegg &middot; Honegg, 6373 Ennetb&uuml;rgen</div>
+              <div class="schedule-location" id="scheduleLocation">Hotel Villa Honegg · Honegg, 6373 Ennetbürgen</div>
               <p class="schedule-desc" id="scheduleDesc">
-                Wir starten um 12:30 Uhr mit einem Champagner-Ap&eacute;ro, gefolgt von einem gemeinsamen festlichen Mittagessen und Ausklang.
+                Wir starten um 12:30 Uhr mit einem Apéro, gefolgt von einem gemeinsamen festlichen Mittagessen und Ausklang.
               </p>
             </div>
           </div>
 
-          <div class="schedule-links reveal-item" style="--delay: 0.5s;">
+          <div class="schedule-links reveal-item" style="--delay: 0.4s;">
             <a href="https://maps.google.com/?q=Hotel+Villa+Honegg+Ennetbuergen" target="_blank" class="inline-action-link" id="scheduleMapsLink">
               Google Maps Anfahrt &rarr;
             </a>
@@ -1494,7 +1472,7 @@
 
     <!-- RSVP Section (Authentic Letterpress Stationery) -->
     <section class="rsvp-editorial-section" id="rsvp">
-      <h2 class="rsvp-headline reveal-item" id="rsvpHeadline" style="--delay: 0.1s;">R&uuml;ckmeldung</h2>
+      <h2 class="rsvp-headline reveal-item" id="rsvpHeadline" style="--delay: 0.1s;">Rückmeldung</h2>
       <p class="rsvp-lead reveal-item" id="rsvpLead" style="--delay: 0.2s;">Bitte gebt uns bis zum <strong>15. Januar 2027</strong> Bescheid:</p>
 
       <form id="weddingRsvpForm" class="stationery-form" onsubmit="submitRSVP(event)">
@@ -1503,8 +1481,8 @@
           
           <div class="stationery-event-card reveal-item" style="--delay: 0.3s;">
             <div class="stationery-event-header">
-              <div class="stationery-event-name" id="eventName">Zivile Trauung &amp; Festessen &middot; Villa Honegg</div>
-              <div class="stationery-event-date" id="eventDate">Donnerstag, 18. Februar 2027 &middot; 12:30 Uhr</div>
+              <div class="stationery-event-name" id="eventName">Zivile Trauung &amp; Festessen · Villa Honegg</div>
+              <div class="stationery-event-date" id="eventDate">Donnerstag, 18. Februar 2027 · 12:30 Uhr</div>
             </div>
             <div class="stationery-options">
               <label class="stationery-radio-label">
@@ -1523,7 +1501,7 @@
         </div>
 
         <div class="stationery-input-group reveal-item" style="--delay: 0.35s;">
-          <label class="stationery-input-label" for="guestName" id="lblGuestName">Name(n) der G&auml;ste *</label>
+          <label class="stationery-input-label" for="guestName" id="lblGuestName">Name(n) der Gäste *</label>
           <input type="text" id="guestName" class="stationery-line-input" placeholder="Vor- und Nachname" required>
         </div>
 
@@ -1532,13 +1510,11 @@
           <select id="guestNum" class="stationery-line-input stationery-select">
             <option value="1 Person" id="optPax1">1 Person</option>
             <option value="2 Personen" id="optPax2" selected>2 Personen</option>
-            <option value="3 Personen" id="optPax3">3 Personen</option>
-            <option value="4 Personen" id="optPax4">4 Personen</option>
           </select>
         </div>
 
         <div class="stationery-input-group reveal-item" id="groupMenu" style="--delay: 0.45s;">
-          <label class="stationery-input-label" id="lblMenu">Men&uuml;wahl</label>
+          <label class="stationery-input-label" id="lblMenu">Menüwahl</label>
           <div class="stationery-options" style="margin-top: 0.6rem; gap: 2.2rem;">
             <label class="stationery-radio-label">
               <input type="radio" name="menuPreference" value="Fleisch" checked>
@@ -1559,16 +1535,16 @@
         </div>
 
         <div class="stationery-input-group reveal-item" id="groupDiet" style="--delay: 0.5s;">
-          <label class="stationery-input-label" for="guestDiet" id="lblDiet">Allergien &amp; Unvertr&auml;glichkeiten (Optional)</label>
-          <input type="text" id="guestDiet" class="stationery-line-input" placeholder="z.B. Glutenfrei, Laktosefrei, N&uuml;sse...">
+          <label class="stationery-input-label" for="guestDiet" id="lblDiet">Allergien & Unverträglichkeiten (Optional)</label>
+          <input type="text" id="guestDiet" class="stationery-line-input" placeholder="z.B. Glutenfrei, Laktosefrei, Nüsse...">
         </div>
 
         <div class="stationery-input-group reveal-item" style="--delay: 0.35s;">
-          <label class="stationery-input-label" for="guestNote" id="lblNote">Pers&ouml;nliche Nachricht (Optional)</label>
-          <input type="text" id="guestNote" class="stationery-line-input" placeholder="Eure Nachricht an Elia &amp; Daniel...">
+          <label class="stationery-input-label" for="guestNote" id="lblNote">Persönliche Nachricht (Optional)</label>
+          <input type="text" id="guestNote" class="stationery-line-input" placeholder="Eure Nachricht an Elia & Daniel...">
         </div>
 
-        <button type="submit" class="stationery-submit-btn reveal-item" id="btnSubmitRsvp" style="--delay: 0.55s;">R&uuml;ckmeldung senden</button>
+        <button type="submit" class="stationery-submit-btn reveal-item" id="btnSubmitRsvp" style="--delay: 0.55s;">Rückmeldung senden</button>
       </form>
     </section>
 
@@ -1579,7 +1555,7 @@
     <div class="confirmation-box">
       <h3 id="modalTitle" style="font-family: var(--font-script); font-size: clamp(2rem, 6vw, 2.8rem); font-weight: normal; color: var(--color-dark); margin-bottom: 0.8rem; line-height: 1.35; overflow: visible; padding: 0 0.5rem;">Vielen Dank!</h3>
       <p id="mDesc" style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--color-charcoal); line-height: 1.8; margin-bottom: 2.2rem;">
-        Deine R&uuml;ckmeldung wurde direkt an Elia &amp; Daniel &uuml;bermittelt. Wir freuen uns von ganzem Herzen!
+        Deine Rückmeldung wurde direkt an Elia &amp; Daniel übermittelt. Wir freuen uns von ganzem Herzen!
       </p>
       <button class="stationery-submit-btn" id="btnModalClose" style="margin: 0 auto;" onclick="closeModal()">Schliessen</button>
     </div>
@@ -1597,39 +1573,38 @@
         docTitle: 'Elia & Daniel | Zivile Trauung · Villa Honegg',
         heroDate: '18. FEBRUAR 2027',
         heroScroll: 'Einladung & Details',
-        welcomeTitle: '<span class="line-block">Liebe Familie,</span> <span class="line-block">liebe Freunde,</span>',
-        welcomeText: 'Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag ab 12:30 Uhr gemeinsam mit uns in der wundersch&ouml;nen Villa Honegg zu verbringen.',
+        welcomeTitle: '<span class="line-block">Liebe Familie,</span> <span class="line-block">Liebe Freunde,</span>',
+        welcomeText: 'Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag ab 12:30 Uhr gemeinsam mit uns in der wunderschönen Villa Honegg zu verbringen.',
         dayMainTitle: '<span class="line-block">Zivile Trauung</span> <span class="line-block">&amp; Feier</span>',
-        dayDateSub: 'Donnerstag, 18. Februar 2027 &middot; Villa Honegg, Ennetb&uuml;rgen',
-        dayProse: 'Hoch &uuml;ber dem Vierwaldst&auml;ttersee und umgeben von der schneebedeckten Schweizer Bergwelt kommen wir zusammen, um unsere Liebe zu feiern und diesen einzigartigen Tag unvergesslich zu machen.',
+        dayDateSub: 'Donnerstag, 18. Februar 2027 · Villa Honegg, Ennetbürgen',
         scheduleTime: '12:30 UHR',
-        scheduleTitle: 'Empfang &amp; Hochzeitslunch',
-        scheduleLocation: 'Hotel Villa Honegg &middot; Honegg, 6373 Ennetb&uuml;rgen',
-        scheduleDesc: 'Wir starten um 12:30 Uhr mit einem Champagner-Ap&eacute;ro, gefolgt von einem gemeinsamen festlichen Mittagessen und Ausklang.',
+        scheduleTitle: 'Empfang & Hochzeitslunch',
+        scheduleLocation: 'Hotel Villa Honegg · Honegg, 6373 Ennetbürgen',
+        scheduleDesc: 'Wir starten um 12:30 Uhr mit einem Apéro, gefolgt von einem gemeinsamen festlichen Mittagessen und Ausklang.',
         mapsLink: 'Google Maps Anfahrt &rarr;',
         calendarLink: 'Kalendereintrag (.ics) &rarr;',
-        rsvpHeadline: 'R&uuml;ckmeldung',
+        rsvpHeadline: 'Rückmeldung',
         rsvpLead: 'Bitte gebt uns bis zum <strong>15. Januar 2027</strong> Bescheid:',
-        eventName: 'Zivile Trauung &amp; Festessen &middot; Villa Honegg',
-        eventDate: 'Donnerstag, 18. Februar 2027 &middot; 12:30 Uhr',
+        eventName: 'Zivile Trauung & Festessen · Villa Honegg',
+        eventDate: 'Donnerstag, 18. Februar 2027 · 12:30 Uhr',
         acceptLabel: 'Nimmt mit Freude teil',
         declineLabel: 'Kann leider nicht teilnehmen',
-        guestNameLabel: 'Name(n) der G&auml;ste *',
+        guestNameLabel: 'Name(n) der Gäste *',
         guestNamePlaceholder: 'Vor- und Nachname',
         guestNumLabel: 'Anzahl Personen',
-        guestNumOptions: ['1 Person', '2 Personen', '3 Personen', '4 Personen'],
-        menuLabel: 'Men&uuml;wahl',
+        guestNumOptions: ['1 Person', '2 Personen'],
+        menuLabel: 'Menüwahl',
         menuMeat: 'Fleisch',
         menuFish: 'Fisch',
         menuVeg: 'Vegetarisch',
-        dietLabel: 'Allergien &amp; Unvertr&auml;glichkeiten (Optional)',
-        dietPlaceholder: 'z.B. Glutenfrei, Laktosefrei, N&uuml;sse...',
-        noteLabel: 'Pers&ouml;nliche Nachricht (Optional)',
-        notePlaceholder: 'Eure Nachricht an Elia &amp; Daniel...',
-        submitBtn: 'R&uuml;ckmeldung senden',
-        submittingBtn: 'Wird &uuml;bermittelt...',
+        dietLabel: 'Allergien & Unverträglichkeiten (Optional)',
+        dietPlaceholder: 'z.B. Glutenfrei, Laktosefrei, Nüsse...',
+        noteLabel: 'Persönliche Nachricht (Optional)',
+        notePlaceholder: 'Eure Nachricht an Elia & Daniel...',
+        submitBtn: 'Rückmeldung senden',
+        submittingBtn: 'Wird übermittelt...',
         modalTitle: 'Vielen Dank!',
-        modalDesc: (name) => 'Liebe/r <strong>' + name + '</strong>, deine R&uuml;ckmeldung wurde direkt an Elia &amp; Daniel &uuml;bermittelt! Wir freuen uns sehr.',
+        modalDesc: (name) => 'Liebe/r <strong>' + name + '</strong>, deine Rückmeldung wurde direkt an Elia & Daniel übermittelt! Wir freuen uns sehr.',
         modalClose: 'Schliessen',
         icsSummary: 'Zivile Trauung & Feier von Elia & Daniel',
         icsDesc: 'Feierliche zivile Hochzeit und Festessen in der Villa Honegg.',
@@ -1639,39 +1614,38 @@
         docTitle: 'Elia & Daniel | Civil Wedding · Villa Honegg',
         heroDate: '18 FEBRUARY 2027',
         heroScroll: 'Invitation & Details',
-        welcomeTitle: '<span class="line-block">Dear Family,</span> <span class="line-block">dear Friends,</span>',
+        welcomeTitle: '<span class="line-block">Dear Family,</span> <span class="line-block">Dear Friends,</span>',
         welcomeText: 'We are overjoyed to celebrate our civil wedding in an intimate circle with you. We warmly invite you to spend this special day with us starting at 12:30 PM at the beautiful Villa Honegg.',
         dayMainTitle: '<span class="line-block">Civil Wedding</span> <span class="line-block">&amp; Celebration</span>',
-        dayDateSub: 'Thursday, February 18, 2027 &middot; Villa Honegg, Ennetb&uuml;rgen',
-        dayProse: 'High above Lake Lucerne and surrounded by the snow-covered Swiss Alps, we come together to celebrate our love and make this unforgettable day truly special.',
+        dayDateSub: 'Thursday, February 18, 2027 · Villa Honegg, Ennetbürgen',
         scheduleTime: '12:30 PM',
-        scheduleTitle: 'Reception &amp; Wedding Luncheon',
-        scheduleLocation: 'Hotel Villa Honegg &middot; Honegg, 6373 Ennetb&uuml;rgen, Switzerland',
-        scheduleDesc: 'We will begin at 12:30 PM with a champagne ap&eacute;ro, followed by a celebratory luncheon together.',
+        scheduleTitle: 'Reception & Wedding Luncheon',
+        scheduleLocation: 'Hotel Villa Honegg · Honegg, 6373 Ennetbürgen, Switzerland',
+        scheduleDesc: 'We will begin at 12:30 PM with an apéro, followed by a celebratory luncheon together.',
         mapsLink: 'Google Maps Directions &rarr;',
         calendarLink: 'Calendar Invitation (.ics) &rarr;',
         rsvpHeadline: 'RSVP',
         rsvpLead: 'Please kindly respond by <strong>January 15, 2027</strong>:',
-        eventName: 'Civil Wedding &amp; Luncheon &middot; Villa Honegg',
-        eventDate: 'Thursday, February 18, 2027 &middot; 12:30 PM',
+        eventName: 'Civil Wedding & Luncheon · Villa Honegg',
+        eventDate: 'Thursday, February 18, 2027 · 12:30 PM',
         acceptLabel: 'Joyfully Accepts',
         declineLabel: 'Regretfully Declines',
         guestNameLabel: 'Guest Name(s) *',
         guestNamePlaceholder: 'First and last name',
         guestNumLabel: 'Number of Guests',
-        guestNumOptions: ['1 Guest', '2 Guests', '3 Guests', '4 Guests'],
+        guestNumOptions: ['1 Guest', '2 Guests'],
         menuLabel: 'Menu Choice',
         menuMeat: 'Meat',
         menuFish: 'Fish',
         menuVeg: 'Vegetarian',
-        dietLabel: 'Dietary Restrictions &amp; Allergies (Optional)',
+        dietLabel: 'Dietary Restrictions & Allergies (Optional)',
         dietPlaceholder: 'e.g. Gluten-free, lactose-free, nuts...',
         noteLabel: 'Personal Message (Optional)',
-        notePlaceholder: 'Your message to Elia &amp; Daniel...',
+        notePlaceholder: 'Your message to Elia & Daniel...',
         submitBtn: 'Send RSVP',
         submittingBtn: 'Sending RSVP...',
         modalTitle: 'Thank You!',
-        modalDesc: (name) => 'Dear <strong>' + name + '</strong>, your RSVP has been sent directly to Elia &amp; Daniel! We look forward to celebrating with you.',
+        modalDesc: (name) => 'Dear <strong>' + name + '</strong>, your RSVP has been sent directly to Elia & Daniel! We look forward to celebrating with you.',
         modalClose: 'Close',
         icsSummary: 'Civil Wedding & Celebration of Elia & Daniel',
         icsDesc: 'Civil wedding ceremony and celebratory luncheon at Villa Honegg.',
@@ -1715,7 +1689,14 @@
       const dSub = document.getElementById('dayDateSub');
       if (dSub) dSub.innerHTML = t.dayDateSub;
       const dProse = document.getElementById('dayProse');
-      if (dProse) dProse.innerHTML = t.dayProse;
+      if (dProse) {
+        if (t.dayProse) {
+          dProse.innerHTML = t.dayProse;
+          dProse.style.display = '';
+        } else {
+          dProse.style.display = 'none';
+        }
+      }
       const sTime = document.getElementById('scheduleTime');
       if (sTime) sTime.innerText = t.scheduleTime;
       const sTitle = document.getElementById('scheduleTitle');
@@ -1751,12 +1732,8 @@
 
       const opt1 = document.getElementById('optPax1');
       const opt2 = document.getElementById('optPax2');
-      const opt3 = document.getElementById('optPax3');
-      const opt4 = document.getElementById('optPax4');
-      if (opt1) opt1.innerText = t.guestNumOptions[0];
-      if (opt2) opt2.innerText = t.guestNumOptions[1];
-      if (opt3) opt3.innerText = t.guestNumOptions[2];
-      if (opt4) opt4.innerText = t.guestNumOptions[3];
+      if (opt1 && t.guestNumOptions[0]) opt1.innerText = t.guestNumOptions[0];
+      if (opt2 && t.guestNumOptions[1]) opt2.innerText = t.guestNumOptions[1];
 
       const lMenu = document.getElementById('lblMenu');
       if (lMenu) lMenu.innerText = t.menuLabel;
