@@ -1431,7 +1431,7 @@
     <section class="welcome-editorial" id="invitation">
       <h2 class="welcome-title reveal-item" id="welcomeTitle" style="--delay: 0.1s;"><span class="line-block">Liebe Familie,</span> <span class="line-block">Liebe Freunde,</span></h2>
       <p class="welcome-text reveal-item" id="welcomeText" style="--delay: 0.25s;">
-        Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag ab 12:30 Uhr gemeinsam mit uns in der wunderschönen Villa Honegg zu verbringen.
+        Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag von 12:30 bis 16:30 Uhr gemeinsam mit uns in der wunderschönen Villa Honegg zu verbringen.
       </p>
       <div class="editorial-divider reveal-item" style="--delay: 0.4s;"></div>
     </section>
@@ -1446,12 +1446,12 @@
         <div class="schedule-block-centered">
           
           <div class="schedule-entry-centered reveal-item" style="--delay: 0.3s;">
-            <div class="schedule-time" id="scheduleTime">12:30 UHR</div>
+            <div class="schedule-time" id="scheduleTime">12:30 – 16:30 UHR</div>
             <div class="schedule-info">
               <h4 id="scheduleTitle">Empfang &amp; Hochzeitslunch</h4>
               <div class="schedule-location" id="scheduleLocation">Hotel Villa Honegg · Honegg, 6373 Ennetbürgen</div>
               <p class="schedule-desc" id="scheduleDesc">
-                Wir starten um 12:30 Uhr mit einem Apéro, gefolgt von einem gemeinsamen festlichen Mittagessen und Ausklang.
+                Wir starten um 12:30 Uhr mit einem Apéro, gefolgt von einem gemeinsamen festlichen Mittagessen und Ausklang bis 16:30 Uhr.
               </p>
             </div>
           </div>
@@ -1482,7 +1482,7 @@
           <div class="stationery-event-card reveal-item" style="--delay: 0.3s;">
             <div class="stationery-event-header">
               <div class="stationery-event-name" id="eventName">Zivile Trauung &amp; Festessen · Villa Honegg</div>
-              <div class="stationery-event-date" id="eventDate">Donnerstag, 18. Februar 2027 · 12:30 Uhr</div>
+              <div class="stationery-event-date" id="eventDate">Donnerstag, 18. Februar 2027 · 12:30 – 16:30 Uhr</div>
             </div>
             <div class="stationery-options">
               <label class="stationery-radio-label">
@@ -1500,48 +1500,76 @@
 
         </div>
 
-        <div class="stationery-input-group reveal-item" style="--delay: 0.35s;">
-          <label class="stationery-input-label" for="guestName" id="lblGuestName">Name(n) der Gäste *</label>
-          <input type="text" id="guestName" class="stationery-line-input" placeholder="Vor- und Nachname" required>
-        </div>
-
-        <div class="stationery-input-group reveal-item" id="groupCount" style="--delay: 0.4s;">
+        <div class="stationery-input-group reveal-item" id="groupCount" style="--delay: 0.35s;">
           <label class="stationery-input-label" for="guestNum" id="lblGuestNum">Anzahl Personen</label>
-          <select id="guestNum" class="stationery-line-input stationery-select">
+          <select id="guestNum" class="stationery-line-input stationery-select" onchange="handleGuestNumChange()">
             <option value="1 Person" id="optPax1">1 Person</option>
             <option value="2 Personen" id="optPax2" selected>2 Personen</option>
           </select>
         </div>
 
-        <div class="stationery-input-group reveal-item" id="groupMenu" style="--delay: 0.45s;">
-          <label class="stationery-input-label" id="lblMenu">Menüwahl</label>
+        <!-- Gast 1 -->
+        <div class="stationery-input-group reveal-item" id="groupGuest1" style="--delay: 0.38s;">
+          <label class="stationery-input-label" for="guestName" id="lblGuestName">Name des 1. Gastes *</label>
+          <input type="text" id="guestName" class="stationery-line-input" placeholder="Vor- und Nachname" required>
+        </div>
+
+        <div class="stationery-input-group reveal-item" id="groupMenu1" style="--delay: 0.42s;">
+          <label class="stationery-input-label" id="lblMenu1">Menüwahl (1. Gast)</label>
           <div class="stationery-options" style="margin-top: 0.6rem; gap: 2.2rem;">
             <label class="stationery-radio-label">
-              <input type="radio" name="menuPreference" value="Fleisch" checked>
+              <input type="radio" name="menuPreference1" value="Fleisch" checked>
               <span class="radio-circle"></span>
-              <span class="radio-text" id="lblMenuMeat">Fleisch</span>
+              <span class="radio-text" id="lblMenuMeat1">Fleisch</span>
             </label>
             <label class="stationery-radio-label">
-              <input type="radio" name="menuPreference" value="Fisch">
+              <input type="radio" name="menuPreference1" value="Fisch">
               <span class="radio-circle"></span>
-              <span class="radio-text" id="lblMenuFish">Fisch</span>
+              <span class="radio-text" id="lblMenuFish1">Fisch</span>
             </label>
             <label class="stationery-radio-label">
-              <input type="radio" name="menuPreference" value="Vegetarisch">
+              <input type="radio" name="menuPreference1" value="Vegetarisch">
               <span class="radio-circle"></span>
-              <span class="radio-text" id="lblMenuVeg">Vegetarisch</span>
+              <span class="radio-text" id="lblMenuVeg1">Vegetarisch</span>
             </label>
           </div>
         </div>
 
-        <div class="stationery-input-group reveal-item" id="groupDiet" style="--delay: 0.5s;">
-          <label class="stationery-input-label" for="guestDiet" id="lblDiet">Allergien & Unverträglichkeiten (Optional)</label>
+        <!-- Gast 2 (shown when 2 Personen) -->
+        <div class="stationery-input-group reveal-item" id="groupGuest2" style="--delay: 0.46s;">
+          <label class="stationery-input-label" for="guestName2" id="lblGuestName2">Name des 2. Gastes *</label>
+          <input type="text" id="guestName2" class="stationery-line-input" placeholder="Vor- und Nachname" required>
+        </div>
+
+        <div class="stationery-input-group reveal-item" id="groupMenu2" style="--delay: 0.5s;">
+          <label class="stationery-input-label" id="lblMenu2">Menüwahl (2. Gast)</label>
+          <div class="stationery-options" style="margin-top: 0.6rem; gap: 2.2rem;">
+            <label class="stationery-radio-label">
+              <input type="radio" name="menuPreference2" value="Fleisch" checked>
+              <span class="radio-circle"></span>
+              <span class="radio-text" id="lblMenuMeat2">Fleisch</span>
+            </label>
+            <label class="stationery-radio-label">
+              <input type="radio" name="menuPreference2" value="Fisch">
+              <span class="radio-circle"></span>
+              <span class="radio-text" id="lblMenuFish2">Fisch</span>
+            </label>
+            <label class="stationery-radio-label">
+              <input type="radio" name="menuPreference2" value="Vegetarisch">
+              <span class="radio-circle"></span>
+              <span class="radio-text" id="lblMenuVeg2">Vegetarisch</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="stationery-input-group reveal-item" id="groupDiet" style="--delay: 0.54s;">
+          <label class="stationery-input-label" for="guestDiet" id="lblDiet">Allergien &amp; Unverträglichkeiten (Optional)</label>
           <input type="text" id="guestDiet" class="stationery-line-input" placeholder="z.B. Glutenfrei, Laktosefrei, Nüsse...">
         </div>
 
-        <div class="stationery-input-group reveal-item" style="--delay: 0.35s;">
+        <div class="stationery-input-group reveal-item" style="--delay: 0.58s;">
           <label class="stationery-input-label" for="guestNote" id="lblNote">Persönliche Nachricht (Optional)</label>
-          <input type="text" id="guestNote" class="stationery-line-input" placeholder="Eure Nachricht an Elia & Daniel...">
+          <input type="text" id="guestNote" class="stationery-line-input" placeholder="Eure Nachricht an Elia &amp; Daniel...">
         </div>
 
         <button type="submit" class="stationery-submit-btn reveal-item" id="btnSubmitRsvp" style="--delay: 0.55s;">Rückmeldung senden</button>
@@ -1573,26 +1601,31 @@
         heroDate: '18. FEBRUAR 2027',
         heroScroll: 'Einladung & Details',
         welcomeTitle: '<span class="line-block">Liebe Familie,</span> <span class="line-block">Liebe Freunde,</span>',
-        welcomeText: 'Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag ab 12:30 Uhr gemeinsam mit uns in der wunderschönen Villa Honegg zu verbringen.',
+        welcomeText: 'Wir freuen uns von ganzem Herzen, unsere zivile Hochzeit im engsten Kreis mit euch zu feiern. Wir laden euch herzlich ein, diesen besonderen Tag von 12:30 bis 16:30 Uhr gemeinsam mit uns in der wunderschönen Villa Honegg zu verbringen.',
         dayMainTitle: '<span class="line-block">Zivile Trauung</span> <span class="line-block">&amp; Feier</span>',
         dayDateSub: 'Donnerstag, 18. Februar 2027 · Villa Honegg, Ennetbürgen',
-        scheduleTime: '12:30 UHR',
+        scheduleTime: '12:30 – 16:30 UHR',
         scheduleTitle: 'Empfang & Hochzeitslunch',
         scheduleLocation: 'Hotel Villa Honegg · Honegg, 6373 Ennetbürgen',
-        scheduleDesc: 'Wir starten um 12:30 Uhr mit einem Apéro, gefolgt von einem gemeinsamen festlichen Mittagessen und Ausklang.',
+        scheduleDesc: 'Wir starten um 12:30 Uhr mit einem Apéro, gefolgt von einem gemeinsamen festlichen Mittagessen und Ausklang bis 16:30 Uhr.',
         mapsLink: 'Google Maps Anfahrt &rarr;',
         calendarLink: 'Kalendereintrag (.ics) &rarr;',
         rsvpHeadline: 'Rückmeldung',
         rsvpLead: 'Bitte gebt uns bis zum <strong>15. Januar 2027</strong> Bescheid:',
         eventName: 'Zivile Trauung & Festessen · Villa Honegg',
-        eventDate: 'Donnerstag, 18. Februar 2027 · 12:30 Uhr',
+        eventDate: 'Donnerstag, 18. Februar 2027 · 12:30 – 16:30 Uhr',
         acceptLabel: 'Nimmt mit Freude teil',
         declineLabel: 'Kann leider nicht teilnehmen',
-        guestNameLabel: 'Name(n) der Gäste *',
+        guestNameLabelSingle: 'Name des Gastes *',
+        guestNameLabel1: 'Name des 1. Gastes *',
+        guestNameLabel2: 'Name des 2. Gastes *',
+        guestNameLabelDecline: 'Name(n) der Gäste *',
         guestNamePlaceholder: 'Vor- und Nachname',
         guestNumLabel: 'Anzahl Personen',
         guestNumOptions: ['1 Person', '2 Personen'],
-        menuLabel: 'Menüwahl',
+        menuLabelSingle: 'Menüwahl',
+        menuLabel1: 'Menüwahl (1. Gast)',
+        menuLabel2: 'Menüwahl (2. Gast)',
         menuMeat: 'Fleisch',
         menuFish: 'Fisch',
         menuVeg: 'Vegetarisch',
@@ -1603,10 +1636,10 @@
         submitBtn: 'Rückmeldung senden',
         submittingBtn: 'Wird übermittelt...',
         modalTitle: 'Vielen Dank!',
-        modalDesc: (name) => 'Liebe/r <strong>' + name + '</strong>, deine Rückmeldung wurde direkt an Elia & Daniel übermittelt! Wir freuen uns sehr.',
+        modalDesc: (name) => 'Liebe/r <strong>' + name + '</strong>, eure Rückmeldung wurde direkt an Elia & Daniel übermittelt! Wir freuen uns von ganzem Herzen.',
         modalClose: 'Schliessen',
         icsSummary: 'Zivile Trauung & Feier von Elia & Daniel',
-        icsDesc: 'Feierliche zivile Hochzeit und Festessen in der Villa Honegg.',
+        icsDesc: 'Feierliche zivile Hochzeit und Festessen in der Villa Honegg (12:30 – 16:30 Uhr).',
         icsFilename: 'Elia-Daniel-Zivile-Hochzeit.ics'
       },
       en: {
@@ -1614,26 +1647,31 @@
         heroDate: '18 FEBRUARY 2027',
         heroScroll: 'Invitation & Details',
         welcomeTitle: '<span class="line-block">Dear Family,</span> <span class="line-block">Dear Friends,</span>',
-        welcomeText: 'We are overjoyed to celebrate our civil wedding in an intimate circle with you. We warmly invite you to spend this special day with us starting at 12:30 PM at the beautiful Villa Honegg.',
+        welcomeText: 'We are overjoyed to celebrate our civil wedding in an intimate circle with you. We warmly invite you to spend this special day with us from 12:30 PM to 4:30 PM at the beautiful Villa Honegg.',
         dayMainTitle: '<span class="line-block">Civil Wedding</span> <span class="line-block">&amp; Celebration</span>',
         dayDateSub: 'Thursday, February 18, 2027 · Villa Honegg, Ennetbürgen',
-        scheduleTime: '12:30 PM',
+        scheduleTime: '12:30 – 4:30 PM',
         scheduleTitle: 'Reception & Wedding Luncheon',
         scheduleLocation: 'Hotel Villa Honegg · Honegg, 6373 Ennetbürgen, Switzerland',
-        scheduleDesc: 'We will begin at 12:30 PM with an apéro, followed by a celebratory luncheon together.',
+        scheduleDesc: 'We will begin at 12:30 PM with an apéro, followed by a celebratory luncheon together until 4:30 PM.',
         mapsLink: 'Google Maps Directions &rarr;',
         calendarLink: 'Calendar Invitation (.ics) &rarr;',
         rsvpHeadline: 'RSVP',
         rsvpLead: 'Please kindly respond by <strong>January 15, 2027</strong>:',
         eventName: 'Civil Wedding & Luncheon · Villa Honegg',
-        eventDate: 'Thursday, February 18, 2027 · 12:30 PM',
+        eventDate: 'Thursday, February 18, 2027 · 12:30 – 4:30 PM',
         acceptLabel: 'Joyfully Accepts',
         declineLabel: 'Regretfully Declines',
-        guestNameLabel: 'Guest Name(s) *',
+        guestNameLabelSingle: 'Guest Name *',
+        guestNameLabel1: 'Guest 1 Name *',
+        guestNameLabel2: 'Guest 2 Name *',
+        guestNameLabelDecline: 'Guest Name(s) *',
         guestNamePlaceholder: 'First and last name',
         guestNumLabel: 'Number of Guests',
         guestNumOptions: ['1 Guest', '2 Guests'],
-        menuLabel: 'Menu Choice',
+        menuLabelSingle: 'Menu Choice',
+        menuLabel1: 'Menu Choice (Guest 1)',
+        menuLabel2: 'Menu Choice (Guest 2)',
         menuMeat: 'Meat',
         menuFish: 'Fish',
         menuVeg: 'Vegetarian',
@@ -1647,7 +1685,7 @@
         modalDesc: (name) => 'Dear <strong>' + name + '</strong>, your RSVP has been sent directly to Elia & Daniel! We look forward to celebrating with you.',
         modalClose: 'Close',
         icsSummary: 'Civil Wedding & Celebration of Elia & Daniel',
-        icsDesc: 'Civil wedding ceremony and celebratory luncheon at Villa Honegg.',
+        icsDesc: 'Civil wedding ceremony and celebratory luncheon of Elia & Daniel at Villa Honegg (12:30 PM – 4:30 PM).',
         icsFilename: 'Elia-Daniel-Civil-Wedding.ics'
       }
     };
@@ -1722,10 +1760,12 @@
       if (lAccept) lAccept.innerText = t.acceptLabel;
       const lDecline = document.getElementById('lblDecline');
       if (lDecline) lDecline.innerText = t.declineLabel;
-      const lGName = document.getElementById('lblGuestName');
-      if (lGName) lGName.innerText = t.guestNameLabel;
+
       const iGName = document.getElementById('guestName');
       if (iGName) iGName.placeholder = t.guestNamePlaceholder;
+      const iGName2 = document.getElementById('guestName2');
+      if (iGName2) iGName2.placeholder = t.guestNamePlaceholder;
+
       const lGNum = document.getElementById('lblGuestNum');
       if (lGNum) lGNum.innerText = t.guestNumLabel;
 
@@ -1734,14 +1774,20 @@
       if (opt1 && t.guestNumOptions[0]) opt1.innerText = t.guestNumOptions[0];
       if (opt2 && t.guestNumOptions[1]) opt2.innerText = t.guestNumOptions[1];
 
-      const lMenu = document.getElementById('lblMenu');
-      if (lMenu) lMenu.innerText = t.menuLabel;
-      const lMeat = document.getElementById('lblMenuMeat');
-      if (lMeat) lMeat.innerText = t.menuMeat;
-      const lFish = document.getElementById('lblMenuFish');
-      if (lFish) lFish.innerText = t.menuFish;
-      const lVeg = document.getElementById('lblMenuVeg');
-      if (lVeg) lVeg.innerText = t.menuVeg;
+      const lMeat1 = document.getElementById('lblMenuMeat1');
+      if (lMeat1) lMeat1.innerText = t.menuMeat;
+      const lFish1 = document.getElementById('lblMenuFish1');
+      if (lFish1) lFish1.innerText = t.menuFish;
+      const lVeg1 = document.getElementById('lblMenuVeg1');
+      if (lVeg1) lVeg1.innerText = t.menuVeg;
+
+      const lMeat2 = document.getElementById('lblMenuMeat2');
+      if (lMeat2) lMeat2.innerText = t.menuMeat;
+      const lFish2 = document.getElementById('lblMenuFish2');
+      if (lFish2) lFish2.innerText = t.menuFish;
+      const lVeg2 = document.getElementById('lblMenuVeg2');
+      if (lVeg2) lVeg2.innerText = t.menuVeg;
+
       const lDiet = document.getElementById('lblDiet');
       if (lDiet) lDiet.innerHTML = t.dietLabel;
       const iDiet = document.getElementById('guestDiet');
@@ -1756,6 +1802,8 @@
       if (mTitle) mTitle.innerText = t.modalTitle;
       const btnMClose = document.getElementById('btnModalClose');
       if (btnMClose) btnMClose.innerText = t.modalClose;
+
+      handleGuestNumChange();
     }
 
     function initLanguage() {
@@ -1772,14 +1820,69 @@
 
     initLanguage();
 
+    function handleGuestNumChange() {
+      const countVal = document.getElementById('guestNum') ? document.getElementById('guestNum').value : '2 Personen';
+      const isTwo = countVal.includes('2');
+      const t = i18n[currentLang] || i18n.de;
+
+      const lGName = document.getElementById('lblGuestName');
+      const lMenu1 = document.getElementById('lblMenu1');
+      const lGName2 = document.getElementById('lblGuestName2');
+      const lMenu2 = document.getElementById('lblMenu2');
+      const grpGuest2 = document.getElementById('groupGuest2');
+      const grpMenu2 = document.getElementById('groupMenu2');
+      const iGName2 = document.getElementById('guestName2');
+
+      if (!isAttending) {
+        if (lGName) lGName.innerText = t.guestNameLabelDecline;
+        if (grpGuest2) grpGuest2.style.display = 'none';
+        if (grpMenu2) grpMenu2.style.display = 'none';
+        if (iGName2) iGName2.required = false;
+        return;
+      }
+
+      if (isTwo) {
+        if (lGName) lGName.innerText = t.guestNameLabel1;
+        if (lMenu1) lMenu1.innerText = t.menuLabel1;
+        if (lGName2) lGName2.innerText = t.guestNameLabel2;
+        if (lMenu2) lMenu2.innerText = t.menuLabel2;
+        if (grpGuest2) grpGuest2.style.display = 'flex';
+        if (grpMenu2) grpMenu2.style.display = 'flex';
+        if (iGName2) iGName2.required = true;
+      } else {
+        if (lGName) lGName.innerText = t.guestNameLabelSingle;
+        if (lMenu1) lMenu1.innerText = t.menuLabelSingle;
+        if (grpGuest2) grpGuest2.style.display = 'none';
+        if (grpMenu2) grpMenu2.style.display = 'none';
+        if (iGName2) iGName2.required = false;
+      }
+    }
+
     function handleHoneggAttendance(attending) {
       isAttending = attending;
       const grpCount = document.getElementById('groupCount');
-      const grpMenu = document.getElementById('groupMenu');
+      const grpGuest1 = document.getElementById('groupGuest1');
+      const grpMenu1 = document.getElementById('groupMenu1');
+      const grpGuest2 = document.getElementById('groupGuest2');
+      const grpMenu2 = document.getElementById('groupMenu2');
       const grpDiet = document.getElementById('groupDiet');
+      const lGName = document.getElementById('lblGuestName');
+      const t = i18n[currentLang] || i18n.de;
+
       if (grpCount) grpCount.style.display = attending ? 'flex' : 'none';
-      if (grpMenu) grpMenu.style.display = attending ? 'flex' : 'none';
+      if (grpGuest1) grpGuest1.style.display = 'flex';
+      if (grpMenu1) grpMenu1.style.display = attending ? 'flex' : 'none';
       if (grpDiet) grpDiet.style.display = attending ? 'flex' : 'none';
+
+      if (!attending) {
+        if (grpGuest2) grpGuest2.style.display = 'none';
+        if (grpMenu2) grpMenu2.style.display = 'none';
+        const iGName2 = document.getElementById('guestName2');
+        if (iGName2) iGName2.required = false;
+        if (lGName) lGName.innerText = t.guestNameLabelDecline;
+      } else {
+        handleGuestNumChange();
+      }
     }
 
     async function submitRSVP(e) {
@@ -1790,10 +1893,22 @@
       btn.disabled = true;
       btn.innerText = t.submittingBtn;
 
-      const name = document.getElementById('guestName').value.trim();
-      const count = document.getElementById('guestNum') ? document.getElementById('guestNum').value.trim() : '1';
-      const menuEl = document.querySelector('input[name="menuPreference"]:checked');
-      const menuChoice = menuEl ? menuEl.value : 'Fleisch';
+      const countVal = document.getElementById('guestNum') ? document.getElementById('guestNum').value.trim() : '1 Person';
+      const isTwo = isAttending && countVal.includes('2');
+
+      const name1 = document.getElementById('guestName').value.trim();
+      const name2 = (isTwo && document.getElementById('guestName2')) ? document.getElementById('guestName2').value.trim() : '';
+
+      const menuEl1 = document.querySelector('input[name="menuPreference1"]:checked');
+      const menuChoice1 = menuEl1 ? menuEl1.value : 'Fleisch';
+
+      const menuEl2 = isTwo ? document.querySelector('input[name="menuPreference2"]:checked') : null;
+      const menuChoice2 = menuEl2 ? menuEl2.value : 'Fleisch';
+
+      const fullName = (isTwo && name2) ? `${name1} & ${name2}` : name1;
+      const fullMenu = (isTwo && name2) ? `${name1}: ${menuChoice1} | ${name2}: ${menuChoice2}` : menuChoice1;
+      const countNum = isAttending ? (isTwo ? 2 : 1) : 0;
+
       const diet = document.getElementById('guestDiet') ? document.getElementById('guestDiet').value.trim() : '';
       const note = document.getElementById('guestNote') ? document.getElementById('guestNote').value.trim() : '';
       const submittedAt = new Date().toLocaleString('de-CH', { timeZone: 'Europe/Zurich' });
@@ -1802,10 +1917,10 @@
         id: 'rsvp_' + Date.now(),
         source: 'hochzeit',
         event: 'Civil Wedding Villa Honegg (18 Feb 2027)',
-        guest: name,
+        guest: fullName,
         status: isAttending ? 'Attending' : 'Declined',
-        count: isAttending ? (parseInt(count, 10) || 1) : 0,
-        menu: isAttending ? menuChoice : '-',
+        count: countNum,
+        menu: isAttending ? fullMenu : '-',
         diet: diet || 'Keine',
         note: note || '',
         timestamp: submittedAt
@@ -1819,21 +1934,23 @@
       } catch (lErr) {}
 
       // 2. Dispatch to Google Sheets (Parallel primary storage)
+      const sheetPayload = {
+        event: 'Civil Wedding Villa Honegg (18 Feb 2027)',
+        guest: fullName,
+        status: isAttending ? 'Attending' : 'Declined',
+        count: countNum,
+        menu: isAttending ? fullMenu : '-',
+        diet: diet || 'Keine',
+        note: note || '',
+        lang: currentLang
+      };
+
       const sheetPromise = GOOGLE_SHEET_URL
         ? fetch(GOOGLE_SHEET_URL, {
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify({
-              event: 'Civil Wedding Villa Honegg (18 Feb 2027)',
-              guest: name,
-              status: isAttending ? 'Attending' : 'Declined',
-              count: isAttending ? (parseInt(count, 10) || 1) : 0,
-              menu: isAttending ? menuChoice : '-',
-              diet: diet || 'Keine',
-              note: note || '',
-              lang: currentLang
-            })
+            body: JSON.stringify(sheetPayload)
           }).then(() => true).catch(err => {
             console.warn('Google Sheet note:', err);
             return false;
@@ -1841,15 +1958,17 @@
         : Promise.resolve(false);
 
       // 3. Dispatch to FormSubmit email in parallel
-      const payload = {
-        _subject: 'RSVP Villa Honegg: ' + name + ' (' + (isAttending ? 'Zusage' : 'Absage') + ')',
+      const emailPayload = {
+        _subject: 'RSVP Villa Honegg: ' + fullName + ' (' + (isAttending ? (countNum + (countNum === 1 ? ' Person' : ' Personen') + ' · Zusage') : 'Absage') + ')',
         _template: "table",
         _captcha: "false",
         "Event": "Zivile Trauung Villa Honegg",
         "Antwort": isAttending ? "ZUSAGE (Kommt)" : "ABSAGE (Kann leider nicht)",
-        "Name": name,
-        "Anzahl Gäste": isAttending ? count : "0",
-        "Menüwahl": isAttending ? menuChoice : "-",
+        "Gäste": fullName,
+        "Anzahl Gäste": isAttending ? (countNum + (countNum === 1 ? ' Person' : ' Personen')) : "0",
+        "Menüwahl Gast 1": isAttending ? `${name1} → ${menuChoice1}` : "-",
+        "Menüwahl Gast 2": (isAttending && isTwo) ? `${name2} → ${menuChoice2}` : "-",
+        "Menü Zusammenfassung": isAttending ? fullMenu : "-",
         "Allergien / Unverträglichkeiten": diet || "Keine",
         "Persönliche Nachricht": note || "Keine",
         "Eingereicht am": submittedAt
@@ -1861,18 +1980,15 @@
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(emailPayload)
       }).then(res => res.ok).catch(err => {
         console.warn('FormSubmit note:', err);
         return false;
       });
 
-      // 4. Parallel race:
-      // Browser network engine guarantees delivery in the background.
-      // Cap user wait time at max 1.5s so response feels instantaneous.
+      // 4. Parallel race capped at 1.5s
       const timeoutPromise = new Promise(resolve => setTimeout(resolve, 1500));
-      
-      const [sheetSuccess, emailSuccess] = await Promise.race([
+      await Promise.race([
         Promise.all([sheetPromise, emailPromise]),
         timeoutPromise.then(() => [true, true])
       ]);
@@ -1880,32 +1996,11 @@
       btn.disabled = false;
       btn.innerText = orig;
 
-      // Fail-Safe: If device is completely offline and all network calls failed immediately
-      if (!sheetSuccess && !emailSuccess) {
-        const mailSubject = encodeURIComponent('RSVP Villa Honegg: ' + name + ' (' + (isAttending ? 'Zusage' : 'Absage') + ')');
-        const mailBody = encodeURIComponent(
-          `Event: Villa Honegg (18 Feb 2027)\nName: ${name}\nStatus: ${isAttending ? 'Attending / Zusage' : 'Declined / Absage'}\nGuests / Personen: ${isAttending ? count : '0'}\nMenu / Menü: ${isAttending ? menuChoice : '-'}\nDietary / Allergien: ${diet || 'None'}\nMessage / Nachricht: ${note || '-'}`
-        );
-        const mailtoUrl = `mailto:elia.innamorati@gmail.com?subject=${mailSubject}&body=${mailBody}`;
-
-        const modalTitle = document.getElementById('modalTitle');
-        const modalDesc = document.getElementById('mDesc');
-        if (modalTitle) modalTitle.innerText = currentLang === 'de' ? 'Rückmeldung per E-Mail' : 'Confirm via Email';
-        if (modalDesc) {
-          modalDesc.innerHTML = currentLang === 'de'
-            ? 'Liebe/r <strong>' + name + '</strong>, die automatische Übermittlung konnte leider nicht abgeschlossen werden. Bitte klicke auf den Button, um deine Rückmeldung direkt per E-Mail an Elia & Daniel zu bestätigen:<br><br><a href="' + mailtoUrl + '" class="stationery-submit-btn" style="display:inline-block; text-decoration:none; margin: 0.8rem auto 0;">Per E-Mail bestätigen &rarr;</a>'
-            : 'Dear <strong>' + name + '</strong>, automatic submission could not be completed. Please click the button below to confirm your RSVP directly via email to Elia & Daniel:<br><br><a href="' + mailtoUrl + '" class="stationery-submit-btn" style="display:inline-block; text-decoration:none; margin: 0.8rem auto 0;">Confirm via Email &rarr;</a>';
-        }
-        const rModal = document.getElementById('rsvpModal');
-        if (rModal) rModal.classList.add('open');
-        return;
-      }
-
       const modalTitle = document.getElementById('modalTitle');
       const modalDesc = document.getElementById('mDesc');
       if (modalTitle) modalTitle.innerText = t.modalTitle;
       if (modalDesc) {
-        modalDesc.innerHTML = t.modalDesc(name);
+        modalDesc.innerHTML = typeof t.modalDesc === 'function' ? t.modalDesc(fullName) : t.modalDesc;
       }
       const rModal = document.getElementById('rsvpModal');
       if (rModal) rModal.classList.add('open');
@@ -1934,7 +2029,7 @@
         'UID:elia-daniel-honegg-20270218@innamorati-meister.com',
         'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
         'DTSTART;TZID=Europe/Zurich:20270218T123000',
-        'DTEND;TZID=Europe/Zurich:20270218T180000',
+        'DTEND;TZID=Europe/Zurich:20270218T163000',
         'SUMMARY:' + t.icsSummary,
         'DESCRIPTION:' + t.icsDesc,
         'LOCATION:Hotel Villa Honegg\\, Honegg\\, 6373 Ennetbürgen\\, Switzerland',
