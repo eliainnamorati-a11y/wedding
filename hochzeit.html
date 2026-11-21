@@ -586,7 +586,12 @@
     }
 
     .stationery-radio-label input[type="radio"] {
-      display: none;
+      position: absolute;
+      opacity: 0;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      pointer-events: none;
     }
 
     .radio-circle {
@@ -1515,10 +1520,10 @@
         </div>
 
         <div class="stationery-input-group reveal-item" id="groupMenu1" style="--delay: 0.42s;">
-          <label class="stationery-input-label" id="lblMenu1">Menüwahl (1. Gast)</label>
+          <label class="stationery-input-label" id="lblMenu1">Menüwahl (1. Gast) *</label>
           <div class="stationery-options" style="margin-top: 0.6rem; gap: 2.2rem;">
             <label class="stationery-radio-label">
-              <input type="radio" name="menuPreference1" value="Fleisch" checked>
+              <input type="radio" name="menuPreference1" value="Fleisch" required>
               <span class="radio-circle"></span>
               <span class="radio-text" id="lblMenuMeat1">Fleisch</span>
             </label>
@@ -1536,7 +1541,7 @@
         </div>
 
         <div class="stationery-input-group reveal-item" id="groupDiet1" style="--delay: 0.45s;">
-          <label class="stationery-input-label" for="guestDiet" id="lblDiet1">Allergien &amp; Unverträglichkeiten (1. Gast)</label>
+          <label class="stationery-input-label" for="guestDiet" id="lblDiet1">Allergien &amp; Unverträglichkeiten (1. Gast, Optional)</label>
           <input type="text" id="guestDiet" class="stationery-line-input" placeholder="z.B. Glutenfrei, Laktosefrei, Nüsse...">
         </div>
 
@@ -1547,10 +1552,10 @@
         </div>
 
         <div class="stationery-input-group reveal-item" id="groupMenu2" style="--delay: 0.52s;">
-          <label class="stationery-input-label" id="lblMenu2">Menüwahl (2. Gast)</label>
+          <label class="stationery-input-label" id="lblMenu2">Menüwahl (2. Gast) *</label>
           <div class="stationery-options" style="margin-top: 0.6rem; gap: 2.2rem;">
             <label class="stationery-radio-label">
-              <input type="radio" name="menuPreference2" value="Fleisch" checked>
+              <input type="radio" name="menuPreference2" value="Fleisch" required>
               <span class="radio-circle"></span>
               <span class="radio-text" id="lblMenuMeat2">Fleisch</span>
             </label>
@@ -1568,7 +1573,7 @@
         </div>
 
         <div class="stationery-input-group reveal-item" id="groupDiet2" style="--delay: 0.55s;">
-          <label class="stationery-input-label" for="guestDiet2" id="lblDiet2">Allergien &amp; Unverträglichkeiten (2. Gast)</label>
+          <label class="stationery-input-label" for="guestDiet2" id="lblDiet2">Allergien &amp; Unverträglichkeiten (2. Gast, Optional)</label>
           <input type="text" id="guestDiet2" class="stationery-line-input" placeholder="z.B. Glutenfrei, Laktosefrei, Nüsse...">
         </div>
 
@@ -1628,15 +1633,15 @@
         guestNamePlaceholder: 'Vor- und Nachname',
         guestNumLabel: 'Anzahl Personen',
         guestNumOptions: ['1 Person', '2 Personen'],
-        menuLabelSingle: 'Menüwahl',
-        menuLabel1: 'Menüwahl (1. Gast)',
-        menuLabel2: 'Menüwahl (2. Gast)',
+        menuLabelSingle: 'Menüwahl *',
+        menuLabel1: 'Menüwahl (1. Gast) *',
+        menuLabel2: 'Menüwahl (2. Gast) *',
         menuMeat: 'Fleisch',
         menuFish: 'Fisch',
         menuVeg: 'Vegetarisch',
         dietLabelSingle: 'Allergien & Unverträglichkeiten (Optional)',
-        dietLabel1: 'Allergien & Unverträglichkeiten (1. Gast)',
-        dietLabel2: 'Allergien & Unverträglichkeiten (2. Gast)',
+        dietLabel1: 'Allergien & Unverträglichkeiten (1. Gast, Optional)',
+        dietLabel2: 'Allergien & Unverträglichkeiten (2. Gast, Optional)',
         dietPlaceholder: 'z.B. Glutenfrei, Laktosefrei, Nüsse...',
         noteLabel: 'Persönliche Nachricht (Optional)',
         notePlaceholder: 'Eure Nachricht an Elia & Daniel...',
@@ -1676,15 +1681,15 @@
         guestNamePlaceholder: 'First and last name',
         guestNumLabel: 'Number of Guests',
         guestNumOptions: ['1 Guest', '2 Guests'],
-        menuLabelSingle: 'Menu Choice',
-        menuLabel1: 'Menu Choice (Guest 1)',
-        menuLabel2: 'Menu Choice (Guest 2)',
+        menuLabelSingle: 'Menu Choice *',
+        menuLabel1: 'Menu Choice (Guest 1) *',
+        menuLabel2: 'Menu Choice (Guest 2) *',
         menuMeat: 'Meat',
         menuFish: 'Fish',
         menuVeg: 'Vegetarian',
         dietLabelSingle: 'Dietary Restrictions & Allergies (Optional)',
-        dietLabel1: 'Dietary Restrictions & Allergies (Guest 1)',
-        dietLabel2: 'Dietary Restrictions & Allergies (Guest 2)',
+        dietLabel1: 'Dietary Restrictions & Allergies (Guest 1, Optional)',
+        dietLabel2: 'Dietary Restrictions & Allergies (Guest 2, Optional)',
         dietPlaceholder: 'e.g. Gluten-free, lactose-free, nuts...',
         noteLabel: 'Personal Message (Optional)',
         notePlaceholder: 'Your message to Elia & Daniel...',
@@ -1849,14 +1854,21 @@
       const grpDiet2 = document.getElementById('groupDiet2');
       const iGName2 = document.getElementById('guestName2');
 
+      const menu1FirstRadio = document.querySelector('input[name="menuPreference1"]');
+      const menu2FirstRadio = document.querySelector('input[name="menuPreference2"]');
+
       if (!isAttending) {
         if (lGName) lGName.innerText = t.guestNameLabelDecline;
         if (grpGuest2) grpGuest2.style.display = 'none';
         if (grpMenu2) grpMenu2.style.display = 'none';
         if (grpDiet2) grpDiet2.style.display = 'none';
         if (iGName2) iGName2.required = false;
+        if (menu1FirstRadio) menu1FirstRadio.required = false;
+        if (menu2FirstRadio) menu2FirstRadio.required = false;
         return;
       }
+
+      if (menu1FirstRadio) menu1FirstRadio.required = true;
 
       if (isTwo) {
         if (lGName) lGName.innerText = t.guestNameLabel1;
@@ -1869,6 +1881,7 @@
         if (grpMenu2) grpMenu2.style.display = 'flex';
         if (grpDiet2) grpDiet2.style.display = 'flex';
         if (iGName2) iGName2.required = true;
+        if (menu2FirstRadio) menu2FirstRadio.required = true;
       } else {
         if (lGName) lGName.innerText = t.guestNameLabelSingle;
         if (lMenu1) lMenu1.innerText = t.menuLabelSingle;
@@ -1877,6 +1890,7 @@
         if (grpMenu2) grpMenu2.style.display = 'none';
         if (grpDiet2) grpDiet2.style.display = 'none';
         if (iGName2) iGName2.required = false;
+        if (menu2FirstRadio) menu2FirstRadio.required = false;
       }
     }
 
@@ -1891,6 +1905,8 @@
       const grpDiet2 = document.getElementById('groupDiet2');
       const lGName = document.getElementById('lblGuestName');
       const t = i18n[currentLang] || i18n.de;
+      const menu1FirstRadio = document.querySelector('input[name="menuPreference1"]');
+      const menu2FirstRadio = document.querySelector('input[name="menuPreference2"]');
 
       if (grpCount) grpCount.style.display = attending ? 'flex' : 'none';
       if (grpGuest1) grpGuest1.style.display = 'flex';
@@ -1903,8 +1919,11 @@
         if (grpDiet2) grpDiet2.style.display = 'none';
         const iGName2 = document.getElementById('guestName2');
         if (iGName2) iGName2.required = false;
+        if (menu1FirstRadio) menu1FirstRadio.required = false;
+        if (menu2FirstRadio) menu2FirstRadio.required = false;
         if (lGName) lGName.innerText = t.guestNameLabelDecline;
       } else {
+        if (menu1FirstRadio) menu1FirstRadio.required = true;
         handleGuestNumChange();
       }
     }
@@ -1914,8 +1933,6 @@
       const t = i18n[currentLang] || i18n.de;
       const btn = e.target.querySelector('button[type="submit"]');
       const orig = t.submitBtn;
-      btn.disabled = true;
-      btn.innerText = t.submittingBtn;
 
       const countVal = document.getElementById('guestNum') ? document.getElementById('guestNum').value.trim() : '1 Person';
       const isTwo = isAttending && countVal.includes('2');
@@ -1923,11 +1940,35 @@
       const name1 = document.getElementById('guestName').value.trim();
       const name2 = (isTwo && document.getElementById('guestName2')) ? document.getElementById('guestName2').value.trim() : '';
 
-      const menuEl1 = document.querySelector('input[name="menuPreference1"]:checked');
-      const menuChoice1 = menuEl1 ? menuEl1.value : 'Fleisch';
+      if (isAttending) {
+        const menuEl1 = document.querySelector('input[name="menuPreference1"]:checked');
+        if (!menuEl1) {
+          const msg = currentLang === 'en' ? 'Please select a menu choice for Guest 1.' : 'Bitte wähle eine Menüwahl für den 1. Gast aus.';
+          alert(msg);
+          const grp = document.getElementById('groupMenu1');
+          if (grp) grp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+        if (isTwo) {
+          const menuEl2 = document.querySelector('input[name="menuPreference2"]:checked');
+          if (!menuEl2) {
+            const msg = currentLang === 'en' ? 'Please select a menu choice for Guest 2.' : 'Bitte wähle eine Menüwahl für den 2. Gast aus.';
+            alert(msg);
+            const grp = document.getElementById('groupMenu2');
+            if (grp) grp.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+        }
+      }
 
-      const menuEl2 = isTwo ? document.querySelector('input[name="menuPreference2"]:checked') : null;
-      const menuChoice2 = menuEl2 ? menuEl2.value : 'Fleisch';
+      btn.disabled = true;
+      btn.innerText = t.submittingBtn;
+
+      const menuEl1 = isAttending ? document.querySelector('input[name="menuPreference1"]:checked') : null;
+      const menuChoice1 = menuEl1 ? menuEl1.value : '-';
+
+      const menuEl2 = (isAttending && isTwo) ? document.querySelector('input[name="menuPreference2"]:checked') : null;
+      const menuChoice2 = menuEl2 ? menuEl2.value : '-';
 
       const fullName = (isTwo && name2) ? `${name1} & ${name2}` : name1;
       const fullMenu = (isTwo && name2) ? `${name1}: ${menuChoice1} | ${name2}: ${menuChoice2}` : menuChoice1;
