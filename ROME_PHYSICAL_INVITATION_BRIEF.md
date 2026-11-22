@@ -35,9 +35,9 @@ The physical stationery suite is organized into distinct, beautifully coordinate
 │             PHYSICAL STATIONERY SUITE — 5 DEDICATED PIECES             │
 ├────────────────────────────────┬───────────────────────────────────────┤
 │ CARD 1: CIAMPINI RECEPTION     │ Friday Sunset Drinks & Terrace Dinner │
-│ CARD 2: VATICAN NUPTIAL BLESSING│ St. Peter's Ceremony + Access Map    │
+│ CARD 2: VATICAN NUPTIAL BLESSING│ St. Peter's Ceremony + Wayfinding Map │
 │ CARD 3: VILLA AURELIA GALA     │ Saturday Aperitivo, Dinner & Dancing  │
-│ CARD 4: HOTEL HASSLER BRUNCH   │ Sunday Rooftop Farewell (12:30 PM)    │
+│ CARD 4: HOTEL HASSLER LUNCH    │ Sunday Rooftop Farewell (12:30 PM)    │
 │ CARD 5: RSVP CARD & ENVELOPE   │ Multi-Event Reply & Dietary Choices   │
 │ ENVELOPES & EMBELLISHMENTS     │ Hand Calligraphy, Art Liner, Wax Seal │
 └────────────────────────────────┴───────────────────────────────────────┘
@@ -126,35 +126,47 @@ St. Peter's Basilica. Gowns with sleeves, elegant capelets,
 or matching silk shawls/wraps are strictly required for entry.
 ```
 
-#### Illustrated Vatican Entrance Map & Artist Reference:
-* **Digital Access Guide for Artist & Guests:**  
+#### Simplified Vatican Wayfinding Map & Directions (For Card Reverse / Insert):
+* **Live Digital Guide for Artist & Guests:**  
   [`https://innamorati-meister.com/vatican-entrance.html`](https://innamorati-meister.com/vatican-entrance.html)
-* **Visual Map Layout for the Print Card / Reverse Side:**
+
+* **Simple 4-Step Guest Wayfinding Route:**
+  ```
+  [1] TAXI DROP-OFF          [2] ENTRANCE GATE            [3] SECURITY CHECK        [4] THE CHAPEL
+  Piazza del Sant'Uffizio ──► Cancello Petriano  ──► Swiss Guard Post  ──► Cappella del Coro
+  (South Colonnade Flank)     (Arrive by 15:00 Sharp!)    (Show Invite + ID)        (Blessing at 15:30)
+                                                                                          │
+                                                                                          ▼
+                                                           [5] VILLA AURELIA SHUTTLES ◄───┘
+                                                           (Departing Petriano Gate for 17:30 Aperitivo)
+  ```
+
+* **Simple Visual Layout Diagram for Print Illustrator:**
   ```
   ┌────────────────────────────────────────────────────────────────────────┐
-  │                   VATICAN ENTRANCE MAP SCHEMATIC                       │
+  │                   VATICAN WAYFINDING CARD SCHEMATIC                    │
   │                                                                        │
   │                     [ ST. PETER'S BASILICA ]                           │
   │                 ┌───────────────┬───────────────┐                      │
   │                 │               │               │                      │
-  │                 │  [CAPPELLA    │               │                      │
-  │                 │   DEL CORO]   │   High Altar  │                      │
-  │                 │   (Point C)   │     & Dome    │                      │
-  │                 │               │               │                      │
-  │                 └───┐       ┌───┴───────────────┘                      │
-  │                     │       │                                          │
-  │        South Aisle  │       │                                          │
-  │        Entrance ◄───┘       │   BERNINI'S COLONNADE                    │
-  │            ▲                │  (Piazza San Pietro)                     │
-  │            │                │      ╭─────────╮                         │
-  │     [SECURITY CHECK]        │     (   Obelisk )                        │
-  │         (Point B)           │      ╰─────────╯                         │
-  │            ▲                │                                          │
-  │            │                └──────────────────────────────────────────┘
-  │     [CANCELLO PETRIANO] ◄── TAXI DROP-OFF POINT (Arrive by 3:00 PM!)   │
-  │         (Point A)           Piazza del Sant'Uffizio, 00120 Roma        │
+  │                 │   [STEP 4]    │               │   PIAZZA SAN PIETRO  │
+  │                 │  CAPPELLA     │   Main Dome   │   (Public Square)    │
+  │                 │  DEL CORO     │   High Altar  │   ⛔ DO NOT ENTER    │
+  │                 │ (Ceremony     │               │      TOURIST QUEUE   │
+  │                 │  at 15:30)    │               │                      │
+  │                 └───┬───────────┴───────────────┘                      │
+  │                     │                                                  │
+  │                 [STEP 3] SWISS GUARD SECURITY CHECK (Show ID & Invite) │
+  │                     ▲                                                  │
+  │                     │                                                  │
+  │                 [STEP 2] CANCELLO PETRIANO GATE                        │
+  │                 ⚠️ DOORS CLOSE AT 15:00 SHARP!                        │
+  │                     ▲                                                  │
+  │                     │                                                  │
+  │                 [STEP 1] GUEST TAXI DROP-OFF                           │
+  │                 Piazza del Sant'Uffizio, 00120 Roma                    │
   │                                                                        │
-  │     [SHUTTLE TO VILLA AURELIA] (Point D) ──► Boarding at Petriano Gate │
+  │                 [STEP 5] SHUTTLES TO VILLA AURELIA ──► Janiculum Hill  │
   └────────────────────────────────────────────────────────────────────────┘
   ```
 
@@ -198,16 +210,16 @@ directly from St. Peter's Basilica to Villa Aurelia.
 
 ---
 
-### CARD 4: FAREWELL ROOFTOP BRUNCH — HOTEL HASSLER ROMA
-*Sunday Farewell Gathering (April 18, 2027)*  
+### CARD 4: FAREWELL ROOFTOP LUNCH — HOTEL HASSLER ROMA
+*Sunday Farewell Celebration (April 18, 2027)*  
 *Recommended format: A6 or 4-Bar enclosure card.*
 
 ```
 [ Hotel Hassler Roman Skyline Vignette ]
 
-FAREWELL ROOFTOP BRUNCH
+FAREWELL ROOFTOP LUNCH
 
-Join us for a relaxed Sunday morning toast
+Join us for a celebratory Sunday farewell lunch
 with 360-degree panoramic views over the Spanish Steps and Rome
 
 SUNDAY, THE EIGHTEENTH OF APRIL
@@ -219,7 +231,8 @@ Panoramic 7th Floor Rooftop Terrace
 Piazza Trinità dei Monti, 6
 Rome, Italy
 
-Artisanal Italian pastries, Roman delicacies, champagne & espresso
+Artisanal Roman antipasti, handmade pasta, seasonal Italian specialties,
+fine wines, champagne toast & espresso
 
 —
 
@@ -248,7 +261,7 @@ Please confirm attendance for each celebration:
 
 [ ] Friday, April 16  · Welcome Sunset Reception at Ciampini (19:00)
 [ ] Saturday, April 17 · Vatican Blessing & Villa Aurelia Gala (15:00 / 17:30)
-[ ] Sunday, April 18  · Farewell Rooftop Brunch at Hotel Hassler (12:30)
+[ ] Sunday, April 18  · Farewell Rooftop Lunch at Hotel Hassler (12:30)
 
 Total Number of Guests Attending: [    ]
 
@@ -282,8 +295,8 @@ The print suite is modular so guests receive exactly the cards corresponding to 
 
 | Guest Tier Group | Invited Events | Cards to Include in Envelope |
 | :--- | :--- | :--- |
-| **Tier 1: Full 3-Day Weekend**<br>*(Daniel's Side & Friends — ~22 Guests)* | Fri (Ciampini) + Sat (Vatican & Villa Aurelia) + Sun (Hassler Brunch) | **Card 1** (Ciampini)<br>**Card 2** (Vatican Blessing + Map)<br>**Card 3** (Villa Aurelia Gala)<br>**Card 4** (Hassler Brunch 12:30)<br>**Card 5** (3-Event RSVP) + Return Envelope |
-| **Tier 2: 2-Day Weekend**<br>*(Elia's Family & Friends, including Fausto — ~46 Guests)* | Sat (Vatican & Villa Aurelia) + Sun (Hassler Brunch) | **Card 2** (Vatican Blessing + Map)<br>**Card 3** (Villa Aurelia Gala)<br>**Card 4** (Hassler Brunch 12:30)<br>**Card 5** (2-Event RSVP) + Return Envelope |
+| **Tier 1: Full 3-Day Weekend**<br>*(Daniel's Side & Friends — ~22 Guests)* | Fri (Ciampini) + Sat (Vatican & Villa Aurelia) + Sun (Hassler Lunch) | **Card 1** (Ciampini)<br>**Card 2** (Vatican Blessing + Map)<br>**Card 3** (Villa Aurelia Gala)<br>**Card 4** (Hassler Lunch 12:30)<br>**Card 5** (3-Event RSVP) + Return Envelope |
+| **Tier 2: 2-Day Weekend**<br>*(Elia's Family & Friends, including Fausto — ~46 Guests)* | Sat (Vatican & Villa Aurelia) + Sun (Hassler Lunch) | **Card 2** (Vatican Blessing + Map)<br>**Card 3** (Villa Aurelia Gala)<br>**Card 4** (Hassler Lunch 12:30)<br>**Card 5** (2-Event RSVP) + Return Envelope |
 | **Tier 3: 1-Day Saturday Only**<br>*(Castellani Family — ~8 Guests)* | Sat (Vatican Blessing & Villa Aurelia Gala) | **Card 2** (Vatican Blessing + Map)<br>**Card 3** (Villa Aurelia Gala)<br>**Card 5** (Saturday-only RSVP) + Return Envelope |
 
 ---
@@ -295,7 +308,7 @@ The print suite is modular so guests receive exactly the cards corresponding to 
 | **Ciampini Roma** | Friday Welcome Sunset Dinner | Piazza Trinità dei Monti, 00187 Roma | Friday, April 16, 2027 · **19:00** |
 | **Cappella del Coro, Basilica di San Pietro** | Saturday Solemn Nuptial Blessing | Cancello Petriano, Piazza del Sant'Uffizio, 00120 Città del Vaticano | Saturday, April 17, 2027<br>**Must arrive by 15:00 sharp** *(Ceremony at 15:30)* |
 | **Villa Aurelia** | Saturday Gala Banquet & Dancing | Porta San Pancrazio, Gianicolo, 00153 Roma | Saturday, April 17, 2027 · **17:30 – Late** *(Aperitivo at 17:30)* |
-| **Hotel Hassler Roma** | Sunday Farewell Rooftop Brunch | Piazza Trinità dei Monti, 6, 00187 Roma | Sunday, April 18, 2027 · **12:30** |
+| **Hotel Hassler Roma** | Sunday Farewell Rooftop Lunch | Piazza Trinità dei Monti, 6, 00187 Roma | Sunday, April 18, 2027 · **12:30** |
 
 ---
 

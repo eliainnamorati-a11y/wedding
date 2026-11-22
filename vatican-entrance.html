@@ -6,13 +6,13 @@
   <title>Elia & Daniel | Vatican Entrance & Access Guide · Cappella del Coro</title>
   
   <meta property="og:title" content="Vatican Entrance & Access Guide · Elia & Daniel Wedding">
-  <meta property="og:description" content="Important arrival instructions, security access, entrance map, and dress code for the Nuptial Blessing at Cappella del Coro, St. Peter's Basilica.">
+  <meta property="og:description" content="Simple, clear arrival instructions, security gate access, and entrance map for the Nuptial Blessing at Cappella del Coro, St. Peter's Basilica.">
   <meta property="og:image" content="https://innamorati-meister.com/JPGS/03.jpg">
 
   <link rel="icon" type="image/svg+xml" href="/heart.svg" onerror="this.href='heart.svg'">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Great+Vibes&family=Inter:wght@200;300;400;500;600&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Great+Vibes&family=Inter:wght@200;300;400;500;600;700&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <style>
     @font-face {
@@ -41,9 +41,10 @@
       --color-gold-tint: rgba(191, 161, 117, 0.12);
       --color-hairline: rgba(191, 161, 117, 0.35);
       --color-border: #E8E2D8;
-      --color-alert-bg: #FDF4E7;
-      --color-alert-border: #D9A05B;
-      --color-alert-dark: #8C4E0B;
+      --color-alert-bg: #FDF3E5;
+      --color-alert-border: #D99B52;
+      --color-alert-dark: #8C4705;
+      --color-green: #2E6B4F;
     }
 
     * {
@@ -105,9 +106,9 @@
     /* Header */
     .guide-header {
       text-align: center;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
       border-bottom: 1px solid var(--color-hairline);
-      padding-bottom: 2.5rem;
+      padding-bottom: 2rem;
     }
 
     .guide-eyebrow {
@@ -116,17 +117,17 @@
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--color-gold);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .guide-title {
       font-family: var(--font-serif);
-      font-size: 2.6rem;
+      font-size: 2.7rem;
       font-weight: 400;
       letter-spacing: 0.02em;
       color: var(--color-dark);
       line-height: 1.15;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .guide-subtitle {
@@ -140,7 +141,7 @@
     .guide-meta-pill {
       display: inline-flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.85rem;
       padding: 0.5rem 1.25rem;
       background: var(--color-card-bg);
       border: 1px solid var(--color-hairline);
@@ -148,50 +149,69 @@
       font-size: 0.85rem;
       letter-spacing: 0.05em;
       color: var(--color-charcoal);
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
-    /* Critical Warning Box */
-    .critical-alert-box {
-      background: var(--color-alert-bg);
-      border: 1px solid var(--color-alert-border);
-      border-left: 5px solid var(--color-alert-border);
+    /* SIMPLE 4-CARD QUICK SUMMARY CHEAT SHEET */
+    .quick-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .quick-card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
       border-radius: 8px;
-      padding: 1.5rem 1.75rem;
-      margin-bottom: 3rem;
-      box-shadow: 0 4px 18px rgba(140, 78, 11, 0.08);
+      padding: 1.25rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
 
-    .alert-header {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.75rem;
+    .quick-card.urgent {
+      background: var(--color-alert-bg);
+      border-color: var(--color-alert-border);
     }
 
-    .alert-icon {
-      width: 24px;
-      height: 24px;
-      color: var(--color-alert-dark);
-      flex-shrink: 0;
+    .quick-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      display: block;
     }
 
-    .alert-title {
+    .quick-label {
       font-family: var(--font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    .quick-card.urgent .quick-label {
       color: var(--color-alert-dark);
     }
 
-    .alert-desc {
-      font-size: 0.95rem;
-      color: #5C3204;
-      line-height: 1.6;
+    .quick-val {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-dark);
+      line-height: 1.3;
+      margin-bottom: 0.3rem;
     }
 
-    .alert-desc strong {
-      color: #381E02;
+    .quick-card.urgent .quick-val {
+      color: var(--color-alert-dark);
+    }
+
+    .quick-sub {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+      line-height: 1.4;
     }
 
     /* Map Mockup Section */
@@ -199,34 +219,34 @@
       background: var(--color-card-bg);
       border: 1px solid var(--color-hairline);
       border-radius: 12px;
-      padding: 2.25rem 2rem;
-      margin-bottom: 3rem;
+      padding: 2rem 1.75rem;
+      margin-bottom: 2.5rem;
       box-shadow: 0 6px 24px rgba(46, 43, 41, 0.04);
     }
 
     .section-title {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--color-gold);
       text-align: center;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
     }
 
     .section-sub {
       text-align: center;
       font-size: 0.9rem;
       color: var(--color-muted);
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
     }
 
     .svg-map-wrapper {
       width: 100%;
-      background: #F4EFE6;
-      border: 1px solid #E2D9CC;
+      background: #F7F3EB;
+      border: 1px solid #DFD6C7;
       border-radius: 8px;
-      padding: 1rem;
+      padding: 0.75rem;
       overflow: hidden;
     }
 
@@ -236,8 +256,8 @@
       display: block;
     }
 
-    /* Map Legend */
-    .map-legend {
+    /* CLEAR 4-STEP TIMELINE BELOW MAP */
+    .waypoint-steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.25rem;
@@ -246,15 +266,15 @@
       padding-top: 1.75rem;
     }
 
-    .legend-item {
+    .waypoint-item {
       display: flex;
       align-items: flex-start;
       gap: 0.85rem;
     }
 
-    .legend-pin {
-      width: 28px;
-      height: 28px;
+    .waypoint-badge {
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: var(--color-gold);
       color: white;
@@ -262,107 +282,55 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       flex-shrink: 0;
       margin-top: 2px;
     }
 
-    .legend-pin.red {
-      background: #A83232;
-    }
+    .waypoint-badge.step1 { background: #A83232; }
+    .waypoint-badge.step2 { background: #D9823B; }
+    .waypoint-badge.step3 { background: #BFA175; }
+    .waypoint-badge.step4 { background: #2E6B4F; }
 
-    .legend-pin.green {
-      background: #2E6B4F;
-    }
-
-    .legend-content h5 {
+    .waypoint-text h5 {
       font-family: var(--font-serif);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: var(--color-dark);
       margin-bottom: 0.2rem;
     }
 
-    .legend-content p {
-      font-size: 0.82rem;
+    .waypoint-text p {
+      font-size: 0.83rem;
       color: var(--color-muted);
       line-height: 1.45;
     }
 
-    /* Step-by-Step Instructions */
-    .instructions-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.75rem;
-      margin-bottom: 3rem;
-    }
-
-    .instruction-card {
-      background: var(--color-card-bg);
-      border: 1px solid var(--color-border);
-      border-radius: 10px;
-      padding: 1.75rem;
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-    }
-
-    .step-number {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
-      font-weight: 300;
-      color: var(--color-gold);
-      line-height: 1;
-      padding-top: 0.2rem;
-    }
-
-    .step-body h4 {
-      font-family: var(--font-serif);
-      font-size: 1.35rem;
-      font-weight: 500;
-      color: var(--color-dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .step-body p {
-      font-size: 0.92rem;
-      color: var(--color-charcoal);
-      line-height: 1.6;
-      margin-bottom: 0.5rem;
-    }
-
-    .step-body ul {
-      margin-left: 1.25rem;
-      font-size: 0.88rem;
-      color: var(--color-muted);
-      line-height: 1.6;
-    }
-
     /* Dress Code / Modesty Reminder */
     .dress-modesty-card {
-      background: #F3EFE7;
+      background: #F4EFE6;
       border: 1px solid var(--color-gold);
       border-radius: 10px;
-      padding: 2rem;
-      margin-bottom: 3rem;
+      padding: 1.75rem 2rem;
+      margin-bottom: 2.5rem;
       text-align: center;
     }
 
     .dress-modesty-card h3 {
       font-family: var(--font-display);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--color-dark);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .dress-modesty-card p {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--color-charcoal);
-      max-width: 700px;
-      margin: 0 auto 1.5rem;
-      line-height: 1.65;
+      max-width: 720px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.6;
     }
 
     .dress-modesty-card .palette-row {
@@ -370,7 +338,6 @@
       justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
-      margin-top: 1rem;
     }
 
     .swatch-box {
@@ -381,8 +348,8 @@
     }
 
     .swatch-circle {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       border: 1px solid rgba(0, 0, 0, 0.1);
     }
@@ -399,28 +366,28 @@
       border: 1px dashed var(--color-gold);
       background: rgba(191, 161, 117, 0.04);
       border-radius: 10px;
-      padding: 2rem;
-      margin-bottom: 3rem;
+      padding: 1.75rem;
+      margin-bottom: 2.5rem;
     }
 
     .designer-notes-card h4 {
       font-family: var(--font-display);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--color-gold);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .designer-notes-card p, .designer-notes-card li {
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       color: var(--color-charcoal);
       line-height: 1.6;
     }
 
     .designer-notes-card ul {
       margin-left: 1.25rem;
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
     }
 
     /* Action Buttons */
@@ -429,7 +396,7 @@
       justify-content: center;
       gap: 1.25rem;
       flex-wrap: wrap;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
     }
 
     .btn-gold {
@@ -479,11 +446,10 @@
 
     @media (max-width: 640px) {
       .guide-title {
-        font-size: 2rem;
+        font-size: 2.1rem;
       }
-      .instruction-card {
-        flex-direction: column;
-        gap: 0.75rem;
+      .quick-summary-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -507,243 +473,224 @@
     
     <!-- Header -->
     <div class="guide-header">
-      <div class="guide-eyebrow">Ceremony Arrival &amp; Logistics</div>
-      <h1 class="guide-title">Vatican City Entrance Guide</h1>
-      <p class="guide-subtitle">Cappella del Coro &middot; Basilica di San Pietro in Vaticano</p>
+      <div class="guide-eyebrow">Ceremony Arrival &amp; Wayfinding</div>
+      <h1 class="guide-title">How to Enter the Vatican</h1>
+      <p class="guide-subtitle">Cappella del Coro &middot; St. Peter's Basilica</p>
       <div class="guide-meta-pill">
         <span><strong>Saturday, April 17, 2027</strong></span>
         <span>&bull;</span>
-        <span>Ceremony: <strong>15:30</strong></span>
+        <span>Ceremony Starts: <strong>15:30</strong></span>
         <span>&bull;</span>
-        <span>Doors Close: <strong>15:00 Sharp</strong></span>
+        <span>Arrive by: <strong>15:00 Sharp</strong></span>
       </div>
     </div>
 
-    <!-- CRITICAL TIMING ALERT -->
-    <div class="critical-alert-box">
-      <div class="alert-header">
-        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="8" x2="12" y2="12"></line>
-          <line x1="12" y1="16" x2="12.01" y2="16"></line>
-        </svg>
-        <span class="alert-title">Strict Vatican Security Protocol — Arrival by 15:00 Sharp</span>
+    <!-- SIMPLE 4-CARD QUICK CHEAT SHEET -->
+    <div class="quick-summary-grid">
+      
+      <div class="quick-card">
+        <span class="quick-icon">🚕</span>
+        <div class="quick-label">Step 1: Taxi Drop-off</div>
+        <div class="quick-val">Piazza del Sant'Uffizio</div>
+        <div class="quick-sub">Tell your taxi driver: "Piazza del Sant'Uffizio (Vaticano)"</div>
       </div>
-      <p class="alert-desc">
-        Due to sovereign Vatican state regulations and security checks, <strong>all guests must arrive at the security gate by 15:00 at the very latest</strong> to clear security screening and be seated in the chapel. <strong>If you arrive after 15:00, access will strictly be denied by Vatican security with no exceptions.</strong> Please plan ample transit time.
-      </p>
+
+      <div class="quick-card urgent">
+        <span class="quick-icon">⏰</span>
+        <div class="quick-label">Step 2: Strict Timing</div>
+        <div class="quick-val">15:00 Sharp Cutoff</div>
+        <div class="quick-sub">Vatican gates close strictly at 15:00. No late entry allowed!</div>
+      </div>
+
+      <div class="quick-card">
+        <span class="quick-icon">🪪</span>
+        <div class="quick-label">Step 3: What to Bring</div>
+        <div class="quick-val">Invite + Photo ID</div>
+        <div class="quick-sub">Physical wedding invite card &amp; passport / EU national ID card</div>
+      </div>
+
+      <div class="quick-card">
+        <span class="quick-icon">👗</span>
+        <div class="quick-label">Step 4: Modesty Rule</div>
+        <div class="quick-val">Covered Shoulders</div>
+        <div class="quick-sub">Shoulders &amp; knees covered. Pastel long gowns &amp; black tie.</div>
+      </div>
+
     </div>
 
-    <!-- ARCHITECTURAL MAP MOCKUP -->
+    <!-- CLEAR, SIMPLIFIED ARCHITECTURAL WAYFINDING MAP -->
     <div class="map-mockup-section">
-      <div class="section-title">Architectural Access Map</div>
-      <div class="section-sub">Gate of Entry: Cancello Petriano &middot; Piazza del Sant'Uffizio</div>
+      <div class="section-title">Clear Wayfinding Map</div>
+      <div class="section-sub">Follow steps ❶ &rarr; ❷ &rarr; ❸ &rarr; ❹ into Cappella del Coro</div>
 
       <div class="svg-map-wrapper">
-        <svg class="vatican-svg-map" viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
+        <svg class="vatican-svg-map" viewBox="0 0 880 500" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="piazzaGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ECE3D4"/>
-              <stop offset="100%" stop-color="#E2D6C3"/>
-            </linearGradient>
-            <linearGradient id="basilicaGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#DFD2BD"/>
-              <stop offset="100%" stop-color="#CBBCA3"/>
-            </linearGradient>
-            <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-              <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.12"/>
+            <filter id="cardShadow" x="-2%" y="-4%" width="104%" height="108%">
+              <feDropShadow dx="1" dy="3" stdDeviation="3" flood-opacity="0.08"/>
             </filter>
+            <marker id="goldArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M 0 0 L 8 4 L 0 8 z" fill="#BFA175" />
+            </marker>
           </defs>
 
-          <!-- Background / Grounds -->
-          <rect width="900" height="520" fill="#F4EFE6"/>
+          <!-- Background Paper -->
+          <rect width="880" height="500" fill="#F8F4EC" rx="6"/>
 
-          <!-- Surrounding Streets -->
-          <text x="760" y="270" font-family="'Cinzel', serif" font-size="11" fill="#A89E90" letter-spacing="2">VIA DELLA CONCILIAZIONE</text>
-          <text x="320" y="495" font-family="'Cinzel', serif" font-size="10" fill="#A89E90" letter-spacing="1.5">PIAZZA DEL SANT'UFFIZIO (GUEST TAXI DROP-OFF)</text>
-
-          <!-- St. Peter's Square Oval (Piazza San Pietro) -->
-          <ellipse cx="610" cy="260" rx="150" ry="110" fill="url(#piazzaGrad)" stroke="#D4C4AE" stroke-width="2"/>
-          <ellipse cx="610" cy="260" rx="4" ry="4" fill="#BFA175"/>
-          <text x="610" y="250" font-family="'Cormorant Garamond', serif" font-size="13" font-style="italic" fill="#8C7F6E" text-anchor="middle">Obelisk</text>
-          <text x="610" y="295" font-family="'Cinzel', serif" font-size="14" fill="#756958" text-anchor="middle" letter-spacing="2">PIAZZA SAN PIETRO</text>
-
-          <!-- Bernini's Colonnades (Arcs) -->
-          <!-- North Colonnade Arc -->
-          <path d="M 490 200 C 530 140, 690 140, 730 200" fill="none" stroke="#B8A78F" stroke-width="12" stroke-linecap="round"/>
-          <!-- South Colonnade Arc -->
-          <path d="M 490 320 C 530 380, 690 380, 730 320" fill="none" stroke="#B8A78F" stroke-width="12" stroke-linecap="round"/>
-          <text x="610" y="405" font-family="'Cinzel', serif" font-size="9" fill="#998C7A" text-anchor="middle" letter-spacing="1">BERNINI'S COLONNADE</text>
-
-          <!-- St. Peter's Basilica Footprint -->
-          <g filter="url(#shadow)">
-            <!-- Main Atrium / Facade -->
-            <rect x="420" y="195" width="60" height="130" fill="url(#basilicaGrad)" stroke="#BFA175" stroke-width="1.5"/>
-            <text x="450" y="265" font-family="'Cinzel', serif" font-size="9" fill="#5E5345" text-anchor="middle" transform="rotate(-90 450 265)" letter-spacing="1">FACADE</text>
-
-            <!-- Main Nave & Side Aisles -->
-            <rect x="230" y="210" width="190" height="100" fill="url(#basilicaGrad)" stroke="#BFA175" stroke-width="1.5"/>
-            
-            <!-- Transept -->
-            <rect x="150" y="150" width="90" height="220" fill="url(#basilicaGrad)" stroke="#BFA175" stroke-width="1.5"/>
-
-            <!-- High Altar & Papal Baldachin Dome Center -->
-            <circle cx="195" cy="260" r="32" fill="#E8DEC8" stroke="#BFA175" stroke-width="2"/>
-            <circle cx="195" cy="260" r="16" fill="#BFA175" opacity="0.3"/>
-            <text x="195" y="264" font-family="'Cinzel', serif" font-size="9" fill="#5E5345" text-anchor="middle" letter-spacing="0.5">MAIN DOME</text>
-
-            <!-- Apse -->
-            <path d="M 150 220 C 110 220, 110 300, 150 300 Z" fill="url(#basilicaGrad)" stroke="#BFA175" stroke-width="1.5"/>
+          <!-- Grid Lines (Subtle Wayfinding Aesthetic) -->
+          <g stroke="#EAE2D4" stroke-width="1" stroke-dasharray="3,3">
+            <line x1="40" y1="120" x2="840" y2="120"/>
+            <line x1="40" y1="260" x2="840" y2="260"/>
+            <line x1="40" y1="400" x2="840" y2="400"/>
+            <line x1="280" y1="30" x2="280" y2="470"/>
+            <line x1="560" y1="30" x2="560" y2="470"/>
           </g>
 
-          <!-- CAPPELLA DEL CORO (Choir Chapel) Highlight - Left Nave -->
-          <rect x="270" y="270" width="55" height="36" fill="#BFA175" stroke="#8C7049" stroke-width="2" rx="3"/>
-          <text x="297" y="292" font-family="'Cinzel', serif" font-size="8" font-weight="bold" fill="#FFFFFF" text-anchor="middle">CORO</text>
+          <!-- 1. ST. PETER'S BASILICA (Top Left Area) -->
+          <g filter="url(#cardShadow)">
+            <!-- Main Basilica Block -->
+            <rect x="70" y="50" width="340" height="150" fill="#EAE0D0" stroke="#BFA175" stroke-width="2" rx="4"/>
+            <!-- Facade -->
+            <rect x="390" y="60" width="30" height="130" fill="#DFD2BD" stroke="#BFA175" stroke-width="1.5"/>
+            <text x="405" y="125" font-family="'Cinzel', serif" font-size="9" fill="#695E50" text-anchor="middle" transform="rotate(-90 405 125)" letter-spacing="1.5">BASILICA FACADE</text>
+            
+            <!-- Basilica Main Label & Dome Center -->
+            <circle cx="180" cy="125" r="32" fill="#F3ECE0" stroke="#BFA175" stroke-width="1.5"/>
+            <text x="180" y="122" font-family="'Cinzel', serif" font-size="11" font-weight="bold" fill="#5E5345" text-anchor="middle" letter-spacing="1">ST. PETER'S</text>
+            <text x="180" y="136" font-family="'Cinzel', serif" font-size="10" fill="#756958" text-anchor="middle">BASILICA</text>
 
-          <!-- CANCELLETO / PETRIANO GATE & SECURITY (Point A & B) -->
-          <!-- Piazza del Sant'Uffizio area -->
-          <rect x="360" y="380" width="100" height="60" fill="#EAE0D0" stroke="#C4B59D" stroke-width="1.5" stroke-dasharray="4,4" rx="4"/>
-          <text x="410" y="405" font-family="'Cinzel', serif" font-size="9" fill="#695E50" text-anchor="middle" font-weight="bold">CANCELLO</text>
-          <text x="410" y="418" font-family="'Cinzel', serif" font-size="9" fill="#695E50" text-anchor="middle" font-weight="bold">PETRIANO</text>
+            <!-- CAPPELLA DEL CORO (Choir Chapel) - THE CEREMONY DESTINATION -->
+            <rect x="255" y="125" width="115" height="60" fill="#BFA175" stroke="#8C7049" stroke-width="2" rx="4"/>
+            <text x="312" y="150" font-family="'Cinzel', serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">CAPPELLA DEL CORO</text>
+            <text x="312" y="166" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#FFF2DE" text-anchor="middle">NUPTIAL BLESSING 15:30</text>
+          </g>
 
-          <!-- Security Checkpoint Building -->
-          <rect x="310" y="360" width="45" height="40" fill="#C8B8A0" stroke="#8A7A64" stroke-width="1.5" rx="3"/>
-          <text x="332" y="383" font-family="'Cinzel', serif" font-size="7" fill="#3D352B" text-anchor="middle">SECURITY</text>
+          <!-- 2. ST. PETER'S SQUARE (Right Area) - Clearly marked DO NOT ENTER TOURIST LINES -->
+          <g filter="url(#cardShadow)">
+            <!-- Oval Piazza -->
+            <ellipse cx="650" cy="125" rx="150" ry="85" fill="#F0E8DA" stroke="#D6C7B2" stroke-width="2"/>
+            <!-- Bernini Colonnade curves -->
+            <path d="M 520 80 C 560 45, 740 45, 780 80" fill="none" stroke="#B8A78F" stroke-width="10" stroke-linecap="round"/>
+            <path d="M 520 170 C 560 205, 740 205, 780 170" fill="none" stroke="#B8A78F" stroke-width="10" stroke-linecap="round"/>
+            <ellipse cx="650" cy="125" rx="4" ry="4" fill="#8C7F6E"/>
+            <text x="650" y="118" font-family="'Cinzel', serif" font-size="12" fill="#756958" text-anchor="middle" letter-spacing="2">PIAZZA SAN PIETRO</text>
+            <text x="650" y="134" font-family="'Cormorant Garamond', serif" font-size="12" font-style="italic" fill="#8C7F6E" text-anchor="middle">(Public Square)</text>
 
-          <!-- Golden Dotted Guest Walking Path -->
-          <path d="M 410 440 L 410 415 L 355 380 L 330 340 L 310 330 L 297 312" fill="none" stroke="#BFA175" stroke-width="3" stroke-dasharray="5,4" stroke-linecap="round"/>
+            <!-- DO NOT ENTER TOURIST LINES WARNING BADGE -->
+            <rect x="555" y="152" width="190" height="26" fill="#FBF2EB" stroke="#A83232" stroke-width="1.2" rx="13"/>
+            <text x="650" y="169" font-family="'Inter', sans-serif" font-size="8.5" font-weight="700" fill="#A83232" text-anchor="middle" letter-spacing="0.5">⛔ DO NOT ENTER TOURIST QUEUE</text>
+          </g>
 
-          <!-- Shuttle Pickup Area (Point E) -->
-          <rect x="470" y="440" width="130" height="35" fill="#E4EFE9" stroke="#2E6B4F" stroke-width="1.5" rx="4"/>
-          <text x="535" y="462" font-family="'Cinzel', serif" font-size="9" fill="#2E6B4F" text-anchor="middle" font-weight="bold">VILLA AURELIA SHUTTLE</text>
+          <!-- 3. GUEST ARRIVAL: PIAZZA DEL SANT'UFFIZIO (Bottom Center/Left) -->
+          <rect x="180" y="370" width="340" height="90" fill="#FFFFFF" stroke="#BFA175" stroke-width="2" rx="8" filter="url(#cardShadow)"/>
+          
+          <text x="350" y="398" font-family="'Cinzel', serif" font-size="13" font-weight="bold" fill="#8C7049" text-anchor="middle" letter-spacing="1">PIAZZA DEL SANT'UFFIZIO</text>
+          <text x="350" y="416" font-family="'Inter', sans-serif" font-size="10" font-weight="600" fill="#1A1918" text-anchor="middle">OFFICIAL GUEST ARRIVAL &amp; TAXI DROP-OFF</text>
+          <text x="350" y="434" font-family="'Inter', sans-serif" font-size="9" fill="#7A746B" text-anchor="middle">Located directly outside Cancello Petriano (South side of St. Peter's)</text>
 
-          <!-- Markers / Badges -->
-          <!-- Marker A: Entry Gate -->
-          <circle cx="410" cy="445" r="14" fill="#A83232" filter="url(#shadow)"/>
-          <text x="410" y="450" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">A</text>
+          <!-- 4. GATE: CANCELLO PETRIANO -->
+          <g filter="url(#cardShadow)">
+            <rect x="260" y="270" width="180" height="50" fill="#FDF3E5" stroke="#D99B52" stroke-width="2" rx="6"/>
+            <text x="350" y="292" font-family="'Cinzel', serif" font-size="11" font-weight="bold" fill="#8C4705" text-anchor="middle" letter-spacing="1">CANCELLO PETRIANO</text>
+            <text x="350" y="308" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#A83232" text-anchor="middle">⚠️ DOORS CLOSE AT 15:00 SHARP</text>
+          </g>
 
-          <!-- Marker B: Security Checkpoint -->
-          <circle cx="332" cy="355" r="12" fill="#BFA175" filter="url(#shadow)"/>
-          <text x="332" y="360" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">B</text>
+          <!-- 5. SECURITY CHECKPOINT -->
+          <rect x="260" y="215" width="180" height="32" fill="#EAE0D0" stroke="#8A7A64" stroke-width="1.5" rx="4"/>
+          <text x="350" y="235" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#3D352B" text-anchor="middle">SWISS GUARD SECURITY CHECK (ID + INVITE)</text>
 
-          <!-- Marker C: Cappella del Coro -->
-          <circle cx="297" cy="288" r="14" fill="#BFA175" stroke="#FFFFFF" stroke-width="2" filter="url(#shadow)"/>
-          <text x="297" y="293" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">C</text>
+          <!-- 6. SHUTTLE BUS PICKUP AREA TO VILLA AURELIA -->
+          <g filter="url(#cardShadow)">
+            <rect x="550" y="380" width="260" height="70" fill="#E4EFE9" stroke="#2E6B4F" stroke-width="2" rx="8"/>
+            <text x="680" y="408" font-family="'Cinzel', serif" font-size="11" font-weight="bold" fill="#2E6B4F" text-anchor="middle" letter-spacing="1">VILLA AURELIA SHUTTLE</text>
+            <text x="680" y="426" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#1C4B36" text-anchor="middle">Private transfers depart after ceremony</text>
+            <text x="680" y="440" font-family="'Inter', sans-serif" font-size="8.5" fill="#2E6B4F" text-anchor="middle">For 17:30 Garden Aperitivo &amp; Gala</text>
+          </g>
 
-          <!-- Marker D: Shuttle -->
-          <circle cx="485" cy="457" r="11" fill="#2E6B4F" filter="url(#shadow)"/>
-          <text x="485" y="461" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF" text-anchor="middle">D</text>
+          <!-- DIRECTIONAL GOLD ARROW PATHWAY -->
+          <!-- From Taxi (Point 1) to Gate (Point 2) -->
+          <path d="M 350 370 L 350 326" fill="none" stroke="#BFA175" stroke-width="4" marker-end="url(#goldArrow)"/>
+          
+          <!-- From Gate (Point 2) to Security (Point 3) -->
+          <path d="M 350 270 L 350 252" fill="none" stroke="#BFA175" stroke-width="4" marker-end="url(#goldArrow)"/>
 
-          <!-- Compass Rose -->
-          <g transform="translate(100, 100)">
-            <circle cx="0" cy="0" r="22" fill="#FFFFFF" stroke="#D4C4AE" stroke-width="1.5"/>
-            <polygon points="0,-18 5,-4 0,0 -5,-4" fill="#BFA175"/>
-            <polygon points="0,18 5,4 0,0 -5,4" fill="#8C7049"/>
-            <text x="0" y="-22" font-family="'Cinzel', serif" font-size="11" font-weight="bold" fill="#8C7049" text-anchor="middle">N</text>
+          <!-- From Security (Point 3) into Chapel (Point 4) -->
+          <path d="M 350 215 L 350 190" fill="none" stroke="#BFA175" stroke-width="4" marker-end="url(#goldArrow)"/>
+
+          <!-- BIG CLEAR NUMBERED BADGES (Waypoints) -->
+          <!-- ❶ Drop-off -->
+          <circle cx="180" cy="415" r="15" fill="#A83232" filter="url(#cardShadow)"/>
+          <text x="180" y="420" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">1</text>
+
+          <!-- ❷ Petriano Gate -->
+          <circle cx="255" cy="295" r="15" fill="#D9823B" filter="url(#cardShadow)"/>
+          <text x="255" y="300" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">2</text>
+
+          <!-- ❸ Security Check -->
+          <circle cx="255" cy="231" r="12" fill="#BFA175" filter="url(#cardShadow)"/>
+          <text x="255" y="235" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF" text-anchor="middle">3</text>
+
+          <!-- ❹ Cappella del Coro -->
+          <circle cx="255" cy="155" r="15" fill="#8C7049" stroke="#FFFFFF" stroke-width="2" filter="url(#cardShadow)"/>
+          <text x="255" y="160" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">4</text>
+
+          <!-- ❺ Shuttle to Villa Aurelia -->
+          <circle cx="550" cy="415" r="14" fill="#2E6B4F" filter="url(#cardShadow)"/>
+          <text x="550" y="420" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">5</text>
+
+          <!-- Simple Compass -->
+          <g transform="translate(60, 435)">
+            <circle cx="0" cy="0" r="16" fill="#FFFFFF" stroke="#D4C4AE" stroke-width="1.2"/>
+            <polygon points="0,-12 3,-3 0,0 -3,-3" fill="#BFA175"/>
+            <text x="0" y="-15" font-family="'Cinzel', serif" font-size="9" font-weight="bold" fill="#8C7049" text-anchor="middle">N</text>
           </g>
         </svg>
       </div>
 
-      <!-- Legend -->
-      <div class="map-legend">
-        <div class="legend-item">
-          <div class="legend-pin red">A</div>
-          <div class="legend-content">
-            <h5>Guest Entry: Cancello Petriano</h5>
-            <p>Piazza del Sant'Uffizio, 00120 Roma. Dedicated Vatican entrance for our ceremony guests. Taxi drop-off point directly at the gate.</p>
+      <!-- CLEAR 4-WAYPOINT SUMMARY -->
+      <div class="waypoint-steps">
+        <div class="waypoint-item">
+          <div class="waypoint-badge step1">1</div>
+          <div class="waypoint-text">
+            <h5>Drop-off: Piazza del Sant'Uffizio</h5>
+            <p>Tell your taxi or chauffeur: <em>"Piazza del Sant'Uffizio (Vaticano)"</em>. Drop-off is right at the gate. Do not go into the main square tourist lines.</p>
           </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-pin">B</div>
-          <div class="legend-content">
-            <h5>Vatican Security Checkpoint</h5>
-            <p>Swiss Guard &amp; Gendarmerie clearance. Physical wedding invitation card and government photo ID required.</p>
+
+        <div class="waypoint-item">
+          <div class="waypoint-badge step2">2</div>
+          <div class="waypoint-text">
+            <h5>Gate: Cancello Petriano (15:00 Sharp)</h5>
+            <p><strong>Arrive by 14:45 – 15:00.</strong> Vatican security strictly shuts the gate at 15:00. Anyone arriving after 15:00 cannot be admitted.</p>
           </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-pin">C</div>
-          <div class="legend-content">
-            <h5>Cappella del Coro (Choir Chapel)</h5>
-            <p>Located in the left nave of St. Peter's Basilica. Ushers will escort you inside to your designated pew.</p>
+
+        <div class="waypoint-item">
+          <div class="waypoint-badge step3">3</div>
+          <div class="waypoint-text">
+            <h5>Security Clearance &amp; Escort</h5>
+            <p>Swiss Guards verify your name against our guest list. Present your physical invitation card + passport/ID. Airport-style security check.</p>
           </div>
         </div>
-        <div class="legend-item">
-          <div class="legend-pin green">D</div>
-          <div class="legend-content">
-            <h5>Private Transfers to Villa Aurelia</h5>
-            <p>Chauffeured shuttles will depart immediately outside the gate after the ceremony for the 17:30 aperitivo.</p>
+
+        <div class="waypoint-item">
+          <div class="waypoint-badge step4">4</div>
+          <div class="waypoint-text">
+            <h5>Cappella del Coro &amp; Shuttles</h5>
+            <p>Ushers seat you for the 15:30 blessing. At 16:45, private shuttles will wait right at Petriano Gate to take everyone to Villa Aurelia for aperitivo!</p>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- STEP BY STEP ARRIVAL INSTRUCTIONS -->
-    <div class="instructions-grid">
-      
-      <div class="instruction-card">
-        <div class="step-number">01</div>
-        <div class="step-body">
-          <h4>Arrive at Piazza del Sant'Uffizio by 15:00 Sharp</h4>
-          <p>
-            Do not queue in the general public tourist lines in Piazza San Pietro. Instead, navigate to <strong>Piazza del Sant'Uffizio</strong> (located just south of the left colonnade, opposite the Paul VI Hall).
-          </p>
-          <p>
-            Taxis and private cars can drop guests off directly in front of the <strong>Cancello Petriano</strong> gate.
-          </p>
-        </div>
-      </div>
-
-      <div class="instruction-card">
-        <div class="step-number">02</div>
-        <div class="step-body">
-          <h4>Vatican Security Credentials Check</h4>
-          <p>
-            At Cancello Petriano, the Swiss Guards and Vatican Gendarmerie manage access strictly according to our submitted guest list:
-          </p>
-          <ul>
-            <li><strong>Physical Invitation:</strong> Please present your formal printed wedding invitation suite or wedding pass card.</li>
-            <li><strong>Photo ID:</strong> A valid passport or European national ID card is strictly mandatory.</li>
-            <li><strong>Security Screening:</strong> Airport-style bag scanning and metal detector walk-through. Sharp items, glass containers, and large suitcases or backpacks are strictly prohibited.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="instruction-card">
-        <div class="step-number">03</div>
-        <div class="step-body">
-          <h4>Escort to Cappella del Coro &amp; Blessing</h4>
-          <p>
-            Once cleared, ushers will guide you through the reserved southern entrance of St. Peter's Basilica into the stunning, gilded <strong>Cappella del Coro</strong>.
-          </p>
-          <p>
-            The ceremony begins punctually at <strong>15:30</strong>. Once inside, you will experience the organ and solemn choir blessing in one of the most sacred and historic chapels in the Christian world.
-          </p>
-        </div>
-      </div>
-
-      <div class="instruction-card">
-        <div class="step-number">04</div>
-        <div class="step-body">
-          <h4>Shuttle Transport to Villa Aurelia (17:30 Aperitivo)</h4>
-          <p>
-            Following the blessing and photos, dedicated private shuttles will be stationed outside the gate to transfer all wedding guests directly up the Janiculum Hill to <strong>Villa Aurelia</strong>.
-          </p>
-          <p>
-            The garden aperitivo begins at <strong>17:30</strong>, followed by seated gala dinner and dancing under the stars until late.
-          </p>
-        </div>
-      </div>
-
     </div>
 
     <!-- DRESS CODE & MODESTY REMINDER -->
     <div class="dress-modesty-card">
-      <h3>Dress Code &amp; Vatican Modesty Protocol</h3>
+      <h3>Wedding Day Dress Code &amp; Vatican Modesty Protocol</h3>
       <p>
-        <strong>Gentlemen:</strong> Black Tie &mdash; Classic black tuxedo with black silk bow tie, white formal shirt, and polished dress shoes.<br>
-        <strong>Ladies:</strong> Floor-length gala evening gowns in delicate pastel and light colors.<br><br>
-        <span style="color: #9C3D28; font-weight: 600;">*MANDATORY VATICAN CHAPEL RULE:</span>
-        Inside St. Peter's Basilica, <strong>shoulders and knees must be respectfully covered</strong>. Gowns with sleeves, elegant capelet silhouettes, or matching silk shawls/wraps are strictly required for entry.
+        <strong>Gentlemen:</strong> Black Tie &mdash; Classic black tuxedo with black bow tie, white formal shirt, and polished dress shoes.<br>
+        <strong>Ladies:</strong> Floor-length gala evening gowns in delicate pastel and light colors (powder blue, blush pink, soft lavender, butter yellow, or champagne).<br><br>
+        <span style="color: #9C3D28; font-weight: 700;">*VATICAN CHAPEL REQUIREMENT (MANDATORY):</span>
+        Inside St. Peter's Basilica, <strong>shoulders and knees must be covered</strong>. Gowns with sleeves, elegant capelet silhouettes, or matching silk shawls/wraps are strictly required for entry.
       </p>
 
       <div class="palette-row">
@@ -756,16 +703,16 @@
           <div class="swatch-label">Powder Blue</div>
         </div>
         <div class="swatch-box">
+          <div class="swatch-circle" style="background-color: #E8C568;"></div>
+          <div class="swatch-label">Butter Yellow</div>
+        </div>
+        <div class="swatch-box">
           <div class="swatch-circle" style="background-color: #E8C5C8;"></div>
           <div class="swatch-label">Pastel Pink</div>
         </div>
         <div class="swatch-box">
           <div class="swatch-circle" style="background-color: #D8BFD8;"></div>
           <div class="swatch-label">Lavender</div>
-        </div>
-        <div class="swatch-box">
-          <div class="swatch-circle" style="background-color: #EDE4B8;"></div>
-          <div class="swatch-label">Butter Yellow</div>
         </div>
         <div class="swatch-box">
           <div class="swatch-circle" style="background-color: #D9C3B0;"></div>
@@ -778,13 +725,12 @@
     <div class="designer-notes-card">
       <h4>Information for Stationery &amp; Map Illustrator</h4>
       <p>
-        This page serves as the official digital reference for the fine stationery artist creating the printed illustrated Vatican map card insert:
+        For the printed map card insert:
       </p>
       <ul>
-        <li><strong>Recommended Card Size:</strong> 4.25" &times; 5.5" (A2) or 5" &times; 7" (A7) custom enclosure.</li>
-        <li><strong>Focal Landmarks:</strong> St. Peter's Dome, Bernini's Oval Colonnade, Obelisk, Cancello Petriano Gate, and Cappella del Coro highlighted in gold foil or warm charcoal letterpress.</li>
-        <li><strong>Key Copy:</strong> Must explicitly print <em>"All guests must arrive at Cancello Petriano by 15:00 sharp. Vatican security strictly forbids late entry."</em></li>
-        <li><strong>Modesty Badge:</strong> Include a small icon or notation indicating covered shoulders required for basilica entry.</li>
+        <li><strong>Focal Path:</strong> Keep the illustration simple: Piazza del Sant'Uffizio &rarr; Cancello Petriano Gate &rarr; St. Peter's South Entrance &rarr; Cappella del Coro.</li>
+        <li><strong>Crucial Warning Copy:</strong> Must explicitly print: <em>"Arrival strictly by 15:00 at Cancello Petriano. Late entry is not permitted by Vatican security."</em></li>
+        <li><strong>Guest Requirements:</strong> Note that physical invitation card + passport/photo ID + covered shoulders are mandatory.</li>
       </ul>
     </div>
 
@@ -795,7 +741,7 @@
           <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
           <circle cx="12" cy="10" r="3"></circle>
         </svg>
-        Navigate in Google Maps
+        Navigate to Drop-Off in Google Maps
       </a>
       <a href="https://maps.apple.com/?q=Piazza+del+Sant%27Uffizio+Rome" target="_blank" class="btn-outline">
         Open in Apple Maps
