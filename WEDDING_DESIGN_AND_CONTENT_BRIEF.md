@@ -89,12 +89,12 @@
 
 ### DAY 1: FRIDAY, APRIL 16, 2027 — WELCOME RECEPTION
 * **Event Title:** Welcome Reception & Terrace Dinner
-* **Time:** 19:00 (7:00 PM)
-* **Venue:** **Ciampini Roma**
-* **Location:** Piazza Trinità dei Monti (top of the Spanish Steps), Rome
-* **Google Maps Link:** `https://maps.google.com/?q=Ciampini+Roma+Trinita+dei+Monti`
+* **Time:** 18:00 (6:00 PM)
+* **Venue:** **Ristorante Terrazza Ciampini di Marco Ciampini**
+* **Location:** Piazza della Trinità dei Monti, 2 (top of the Spanish Steps), Rome
+* **Google Maps Link:** `https://maps.google.com/?q=Ristorante+Terrazza+Ciampini+di+Marco+Ciampini+Piazza+della+Trinita+dei+Monti+2`
 * **Program Description:** Sunset cocktails, Prosecco, and Roman terrace dinner overlooking the historic domes and terracotta skyline of the Eternal City.
-* **Dress Code:** **Roman Cocktail Chic**
+* **Dress Code:** **Cocktail Chic**
   * *Gentlemen:* Tailored blazers in linen, cotton, or fine summer wool in warm neutral tones (beige, tobacco, sage, navy). Dress trousers or tailored chinos, collared shirt (tie optional), suede/leather loafers.
   * *Ladies:* Chic cocktail dresses, silk slip dresses, or elegant tailored jumpsuit separates in warm Roman earth/sunset tones (terracotta, amber, olive, champagne). Block heels or refined flats recommended for cobblestone strolls around Trinità dei Monti.
   * *Color Palette Swatches:*

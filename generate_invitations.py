@@ -22,7 +22,7 @@ import csv
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 GUESTS_FILE = os.path.join(BASE_DIR, 'guests.json')
-FAUSTO_TEMPLATE_FILE = os.path.join(BASE_DIR, 'fausto.html')
+FAUSTO_TEMPLATE_FILE = os.path.join(BASE_DIR, 'master_template.html')
 
 # 18 Couples explicitly specified by Elia & Daniel
 COUPLES_CONFIG = [
@@ -592,50 +592,50 @@ def main():
       day1: {{
         img: '/assets/images/day1_attire.jpg',
         fallback: 'assets/images/day1_attire.jpg',
-        tag: 'FRIDAY, APRIL 16 &middot; CIAMPINI',
-        title: 'Roman Cocktail Chic',
+        tag: 'FRIDAY, APRIL 16 &middot; RISTORANTE TERRAZZA CIAMPINI',
+        title: 'Cocktail Chic',
         swatches: [
+          {{ name: 'Tailored Blazer', color: '#1B263B' }},
+          {{ name: 'Warm Tobacco', color: '#8D5B4C' }},
           {{ name: 'Italian Linen', color: '#D6C7B2' }},
-          {{ name: 'Terracotta Silk', color: '#C05C3D' }},
-          {{ name: 'Olive Green', color: '#5B6846' }},
-          {{ name: 'Amber Sunset', color: '#D9823B' }}
+          {{ name: 'Terracotta', color: '#C05C3D' }}
         ],
         notes: `
-          <p><strong>Gentlemen:</strong> Lightweight tailored blazers in linen, cotton, or fine summer wool in warm neutral tones (beige, tobacco, sage, navy). Dress trousers or tailored chinos, collared shirt (tie optional), and suede or leather loafers.</p><br>
-          <p><strong>Ladies:</strong> Cocktail dresses, silk slip dresses, or elegant tailored jumpsuit separates in rich sunset and Roman earth tones (terracotta, amber, olive, champagne). Block heels or refined flats are recommended for cobblestone strolls around Trinità dei Monti.</p>
+          <p><strong>Cocktail Chic:</strong> Tailored blazers for gentlemen (ties optional). Cocktail dresses or elegant chic attire for ladies.</p>
         `
       }},
       day2: {{
         img: '/assets/images/day2_attire.jpg',
         fallback: 'assets/images/day2_attire.jpg',
         tag: 'SATURDAY, APRIL 17 &middot; VATICAN & VILLA AURELIA',
-        title: 'Black Tie Optional & Evening Gala',
+        title: 'Black Tie for Men &amp; Pastel Colors for Women',
         swatches: [
-          {{ name: 'Classic Black', color: '#111111' }},
-          {{ name: 'Midnight Navy', color: '#1B2430' }},
-          {{ name: 'Emerald Green', color: '#0E3B2E' }},
-          {{ name: 'Roman Gold', color: '#BFA175' }}
+          {{ name: 'Black Tie', color: '#111111' }},
+          {{ name: 'Powder Blue', color: '#B6CFE2' }},
+          {{ name: 'Pastel Pink', color: '#E8C5C8' }},
+          {{ name: 'Soft Lavender', color: '#D8BFD8' }},
+          {{ name: 'Butter Yellow', color: '#EDE4B8' }},
+          {{ name: 'Champagne Rose', color: '#D9C3B0' }}
         ],
         notes: `
-          <p><strong>Gentlemen:</strong> Classic black tuxedo with black bow tie, or a dark formal suit (midnight navy or charcoal) with an elegant silk tie and polished dress shoes.</p><br>
-          <p><strong>Ladies:</strong> Floor-length evening gowns or sophisticated gala cocktail dresses in jewel tones, classic black, emerald, or deep sapphire, accented with fine jewelry.</p><br>
-          <p><strong>*Vatican Chapel Modesty Requirement:</strong> For the religious blessing inside Cappella del Coro at St. Peter's Basilica, shoulders and knees must be respectfully covered. A matching silk scarf, shawl, or tailored jacket is ideal.</p>
+          <p><strong>Gentlemen:</strong> Black Tie &mdash; Classic black tuxedo with black bow tie, crisp white formal shirt, and polished black dress shoes.</p><br>
+          <p><strong>Ladies:</strong> Floor-length gala evening gowns in delicate pastel colors (powder blue, blush pink, soft lavender, butter yellow, or champagne rose).</p><br>
+          <p><strong>*Vatican Chapel Requirement (Mandatory):</strong> For our solemn religious blessing inside Cappella del Coro at St. Peter's Basilica, shoulders covered are strictly mandatory. Gowns with sleeves, elegant capelet designs, or matching shawls/wraps are required for entry.</p>
         `
       }},
       day3: {{
         img: '/assets/images/day3_attire.jpg',
         fallback: 'assets/images/day3_attire.jpg',
-        tag: 'SUNDAY, APRIL 18 &middot; HOTEL HASSLER',
-        title: 'Sunday Casual Chic & Linens',
+        tag: 'SUNDAY, APRIL 18 &middot; HOTEL HASSLER ROOFTOP LUNCH',
+        title: 'Formal Chic &amp; Jackets for Men',
         swatches: [
-          {{ name: 'Crisp Linen White', color: '#FFFFFF' }},
+          {{ name: 'Crisp White', color: '#FFFFFF' }},
           {{ name: 'Travertine Sand', color: '#DFD5C6' }},
-          {{ name: 'Sage Blossom', color: '#A3B19B' }},
-          {{ name: 'Citrus Gold', color: '#E8C568' }}
+          {{ name: 'Summer Blue', color: '#8FA8BF' }},
+          {{ name: 'Sage Green', color: '#A3B19B' }}
         ],
         notes: `
-          <p><strong>Gentlemen:</strong> Crisp white or pastel linen button-up shirts, relaxed tailored trousers or linen pants, woven belt, espadrilles or loafers, and sunglasses for rooftop terrace sunshine.</p><br>
-          <p><strong>Ladies:</strong> Breezy sundresses, linen sets, floral garden dresses, stylish straw hats, and comfortable chic footwear for enjoying the morning vistas over the Spanish Steps.</p>
+          <p><strong>Formal Chic:</strong> Tailored blazers or jackets for gentlemen. Elegant daytime chic attire for ladies.</p>
         `
       }}
     }};
@@ -650,7 +650,13 @@ def main():
 
       const imgEl = document.getElementById('modalLookbookImg');
       imgEl.src = data.img;
-      imgEl.onerror = () => {{ imgEl.src = data.fallback; }};
+      imgEl.onerror = () => {{
+        if (!imgEl.src.includes('../')) {{
+          imgEl.src = '../' + data.fallback;
+        }} else {{
+          imgEl.src = data.fallback;
+        }}
+      }};
       
       document.getElementById('modalLookbookTag').innerHTML = data.tag;
       document.getElementById('modalLookbookTitle').innerText = data.title;
@@ -712,7 +718,7 @@ def main():
         party_size: maxParty,
         ciampini: ciampiniStatus,
         vatican_aurelia: weddingStatus,
-        brunch: brunchStatus,
+        lunch: brunchStatus,
         diet: note || 'None',
         note: note || '',
         timestamp: submittedAt
@@ -744,7 +750,7 @@ def main():
         "Party Count Attending": isAnyAttending ? (finalCount + (finalCount === 1 ? ' Person' : ' Persons')) : '0 (Declined)',
         "1. Welcome Dinner (16 Apr)": hasFri ? (choices[1] ? "YES (Attending)" : "NO (Decline)") : "Not Invited",
         "2. Vatican & Villa Aurelia (17 Apr)": choices[2] ? "YES (Attending)" : "NO (Decline)",
-        "3. Hassler Brunch (18 Apr)": hasSun ? (choices[3] ? "YES (Attending)" : "NO (Decline)") : "Not Invited",
+        "3. Hassler Lunch (18 Apr)": hasSun ? (choices[3] ? "YES (Attending)" : "NO (Decline)") : "Not Invited",
         "Dietary / Message": note || "None",
         "Date Submitted": submittedAt
       }};
@@ -834,8 +840,6 @@ def main():
 
         # Alias for fausto if needed
         if slug == 'fausto-innamorati':
-            with open(os.path.join(BASE_DIR, 'fausto.html'), 'w', encoding='utf-8') as out_f:
-                out_f.write(full_html)
             f_dir = os.path.join(BASE_DIR, 'fausto')
             os.makedirs(f_dir, exist_ok=True)
             with open(os.path.join(f_dir, 'index.html'), 'w', encoding='utf-8') as out_f:

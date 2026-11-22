@@ -63,7 +63,7 @@ at sunset overlooking the Eternal City
 
 FRIDAY, THE SIXTEENTH OF APRIL
 TWO THOUSAND TWENTY-SEVEN
-at seven o'clock in the evening (7:00 PM)
+at six o'clock in the evening (6:00 PM)
 
 RISTORANTE TERRAZZA CIAMPINI DI MARCO CIAMPINI
 Piazza della Trinità dei Monti, 2
@@ -71,9 +71,9 @@ Rome, Italy
 
 Sunset Cocktails & Roman Terrace Dinner
 
-ATTIRE: FORMAL CHIC & JACKETS FOR MEN
-Gentlemen: Jackets required (ties optional).
-Ladies: Elegant chic attire.
+ATTIRE: COCKTAIL CHIC
+Gentlemen: Tailored blazers (ties optional).
+Ladies: Cocktail chic dresses or elegant separates.
 ```
 
 ---
@@ -253,7 +253,7 @@ M____________________________________________________________________
 
 Please confirm attendance for each celebration:
 
-[ ] Friday, April 16  · Welcome Sunset Reception at Ciampini (19:00)
+[ ] Friday, April 16  · Welcome Sunset Reception at Ciampini (18:00)
 [ ] Saturday, April 17 · Vatican Blessing & Villa Aurelia Gala (15:00 / 17:30)
 [ ] Sunday, April 18  · Farewell Rooftop Lunch at Hotel Hassler (12:30)
 
@@ -299,7 +299,7 @@ The print suite is modular so guests receive exactly the cards corresponding to 
 
 | Venue | Event | Address | Timing |
 | :--- | :--- | :--- | :--- |
-| **Ristorante Terrazza Ciampini di Marco Ciampini** | Friday Welcome Sunset Dinner | Piazza della Trinità dei Monti, 2, 00187 Roma | Friday, April 16, 2027 · **19:00** |
+| **Ristorante Terrazza Ciampini di Marco Ciampini** | Friday Welcome Sunset Dinner | Piazza della Trinità dei Monti, 2, 00187 Roma | Friday, April 16, 2027 · **18:00** |
 | **Cappella del Coro, Basilica di San Pietro** | Saturday Solemn Nuptial Blessing | Cancello Petriano, Piazza del Sant'Uffizio, 00120 Città del Vaticano | Saturday, April 17, 2027<br>**Must arrive by 15:00 sharp** *(Ceremony at 15:30)* |
 | **Villa Aurelia** | Saturday Gala Banquet & Dancing | Porta San Pancrazio, Gianicolo, 00153 Roma | Saturday, April 17, 2027 · **17:30 – Late** *(Aperitivo at 17:30)* |
 | **Hotel Hassler Roma** | Sunday Farewell Rooftop Lunch | Piazza Trinità dei Monti, 6, 00187 Roma | Sunday, April 18, 2027 · **12:30** |

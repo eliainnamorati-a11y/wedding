@@ -659,7 +659,7 @@
 
     .lookbook-modal-content {
       background: var(--color-bg);
-      max-width: 680px;
+      max-width: 920px;
       width: 100%;
       padding: 3rem 2.8rem;
       position: relative;
@@ -1197,6 +1197,24 @@
       font-size: 0.95rem;
       padding: 0.5rem;
     }
+  
+    select.stationery-line-input {
+      cursor: pointer;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23BFA175' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      padding-right: 2rem;
+    }
+    select.stationery-line-input option {
+      background: #FAF9F6;
+      color: #1A1918;
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+      padding: 0.5rem;
+    }
   </style>
 </head>
 <body>
@@ -1251,7 +1269,7 @@
   <!-- Main Editorial Content -->
   <main class="page-body">
 
-                <!-- Personal Invitation Letterhead -->
+                    <!-- Personal Invitation Letterhead -->
     <section class="welcome-editorial" id="invitation">
       <h2 class="welcome-title reveal-item" style="--delay: 0.1s;">Dear Ines & Nayam,</h2>
       <p class="welcome-text reveal-item" style="--delay: 0.25s;">
@@ -1259,6 +1277,59 @@
       </p>
       <div class="editorial-divider reveal-item" style="--delay: 0.4s;"></div>
     </section>
+<!-- DAY 1: FRIDAY, APRIL 16 -->
+    <section class="day-spread" id="day1">
+      <div class="day-container-centered">
+        
+        <!-- Small Gold Venue Icon: Sunset Terrace & Toast -->
+        <div class="venue-gold-icon">
+          <svg viewBox="0 0 48 48">
+            <path d="M12 14L24 28L36 14H12Z" stroke="#BFA175" stroke-width="2" fill="none"/>
+            <path d="M24 28V40M16 40H32" stroke="#BFA175" stroke-width="2"/>
+            <circle cx="24" cy="10" r="4" fill="#BFA175" opacity="0.4"/>
+            <path d="M6 44H42" stroke="#BFA175" stroke-width="1.5"/>
+          </svg>
+        </div>
+
+        <h3 class="day-main-title reveal-item" style="--delay: 0.1s;">Welcome Dinner</h3>
+        <div class="day-date-sub reveal-item" style="--delay: 0.2s;">Friday, April 16, 2027 &middot; Ristorante Terrazza Ciampini di Marco Ciampini</div>
+        
+        <p class="day-prose reveal-item" style="--delay: 0.3s;">
+          We begin our wedding weekend gathering for sunset cocktails and terrace dinner at Ristorante Terrazza Ciampini di Marco Ciampini, overlooking the Spanish Steps and the rooftops of Rome.
+        </p>
+
+        <!-- Timeline Specifics -->
+        <div class="schedule-block-centered">
+          <div class="schedule-entry-centered reveal-item" style="--delay: 0.4s;">
+            <div class="schedule-time">18:00</div>
+            <div class="schedule-info">
+              <h4>Sunset Cocktails &amp; Welcome Dinner</h4>
+              <div class="schedule-location">Ristorante Terrazza Ciampini di Marco Ciampini &middot; Piazza della Trinità dei Monti, 2</div>
+              <p class="schedule-desc">
+                Sunset cocktails and Roman terrace dinner celebrating the start of our wedding weekend.
+              </p>
+              <div class="schedule-links reveal-item" style="--delay: 0.5s;">
+                <a href="https://maps.google.com/?q=Ristorante+Terrazza+Ciampini+di+Marco+Ciampini+Piazza+della+Trinita+dei+Monti+2" target="_blank" class="inline-map-link">
+                  Terrazza Ciampini Map &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Attire & Inspiration Feature -->
+        <div class="attire-editorial-centered">
+          <div class="attire-label">DRESS CODE &amp; INSPIRATION</div>
+          <div class="attire-theme-name">Cocktail Chic</div>
+          <p class="attire-summary-text">
+            <strong>Gentlemen:</strong> Tailored blazers (ties optional).<br>
+            <strong>Ladies:</strong> Cocktail chic dresses or elegant separates.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
 <!-- DAY 2: SATURDAY, APRIL 17 -->
     <section class="day-spread" id="day2">
       <div class="day-container-centered">
@@ -1288,11 +1359,14 @@
               <h4>Solemn Religious Blessing</h4>
               <div class="schedule-location">Cappella del Coro &middot; St. Peter's Basilica, Vatican City</div>
               <p class="schedule-desc">
-                Please arrive by 15:00 for security entry and chapel seating.
+                <strong>Arrival Notice:</strong> All guests must arrive strictly by 15:00 for security entry and chapel seating. Access closes promptly at 15:00 with no late entrance. There will be private shuttles to Villa Aurelia from the Vatican immediately following the ceremony.
               </p>
               <div class="schedule-links reveal-item" style="--delay: 0.5s;">
-                <a href="https://maps.google.com/?q=St+Peters+Basilica+Vatican" target="_blank" class="inline-map-link">
-                  Vatican Map &rarr;
+                <a href="vatican-entrance.html" class="inline-map-link" style="margin-right: 1.25rem; font-weight: 600;">
+                  Vatican Entrance Map &amp; Guide &rarr;
+                </a>
+                <a href="https://maps.google.com/?q=Piazza+del+Sant%27Uffizio+Rome" target="_blank" class="inline-map-link">
+                  Piazza del Sant'Uffizio Map &rarr;
                 </a>
               </div>
             </div>
@@ -1301,10 +1375,10 @@
           <div class="schedule-entry-centered reveal-item" style="--delay: 0.4s;">
             <div class="schedule-time">17:30</div>
             <div class="schedule-info">
-              <h4>Garden Cocktails, Seated Gala & Party</h4>
+              <h4>Aperitivo, Seated Gala Dinner &amp; Party</h4>
               <div class="schedule-location">Villa Aurelia &middot; Porta San Pancrazio, Janiculum Hill</div>
               <p class="schedule-desc">
-                Private transfers to Villa Aurelia. Aperitivo in the gardens, imperial dinner in the villa salons, cake cutting on the panoramic terrace, open bar & dancing until late.
+                There will be private shuttles to Villa Aurelia from the Vatican. Aperitivo in the gardens begins at 17:30, followed by an imperial seated dinner in the villa salons, cake cutting on the panoramic terrace, open bar &amp; dancing until late.
               </p>
               <div class="schedule-links reveal-item" style="--delay: 0.5s;">
                 <a href="https://maps.google.com/?q=Villa+Aurelia+Rome" target="_blank" class="inline-map-link">
@@ -1319,10 +1393,11 @@
         <!-- Attire & Inspiration Feature -->
         <div class="attire-editorial-centered">
           <div class="attire-label">DRESS CODE & INSPIRATION</div>
-          <div class="attire-theme-name">Black Tie Optional & Evening Gala</div>
+          <div class="attire-theme-name">Black Tie for Men &amp; Pastel Colors for Women</div>
           <p class="attire-summary-text">
-            Tuxedos or formal dark suits for gentlemen; floor-length or gala evening gowns for ladies.<br>
-            <em>*Vatican Chapel requirement:</em> Shoulders and knees covered during the ceremony (silk shawl/wrap recommended).
+            <strong>Gentlemen:</strong> Black Tie &mdash; Classic black tuxedo with black bow tie and polished dress shoes.<br>
+            <strong>Ladies:</strong> Floor-length gala evening gowns in delicate pastel colors.<br>
+            <em>*Vatican Chapel Requirement (Mandatory):</em> Shoulders covered are mandatory inside St. Peter's Basilica (gowns with sleeves, elegant capelet designs, or matching wraps).
           </p>
           <button type="button" class="attire-lookbook-link" onclick="openLookbook('day2')">
             <span>View Fashion Lookbook & Moodboard &rarr;</span>
@@ -1346,22 +1421,22 @@
           </svg>
         </div>
 
-        <h3 class="day-main-title reveal-item" style="--delay: 0.1s;">Farewell Brunch</h3>
+        <h3 class="day-main-title reveal-item" style="--delay: 0.1s;">Farewell Rooftop Lunch</h3>
         <div class="day-date-sub reveal-item" style="--delay: 0.2s;">Sunday, April 18, 2027 &middot; Hotel Hassler Roma</div>
         
         <p class="day-prose reveal-item" style="--delay: 0.3s;">
-          Before departing, we gather on the iconic 7th-floor terrace of Hotel Hassler for an effortless Roman brunch with 360-degree views over the Spanish Steps and city skyline.
+          Before departing, we gather on the iconic 7th-floor terrace of Hotel Hassler for a relaxed farewell Roman lunch with 360-degree views over the Spanish Steps and city skyline.
         </p>
 
         <!-- Timeline Specifics -->
         <div class="schedule-block-centered">
           <div class="schedule-entry-centered reveal-item" style="--delay: 0.4s;">
-            <div class="schedule-time">12:00</div>
+            <div class="schedule-time">12:30</div>
             <div class="schedule-info">
-              <h4>Sunday Brunch & Toast</h4>
-              <div class="schedule-location">Hotel Hassler Roma &middot; Piazza Trinità dei Monti, 6</div>
+              <h4>Sunday Rooftop Lunch &amp; Toast</h4>
+              <div class="schedule-location">Hotel Hassler Roma &middot; Panoramic 7th Floor Terrace &middot; Piazza Trinità dei Monti, 6</div>
               <p class="schedule-desc">
-                Artisanal Italian pastries, Roman delicacies, champagne, and espresso overlooking the city.
+                Farewell lunch and toast on the panoramic rooftop terrace.
               </p>
               <div class="schedule-links reveal-item" style="--delay: 0.5s;">
                 <a href="https://maps.google.com/?q=Hotel+Hassler+Roma" target="_blank" class="inline-map-link">
@@ -1374,20 +1449,18 @@
 
         <!-- Attire & Inspiration Feature -->
         <div class="attire-editorial-centered">
-          <div class="attire-label">DRESS CODE & INSPIRATION</div>
-          <div class="attire-theme-name">Sunday Casual Chic & Linens</div>
+          <div class="attire-label">DRESS CODE &amp; INSPIRATION</div>
+          <div class="attire-theme-name">Formal Chic &amp; Jackets for Men</div>
           <p class="attire-summary-text">
-            Effortless Mediterranean elegance: Crisp Italian linen shirts, relaxed trousers, floral pastel sundresses, woven accessories, and sunglasses.
+            <strong>Gentlemen:</strong> Tailored blazers or jackets.<br>
+            <strong>Ladies:</strong> Elegant daytime chic attire.
           </p>
-          <button type="button" class="attire-lookbook-link" onclick="openLookbook('day3')">
-            <span>View Fashion Lookbook & Moodboard &rarr;</span>
-          </button>
         </div>
 
       </div>
     </section>
 
-                <!-- RSVP Section (Pure Haute Couture Stationery) -->
+                    <!-- RSVP Section (Pure Haute Couture Stationery) -->
     <section class="rsvp-editorial-section" id="rsvp">
       <h2 class="rsvp-headline reveal-item" style="--delay: 0.1s;">Confirm Attendance</h2>
       <p class="rsvp-lead reveal-item" style="--delay: 0.2s;">Please confirm your presence for each event of our wedding weekend:</p>
@@ -1398,8 +1471,8 @@
 <!-- Event 2 -->
           <div class="stationery-event-card reveal-item" style="--delay: 0.3s;">
             <div class="stationery-event-header">
-              <div class="stationery-event-name">2. Vatican Blessing & Villa Aurelia Gala</div>
-              <div class="stationery-event-date">Saturday, April 17 &middot; 15:30 &middot; San Pietro & Villa Aurelia</div>
+              <div class="stationery-event-name">2. Vatican Blessing &amp; Villa Aurelia Gala</div>
+              <div class="stationery-event-date">Saturday, April 17 &middot; 15:30 &middot; San Pietro &amp; Villa Aurelia</div>
             </div>
             <div class="stationery-options">
               <label class="stationery-radio-label">
@@ -1418,8 +1491,8 @@
           <!-- Event 3 -->
           <div class="stationery-event-card reveal-item" style="--delay: 0.3s;">
             <div class="stationery-event-header">
-              <div class="stationery-event-name">3. Farewell Brunch &middot; Hotel Hassler</div>
-              <div class="stationery-event-date">Sunday, April 18 &middot; 12:00 &middot; Panoramic Terrace</div>
+              <div class="stationery-event-name">3. Farewell Rooftop Lunch &middot; Hotel Hassler</div>
+              <div class="stationery-event-date">Sunday, April 18 &middot; 12:30 &middot; Panoramic Terrace</div>
             </div>
             <div class="stationery-options">
               <label class="stationery-radio-label">
@@ -1435,7 +1508,7 @@
             </div>
           </div>
 
-                                </div>
+                                        </div>
 
         <div class="stationery-input-group reveal-item" style="--delay: 0.35s;">
           <label class="stationery-input-label" for="guestName">Guest Names</label>
@@ -1488,7 +1561,7 @@
     </div>
   </div>
 
-        <script>
+          <script>
     const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwV6hHhModuKL82D3sEcVajyeP8saamvna6KW02E9mN6o7WBtll7LBvJiv4pIkembFd/exec';
     const hasFri = true;
     const hasSat = true;
@@ -1506,50 +1579,50 @@
       day1: {
         img: '/assets/images/day1_attire.jpg',
         fallback: 'assets/images/day1_attire.jpg',
-        tag: 'FRIDAY, APRIL 16 &middot; CIAMPINI',
-        title: 'Roman Cocktail Chic',
+        tag: 'FRIDAY, APRIL 16 &middot; RISTORANTE TERRAZZA CIAMPINI',
+        title: 'Cocktail Chic',
         swatches: [
+          { name: 'Tailored Blazer', color: '#1B263B' },
+          { name: 'Warm Tobacco', color: '#8D5B4C' },
           { name: 'Italian Linen', color: '#D6C7B2' },
-          { name: 'Terracotta Silk', color: '#C05C3D' },
-          { name: 'Olive Green', color: '#5B6846' },
-          { name: 'Amber Sunset', color: '#D9823B' }
+          { name: 'Terracotta', color: '#C05C3D' }
         ],
         notes: `
-          <p><strong>Gentlemen:</strong> Lightweight tailored blazers in linen, cotton, or fine summer wool in warm neutral tones (beige, tobacco, sage, navy). Dress trousers or tailored chinos, collared shirt (tie optional), and suede or leather loafers.</p><br>
-          <p><strong>Ladies:</strong> Cocktail dresses, silk slip dresses, or elegant tailored jumpsuit separates in rich sunset and Roman earth tones (terracotta, amber, olive, champagne). Block heels or refined flats are recommended for cobblestone strolls around Trinità dei Monti.</p>
+          <p><strong>Cocktail Chic:</strong> Tailored blazers for gentlemen (ties optional). Cocktail dresses or elegant chic attire for ladies.</p>
         `
       },
       day2: {
         img: '/assets/images/day2_attire.jpg',
         fallback: 'assets/images/day2_attire.jpg',
         tag: 'SATURDAY, APRIL 17 &middot; VATICAN & VILLA AURELIA',
-        title: 'Black Tie Optional & Evening Gala',
+        title: 'Black Tie for Men &amp; Pastel Colors for Women',
         swatches: [
-          { name: 'Classic Black', color: '#111111' },
-          { name: 'Midnight Navy', color: '#1B2430' },
-          { name: 'Emerald Green', color: '#0E3B2E' },
-          { name: 'Roman Gold', color: '#BFA175' }
+          { name: 'Black Tie', color: '#111111' },
+          { name: 'Powder Blue', color: '#B6CFE2' },
+          { name: 'Pastel Pink', color: '#E8C5C8' },
+          { name: 'Soft Lavender', color: '#D8BFD8' },
+          { name: 'Butter Yellow', color: '#EDE4B8' },
+          { name: 'Champagne Rose', color: '#D9C3B0' }
         ],
         notes: `
-          <p><strong>Gentlemen:</strong> Classic black tuxedo with black bow tie, or a dark formal suit (midnight navy or charcoal) with an elegant silk tie and polished dress shoes.</p><br>
-          <p><strong>Ladies:</strong> Floor-length evening gowns or sophisticated gala cocktail dresses in jewel tones, classic black, emerald, or deep sapphire, accented with fine jewelry.</p><br>
-          <p><strong>*Vatican Chapel Modesty Requirement:</strong> For the religious blessing inside Cappella del Coro at St. Peter's Basilica, shoulders and knees must be respectfully covered. A matching silk scarf, shawl, or tailored jacket is ideal.</p>
+          <p><strong>Gentlemen:</strong> Black Tie &mdash; Classic black tuxedo with black bow tie, crisp white formal shirt, and polished black dress shoes.</p><br>
+          <p><strong>Ladies:</strong> Floor-length gala evening gowns in delicate pastel colors (powder blue, blush pink, soft lavender, butter yellow, or champagne rose).</p><br>
+          <p><strong>*Vatican Chapel Requirement (Mandatory):</strong> For our solemn religious blessing inside Cappella del Coro at St. Peter's Basilica, shoulders covered are strictly mandatory. Gowns with sleeves, elegant capelet designs, or matching shawls/wraps are required for entry.</p>
         `
       },
       day3: {
         img: '/assets/images/day3_attire.jpg',
         fallback: 'assets/images/day3_attire.jpg',
-        tag: 'SUNDAY, APRIL 18 &middot; HOTEL HASSLER',
-        title: 'Sunday Casual Chic & Linens',
+        tag: 'SUNDAY, APRIL 18 &middot; HOTEL HASSLER ROOFTOP LUNCH',
+        title: 'Formal Chic &amp; Jackets for Men',
         swatches: [
-          { name: 'Crisp Linen White', color: '#FFFFFF' },
+          { name: 'Crisp White', color: '#FFFFFF' },
           { name: 'Travertine Sand', color: '#DFD5C6' },
-          { name: 'Sage Blossom', color: '#A3B19B' },
-          { name: 'Citrus Gold', color: '#E8C568' }
+          { name: 'Summer Blue', color: '#8FA8BF' },
+          { name: 'Sage Green', color: '#A3B19B' }
         ],
         notes: `
-          <p><strong>Gentlemen:</strong> Crisp white or pastel linen button-up shirts, relaxed tailored trousers or linen pants, woven belt, espadrilles or loafers, and sunglasses for rooftop terrace sunshine.</p><br>
-          <p><strong>Ladies:</strong> Breezy sundresses, linen sets, floral garden dresses, stylish straw hats, and comfortable chic footwear for enjoying the morning vistas over the Spanish Steps.</p>
+          <p><strong>Formal Chic:</strong> Tailored blazers or jackets for gentlemen. Elegant daytime chic attire for ladies.</p>
         `
       }
     };
@@ -1564,7 +1637,13 @@
 
       const imgEl = document.getElementById('modalLookbookImg');
       imgEl.src = data.img;
-      imgEl.onerror = () => { imgEl.src = data.fallback; };
+      imgEl.onerror = () => {
+        if (!imgEl.src.includes('../')) {
+          imgEl.src = '../' + data.fallback;
+        } else {
+          imgEl.src = data.fallback;
+        }
+      };
       
       document.getElementById('modalLookbookTag').innerHTML = data.tag;
       document.getElementById('modalLookbookTitle').innerText = data.title;
@@ -1626,7 +1705,7 @@
         party_size: maxParty,
         ciampini: ciampiniStatus,
         vatican_aurelia: weddingStatus,
-        brunch: brunchStatus,
+        lunch: brunchStatus,
         diet: note || 'None',
         note: note || '',
         timestamp: submittedAt
@@ -1658,7 +1737,7 @@
         "Party Count Attending": isAnyAttending ? (finalCount + (finalCount === 1 ? ' Person' : ' Persons')) : '0 (Declined)',
         "1. Welcome Dinner (16 Apr)": hasFri ? (choices[1] ? "YES (Attending)" : "NO (Decline)") : "Not Invited",
         "2. Vatican & Villa Aurelia (17 Apr)": choices[2] ? "YES (Attending)" : "NO (Decline)",
-        "3. Hassler Brunch (18 Apr)": hasSun ? (choices[3] ? "YES (Attending)" : "NO (Decline)") : "Not Invited",
+        "3. Hassler Lunch (18 Apr)": hasSun ? (choices[3] ? "YES (Attending)" : "NO (Decline)") : "Not Invited",
         "Dietary / Message": note || "None",
         "Date Submitted": submittedAt
       };
