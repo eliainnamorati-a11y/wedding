@@ -49,7 +49,7 @@ The physical stationery suite is organized into distinct, beautifully coordinate
 
 ---
 
-### CARD 1: WELCOME RECEPTION — CIAMPINI ROMA
+### CARD 1: WELCOME RECEPTION — RISTORANTE TERRAZZA CIAMPINI DI MARCO CIAMPINI
 *Friday Evening Welcome Event (April 16, 2027)*  
 *Recommended format: A6 or tailored enclosure card.*
 
@@ -63,18 +63,17 @@ at sunset overlooking the Eternal City
 
 FRIDAY, THE SIXTEENTH OF APRIL
 TWO THOUSAND TWENTY-SEVEN
-at seven o'clock in the evening
+at seven o'clock in the evening (7:00 PM)
 
-CIAMPINI ROMA
-Piazza Trinità dei Monti (Top of the Spanish Steps)
+RISTORANTE TERRAZZA CIAMPINI DI MARCO CIAMPINI
+Piazza della Trinità dei Monti, 2
 Rome, Italy
 
 Sunset Cocktails & Roman Terrace Dinner
 
-ATTIRE: ROMAN COCKTAIL CHIC
-Gentlemen: Tailored blazers (linen/wool), crisp collared shirts, loafers (ties optional).
-Ladies: Elegant cocktail dresses or silk separates in warm sunset tones.
-Block heels or refined flats recommended for Roman cobblestones.
+ATTIRE: FORMAL CHIC & JACKETS FOR MEN
+Gentlemen: Jackets required (ties optional).
+Ladies: Elegant chic attire.
 ```
 
 ---
@@ -235,13 +234,9 @@ Rome, Italy
 
 —
 
-RECOMMENDED ATTIRE: ROMAN ROOFTOP ELEGANCE & LINENS
-Effortless Mediterranean daytime style:
-Gentlemen: Crisp Italian linen or poplin button-ups, lightweight summer blazers 
-(optional), tailored chinos or linen trousers, loafers or suede espadrilles, sunglasses.
-Ladies: Elegant daytime midi dresses, breezy silk or linen sundresses, 
-chic sets in soft neutrals or sorbet tones, stylish sunglasses, 
-and terrace-friendly chic footwear (wedges or stylish flats).
+RECOMMENDED ATTIRE: FORMAL CHIC & JACKETS FOR MEN
+Gentlemen: Tailored blazers or jackets.
+Ladies: Elegant daytime chic attire.
 ```
 
 ---
@@ -304,7 +299,7 @@ The print suite is modular so guests receive exactly the cards corresponding to 
 
 | Venue | Event | Address | Timing |
 | :--- | :--- | :--- | :--- |
-| **Ciampini Roma** | Friday Welcome Sunset Dinner | Piazza Trinità dei Monti, 00187 Roma | Friday, April 16, 2027 · **19:00** |
+| **Ristorante Terrazza Ciampini di Marco Ciampini** | Friday Welcome Sunset Dinner | Piazza della Trinità dei Monti, 2, 00187 Roma | Friday, April 16, 2027 · **19:00** |
 | **Cappella del Coro, Basilica di San Pietro** | Saturday Solemn Nuptial Blessing | Cancello Petriano, Piazza del Sant'Uffizio, 00120 Città del Vaticano | Saturday, April 17, 2027<br>**Must arrive by 15:00 sharp** *(Ceremony at 15:30)* |
 | **Villa Aurelia** | Saturday Gala Banquet & Dancing | Porta San Pancrazio, Gianicolo, 00153 Roma | Saturday, April 17, 2027 · **17:30 – Late** *(Aperitivo at 17:30)* |
 | **Hotel Hassler Roma** | Sunday Farewell Rooftop Lunch | Piazza Trinità dei Monti, 6, 00187 Roma | Sunday, April 18, 2027 · **12:30** |
