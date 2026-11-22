@@ -129,6 +129,8 @@ or matching silk shawls/wraps are strictly required for entry.
 #### Simplified Vatican Wayfinding Map & Directions (For Card Reverse / Insert):
 * **Live Digital Guide for Artist & Guests:**  
   [`https://innamorati-meister.com/vatican-entrance.html`](https://innamorati-meister.com/vatican-entrance.html)
+* **Exact Entrance Pin Coordinates:** `41.9011° N, 12.4561° E` (Cancello Petriano at Piazza del Sant'Uffizio, directly across from Residenza Paolo VI Hotel).
+* **Annotated Aerial Reference Image:** `assets/images/vatican_entrance_annotated_map.jpg`
 
 * **Simple 4-Step Guest Wayfinding Route:**
   ```
@@ -230,9 +232,6 @@ HOTEL HASSLER ROMA
 Panoramic 7th Floor Rooftop Terrace
 Piazza Trinità dei Monti, 6
 Rome, Italy
-
-Artisanal Roman antipasti, handmade pasta, seasonal Italian specialties,
-fine wines, champagne toast & espresso
 
 —
 
